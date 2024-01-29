@@ -26,19 +26,19 @@ body {
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
-.side_bar_options {
+.side_bar_top {
+    width: 100.034px;
+    height: 121.966px;
+    flex-shrink: 0;
+}
+
+.side_bar_center {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     gap: 15px;
     color: #CDCDCD;
-}
-
-.side_bar_options img {
-    width: 100.034px;
-    height: 121.966px;
-    flex-shrink: 0;
 }
 
 .side_bar_option {
@@ -69,4 +69,22 @@ body {
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
+}
+
+.side_bar_bottom {
+    display: flex;
+    padding: 243px 0px 0px 52px;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+}
+
+.side_bar_bottom span{
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    gap: 8px;
+    color: #A8A8A8;
 }
