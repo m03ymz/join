@@ -1,0 +1,32 @@
+.content_legal_notice {
+    margin-left: 320px;
+    margin-right: 80px;
+    margin-top: 160px;
+}
+
+.content_legal_notice ul {
+    margin-top: 0;
+}
+
+.content_legal_notice h1{
+    font-size: 60px;
+}
+
+.content_legal_notice h3{
+    font-size: 32px;
+    margin: 16px 0px;
+}
+
+.content_legal_notice h4{
+    font-size: 24px;
+    margin: 0;
+    margin-top: 24px;
+}
+
+.blue_words_legal_notice {
+    color: #29ABE2;
+}
+
+.margin_paragraph_legal_notice {
+    margin-top: 0;
+}

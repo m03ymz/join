@@ -1,12 +1,12 @@
 .content_help {
     margin-left: 320px;
     margin-right: 80px;
-    margin-top: 200px;
+    margin-top: 160px;
 }
 
 .content_help ol>li::marker {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 24px;
 }
 
 .content_help h1{
@@ -14,12 +14,13 @@
 }
 
 .content_help h3{
-    font-size: 24px;
+    font-size: 32px;
 }
 
 .content_help h4{
-    font-size: 18px;
+    font-size: 24px;
     margin: 0;
+    margin-top: 24px;
 }
 
 .blue_words_help {
