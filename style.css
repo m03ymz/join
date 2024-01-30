@@ -98,46 +98,29 @@ body {
     color: #A8A8A8;
 }
 
-.container_addtask {   
-    margin-left: 320px; 
-    margin-top: 240px;
-    font-size: 24px;
-}
-
-.container_title {
-    margin-left: 320px;
-}
-
-.input_title_field {
-    border: 1px solid #D1D1D1;
-    height: 24px;
-    width: 30%;
-    padding: 12px 21px 12px 21px;
-    border-radius: 8px;
-}
-
-.container_description {
-    margin-left: 320px;
-}
-
-.description_textfield {
-    width: 32.5%;
-    height: 120px;
-    border: 1px solid #D1D1D1;
-    border-radius: 8px;
-}
-
-.assigned_to_dropdown {
-    width: 30%;
-    border: 1px solid #D1D1D1;
-    border-radius: 8px;
-    height: 24px;
-    padding: 12px 21px 12px 21px;
-}
-
-.container_top_menu{
+.main_content {
+    width: 100%; /* sollte man vielleicht noch anpassen*/
+    height: 100vh;
     display: flex;
+    justify-content: center;
+    padding: 80px; 
+    gap: 50px;
 }
 
-.date_field {
+.box_left {
+    width: 33%;
+    height: 60vh;
+}
+
+.box_right {
+    width: 33%;
+    height: 60vh;
+}
+
+.headline_add_task {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 320px;
+    margin-top: 100px;
+
 }
