@@ -113,6 +113,15 @@ body {
     color: #A8A8A8;
 }
 
+.content_index {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .main_content {
     width: 100%; /* sollte man vielleicht noch anpassen*/
     height: 100vh;
