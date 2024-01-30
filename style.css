@@ -118,33 +118,3 @@ body {
 
 
 
-
-
-.main_content {
-    width: 100%; /* sollte man vielleicht noch anpassen*/
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding: 80px; 
-    gap: 50px;
-}
-
-.box_left {
-    width: 33%;
-    height: 60vh;
-}
-
-.box_right {
-    width: 33%;
-    height: 60vh;
-}
-
-.headline_add_task {
-    display: flex;
-    justify-content: flex-start;
-    margin-left: 320px;
-    margin-top: 100px;
-}
-
-
-
