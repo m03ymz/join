@@ -218,6 +218,9 @@ body {
     background-position: calc(100% - 24px) center;
     font-size: 20px;
     font-weight: 400;
+}
+
+.email_input_card_center_log_in::placeholder {
     color: #D1D1D1;
 }
 
@@ -233,6 +236,9 @@ body {
     background-position: calc(100% - 24px) center;
     font-size: 20px;
     font-weight: 400;
+}
+
+.password_input_card_center_log_in::placeholder {
     color: #D1D1D1;
 }
 
@@ -292,6 +298,42 @@ body {
     font-size: 16px;
     font-weight: 400;
 }
+
+.name_input_card_center_sign_up {
+    display: flex;
+    width: 420px;
+    padding: 16px 24px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    background: url(./assets/img/name_icon_sign_up.svg) no-repeat;
+    background-position: calc(100% - 24px) center;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.name_input_card_center_sign_up::placeholder {
+    color: #D1D1D1;
+}
+
+.checkbox_card_center_sign_up {
+    box-sizing: border-box;
+    padding: 32px 0px;
+}
+
+.checkbox_card_center_sign_up a { 
+    text-decoration: none;
+    color: #29ABE2;
+}
+
+.arrow_left_sign_up {
+    position: absolute;
+    z-index: 2;
+    margin-left: -560px;
+    margin-top: 16px;
+}
+
 
 
 
