@@ -48,7 +48,7 @@ body {
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    width: 232px;
+    width: 240px;
     height: 100vh;
     padding: 48px 0px;
     flex-direction: column;
@@ -334,7 +334,37 @@ body {
     margin-top: 16px;
 }
 
+.content_help {
+    margin-left: 320px;
+    margin-right: 80px;
+    margin-top: 200px;
+}
 
+.content_help ol>li::marker {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.content_help h1{
+    font-size: 60px;
+}
+
+.content_help h3{
+    font-size: 24px;
+}
+
+.content_help h4{
+    font-size: 18px;
+    margin: 0;
+}
+
+.blue_words_help {
+    color: #29ABE2;
+}
+
+.margin_paragraph_help {
+    margin-top: 0;
+}
 
 
 
