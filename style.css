@@ -113,121 +113,227 @@ body {
     color: #A8A8A8;
 }
 
-/* Soufian CSS add_task Start */
-.headline_add_task{
-font-size: 16px;
-}
-
-.main_content {
-    display: flex;
-    box-sizing: border-box;
-    margin-right: 100px;
+.content_index {
+    width: 100%;
     height: 100vh;
-    /*padding: 48px; /* oder entsprechender Abstand */
-    background: #F6F7F8;
-    margin-left: 320px; /* wenn 232px, dann bündig zum Menü Balken */
-    justify-content: space-around;
-    height: 600px;
-}
-
-.box_left, .box_right {
-    width: 33%;
-    height: 60vh;
-    padding: 16px;
-}
-
-.headline_add_task {
     display: flex;
-    justify-content: flex-start;
-    margin-left: 320px;
-    margin-top: 100px;
-
-}/*leftside box */
-.input_field_title, .textarea_discription, .input_field_subtasks, .input_field_category{
-    width: 75%;
-    border-radius: 8px;
-    border: 1px solid lightgray;
-    padding: 8px;
-}
-textarea:focus, input:focus, select:focus{
-    outline-color: rgb(117, 193, 255);
-}
-.input_assigned_to {
-    width: 78%;
-    border-radius: 8px;
-    border: 1px solid lightgray;
-    padding: 8px;
-}
-
-.input_fields {
-    height: 16px;
-    padding: 8px;
-}
-
-::placeholder {
-    font-family: 'Inter', sans-serif;
-    color: rgb(184, 184, 184);
-    padding: 8px;
-}
-
-.container_bottom_add_task{
-    margin-left: 232px;
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between;
-    margin-right: 80px;
-   
-}
-button{
-    display:inline-flex; 
-    align-items: center;
-    padding: 16px;
-    border: none;
-    margin-right: 16px;
-}
-.container_bottom_add_task {
-    display: flex;
-    align-items: center;
-}
-
-.medium_button {
-    padding: 16px 10px;
     justify-content: center;
     align-items: center;
-    gap: 8px;
-    flex: 1 0 0;
-    border-radius: 10px;
-    background: #FFA800;
+}
+
+.body_log_in {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.top_log_in {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+    padding-left: 64px;
+    padding-right: 64px;
+    margin-bottom: 40px;
+}
+
+.right_top_log_in {
+    margin-right: 32px;
+}
+
+.right_top_log_in div {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.sign_up_button_right_top_log_in {
+    display: flex;
+    padding: 15px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #2A3647;
     border: none;
     color: white;
-    width: 108px;
+    font-size: 16px;
+    font-weight: 700;
 }
 
-.other_prio_buttons {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
-    width: 108px;
-    height: auto;
-    padding: 16px;
+.position_center_log_in {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center_log_in {
+    width: 100%;
+    display: flex;
     justify-content: center;
 }
 
-.clear_task_button{
-    background: #ffffff;
-    border-radius: 8px;
-    color:#2A3647;
-    padding: 16px;
-    border: 1px solid #2A3647;
+.card_center_log_in {
+    box-sizing: border-box;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    padding: 48px 115px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.create_task_button {
- background: #2A3647;
- border-radius: 8px;
- color: white;
- padding: 16px;
+.card_center_log_in h1 {
+    font-size: 56px;
+    margin: 0;
+    margin-bottom: 40px;
+    text-decoration: underline 4px #29ABE2;
+    text-underline-offset: 24px;
 }
-/* Soufian CSS add_task Finish*/
+
+.input_card_center_log_in {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 8px 0px;
+}
+
+.email_input_card_center_log_in {
+    display: flex;
+    width: 420px;
+    padding: 16px 24px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    background: url(./assets/img/email_icon_log_in.svg) no-repeat;
+    background-position: calc(100% - 24px) center;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.email_input_card_center_log_in::placeholder {
+    color: #D1D1D1;
+}
+
+.password_input_card_center_log_in {
+    display: flex;
+    width: 420px;
+    padding: 16px 24px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    background: url(./assets/img/password_icon_log_in.svg) no-repeat;
+    background-position: calc(100% - 24px) center;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.password_input_card_center_log_in::placeholder {
+    color: #D1D1D1;
+}
+
+.checkbox_card_center_log_in {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 32px 64px;
+}
+
+.buttons_card_center_log_in {
+    display: flex;
+    gap: 32px;
+}
+
+.log_in_button_card_center_log_in {
+    display: flex;
+    height: 48px;
+    padding: 15px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #2A3647;
+    color: white;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.guest_log_in_button_card_center_log_in {
+    display: flex;
+    height: 48px;
+    padding: 15px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    border: 1px solid #2A3647;
+    background: white;
+    color: var(--Version-2-main-color, #2A3647);
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.bottom_log_in {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 32px;
+    margin-bottom: 40px;
+}
+
+.bottom_log_in span{
+    color: #A8A8A8;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.name_input_card_center_sign_up {
+    display: flex;
+    width: 420px;
+    padding: 16px 24px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid #D1D1D1;
+    background: url(./assets/img/name_icon_sign_up.svg) no-repeat;
+    background-position: calc(100% - 24px) center;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.name_input_card_center_sign_up::placeholder {
+    color: #D1D1D1;
+}
+
+.checkbox_card_center_sign_up {
+    box-sizing: border-box;
+    padding: 32px 0px;
+}
+
+.checkbox_card_center_sign_up a { 
+    text-decoration: none;
+    color: #29ABE2;
+}
+
+.arrow_left_sign_up {
+    position: absolute;
+    z-index: 2;
+    margin-left: -560px;
+    margin-top: 16px;
+}
+
 
 .content_board {
     margin-left: 232px;
