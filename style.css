@@ -163,6 +163,17 @@ body {
     font-weight: 700;
 }
 
+.position_center_log_in {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .center_log_in {
     width: 100%;
     display: flex;
