@@ -9,20 +9,77 @@
 </head>
 <body onload="includeHTML()">
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
-       
-   
-
-<div class="main_content" style="background-color: red; display: flex;">
-
-    <div class="box_left" style="background-color: blue;">
     
+    <div class="headline_add_task"><h1>Add Task</h1></div>
+
+<div class="main_content">
+    
+ <div class="box_left">
+    
+ <div>
+        <p>Title*</p>
+        <input placeholder="Enter a title" class="input_field_title" type="text">
     </div>
 
-    <div class="box_right" style="background-color: green;">
+    <div>
+        <p>Description</p>
+    <textarea placeholder="Enter a Description" class="textarea_discription" name="" id="" cols="30" rows="10"></textarea>    
+    </div>
+
+    <div>
+    <p>Assigned to</p>
+    <select class="input_assigned_to">
+        <option selected>Select contacts to assign</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+    </select>
+ </div>
+</div>
+
+    <div class="box_right">
+        <div>
+            <p>Due date*</p>
+            <input placeholder="DD/MM/YYYY" class="input_field_title" type="text">
+        </div>
+
+        <div>
+            <p>Prio</p>
+            <div class="container_prio_buttons">
+                <button class="other_prio_buttons">Urgent</button> <button class="medium_button">Medium</button> <button class="other_prio_buttons">Low</button>
+            </div>
+        </div>
     
+        <div>
+            <p>Category*</p>
+            <select class="input_assigned_to">
+                <option selected>Select task category</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+    
+        <div>
+        <p>Subtasks</p>
+            <input class="input_field_subtasks" type="text"></input>
+     </div>
+    </div>
+
+</div>
+
+
+<div class="container_bottom_add_task">
+    <div>
+        <p data-first-letter="*">* This fiel is required</p>
+    </div>    
+
+    <div class="">
+        <button class="clear_task_button">Clear</button>
+        <button class="create_task_button">Create Task</button>
     </div>
 </div>
-           
+  
 
 
 </body>
