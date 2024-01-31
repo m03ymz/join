@@ -68,6 +68,12 @@ h3{
 p{
     font-size: 24px;
 }
+
+.contact_book {
+    margin-top: 100px; 
+    width: 70%; 
+    border-bottom: 1px solid lightgray;
+}
 .contact_name {
 font-size: 24px;
 }
@@ -78,5 +84,5 @@ font-size: 24px;
     margin-bottom: 32px;
 }
 .contact_A {
-    margin-top: 232px;
+    margin-top: 432px; /*bessere lösung finden */
 }
