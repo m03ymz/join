@@ -1,0 +1,135 @@
+.content_summary {
+    margin-left: 320px;
+    margin-right: 80px;
+    margin-top: 160px;
+    margin-bottom: 80px;
+}
+
+.top_summary {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 40px;
+}
+
+.top_summary div {
+    height: 60px;
+    width: 4px;
+    background-color: #29ABE2;
+}
+
+.top_summary span {
+    font-size: 24px;
+    color: #2A3647;
+}
+
+.content_summary h1 {
+    font-size: 64px;
+    margin: 0;
+}
+
+.blue_words_summary {
+    color: #29ABE2;
+}
+
+.main_summary {
+    border: 1px dotted red;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left_main_summary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    border: 1px dotted rgb(4, 0, 255);
+    width: 50%
+}
+ 
+.right_main_summary {
+    border: 1px dotted rgb(43, 255, 0);
+    width: 40%
+}
+
+.top_left_main_summary {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 32px;
+}
+
+.top_left_main_summary span {
+    color: #2A3647;
+}
+
+.to_do_top_left_main_summary {
+    display: flex;
+    gap: 16px;    
+    padding: 32px 48px;
+    border-radius: 30px;
+    background: white;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.done_top_left_main_summary {
+    display: flex;
+    gap: 16px;
+    padding: 32px 48px;
+    border-radius: 30px;
+    background: white;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.center_left_main_summary {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 53px;
+    padding: 32px 48px;
+    border-radius: 30px;
+    background: white;
+    margin-bottom: 32px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);    
+}
+
+.center_left_main_summary span {
+    color: #2A3647;
+}
+
+.urgent_center_left_main_summary {
+    display: flex;
+    gap: 16px;
+}
+
+.parting_line_center_left_main_summary {
+    height: 80px;
+    width: 2px;
+    background-color: #D1D1D1;
+}
+
+.date_center_left_main_summary {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.date_center_left_main_summary :nth-child(odd) {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.bottom_left_main_summary {
+    display: flex;
+    gap: 32px;
+    text-align: center;
+}
+
+.bottom_left_main_summary div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 37px;
+    border-radius: 30px;
+    background: white;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
