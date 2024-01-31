@@ -1,3 +1,8 @@
+body{
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #F6F7F8;
+}
 .headline_add_task{
     font-size: 16px;
     }

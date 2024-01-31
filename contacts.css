@@ -1,0 +1,82 @@
+body{
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #F6F7F8;
+}
+.main_content{
+    display: flex;
+    height: 100vh;
+}
+
+.left_section {
+    width: 30%;
+    background-color: white;
+    margin-left: 240px;
+    display: flex;
+    padding: 24px;
+    flex-direction: column; /* Updated to column layout */
+    justify-content: center;
+    border-right: 3px solid rgba(129, 129, 129, 0.1); /* 0.1 steht für die Transparenz */
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+    overflow-y: auto; /* Added scroll for vertical overflow */
+    
+}
+
+.left_section::-moz-scrollbar-thumb {
+    background-color: #2A3647; /* Farbe der Scrollbar-Thumb */
+    border-radius: 4px; /* abgerundete Ecken der Thumb */
+    height: 2px; /* Höhe der Scrollbar-Thumb anpassen */
+}
+
+
+.right_section {
+    padding: 32px;
+    margin-top: 80px;
+    background-color: white;
+    width: 70%;
+    overflow:auto;
+
+}
+.add_new_contact {
+    position: fixed;
+    border: none;
+    background: #2A3647;
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    top: 100px;
+    width: 20%;
+}
+.content_contact{
+    display: flex; 
+    align-items: center; 
+    justify-content: space-around;
+}
+.content_contact > div {
+    margin: 100 100px; /* Ändere den Wert nach Bedarf */
+  }
+h1{
+    font-size: 80px;
+}
+.line{
+    color: #29ABE2;
+    font-size: 80px;
+}
+h3{
+    color: #2A3647;
+}
+p{
+    font-size: 24px;
+}
+.contact_name {
+font-size: 24px;
+}
+.contact_mail {
+    line-height: 0px;
+    font-size: 16px;
+    color: #29ABE2;
+    margin-bottom: 32px;
+}
+.contact_A {
+    margin-top: 232px;
+}
