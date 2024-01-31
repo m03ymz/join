@@ -48,6 +48,9 @@ body{
     top: 100px;
     width: 20%;
 }
+.add_new_contact:hover{
+    background-color: #29ABE2;
+}
 
 .content_contact{
     display: flex; 
@@ -74,16 +77,22 @@ h3{
 
 p{
     font-size: 24px;
-}
 
+}
 .contact_book {
-    margin-top: 100px; 
+    margin-top: 640px; 
     width: 70%; 
     border-bottom: 1px solid lightgray;
 }
 
 .contact_name {
-font-size: 24px;
+    font-size: 18px;
+    margin: 4px;
+    display: flex;
+    text-align: left;
+    align-items: center;
+    gap: 8px;
+
 }
 
 .contact_mail {
@@ -161,4 +170,23 @@ margin-bottom: 24px;
 margin-right: 24px;
 height: 16px;
 
+}
+.hover_names {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 16px;
+    height: 70px;
+    margin-bottom: 20px; 
+    text-align: left; /* versuch den text linksbündig zu halten aber funktioniert nicht */
+    flex-direction: column;
+}
+
+/* Remove text-align property from .hover_names p */
+.hover_names p {
+    margin: 0;
+}
+
+.hover_names:hover {
+    background: #F6F7F8;
 }
