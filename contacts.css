@@ -3,6 +3,7 @@ body{
     font-family: 'Inter', sans-serif;
     background: #F6F7F8;
 }
+
 .main_content{
     display: flex;
     height: 100vh;
@@ -28,7 +29,6 @@ body{
     height: 2px; /* Höhe der Scrollbar-Thumb anpassen */
 }
 
-
 .right_section {
     padding: 32px;
     margin-top: 80px;
@@ -37,6 +37,7 @@ body{
     overflow:auto;
 
 }
+
 .add_new_contact {
     position: fixed;
     border: none;
@@ -47,24 +48,30 @@ body{
     top: 100px;
     width: 20%;
 }
+
 .content_contact{
     display: flex; 
     align-items: center; 
     justify-content: space-around;
 }
+
 .content_contact > div {
     margin: 100 100px; /* Ändere den Wert nach Bedarf */
-  }
+}
+
 h1{
     font-size: 80px;
 }
+
 .line{
     color: #29ABE2;
+  
     font-size: 80px;
 }
 h3{
     color: #2A3647;
 }
+
 p{
     font-size: 24px;
 }
@@ -74,15 +81,84 @@ p{
     width: 70%; 
     border-bottom: 1px solid lightgray;
 }
+
 .contact_name {
 font-size: 24px;
 }
+
 .contact_mail {
     line-height: 0px;
     font-size: 16px;
     color: #29ABE2;
     margin-bottom: 32px;
 }
+
 .contact_A {
     margin-top: 432px; /*bessere lösung finden */
+}
+
+.popup_background {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.5s ease;
+}
+
+.container_form {
+    position: relative;
+    width: 60%; /* Ändere die Breite der Karte nach Bedarf */
+    height: 50%; /* Ändere die Höhe der Karte nach Bedarf */
+    background: none; /* Hintergrundfarbe hier nicht setzen, da es vom Popup-Background übernommen wird */
+    display: flex;
+    z-index: 100;
+}
+
+.left_side_form {
+    width: 40%;
+    background-color:#2A3647;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.right_side_form {
+    width: 60%;
+    background-color: white;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.popup_title{
+    font-size: 54px;
+    color: white;
+    margin: 0;
+}
+.popup_subtitle{
+    font-size: 24px;
+    color: white;
+}
+.container_input_fields{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+    height: 100%;
+}
+.popup_input_fields{
+border-radius: 4px;
+width: 50%;
+border: 1px solid lightgray;
+margin-bottom: 24px;
+margin-right: 24px;
+height: 16px;
+
 }

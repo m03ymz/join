@@ -15,7 +15,7 @@
 
 <!--------------------linke Seite-------------------------->
     <div class="left_section">
-        <button class="add_new_contact">Add new contact</button>
+        <button class="add_new_contact" onclick="showPopup()">Add new contact</button>
     
         <div class="contact_book"> <!--ÄNDERN !! NICHT VERGESSEN !! VON SOU AN SOU ^^ -->
             
@@ -63,7 +63,7 @@
     </div>
    
 
-<!--------------------rechte Seite-------------------------->
+<!--------------------rechte Seite -------------------------->
     <div class="right_section">
         <div class="content_contact">
           <h1>Contacts</h1> 
@@ -71,6 +71,47 @@
           <h3>Better with a Team</h3> 
         </div>
     </div>
+
+
+    <!-------------------- Popup Beginn -------------------------->
+
+    <div class="popup_background" id="popupBackground" onclick="hidePopup()">
+        <div class="container_form">
+            <div class="left_side_form">
+              <h1 class="popup_title">Add Contact</h1>
+              <span class="popup_subtitle">Tasks are better with a Team!</span>
+            </div>
+            <div class="right_side_form">
+                
+                <div class="container_input_fields">
+                    <input placeholder="Name" class="popup_input_fields" type="text"   required>
+                    <input placeholder="Email" class="popup_input_fields" type="email" required>
+                    <input placeholder="Phone" class="popup_input_fields" type="tel"  required>
+                </div>
+               
+
+            </div>
+        </div>
+    </div>
+    
+    <script>
+         function hidePopup() {
+         document.getElementById('popupBackground').style.right = '-100%';
+    }
+
+        function showPopup() {
+        document.getElementById('popupBackground').style.right = '0';
+    }
+
+        function togglePopup() {
+        let popup = document.getElementById('popupBackground');
+        if (popup.style.right === '0') {
+            hidePopup();
+        } else {
+            showPopup();
+        }
+    }
+    </script>
 </div>   
 
 </body>
