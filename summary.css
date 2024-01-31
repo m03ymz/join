@@ -33,7 +33,6 @@
 }
 
 .main_summary {
-    border: 1px dotted red;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -43,27 +42,26 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    border: 1px dotted rgb(4, 0, 255);
     width: 50%
 }
  
 .right_main_summary {
-    border: 1px dotted rgb(43, 255, 0);
     width: 40%
 }
 
 .top_left_main_summary {
     display: flex;
-    gap: 32px;
+    gap: 35px;
     margin-bottom: 32px;
 }
 
-.top_left_main_summary span {
+.text_color_left_main_summary {
     color: #2A3647;
 }
 
 .to_do_top_left_main_summary {
     display: flex;
+    align-items: center;
     gap: 16px;    
     padding: 32px 48px;
     border-radius: 30px;
@@ -71,8 +69,14 @@
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
+.to_do_top_left_main_summary div {
+    display: flex;
+    flex-direction: column;
+}
+
 .done_top_left_main_summary {
     display: flex;
+    align-items: center;
     gap: 16px;
     padding: 32px 48px;
     border-radius: 30px;
@@ -80,11 +84,16 @@
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
+.done_top_left_main_summary div {
+    display: flex;
+    flex-direction: column;
+}
+
 .center_left_main_summary {
     width: max-content;
     display: flex;
     align-items: center;
-    gap: 53px;
+    gap: 48px;
     padding: 32px 48px;
     border-radius: 30px;
     background: white;
@@ -92,13 +101,15 @@
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);    
 }
 
-.center_left_main_summary span {
-    color: #2A3647;
-}
-
 .urgent_center_left_main_summary {
     display: flex;
     gap: 16px;
+    align-items: center;
+}
+
+.urgent_center_left_main_summary div {
+    display: flex;
+    flex-direction: column;
 }
 
 .parting_line_center_left_main_summary {
@@ -128,8 +139,35 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 16px 37px;
+    padding: 16px 36px;
     border-radius: 30px;
     background: white;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.bold_numbers_left_main_summary {
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.icon_size_left_main_summary {
+    height: 64px;
+    width: 64px;
+}
+
+.right_main_summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.greet_right_main_summary {
+    font-size: 48px;
+    color: #2A3647;
+}
+
+.name_right_main_summary {
+    font-size: 64px;
+    font-weight: 600;
+    color: #29ABE2;
 }
