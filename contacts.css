@@ -180,6 +180,7 @@ height: 16px;
     margin-bottom: 20px; 
     text-align: left; /* versuch den text linksbündig zu halten aber funktioniert nicht */
     flex-direction: column;
+    cursor: pointer;
 }
 
 /* Remove text-align property from .hover_names p */
@@ -189,4 +190,10 @@ height: 16px;
 
 .hover_names:hover {
     background: #F6F7F8;
+}
+input{
+    cursor: pointer;
+}
+button{
+    cursor: pointer;
 }

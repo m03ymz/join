@@ -102,6 +102,9 @@ button{
     justify-content: center;
 }
 
+.other_prio_buttons:hover{
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+}
 .clear_task_button{
     background: #ffffff;
     border-radius: 8px;
