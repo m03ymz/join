@@ -263,15 +263,15 @@
 }
 
 .task_overlay_box_board {
-    width: 450px;
-    background-color: antiquewhite;
+    width: 401px;
+    background-color: white;
     padding: 34px 40px 34px 40px;
     gap: 24px;
     border-radius: 30px;
     position: fixed;
     top: 7%;
     right: -700px;
-    height: 550px;
+    height: 560px;
     transition: right 0.2s ease-in-out;
     z-index: 3;
 }
@@ -387,5 +387,31 @@
     display: none;
     z-index: 2;
 }
+.delete_edit_taskoverlay {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    margin-top: 10px;
+}
 
+.delete_edit_taskoverlay span {
+    font-weight: 400;
+    color: #2A3647;
+}
+
+.delete_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.edit_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
 
