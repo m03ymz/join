@@ -261,3 +261,87 @@
     padding-left: 10px;
 }
 
+.task_overlay_board {
+    display: flex;
+    justify-content: center;
+}
+
+.task_overlay_box_board {
+    width: 500px;
+    min-height: 750px;
+    background-color: antiquewhite;
+    margin-top: 50px;
+    padding: 48px 40px 48px 40px;
+    gap: 24px;
+    border-radius: 30px;
+}
+
+.task_overlay_top_board {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.task_overlay_box_board h2 {
+    font-size: 61px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.task_overlay_text {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.task_overlay_assigned {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.task_overlay_assigned img {
+    height: 42px;
+    width: 42px;
+}
+
+.subtasks_taskoverlay {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.assigned_profiles {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    
+}
+
+.priority_taskoverlay {
+    display: flex;
+    justify-content: space-between;
+    width: 220px;
+}
+
+.priority_taskoverlay2 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.date_taskoverlay {
+    display: flex;
+    justify-content: space-between;
+    width: 220px;
+}
+
+.textcolor_taskoverlay {
+    color: #2A3647;
+}
