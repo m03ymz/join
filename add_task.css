@@ -10,7 +10,7 @@ body{
 .main_content {
     display: flex;
     box-sizing: border-box;
-    margin-right: 100px;
+    margin-right: 80px;
     height: 100vh;
     /*padding: 48px; /* oder entsprechender Abstand */
     background: #F6F7F8;
@@ -23,6 +23,8 @@ body{
     width: 33%;
     height: 60vh;
     padding: 16px;
+    margin-right: 20px;
+    
 }
 
 .headline_add_task {
@@ -95,16 +97,14 @@ button{
 .other_prio_buttons {
     background: white;
     border-radius: 8px;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
-    width: 108px;
+    width: 20%;
     height: auto;
     padding: 16px;
     justify-content: center;
 }
 
-.other_prio_buttons:hover{
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
-}
+
+
 .clear_task_button{
     background: #ffffff;
     border-radius: 8px;
@@ -119,6 +119,25 @@ button{
  color: white;
  padding: 16px;
 }
-.container_data_first-letter{
-    padding-left: 80px; /*margin-left rutscht die zeile wieder hinter die linke menü box */
+.create_task_button:hover{
+background-color: #29ABE2;}
+
+
+.clear_task_button:hover {
+        border: 1px solid #29ABE2 ;
+        color: #29ABE2;
+    
+    }
+
+input, button, textarea{
+    cursor: pointer;
 }
+input:hover, button:hover, textarea:hover, select:hover {
+    box-shadow: 0px 2px 2px 0px rgba(61, 61, 61, 0.2);
+}
+
+.required_red_star::before {
+    content: "*";
+    color: red;
+}
+
