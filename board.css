@@ -153,6 +153,7 @@
     background: var(--white, #FFF);
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.08);
     margin-top: 7.5px;
+    cursor: pointer;
 }
 
 .card_title_board {
@@ -261,19 +262,18 @@
     padding-left: 10px;
 }
 
-.task_overlay_board {
-    display: flex;
-    justify-content: center;
-}
-
 .task_overlay_box_board {
-    width: 500px;
-    min-height: 750px;
+    width: 450px;
     background-color: antiquewhite;
-    margin-top: 50px;
-    padding: 48px 40px 48px 40px;
+    padding: 34px 40px 34px 40px;
     gap: 24px;
     border-radius: 30px;
+    position: fixed;
+    top: 7%;
+    right: -700px;
+    height: 550px;
+    transition: right 0.2s ease-in-out;
+    z-index: 2;
 }
 
 .task_overlay_top_board {
@@ -283,7 +283,7 @@
 }
 
 .task_overlay_box_board h2 {
-    font-size: 61px;
+    font-size: 36px;
     margin: 0;
     margin-bottom: 20px;
 }
@@ -291,7 +291,7 @@
 .task_overlay_text {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 15px;
     font-size: 20px;
     font-weight: 400;
     margin-bottom: 10px;
@@ -300,7 +300,7 @@
 .task_overlay_assigned {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
 }
 
 .task_overlay_assigned img {
@@ -363,6 +363,23 @@
 
 .d_none_board {
     display: none;
+}
+
+.x_button_board {
+    cursor: pointer;
+}
+
+.bg_darker_board {
+    filter: brightness(0.5);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.pointer_events_none {
+    pointer-events: none;
+}
+
+.overflow_hidden {
+    overflow: hidden;
 }
 
 
