@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="board.css">
     <script src="script.js"></script>
+    <script src="js/board.js"></script>
 </head>
 <body onload="includeHTML()">
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
@@ -56,7 +57,7 @@
             <div class="column_board"></div>
             <div class="column_board">
                 <div class="card_board">
-                    <div class="inner_card_board">
+                    <div onclick="openOverlay()" class="inner_card_board">
                         <div class="card_title_board">User Story</div>
                         <div class="card_text_board"><b>Kochwelt Page & Recipe Recommender</b></div>
                         <div class="card_text2_board">Build start page with recipe recommendation...</div>
@@ -88,7 +89,7 @@
     </div>
 
     <div class="task_overlay_board">
-        <div class="task_overlay_box_board">
+        <div class="task_overlay_box_board d_none_board" id="task-overlay">
             <div class="task_overlay_top_board">
                 <div class="card_title_board">User Story</div>
             </div>
@@ -132,6 +133,12 @@
             </div> 
         </div>
     </div>
+
+    <!-- <div class="task_form_fullbox">
+        <div class="task_form_box">
+            
+        </div>
+    </div> -->
     
 </body>
 </html>

@@ -345,3 +345,24 @@
 .textcolor_taskoverlay {
     color: #2A3647;
 }
+
+.task_form_fullbox {
+    display: flex;
+    justify-content: center;
+}
+
+.task_form_box {
+    width: 800px;
+    min-height: 750px;
+    background-color: antiquewhite;
+    margin-top: 50px;
+    padding: 48px 40px 48px 40px;
+    gap: 24px;
+    border-radius: 30px;
+}
+
+.d_none_board {
+    display: none;
+}
+
+
