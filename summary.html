@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="summary.css">
+    <link rel="stylesheet" href="css/summary.css">
     <script src="script.js"></script>
+    <script src="js/summary.js"></script>
 </head>
-<body onload="includeHTML()">
+<body onload="init(), initSummary()">
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
     <div class="content_summary">
         <div class="top_summary">
@@ -65,7 +66,7 @@
             </div>
             <div class="right_main_summary">
                 <span class="greet_right_main_summary">Good morning,</span>
-                <span class="name_right_main_summary">Sofia Müller</span>
+                <span class="name_right_main_summary" id="name_summary">Sofia Müller</span>
             </div>
         </div>
     </div>
