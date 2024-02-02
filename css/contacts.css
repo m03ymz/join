@@ -128,8 +128,8 @@ p{
     background: none;
     display: flex;
     z-index: 100;
+    right: -100%;
     transition: left 0.5s ease;
-    left: 100%;
 }
 
 .container_form.show {

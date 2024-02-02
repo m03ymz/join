@@ -9,8 +9,9 @@
     <script src="script.js"></script>
     <script src="js/contacts.js"></script>
 </head>
-<body onload="init(), initContacts()">
+<body id="body" onload="init(), initContacts()">
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
+    <div w3-include-html="./assets/templates/contact_form.html"></div>
     
 <div class="main_content">
     <div id="overlay" class="overlay"></div>
@@ -54,7 +55,7 @@
 
 
     <!-------------------- Popup Beginn -------------------------->
-    <div w3-include-html="./assets/templates/contact_form.html"></div>
+    
 
     
     <script>
