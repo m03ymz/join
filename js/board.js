@@ -1,6 +1,10 @@
+function initBoard(){
+    checkEmptyColumn();
+}
+
 function openOverlay(){
     document.getElementById(`task-overlay`).style.right = "500px";
-    document.getElementById(`overlay`).style.display = "block";
+    document.getElementById(`overlay`).style.display = "flex";
     document.getElementById(`content-board`).classList.add('pointer_events-none');
     document.getElementById(`body`).classList.add('overflow_hidden');
 }
@@ -13,7 +17,7 @@ function closeOverlay(){
 }
 
 function checkEmptyColumn(){
-    let columnValue = document.getElementById('column_board').innerHTML;
+    let columnValue = document.getElementById('column_board').innerHTML.trim();
     if (columnValue === "") {
         columnValue = /*html*/ `
                 <div class="empty_card_board">
