@@ -9,7 +9,7 @@
     <script src="script.js"></script>
     <script src="js/board.js"></script>
 </head>
-<body id="body" onload="includeHTML()">
+<body id="body" onload="includeHTML(), checkEmptyColumn()">
     <div id="w3-include-board" w3-include-html="./assets/templates/desktop_template.html"></div>
     <div id="w3-include-board" w3-include-html="./assets/templates/task_overlay.html"></div>
 
@@ -40,15 +40,15 @@
         <div class="top_bar_board">
             <div class="bar_board">
                 <span>To do</span>
-                <img src="./assets/img/plus_board.svg" alt="">
+                <div class="bar_icon_board"><img src="./assets/img/plus_board.svg" alt=""></div>
             </div>
             <div class="bar_board">
                 <span>in progress</span>
-                <img src="./assets/img/plus_board.svg" alt="">
+                <div class="bar_icon_board"><img src="./assets/img/plus_board.svg" alt=""></div>
             </div>
             <div class="bar_board">
                 <span>Await feedback</span>
-                <img src="./assets/img/plus_board.svg" alt="">
+                <div class="bar_icon_board"><img src="./assets/img/plus_board.svg" alt=""></div>
             </div>
             <div class="bar_board">
                 <span>Done</span>
@@ -56,7 +56,11 @@
         </div>
         
         <div class="distrubution_board">
-            <div class="column_board"></div>
+            <div id="column_board" class="column_board">
+                <div class="empty_card_board">
+                    <span>No tasks To do</span>
+                </div>
+            </div>
             <div class="column_board">
                 <div class="card_board">
                     <div onclick="openOverlay()" class="inner_card_board">

@@ -11,3 +11,14 @@ function closeOverlay(){
     document.getElementById(`content-board`).classList.remove('pointer_events-none');
     document.getElementById(`body`).classList.remove('overflow_hidden');
 }
+
+function checkEmptyColumn(){
+    let columnValue = document.getElementById('column_board').innerHTML;
+    if (columnValue === "") {
+        columnValue = /*html*/ `
+                <div class="empty_card_board">
+                    <span>No tasks To do</span>
+                </div>
+                `;
+    } 
+}
