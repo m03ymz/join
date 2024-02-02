@@ -55,7 +55,7 @@
     gap: 10px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
-    background: url(./assets/img/email_icon_log_in.svg) no-repeat;
+    background: url(/assets/img/email_icon_log_in.svg) no-repeat;
     background-position: calc(100% - 24px) center;
     font-size: 20px;
     font-weight: 400;
@@ -73,7 +73,7 @@
     gap: 10px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
-    background: url(./assets/img/password_icon_log_in.svg) no-repeat;
+    background: url(/assets/img/password_icon_log_in.svg) no-repeat;
     background-position: calc(100% - 24px) center;
     font-size: 20px;
     font-weight: 400;
@@ -104,6 +104,10 @@
     font-weight: 700;
 }
 
+.sign_up_button_center_sign_up:hover {
+    cursor: pointer;
+}
+
 .name_input_center_sign_up {
     display: flex;
     width: 420px;
@@ -112,7 +116,7 @@
     gap: 10px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
-    background: url(./assets/img/name_icon_sign_up.svg) no-repeat;
+    background: url(/assets/img/name_icon_sign_up.svg) no-repeat;
     background-position: calc(100% - 24px) center;
     font-size: 20px;
     font-weight: 400;
@@ -126,6 +130,7 @@
     box-sizing: border-box;
     display: flex;
     justify-content: center;
+    gap: 8px;
     padding: 32px 0px;
 }
 
@@ -134,11 +139,19 @@
     color: #29ABE2;
 }
 
+.checkbox_center_sign_up input:hover {
+    cursor: pointer;
+}
+
 .arrow_left_sign_up {
     position: absolute;
     z-index: 2;
     margin-left: -560px;
     margin-top: 16px;
+}
+
+.arrow_left_sign_up:hover {
+    cursor: pointer;
 }
 
 .bottom_sign_up {
@@ -150,8 +163,12 @@
     gap: 32px;
 }
 
-.bottom_sign_up span{
+.bottom_sign_up span {
     color: #A8A8A8;
     font-size: 16px;
     font-weight: 400;
+}
+
+.bottom_sign_up span:hover {
+    cursor: pointer;
 }

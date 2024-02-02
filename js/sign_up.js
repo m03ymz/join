@@ -34,6 +34,17 @@ async function addUserSignUp() {
     redirectToLogInSignUp();
 }
 
+
 function redirectToLogInSignUp() {
-    window.location.href = 'log_in.html';
+  window.location.href = 'log_in.html';
+}
+
+
+function redirectToPrivacyPolicySignUp() {
+    window.location.href = 'privacy_policy.html';
+}
+
+
+function redirectToLegalNoticeSignUp() {
+  window.location.href = 'legal_notice.html';
 }

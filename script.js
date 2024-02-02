@@ -7,6 +7,7 @@ let currentUser;
 async function init() {
     loadCurrentUser();
     await includeHTML();
+    renderInitialsDesktopTemplate();
 }
 
 
@@ -46,9 +47,26 @@ async function loadUsers() {
     users = await JSON.parse(usersAsString);
 }
 
+
 function loadCurrentUser() {
     let currentUserDataAsString = localStorage.getItem('currentUserData');
     let currentUserData = JSON.parse(currentUserDataAsString);
     currentUser = currentUserData[0]
     console.log(currentUser);
+}
+
+
+function redirectDesktopTemplate(site) {
+    window.location.href = site + '.html';
+}
+
+
+function getInitials(name) {
+    let nameParts = name.split(' ');
+    let initials = nameParts.map(namePart => namePart.charAt(0).toUpperCase());
+    return initials.join('');
+}
+
+function renderInitialsDesktopTemplate() {
+    document.getElementById('initials_header_desktop_template').innerHTML = getInitials(currentUser.name)
 }

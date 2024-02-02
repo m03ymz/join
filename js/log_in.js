@@ -54,6 +54,16 @@ function redirectToSignUpLogIn() {
 }
 
 
+function redirectToLegalNoticeLogIn() {
+    window.location.href = 'legal_notice.html';
+}
+
+
+function redirectToPrivacyPolicyLogIn() {
+    window.location.href = 'privacy_policy.html';
+}
+
+
 function checkRememberedDataLogIn() {
     let emailInput = document.getElementById('email_log_in');
     let passwordInput = document.getElementById("password_log_in");
