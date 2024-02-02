@@ -8,6 +8,7 @@ async function init() {
     loadCurrentUser();
     await includeHTML();
     renderInitialsDesktopTemplate();
+    highlightPageDesktopTemplate();
 }
 
 
@@ -67,6 +68,21 @@ function getInitials(name) {
     return initials.join('');
 }
 
+
 function renderInitialsDesktopTemplate() {
     document.getElementById('initials_header_desktop_template').innerHTML = getInitials(currentUser.name)
+}
+
+
+function highlightPageDesktopTemplate() {
+    let currentPage = window.location.pathname;
+    if (currentPage === '/summary.html') {
+        document.getElementById('summary_side_bar').style = 'background-color: #091931';
+    } else if (currentPage === '/add_task.html') {
+        document.getElementById('add_task_side_bar').style = 'background-color: #091931';
+    } else if (currentPage === '/board.html') {
+        document.getElementById('board_side_bar').style = 'background-color: #091931';
+    } else if (currentPage === '/contacts.html') {
+        document.getElementById('contacts_side_bar').style = 'background-color: #091931';
+    }
 }
