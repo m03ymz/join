@@ -1,6 +1,7 @@
 const STORAGE_TOKEN = '4P1XH3G5Y41OG9WBBTCP22KWPYXQ1M89PF6B0NCW';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 let users;
+let currentUserData;
 let currentUser;
 
 
@@ -51,9 +52,16 @@ async function loadUsers() {
 
 function loadCurrentUser() {
     let currentUserDataAsString = localStorage.getItem('currentUserData');
-    let currentUserData = JSON.parse(currentUserDataAsString);
+    currentUserData = JSON.parse(currentUserDataAsString);
     currentUser = currentUserData[0]
     console.log(currentUser);
+}
+
+
+function saveCurrentUser() {
+    let currentUserDataAsString = JSON.stringify(currentUserData);
+    localStorage.setItem('currentUserData', currentUserDataAsString);
+    loadCurrentUser();
 }
 
 

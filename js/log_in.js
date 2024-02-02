@@ -15,7 +15,7 @@ function checkDataLogIn() {
 
 function checkDataStatementLogIn(currentUserData, rememberMe, email, password) {
     if (currentUserData.length > 0) {
-        saveCurrentUserLogin(currentUserData);
+        saveCurrentUserLogIn(currentUserData);
         rememberMeStatementLogIn(rememberMe, email, password);
         redirectToSummaryLogIn(); 
     } else {  
@@ -37,7 +37,7 @@ function rememberMeStatementLogIn(rememberMe, email, password) {
     }
 }
 
-function saveCurrentUserLogin(currentUserData) {
+function saveCurrentUserLogIn(currentUserData) {
     let currentUserDataAsString = JSON.stringify(currentUserData);
     localStorage.setItem('currentUserData', currentUserDataAsString);
     loadCurrentUser();
