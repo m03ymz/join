@@ -5,38 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="log_in_and_sign_up.css">
+    <link rel="stylesheet" href="sign_up.css">
+    <script src="script.js"></script>
+    <script src="js/sign_up.js"></script>
 </head>
-<body class="body_log_in">
-    <div>
-        <div class="top_log_in">
+<body onload="init(), initSignUp()">
+    <div class="content_sign_up">
+        <div class="top_sign_up">
             <img src="./assets/img/join_logo_log_in.svg" alt="join logo">
         </div>
-        <div class="position_center_log_in">
-            <div class="center_log_in">
-                <div class="card_center_log_in">
-                    <img src="/assets/img/arrow_left_sign_up.svg" alt="arrow left" class="arrow_left_sign_up">
-                    <h1>Sign Up</h1>
-                    <div class="input_card_center_log_in">
-                        <input class="name_input_card_center_sign_up" type="text" placeholder="Name">
-                        <input class="email_input_card_center_log_in" type="email" placeholder="Email">
-                        <input class="password_input_card_center_log_in" type="password" placeholder="Password">
-                        <input class="password_input_card_center_log_in" type="password" placeholder="Confirm Password">
-                    </div>
-                    <div class="checkbox_card_center_sign_up">
-                        <input type="checkbox">
-                        <span>I accept the <a href="#">Privacy policy</a></span>
-                    </div>
-                    <div class="buttons_card_center_log_in">
-                        <button class="log_in_button_card_center_log_in">Sign Up</button>
-                    </div>
+        <div class="center_sign_up">
+            <img src="/assets/img/arrow_left_sign_up.svg" alt="arrow left" class="arrow_left_sign_up" onclick="redirectToLogInSignUp()">
+            <h1>Sign Up</h1>
+            <form onsubmit="checkDataSignUp(); return false;">
+                <div class="input_center_sign_up">
+                    <input required class="name_input_center_sign_up" type="text" placeholder="Name" id="name_sign_up">
+                    <input required class="email_input_center_sign_up" type="email" placeholder="Email" id="email_sign_up">
+                    <input required class="password_input_center_sign_up" type="password" placeholder="Password" id="password_sign_up">
+                    <input required class="password_input_center_sign_up" type="password" placeholder="Confirm Password" id="confirm_password_sign_up">
                 </div>
-            </div>
+                <div class="checkbox_center_sign_up">
+                    <input required type="checkbox">
+                    <span>I accept the <a href="#">Privacy policy</a></span>
+                </div>
+                <div class="buttons_center_sign_up">
+                    <button class="sign_up_button_center_sign_up">Sign Up</button>
+                </div>
+            </form>
         </div>
-    </div>
-    <div class="bottom_log_in">
-        <span>Privacy Policy</span>
-        <span>Legal notice</span>
+        <div class="bottom_sign_up">
+            <span>Privacy Policy</span>
+            <span>Legal notice</span>
+        </div>
     </div>
 </body>
 </html>
