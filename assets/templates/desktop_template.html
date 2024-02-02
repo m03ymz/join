@@ -1,34 +1,34 @@
 <header class="header_desktop_template">
     <span class="title_header_desktop_template">Kanban Project Management Tool</span>
-    <div>
-        <img src="./assets/img/help_icon_header_desktop_template.svg" alt="help icon">
-        <span class="initials_header_desktop_template">SM</span>
+    <div class="right_header_desktop_template">
+        <img src="./assets/img/help_icon_header_desktop_template.svg" alt="help icon" onclick="redirectDesktopTemplate('help')">
+        <span id="initials_header_desktop_template">SM</span>
     </div>
 </header>
 <div class="side_bar_desktop_template">
         <img src="./assets/img/join_logo_side_bar.svg" alt="join_logo">
     <ul class="center_side_bar_desktop_template">
-        <li>
+        <li onclick="redirectDesktopTemplate('summary')" id="summary_side_bar">
             <img src="./assets/img/summary_icon_side_bar.svg" alt="summary icon">
             <span>Summary</span>
         </li>
-        <li>
+        <li onclick="redirectDesktopTemplate('add_task')" id="add_task_side_bar">
             <img src="./assets/img/add_task_icon_side_bar.svg" alt="add task icon">
             <span>Add Task</span>
         </li>
-        <li>
+        <li onclick="redirectDesktopTemplate('board')" id="board_side_bar">
             <img src="./assets/img/board_icon_side_bar.svg" alt="board icon">
             <span>Board</span>
         </li>
-        <li>
+        <li onclick="redirectDesktopTemplate('contacts')" id="contacts_side_bar">
             <img src="./assets/img/contacts_icon_side_bar.svg" alt="contacts icon">
             <span>Contacts</span>
         </li>
     </ul>
     <div class="bottom_side_bar_desktop_template">
         <div>
-            <span>Privacy Policy</span>
-            <span>Legal notice</span>
+            <span onclick="redirectDesktopTemplate('privacy_policy')">Privacy Policy</span>
+            <span onclick="redirectDesktopTemplate('legal_notice')">Legal notice</span>
         </div>
     </div>
 </div>

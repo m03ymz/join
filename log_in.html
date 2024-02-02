@@ -5,42 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="log_in_and_sign_up.css">
+    <link rel="stylesheet" href="css/log_in.css">
+    <script src="script.js"></script>
+    <script src="js/log_in.js"></script>
 </head>
-<body class="body_log_in">
-    <div>
+<body onload="init(), initLogIn()">
+    <div class="content_log_in">
         <div class="top_log_in">
             <img src="./assets/img/join_logo_log_in.svg" alt="join logo">
             <div class="right_top_log_in">
                 <div>
                     <span>Not a Join user?</span>
-                    <button class="sign_up_button_right_top_log_in">Sign up</button>
+                    <button class="sign_up_button_right_top_log_in" onclick="redirectToSignUpLogIn()">Sign up</button>
                 </div>
             </div>
         </div>
-        <div class="position_center_log_in">
-            <div class="center_log_in">
-                <div class="card_center_log_in">
-                    <h1>Log in</h1>
-                    <div class="input_card_center_log_in">
-                        <input class="email_input_card_center_log_in" type="email" placeholder="Email">
-                        <input class="password_input_card_center_log_in" type="password" placeholder="Password">
-                    </div>
-                    <div class="checkbox_card_center_log_in">
-                        <input type="checkbox">
-                        <span>Remember me</span>
-                    </div>
-                    <div class="buttons_card_center_log_in">
-                        <button class="log_in_button_card_center_log_in">Log in</button>
-                        <button class="guest_log_in_button_card_center_log_in">Guest Log in</button>
-                    </div>
+        <div class="center_log_in">
+            <h1>Log in</h1>
+            <form onsubmit="checkDataLogIn(); return false;">
+                <div class="input_center_log_in">
+                    <input required class="email_input_center_log_in" type="email" placeholder="Email" id="email_log_in">
+                    <input required class="password_input_center_log_in" type="password" placeholder="Password" id="password_log_in">
                 </div>
-            </div>
+                <div class="checkbox_center_log_in">
+                    <input type="checkbox" id="remember_me_log_in">
+                    <span>Remember me</span>
+                </div>
+                <div class="buttons_center_log_in">
+                    <button class="log_in_button_center_log_in">Log in</button>
+                    <button disabled="true" class="guest_log_in_button_center_log_in">Guest Log in</button>
+                </div>
+            </form>
         </div>
-    </div>
-    <div class="bottom_log_in">
-        <span>Privacy Policy</span>
-        <span>Legal notice</span>
+        <div class="bottom_log_in">
+            <span onclick="redirectToPrivacyPolicyLogIn()">Privacy Policy</span>
+            <span onclick="redirectToLegalNoticeLogIn()">Legal notice</span>
+        </div>
     </div>
 </body>
 </html>
