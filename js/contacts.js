@@ -1,16 +1,17 @@
+function initContacts(){
+ initialsContacts();
+}
+function showPopup() {
+    document.getElementById('popupBackground').style.display = 'block';
+}
+
 function hidePopup() {
-    document.getElementById('popupBackground').style.right = '-100%';
+    document.getElementById('popupBackground').style.display = 'none';
 }
 
-   function showPopup() {
-   document.getElementById('popupBackground').style.right = '0';
+function initContacts(){
+    let name = document.getElementById('contact_name').innerHTML;
+    console.log(name);
+    document.getElementById('initial_contacts').innerHTML = getInitials(name);
 }
 
-   function togglePopup() {
-   let popup = document.getElementById('popupBackground');
-   if (popup.style.right === '0') {
-       hidePopup();
-   } else {
-       showPopup();
-   }
-}
