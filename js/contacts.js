@@ -16,7 +16,7 @@
 // }
 
 function showPopup(){
-    document.getElementById(`container_form`).style.right = "1600px";
+    document.getElementById(`container_form`).style.right = "100%";
     document.getElementById(`overlay`).style.display = "flex";
     // document.getElementById(`main_content`).classList.add('pointer_events-none');
     document.getElementById(`body`).classList.add('overflow_hidden');
