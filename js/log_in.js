@@ -16,51 +16,31 @@ function checkDataLogIn() {
 function checkDataStatementLogIn(currentUserData, rememberMe, email, password) {
     if (currentUserData.length > 0) {
         saveCurrentUserLogIn(currentUserData);
-        rememberMeStatementLogIn(rememberMe, email, password);
-        redirectToSummaryLogIn(); 
+        rememberMeLogIn();
+        redirect('summary');
     } else {  
         alert("Ungültige Anmeldeinformationen. Bitte überprüfen Sie Ihre E-Mail und Ihr Passwort.");
     }
 }
 
 
-function rememberMeStatementLogIn(rememberMe, email, password) {
-    if (rememberMe) {
-        let rememberedData = {
-            'email': email,
-            'password': password
-        };
-        let rememberedDataAsString = JSON.stringify(rememberedData);
-        localStorage.setItem('rememberedData', rememberedDataAsString);
-    } else {
-        localStorage.removeItem('rememberedData');
-    }
+function rememberMeLogIn() {
+    let email = document.getElementById('email_log_in').value.toLowerCase();
+    let password = document.getElementById("password_log_in").value;
+    let rememberMe = document.getElementById('remember_me_log_in').checked;
+    let rememberedData = {
+        'email': email,
+        'password': password,
+        'rememberMe': rememberMe
+    };
+    let rememberedDataAsString = JSON.stringify(rememberedData);
+    localStorage.setItem('rememberedData', rememberedDataAsString);
 }
 
 function saveCurrentUserLogIn(currentUserData) {
     let currentUserDataAsString = JSON.stringify(currentUserData);
     localStorage.setItem('currentUserData', currentUserDataAsString);
     loadCurrentUser();
-}
-
-
-function redirectToSummaryLogIn() {
-    window.location.href = 'summary.html';
-}
-
-
-function redirectToSignUpLogIn() {
-    window.location.href = 'sign_up.html';
-}
-
-
-function redirectToLegalNoticeLogIn() {
-    window.location.href = 'legal_notice.html';
-}
-
-
-function redirectToPrivacyPolicyLogIn() {
-    window.location.href = 'privacy_policy.html';
 }
 
 
@@ -78,10 +58,19 @@ function checkRememberedDataStatementLogIn(emailInput, passwordInput, rememberMe
         let rememberedData = JSON.parse(rememberedDataAsString);
         emailInput.value = rememberedData.email;
         passwordInput.value = rememberedData.password;
-        rememberMeCheckbox.checked = true;
+        rememberMeCheckbox.checked = rememberedData.rememberMe;
     } else {
         emailInput.value = '';
         passwordInput.value = '';
         rememberMeCheckbox.checked = false;
+    }
+}
+
+function updateRememberMe() {
+    let rememberMeCheckbox = document.getElementById('remember_me_log_in');
+    if (rememberMeCheckbox.checked === true) {
+        rememberMeLogIn();
+    } else {
+        localStorage.removeItem('rememberedData');
     }
 }

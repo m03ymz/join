@@ -9,7 +9,7 @@
     <script src="script.js"></script>
     <script src="js/sign_up.js"></script>
 </head>
-<body onload="init(), initSignUp()">
+<body onload="initSignUp()">
     <div class="content_sign_up">
         <div class="top_sign_up">
             <img src="./assets/img/join_logo_log_in.svg" alt="join logo">
@@ -34,8 +34,8 @@
             </form>
         </div>
         <div class="bottom_sign_up">
-            <span onclick="redirectToPrivacyPolicySignUp()">Privacy Policy</span>
-            <span onclick="redirectToLegalNoticeSignUp()">Legal notice</span>
+            <span onclick="redirect('privacy_policy')">Privacy Policy</span>
+            <span onclick="redirect('legal_notice')">Legal notice</span>
         </div>
     </div>
 </body>

@@ -1,3 +1,7 @@
+function initAddTask() {
+}
+
+
 document.addEventListener("DOMContentLoaded", function () {
     
     const urgentButton = document.getElementById("prioButtonUrgent");

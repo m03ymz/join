@@ -65,7 +65,7 @@ function saveCurrentUser() {
 }
 
 
-function redirectDesktopTemplate(site) {
+function redirect(site) {
     window.location.href = site + '.html';
 }
 

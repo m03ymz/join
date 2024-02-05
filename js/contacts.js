@@ -1,3 +1,7 @@
+function initContacts() {
+}
+
+
 function hidePopup() {
     document.getElementById('popupBackground').style.right = '-100%';
 }

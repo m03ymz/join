@@ -42,7 +42,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    width: 50%
+    width: 50%;
 }
  
 .right_main_summary {
@@ -67,15 +67,25 @@
     border-radius: 30px;
     background: white;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    transition: scale 75ms ease-in-out;
 }
 
-.to_do_top_left_main_summary {
-    
+.to_do_top_left_main_summary:hover {
+    cursor: pointer;
+    background-color: #2A3647;
+    color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    scale: 1.1;
 }
 
 .to_do_top_left_main_summary div {
     display: flex;
     flex-direction: column;
+}
+
+.to_do_top_left_main_summary div:hover {
+    cursor: pointer;
+    color: white;
 }
 
 .done_top_left_main_summary {
@@ -86,6 +96,15 @@
     border-radius: 30px;
     background: white;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    transition: scale 75ms ease-in-out;
+}
+
+.done_top_left_main_summary:hover {
+    cursor: pointer;
+    background-color: #2A3647;
+    color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    scale: 1.1;
 }
 
 .done_top_left_main_summary div {
@@ -103,6 +122,15 @@
     background: white;
     margin-bottom: 32px;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);    
+    transition: scale 75ms ease-in-out;
+}
+
+.center_left_main_summary:hover {
+    cursor: pointer;
+    background-color: #2A3647;
+    color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    scale: 1.1;
 }
 
 .urgent_center_left_main_summary {
@@ -143,10 +171,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 16px 36px;
+    padding: 16px 35px;
     border-radius: 30px;
     background: white;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    transition: scale 75ms ease-in-out;
+}
+
+.bottom_left_main_summary div:hover {
+    cursor: pointer;
+    background-color: #2A3647;
+    color: white;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    scale: 1.1;
 }
 
 .bold_numbers_left_main_summary {

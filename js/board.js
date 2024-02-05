@@ -1,3 +1,7 @@
+function initBoard() {
+}
+
+
 function openOverlay(){
     document.getElementById(`task-overlay`).style.right = "500px";
     document.getElementById(`overlay`).style.display = "block";
