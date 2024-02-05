@@ -80,12 +80,11 @@ p{
 
 }
 .contact_book {
-    margin-top: 140px; 
-    width: 70%; 
+    width: 100%; 
     border-bottom: 1px solid lightgray;
 }
 
-.contact_name {
+#contact_name {
     font-size: 18px;
     margin: 4px;
     display: flex;
@@ -97,18 +96,19 @@ p{
 
 .contact_mail {
     line-height: 0px;
-    font-size: 16px;
+    font-size: 13px;
     color: #29ABE2;
     margin-bottom: 32px;
 }
 
 .contact_A {
-    margin-top: 432px; /*bessere lösung finden */
+   /**/ margin-top: 32px; /*bessere lösung finden */
 }
 
 .popup_background {
+    display: none;
     position: fixed;
-    top: 0;
+    top: 0px;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
@@ -116,21 +116,33 @@ p{
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: right 0.5s ease;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .container_form {
     position: relative;
-    width: 60%; /* Ändere die Breite der Karte nach Bedarf */
-    height: 50%; /* Ändere die Höhe der Karte nach Bedarf */
-    background: none; /* Hintergrundfarbe hier nicht setzen, da es vom Popup-Background übernommen wird */
+    width: 60%;
+    height: 50%;
+    background: none;
     display: flex;
     z-index: 100;
+    right: -100%;
+    transition: left 0.5s ease;
+}
+
+.container_form.show {
+    left: 0;
+}
+
+.container_form.hide {
+    left: 100%;
 }
 
 .left_side_form {
     width: 40%;
-    background-color:#2A3647;
+    background-color: #2A3647;
     border-top-left-radius: 16px;
     border-bottom-left-radius: 16px;
     display: flex;
@@ -146,21 +158,32 @@ p{
     border-bottom-right-radius: 16px;
 }
 
-.popup_title{
+.popup_title {
     font-size: 54px;
     color: white;
     margin: 0;
 }
-.popup_subtitle{
+
+.popup_subtitle {
     font-size: 24px;
     color: white;
 }
-.container_input_fields{
+
+.container_input_fields {
     display: flex;
     justify-content: center;
     align-items: flex-end;
     flex-direction: column;
     height: 100%;
+}
+
+.popup_input_fields {
+    border-radius: 4px;
+    width: 50%;
+    border: 1px solid lightgray;
+    margin-bottom: 24px;
+    margin-right: 24px;
+    height: 16px;
 }
 .popup_input_fields{
 border-radius: 4px;
@@ -173,14 +196,32 @@ height: 16px;
 }
 .hover_names {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 16px;
-    height: 70px;
-    margin-bottom: 20px; 
-    text-align: left; /* versuch den text linksbündig zu halten aber funktioniert nicht */
-    flex-direction: column;
+    border-radius: 8px;
+    height: 40px;
+    margin-bottom: 24px; 
     cursor: pointer;
+    gap: 24px;
+    padding: 16px 24px;
+    align-items: center;
+}
+
+#initial_contacts{
+width: 48px;
+height: 48px;
+background: #29ABE2;  
+border-radius: 50%;
+border: 2px solid rgb(255, 255, 255);  
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+
+
+}
+.hover_names div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 /* Remove text-align property from .hover_names p */
@@ -196,4 +237,17 @@ input{
 }
 button{
     cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: none;
+    z-index: 2;
 }

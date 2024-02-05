@@ -9,85 +9,39 @@
     <script src="script.js"></script>
     <script src="js/contacts.js"></script>
 </head>
-<body onload="init(), initContacts()">
+<body id="body" onload="init(), initContacts()">
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
+    <div w3-include-html="./assets/templates/contact_form.html"></div>
     
 <div class="main_content">
+    <div id="overlay" class="overlay"></div>
 
 <!--------------------linke Seite-------------------------->
     <div class="left_section">
-        <button class="add_new_contact" onclick="showPopup()">Add new contact</button>
+
+        <button class="add_new_contact" onclick="showPopup()">Add new contact</button> 
     
         <div class="contact_book"> 
             
            <p class="contact_A">A</p>
              <hr>
-        <div>  
+<div>  
 
         <div class="hover_names">
-             <p class="contact_name"> <img src="/assets/img/round_element_orange.svg" alt=""> Anton Meier</p>
-             <p class="contact_mail">antonmeier@gmail.com</p>
+           <div>
+           <span id="initial_contacts">ZZ</span>
+           </div> 
+           <div>
+            <p id="contact_name">Anton Meier</p>
+            <p class="contact_mail">antonmeier@gmail.com</p>
+           </div>
+           
         </div>
            
-        <div class="hover_names">
-           <p class="contact_name"><img src="/assets/img/round_element_orange.svg" alt=""> Anja Schulz</p>
-            <p class="contact_mail">anjaschulz@hotmail.com</p>
-        </div>
-
-        </div>
-        
-        <p>B</p>
-            <hr>
-            
-            <div class="hover_names">
-                <p class="contact_name"><img src="/assets/img/round_element_orange.svg" alt="">Benedikt Ziegler</p>
-                <p class="contact_mail">benediktziegler@hotmail.com</p>
-            </div>
-        
-
-            <p>C</p>
-            <hr>
-       <div>  
-           <div class="hover_names">
-            <p class="contact_name"><img src="/assets/img/round_element_orange.svg" alt="">Carlo Meier</p>
-            <p class="contact_mail">carlomeier@gmail.com</p>
-           </div>
-            
-            <div class="hover_names">
-            <p class="contact_name"><img src="/assets/img/round_element_orange.svg" alt="">Can Kaya</p>
-            <p class="contact_mail">Can Kaya@hotmail.com</p>
-            </div>
-     
-       </div>
-       <p>D</p>
-           <hr>
-
-           <div class="hover_names">
-            <p class="contact_name"><img src="/assets/img/round_element_orange.svg" alt="">Denedikt Ziegler</p>
-            <p class="contact_mail">Denediktziegler@hotmail.com</p>
-           </div>
-   
-
-           <p>E</p>
-           <hr>
-      <div>  
-
-        <div class="hover_names">
-            <p class="contact_name"><img src="/assets/img/round_element_orange.svg" alt="">Enton Meier</p>
-            <p class="contact_mail">Entonmeier@gmail.com</p>
-        </div>
  
-
-      </div>
-      <p>F</p>
-          <hr>
-          <div class="hover_names">
-            <p class="contact_name"><img src="/assets/img/round_element_orange.svg" alt="">Fee Ziegler</p>
-            <p class="contact_mail">feediktziegler@hotmail.com</p>
-          </div>
-        </div>
-
-    </div>
+</div>
+</div>
+</div>
    
 
 <!--------------------rechte Seite -------------------------->
@@ -101,7 +55,7 @@
 
 
     <!-------------------- Popup Beginn -------------------------->
-    <div w3-include-html="./assets/templates/contact_form.html"></div>
+    
 
     
     <script>
