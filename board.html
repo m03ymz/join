@@ -6,12 +6,14 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/add_task.css">
     <script src="script.js"></script>
     <script src="js/board.js"></script>
 </head>
 <body id="body" onload="init(), initBoard()">
     <div id="w3-include-board" w3-include-html="./assets/templates/desktop_template.html"></div>
-    <div id="w3-include-board" w3-include-html="./assets/templates/task_overlay.html"></div>
+    <div id="w3-include-board1" w3-include-html="./assets/templates/task_overlay.html"></div>
+    <div id="w3-include-board" w3-include-html="./assets/templates/task_form.html"></div>
 
     <div id="content-board" class="content_board">
         <div id="overlay" class="overlay"></div>
@@ -28,7 +30,7 @@
                         </div>
                     </div>
                     <div>
-                        <div class="button_board">
+                        <div onclick="openTaskFormOnBoard()" class="button_board">
                             <span>Add task</span>
                             <img src="./assets/img/add.svg" alt="">
                         </div>
@@ -40,15 +42,15 @@
         <div class="top_bar_board">
             <div class="bar_board">
                 <span>To do</span>
-                <div class="bar_icon_board"><img src="./assets/img/plus_board.svg" alt=""></div>
+                <div onclick="openTaskFormOnBoard()" class="bar_icon_board"><img src="./assets/img/plus_board.svg" alt=""></div>
             </div>
             <div class="bar_board">
                 <span>in progress</span>
-                <div class="bar_icon_board"><img src="./assets/img/plus_board.svg" alt=""></div>
+                <div onclick="openTaskFormOnBoard()" class="bar_icon_board"><img src="./assets/img/plus_board.svg" alt=""></div>
             </div>
             <div class="bar_board">
                 <span>Await feedback</span>
-                <div class="bar_icon_board"><img src="./assets/img/plus_board.svg" alt=""></div>
+                <div onclick="openTaskFormOnBoard()" class="bar_icon_board"><img src="./assets/img/plus_board.svg" alt=""></div>
             </div>
             <div class="bar_board">
                 <span>Done</span>
@@ -57,9 +59,9 @@
         
         <div class="distrubution_board">
             <div id="column_board" class="column_board">
-                <!-- <div class="empty_card_board">
+                <div id="empty_box" class="empty_card_board">
                     <span>No tasks To do</span>
-                </div> -->
+                </div>
             </div>
             <div class="column_board">
                 <div draggable="true" ondragstart="" class="card_board">
@@ -96,10 +98,80 @@
 
         
 
-    <!-- <div class="task_form_fullbox">
-        <div class="task_form_box">
+    <!-- <div class="fullbox_task_form">
+        <div class="headline_task_form"><h1>Add Task</h1></div>
+
+    <div class="main_content_task_form">
+        
+        <div class="box_left">
             
+            <div>
+                <p class="required_red_star">Title</p>
+                <input placeholder="Enter a title" class="input_field_title" type="text">
+            </div>
+
+            <div>
+                <p>Description</p>
+                <textarea placeholder="Enter a Description" class="textarea_discription" name="" id="" cols="30" rows="10"></textarea>    
+            </div>
+
+            <div>
+                <p>Assigned to</p>
+                <select class="input_assigned_to">
+                    <option selected>Select contacts to assign</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+        </div> -->
+
+        <!-- <div class="parting_line_task_form"></div> -->
+
+        <!-- <div class="box_right">
+            <div>
+                <p class="required_red_star">Due date</p>
+                <input placeholder="DD/MM/YYYY" class="input_field_title" type="text">
+            </div>
+
+            <div>
+                <p>Prio</p>
+                <div class="container_prio_buttons">
+                    <button id="prioButtonUrgent" class="other_prio_buttons">Urgent</button>
+                    <button class="medium_button">Medium</button> 
+                    <button class="other_prio_buttons">Low</button>
+                </div>
+            </div>
+        
+            <div>
+                <p class="required_red_star">Category</p>
+                <select class="input_assigned_to">
+                    <option selected>Select task category</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+        
+            <div>
+                <p>Subtasks</p>
+                <input class="input_field_subtasks" type="text"></input>
+            </div>
         </div>
+
+    </div>
+
+    <div class="bottom_task_form">
+        <div class="container_data_first-letter">
+            <p class="required_red_star"> This field is required</p>
+        </div>    
+
+        <div class="">
+            <button class="clear_task_button">Clear</button>
+            <button class="create_task_button">Create Task</button>
+        </div>
+    </div>
+       
     </div> -->
     
 </body>
