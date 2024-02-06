@@ -20,7 +20,7 @@
             
             <div>
                 <p class="required_red_star">Title</p>
-                <input placeholder="Enter a title" class="input_field_title" type="text">
+                <input placeholder="Enter a title" class="input_field_title" type="text" required>
             </div>
 
             <div>
@@ -42,15 +42,29 @@
         <div class="box_right">
             <div>
                 <p class="required_red_star">Due date</p>
-                <input placeholder="DD/MM/YYYY" class="input_field_title" type="text">
+                <div class="input_with_icon">
+                    <input placeholder="DD/MM/YYYY" class="input_field_due_date" type="date">
+                    </div>
             </div>
 
             <div>
                 <p>Prio</p>
                 <div class="container_prio_buttons">
-                    <button id="prioButtonUrgent" class="other_prio_buttons">Urgent</button>
-                    <button class="medium_button">Medium</button> 
-                    <button class="other_prio_buttons">Low</button>
+                    <button id="prioButtonUrgentAddTask" class="main_color_urgent_button" onclick="toggleButtonUrgent()">Urgent
+                        <img id="urgentButtonIconRed" class="urgent_button_icon_red" src="assets/img/prio_up_red.svg">
+                        <img id="urgentButtonIconWhite" class="urgent_button_icon_white hide_icon" src="assets/img/prio_up_white.svg">
+                    </button>
+
+                    <button id="mediumButtonAddTask" class="main_color_medium_button" onclick="toggleButtonMedium()">Medium
+                        <img id="mediumButtonIconWhite" class="medium_button_icon_white" src="assets/img/medium_button_icon_white.svg">
+                        <img id="mediumButtonIconYellow" class="medium_button_icon_yellow hide_icon" src="assets/img/medium_button_icon_yellow.svg">
+                    </button>
+                    
+                    <button id="lowButtonAddTask" class="main_color_low_prio_button" onclick="toggleButtonLow()">Low
+                        <img id="lowButtonIconWhite" class="low_button_icon_white hide_icon" src="assets/img/low_button_icon_white.svg">
+                        <img id="lowButtonIconGreen" class="low_button_icon_green" src="assets/img/low_button_icon_green.svg">
+                    </button>
+                    
                 </div>
             </div>
         
@@ -58,30 +72,37 @@
                 <p class="required_red_star">Category</p>
                 <select class="input_assigned_to">
                     <option selected>Select task category</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="1">Technical Task</option>
+                    <option value="2">User Story</option>
+                  
                 </select>
             </div>
         
             <div>
-                <p>Subtasks</p>
-                <input class="input_field_subtasks" type="text"></input>
+                <div class="input_container">
+                    <p>Subtasks</p>
+                    <div class="input_field_container">
+                        <input placeholder="Add new Subtask" class="input_field_subtasks" type="text" id="subtaskInput">
+                        <img class="input_field_icon" onclick="addSubtask()" src="assets/img/Subtasks plus.svg" alt="">
+                    </div>
+                </div>
+                <div id="subtaskContainer"></div>  
+        </div>
+        </div>
+    </div>
+
+
+        <div class="container_bottom_add_task">
+            <div class="container_data_first_letter">
+                <p class="required_red_star">This field is required</p>
+            </div>    
+    
+            <div class="">
+                <button class="clear_task_button">Clear</button>
+                <button class="create_task_button">Create Task</button>
             </div>
         </div>
 
-    </div>
-
-    <div class="container_bottom_add_task">
-        <div class="container_data_first-letter">
-            <p class="required_red_star"> This field is required</p>
-        </div>    
-
-        <div class="">
-            <button class="clear_task_button">Clear</button>
-            <button class="create_task_button">Create Task</button>
-        </div>
-    </div>
 
 </body>
 </html>
