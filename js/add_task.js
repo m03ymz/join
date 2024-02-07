@@ -80,7 +80,12 @@ function addSubtask() {
   // Überprüfen, ob der eingegebene Wert nicht leer ist
   if (inputValue) {
       // Den HTML-Code für den neuen Subtask erstellen
-      let newSubtaskHTML = /*html*/ `<li class="input_value_style">${inputValue}</li>`;
+      let newSubtaskHTML = /*html*/ `
+  <div class="container_hover_subtasks_icons">
+      <li class="input_value_style">${inputValue}      
+      <img class="container_subtasks_icons" src="assets/img/edit_icon.svg" alt="">
+      <img class="container_subtasks_icons" src="assets/img/delete.svg" alt=""></li>
+  </div>`;
       
       subtaskContainer.innerHTML += newSubtaskHTML;
   
@@ -89,22 +94,17 @@ function addSubtask() {
   }
 }
 function acceptTask() {
-let cancelIcon = document.getElementById('cancelSubtask')
-let partingline = document.getElementById('smallLineSubtask')  
-let acceptTask = document.getElementById('acceptTask')
-let inputFieldIcon = document.getElementById('addingSubtask');
-  inputFieldIcon.style.display = 'block';
-  cancelIcon.style.display = 'none';
-  partingline.style.display ='none'
-  acceptTask.style.display = 'none'
-}
-
-function cancelSubtask() {
-  let subtaskInput = document.getElementById('subtaskInput');
-  subtaskInput.value = '';
-}
-
-    
-
-    
+  let cancelIcon = document.getElementById('cancelSubtask')
+  let partingline = document.getElementById('smallLineSubtask')  
+  let acceptTask = document.getElementById('acceptTask')
+  let inputFieldIcon = document.getElementById('addingSubtask');
+    inputFieldIcon.style.display = 'block';
+    cancelIcon.style.display = 'block';
+    partingline.style.display ='block'
+    acceptTask.style.display = 'none'
+  }
   
+  function cancelSubtask() {
+    let subtaskInput = document.getElementById('subtaskInput');
+    subtaskInput.value = '';
+  }
