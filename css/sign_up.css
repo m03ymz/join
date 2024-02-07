@@ -102,10 +102,13 @@
     color: white;
     font-size: 21px;
     font-weight: 700;
+    transition: all 150ms ease-in-out;
 }
 
 .sign_up_button_center_sign_up:hover {
     cursor: pointer;
+    background-color: #29ABE2;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .name_input_center_sign_up {
@@ -139,6 +142,11 @@
     color: #29ABE2;
 }
 
+.checkbox_center_sign_up a:hover { 
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 .checkbox_center_sign_up input:hover {
     cursor: pointer;
 }
@@ -148,10 +156,14 @@
     z-index: 2;
     margin-left: -560px;
     margin-top: 16px;
+    transition: all 150ms ease-in-out;
+    padding: 4px;
+    border-radius: 50%;
 }
 
 .arrow_left_sign_up:hover {
     cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.10);
 }
 
 .bottom_sign_up {
@@ -167,8 +179,10 @@
     color: #A8A8A8;
     font-size: 16px;
     font-weight: 400;
+    transition: all 150ms ease-in-out;
 }
 
 .bottom_sign_up span:hover {
     cursor: pointer;
+    color: #29ABE2;
 }

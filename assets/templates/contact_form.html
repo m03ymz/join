@@ -1,17 +1,26 @@
-<!-- <button onclick="showPopup()">Add Contact</button> -->
-
-<div class="popup_background" id="popupBackground" onclick="hidePopup()">
-    <div id="container_form" class="container_form">
-        <div class="left_side_form">
-            <h1 onclick="closePopup()" class="popup_title">Add Contact</h1>
-            <span class="popup_subtitle">Tasks are better with a Team!</span>
-        </div>
-        <div class="right_side_form">
-            <div class="container_input_fields">
-                <input placeholder="Name" class="popup_input_fields" type="text" required>
-                <input placeholder="Email" class="popup_input_fields" type="email" required>
-                <input placeholder="Phone" class="popup_input_fields" type="tel" required>
-            </div>
+<div id="bg_contact_form" style="display: none" onclick="closeContactFormContacts()"></div>
+<div id="contact_form" style="display: none">
+    <div class="left_contact_form">
+        <div><img src="./assets/img/join_logo_contact_form.svg" alt="join logo"></div>
+        <span id="title_left_contact_form">Add contact</span>
+        <span id="subheading_contact_form">Tasks are better with a team!</span>
+        <div class="parting_line_left_contact_form"></div>
+    </div>
+    <div class="right_contact_form">
+        <div id="pfp_contact_form"><img src="/assets/img/pfp_placeholder_icon_contact_form.svg" alt="person icon"></div>
+        <div class="form_right_contact_form">
+            <div class="x_contact_form"><img src="./assets/img/x_icon_contact_form.svg" alt="x icon" onclick="closeContactFormContacts()"></div>
+            <form>
+                <input required id="name_contact_form" placeholder="Name">
+                <input required id="email_contact_form" placeholder="Email">
+                <input required id="phone_contact_form" placeholder="Phone">
+                <div id="buttons_contact_form">
+                    <div class="add_buttons_contact_form">
+                        <button onclick="closeContactFormContacts()" type="button" class="cancel_button_contact_form">Cancel</button>
+                        <button onclick="addNewContactContacts()" type="button" class="create_button_contact_form">Create contact<img src="./assets/img/check_icon_contact_form.svg" alt="check icon"></button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

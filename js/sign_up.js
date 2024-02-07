@@ -22,11 +22,23 @@ async function addUserSignUp() {
     let name = document.getElementById('name_sign_up').value;
     let email = document.getElementById('email_sign_up').value;
     let password = document.getElementById('password_sign_up').value;
+    let randomIndex = Math.floor(Math.random() * contactColors.length);
+    let color = contactColors[randomIndex];
     let user = {
         'name': name,
         'email': email,
-        'password': password
+        'password': password,
+        'contacts': [],
+        'tasks':[]
     };
+    let contact = {
+        'name': name + ' (Me)',
+        'email': email,
+        'phone': '',
+        'color': color,
+        'me': true
+    };
+    user.contacts.push(contact);
     users.push(user);
     let usersAsString = JSON.stringify(users);
     await setItem('users', usersAsString);

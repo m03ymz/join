@@ -1,3 +1,4 @@
+let contactColors = ['#ff7a00', '#9327ff', '#ff745e', '#ffc701', '#ffe62b', '#ff5eb3', '#00bee8', '#ffa35e', '#0038ff', '#ff4646', '#6e52ff', '#1fd7c1', '#fc71ff', '#c3ff2b', '#ffbb2b'];
 const STORAGE_TOKEN = '4P1XH3G5Y41OG9WBBTCP22KWPYXQ1M89PF6B0NCW';
 const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 let users;
@@ -58,7 +59,7 @@ function loadCurrentUser() {
 }
 
 
-function saveCurrentUser() {
+async function saveCurrentUser() {
     let currentUserDataAsString = JSON.stringify(currentUserData);
     localStorage.setItem('currentUserData', currentUserDataAsString);
     loadCurrentUser();
@@ -71,9 +72,9 @@ function redirect(site) {
 
 
 function getInitials(name) {
-    let nameParts = name.split(' ');
-    let initials = nameParts.map(namePart => namePart.charAt(0).toUpperCase());
-    return initials.join('');
+    let cleanName = name.replace(/\(Me\)|[^a-zA-Z\s]/g, '').match(/[a-zA-Z]+/g);
+    let initials = cleanName.map(word => word.charAt(0).toUpperCase()).join('').slice(0, 3);
+    return initials;
 }
 
 
