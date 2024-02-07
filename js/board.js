@@ -10,12 +10,12 @@ function openOverlay(i){
             <div class="card_title_board">User Story</div>
             <img class="x_button_board" onclick="closeOverlay()" src="./assets/img/close.svg" alt="">
         </div>
-        <h2>${tasks[i].title}</h2>
+        <h2>${columns[targetColumnId][i].title}</h2>
         <div class="task_overlay_text">
-                <span>${tasks[i].description}</span>
+                <span>${columns[targetColumnId][i].description}</span>
             <div class="date_taskoverlay">
                 <span class="textcolor_taskoverlay">Due date:</span>
-                <span>${tasks[i].date}</span>
+                <span>${columns[targetColumnId][i].date}</span>
             </div>
             <div class="priority_taskoverlay">
                 <span class="textcolor_taskoverlay">Priority:</span>
@@ -89,7 +89,15 @@ function closeTaskFormOnBoard(){
     document.getElementById(`body`).classList.remove('overflow_hidden');
 }
 
-let tasks = [];
+// let tasks = [];
+// let column_board = [];
+// let column_board2 = [];
+// let column_board3 = [];
+let columns = {
+    column_board: [],
+    column_board2: [],
+    column_board3: []
+};
 
 function createTaskArray(targetColumnId) {
     let title = document.getElementById('title');
@@ -100,8 +108,9 @@ function createTaskArray(targetColumnId) {
         "description": description.value,
         "date": date.value
     }
-    tasks.push(task);
-    console.log(tasks);
+    // tasks.push(task);
+    columns[targetColumnId].push(task);
+    // console.log(tasks);
     title.value = '';
     description.value = '';
     date.value = '';
@@ -110,6 +119,7 @@ function createTaskArray(targetColumnId) {
 
 function renderTask(targetColumnId) {
     document.getElementById(`${targetColumnId}`).innerHTML = '';
+    let tasks = columns[targetColumnId];
     for (let i = 0; i < tasks.length; i++) {
         let taskNumber = tasks[i];
         document.getElementById(`${targetColumnId}`).innerHTML += /*html*/ `
@@ -144,6 +154,8 @@ function renderTask(targetColumnId) {
 
 function clearEmptyAlert() {
     let column1 = document.getElementById('column_board');
+    let column2 = document.getElementById('column_board2');
+    let column3 = document.getElementById('column_board3');
     // let emptyBox = document.getElementById('empty_box');
     // let newContent = document.getElementById(`new_content${i}`);
 
@@ -157,11 +169,26 @@ function clearEmptyAlert() {
         </div>
         `;
     }
+    if (column2.childElementCount === 0) {
+        document.getElementById('column_board2').innerHTML = /*html*/ `
+        <div id="empty_box" class="empty_card_board">
+            <span>No tasks To do</span>
+        </div>
+        `;
+    }
+    if (column3.childElementCount === 0) {
+        document.getElementById('column_board3').innerHTML = /*html*/ `
+        <div id="empty_box" class="empty_card_board">
+            <span>No tasks To do</span>
+        </div>
+        `;
+    }
+    
 }
 
 function deleteTask(i) {
-    tasks.splice(i, 1);
-    renderTask();
+    columns[targetColumnId].splice(i, 1);
+    renderTask(targetColumnId);
     closeOverlay();
 }
 
