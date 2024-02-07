@@ -82,8 +82,20 @@
                 <div class="input_container">
                     <p>Subtasks</p>
                     <div class="input_field_container">
-                        <input placeholder="Add new Subtask" class="input_field_subtasks" type="text" id="subtaskInput">
-                        <img class="input_field_icon" onclick="addSubtask()" src="assets/img/Subtasks plus.svg" alt="">
+                        <div class="input-wrapper">
+                            <input placeholder="Add new Subtask" class="input_field_subtasks" type="text" id="subtaskInput">
+                            <div class="icon-container">
+                                <img onclick="cancelSubtask()" id="cancelSubtask" src="assets/img/Cancel_subtask.svg" alt="">
+                                <img id="smallLineSubtask" src="assets/img/small_line_subtask.svg" alt="">
+                                <img id="acceptTask" onclick="acceptTask()" src="assets/img/accept_subtask.svg">
+                            </div>
+                        </div>                        
+                        <img id="addingSubtask" class="input_field_icon hide_icon" onclick="addSubtask()" src="assets/img/Subtasks plus.svg" alt="">
+                       
+                     
+
+                        
+                        
                     </div>
                 </div>
                 <div id="subtaskContainer"></div>  
@@ -103,6 +115,7 @@
             </div>
         </div>
 
-
+        <script src="script.js"></script>
+        <script src="js/add_task.js"></script>
 </body>
 </html>

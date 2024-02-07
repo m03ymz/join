@@ -204,7 +204,7 @@ input:hover, textarea:hover, select:hover {
 }
 
 .input_field_subtasks {
-    width: 20vw;
+    width: 24vw;
 }
 
 .input_field_icon {
@@ -218,5 +218,39 @@ input:hover, textarea:hover, select:hover {
     margin-top: 8px;
     font-size: 14px;
     font-weight: 500;
+}
+.input_value_style:hover {
+    width: 24vw; /* Beispielbreite, kannst du anpassen */
+    border-radius: 6px;
+    background: #eeeeee;
+    cursor: pointer;
+}
 
+.container_subtask_icons{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.input_field_subtasks {
+    padding-left: 16px; /* Platz für die Icons */
+}
+
+.icon-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px; /* Anpassen der Position der Container */
+    display: flex;
+}
+
+.icon-container img {
+    width: 20px; /* Anpassen der Größe der Icons */
+    height: 20px;
+    margin-right: 5px; /* Abstand zwischen den Icons */
 }

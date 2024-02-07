@@ -88,3 +88,23 @@ function addSubtask() {
       subtaskInput.value = '';
   }
 }
+function acceptTask() {
+let cancelIcon = document.getElementById('cancelSubtask')
+let partingline = document.getElementById('smallLineSubtask')  
+let acceptTask = document.getElementById('acceptTask')
+let inputFieldIcon = document.getElementById('addingSubtask');
+  inputFieldIcon.style.display = 'block';
+  cancelIcon.style.display = 'none';
+  partingline.style.display ='none'
+  acceptTask.style.display = 'none'
+}
+
+function cancelSubtask() {
+  let subtaskInput = document.getElementById('subtaskInput');
+  subtaskInput.value = '';
+}
+
+    
+
+    
+  
