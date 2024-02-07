@@ -1,10 +1,5 @@
-body{
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: #F6F7F8;
-}
 .headline_add_task{
-    font-size: 16px;
+    font-size: 24px;
     }
 
 .main_content {
@@ -14,16 +9,15 @@ body{
     height: 100vh;
     /*padding: 48px; /* oder entsprechender Abstand */
     background: #F6F7F8;
-    margin-left: 320px; /* wenn 232px, dann bündig zum Menü Balken */
+    margin-left: 232px; /* wenn 232px, dann bündig zum Menü Balken */
     justify-content: space-around;
     height: 600px;
 }
 
 .box_left, .box_right {
-    width: 33%;
-    height: 60vh;
+    width: 33vw;
     padding: 16px;
-    margin-right: 20px;
+   
 }
 
 .headline_add_task {
@@ -33,8 +27,8 @@ body{
     margin-top: 100px;
 
 }/*leftside box */
-.input_field_title, .textarea_discription, .input_field_subtasks, .input_field_category{
-    width: 75%;
+.input_field_title, .textarea_discription, .input_field_subtasks, .input_field_category, .input_field_due_date{
+    width: 24vw;
     border-radius: 8px;
     border: 1px solid lightgray;
     padding: 8px;
@@ -43,7 +37,7 @@ textarea:focus, input:focus, select:focus{
     outline-color: rgb(117, 193, 255);
 }
 .input_assigned_to {
-    width: 78%;
+    width: 24vw;
     border-radius: 8px;
     border: 1px solid lightgray;
     padding: 8px;
@@ -68,6 +62,7 @@ textarea:focus, input:focus, select:focus{
     margin-right: 80px;
    
 }
+
 button{
     display:inline-flex; 
     align-items: center;
@@ -75,12 +70,16 @@ button{
     border: none;
     margin-right: 16px;
 }
+
 .container_bottom_add_task {
     display: flex;
     align-items: center;
 }
+.hide_icon {
+    display: none;
+  }
 
-.medium_button {
+.main_color_medium_button {
     padding: 16px 10px;
     justify-content: center;
     align-items: center;
@@ -92,17 +91,69 @@ button{
     color: white;
     width: 108px;
 }
-
-.other_prio_buttons {
+.toggled_color_medium{
+    padding: 16px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex: 1 0 0;
+    border-radius: 10px;
     background: white;
+    border: none;
+    color:#2A3647;
+    width: 108px;
+}
+.urgent_button_icon_white, .urgent_button_icon_red, .medium_button_icon_white, .medium_button_icon_yellow, .low_button_icon_green, .low_button_icon_white{
+    width: 16px;
+    height: auto;
+}
+
+.main_color_urgent_button{
+    background: white;
+    border-radius: 8px;
+    width: 20%;
+    height: auto;
+    justify-content: center;
+
+  }
+  .urgent_button_icon_white, .urgent_button_icon_red, .low_button_icon_green, .low_button_icon_white{
+    margin-left: 8px;
+  
+  }
+  
+
+  .main_color_urgent_button:hover, .toggled_color_medium:hover, .main_color_low_prio_buttons:hover, .main_color_low_prio_button:hover{
+    box-shadow: 0px 2px 2px 0px rgba(61, 61, 61, 0.2);
+  }
+
+  .toggled_color_urgent {
+    background: rgb(255, 0, 0);
+    color: white;
+    border-radius: 8px;
+    width: 20%;
+    height: auto;
+    justify-content: center;
+    box-shadow: unset !important;
+  }
+  .main_color_low_prio_button{
+    background: white;
+    color:#2A3647;
     border-radius: 8px;
     width: 20%;
     height: auto;
     padding: 16px;
     justify-content: center;
-}
-
-
+  }
+  .toggled_color_low{
+    background: #7ae229;
+    color: white;
+    border-radius: 8px;
+    width: 20%;
+    height: auto;
+    padding: 16px;
+    justify-content: center;
+    box-shadow: unset !important;
+  }
 
 .clear_task_button{
     background: #ffffff;
@@ -131,7 +182,7 @@ background-color: #29ABE2;}
 input, button, textarea{
     cursor: pointer;
 }
-input:hover, button:hover, textarea:hover, select:hover {
+input:hover, textarea:hover, select:hover {
     box-shadow: 0px 2px 2px 0px rgba(61, 61, 61, 0.2);
 }
 
@@ -139,4 +190,67 @@ input:hover, button:hover, textarea:hover, select:hover {
     content: "*";
     color: red;
 }
+.container_data_first_letter{
+    margin-left: 32px;
+}
 
+.input_container {
+    position: relative;
+}
+
+.input_field_container {
+    position: relative;
+    display: inline-block;
+}
+
+.input_field_subtasks {
+    width: 24vw;
+}
+
+.input_field_icon {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.input_value_style{
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+.input_value_style:hover {
+    width: 24vw; /* Beispielbreite, kannst du anpassen */
+    border-radius: 6px;
+    background: #eeeeee;
+    cursor: pointer;
+}
+
+.container_subtask_icons{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.input_field_subtasks {
+    padding-left: 16px; /* Platz für die Icons */
+}
+
+.icon-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5px; /* Anpassen der Position der Container */
+    display: flex;
+}
+
+.icon-container img {
+    width: 20px; /* Anpassen der Größe der Icons */
+    height: 20px;
+    margin-right: 5px; /* Abstand zwischen den Icons */
+}
