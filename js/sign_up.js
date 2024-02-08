@@ -1,9 +1,11 @@
 async function initSignUp() {
   await loadUsers();
+  console.log(users); 
 }
 
 
 function checkDataSignUp() {
+    document.getElementById('sign_up_button_center_sign_up').disabled = true;
     let email = document.getElementById('email_sign_up').value.toLowerCase();
     let password = document.getElementById("password_sign_up").value;
     let confirmPassword = document.getElementById("confirm_password_sign_up").value;
@@ -15,6 +17,7 @@ function checkDataSignUp() {
     } else {
       addUserSignUp(); 
     }
+    document.getElementById('sign_up_button_center_sign_up').disabled = false;
   }
 
 
@@ -40,23 +43,8 @@ async function addUserSignUp() {
     };
     user.contacts.push(contact);
     users.push(user);
-    let usersAsString = JSON.stringify(users);
-    await setItem('users', usersAsString);
-    await loadUsers();
+    await saveUsers();
     redirectToLogInSignUp();
 }
 
 
-function redirectToLogInSignUp() {
-  window.location.href = 'log_in.html';
-}
-
-
-function redirectToPrivacyPolicySignUp() {
-    window.location.href = 'privacy_policy.html';
-}
-
-
-function redirectToLegalNoticeSignUp() {
-  window.location.href = 'legal_notice.html';
-}

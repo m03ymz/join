@@ -1,2 +1,3 @@
-function initHelp() {
+async function initHelp() {
+    await init();
 }

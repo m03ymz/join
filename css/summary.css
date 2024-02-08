@@ -46,7 +46,10 @@
 }
  
 .right_main_summary {
-    width: 40%
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .top_left_main_summary {
@@ -200,6 +203,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    word-break: break-word;
 }
 
 .greet_right_main_summary {

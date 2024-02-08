@@ -1,7 +1,8 @@
 let contactInitials = [];
 
 
-function initContacts() {
+async function initContacts() {
+    await init();
     extractContactsInitials();
     renderContactsContacts();
 }
@@ -23,7 +24,7 @@ function closeContactFormContacts() {
 }
 
 
-function addNewContactContacts() {
+async function addNewContactContacts() {
     let name = document.getElementById('name_contact_form').value;
     let email = document.getElementById('email_contact_form').value;
     let phone = document.getElementById('phone_contact_form').value;
@@ -36,8 +37,9 @@ function addNewContactContacts() {
         'color': color,
         'me': false
     };
+    console.log(currentUser);
     currentUser.contacts.push(contact);
-    saveCurrentUser();
+    await saveUsers();
     initContacts();
     closeContactFormContacts();
 }
@@ -175,16 +177,16 @@ function resetContactFormContacts() {
 }
 
 
-function deleteContactContacts(j) {
+async function deleteContactContacts(j) {
     currentUser.contacts.splice(j, 1);
-    saveCurrentUser();
+    await saveUsers();
     renderContactsContacts();
     document.getElementById('contact_details_contacts').innerHTML = '';
     closeContactFormContacts();
 }
 
 
-function replaceContactsContacts(j) {
+async function replaceContactsContacts(j) {
     let contact = currentUser.contacts[j];
     let name = document.getElementById('name_contact_form').value;
     let email = document.getElementById('email_contact_form').value;
@@ -192,7 +194,7 @@ function replaceContactsContacts(j) {
     contact.name = name;
     contact.email = email;
     contact.phone = phone;
-    saveCurrentUser();
+    await saveUsers();
     renderContactsContacts();
     renderContactDetailsContacts(j);
     closeContactFormContacts();

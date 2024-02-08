@@ -1,4 +1,5 @@
-function initAddTask() {
+async function initAddTask() {
+  await init();
 }
 function toggleButtonUrgent() {
   let button = document.getElementById('prioButtonUrgentAddTask');

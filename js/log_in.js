@@ -1,22 +1,23 @@
 async function initLogIn() {
     await loadUsers();
     checkRememberedDataLogIn();
+    console.log(users); 
 }
 
 
 function checkDataLogIn() {
     let email = document.getElementById('email_log_in').value.toLowerCase();
     let password = document.getElementById("password_log_in").value;
-    let rememberMe = document.getElementById('remember_me_log_in').checked;
-    let currentUserData = users.filter(user => (user.email === email && user.password === password));
-    checkDataStatementLogIn(currentUserData, rememberMe, email, password);
+    let foundUser = users.find(user => (user.email === email && user.password === password));
+    checkDataStatementLogIn(foundUser, email, password);
 }
 
 
-function checkDataStatementLogIn(currentUserData, rememberMe, email, password) {
-    if (currentUserData.length > 0) {
-        saveCurrentUserLogIn(currentUserData);
-        rememberMeLogIn();
+function checkDataStatementLogIn(foundUser, email, password) {
+    if (foundUser) {
+        let currentUserIndex = users.findIndex(user => user.email === email && user.password === password);
+        let currentUserIndexAsString = JSON.stringify(currentUserIndex);
+        localStorage.setItem('currentUserIndex', currentUserIndexAsString);
         redirect('summary');
     } else {  
         alert("Ungültige Anmeldeinformationen. Bitte überprüfen Sie Ihre E-Mail und Ihr Passwort.");
@@ -35,12 +36,6 @@ function rememberMeLogIn() {
     };
     let rememberedDataAsString = JSON.stringify(rememberedData);
     localStorage.setItem('rememberedData', rememberedDataAsString);
-}
-
-function saveCurrentUserLogIn(currentUserData) {
-    let currentUserDataAsString = JSON.stringify(currentUserData);
-    localStorage.setItem('currentUserData', currentUserDataAsString);
-    loadCurrentUser();
 }
 
 

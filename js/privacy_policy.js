@@ -1,2 +1,3 @@
-function initPrivacyPolicy() {
+async function initPrivacyPolicy() {
+    await init();
 }

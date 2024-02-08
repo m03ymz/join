@@ -1,2 +1,3 @@
-function initLegalNotice() {
+async function initLegalNotice() {
+    await init();
 }

@@ -1,4 +1,5 @@
-function initBoard(){
+async function initBoard() {
+    await init();
 }
 
 let targetColumnId;

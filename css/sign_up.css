@@ -89,7 +89,7 @@
     gap: 32px;
 }
 
-.sign_up_button_center_sign_up {
+#sign_up_button_center_sign_up {
     display: flex;
     height: 48px;
     padding: 15px 24px;
@@ -105,7 +105,7 @@
     transition: all 150ms ease-in-out;
 }
 
-.sign_up_button_center_sign_up:hover {
+#sign_up_button_center_sign_up:hover {
     cursor: pointer;
     background-color: #29ABE2;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);

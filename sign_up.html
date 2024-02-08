@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join</title>
+    <title>Sign Up</title>
+    <link rel="icon" type="image/x-icon" href="./assets/img/logo_favicon.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/sign_up.css">
+    <script src="js/storage.js"></script>
     <script src="script.js"></script>
     <script src="js/sign_up.js"></script>
 </head>
@@ -15,7 +17,7 @@
             <img src="./assets/img/join_logo_log_in.svg" alt="join logo">
         </div>
         <div class="center_sign_up">
-            <img src="./assets/img/arrow_left_sign_up.svg" alt="arrow left" class="arrow_left_sign_up" onclick="redirectToLogInSignUp()">
+            <img src="./assets/img/arrow_left_sign_up.svg" alt="arrow left" class="arrow_left_sign_up" onclick="redirect('log_in')">
             <h1>Sign Up</h1>
             <form onsubmit="checkDataSignUp(); return false;">
                 <div class="input_center_sign_up">
@@ -29,7 +31,7 @@
                     <span>I accept the <a href="./privacy_policy.html">Privacy policy</a></span>
                 </div>
                 <div class="buttons_center_sign_up">
-                    <button class="sign_up_button_center_sign_up">Sign Up</button>
+                    <button id="sign_up_button_center_sign_up">Sign Up</button>
                 </div>
             </form>
         </div>

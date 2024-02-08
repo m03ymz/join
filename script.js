@@ -1,16 +1,14 @@
 let contactColors = ['#ff7a00', '#9327ff', '#ff745e', '#ffc701', '#ffe62b', '#ff5eb3', '#00bee8', '#ffa35e', '#0038ff', '#ff4646', '#6e52ff', '#1fd7c1', '#fc71ff', '#c3ff2b', '#ffbb2b'];
-const STORAGE_TOKEN = '4P1XH3G5Y41OG9WBBTCP22KWPYXQ1M89PF6B0NCW';
-const STORAGE_URL = 'https://remote-storage.developerakademie.org/item';
 let users;
-let currentUserData;
 let currentUser;
 
 
 async function init() {
-    loadCurrentUser();
+    await loadUsers();
     await includeHTML();
     renderInitialsDesktopTemplate();
     highlightPageDesktopTemplate();
+    console.log(currentUser);
 }
 
 
@@ -29,40 +27,23 @@ async function includeHTML() {
 }
 
 
-async function setItem(key, value) {
-    const payload = { key, value, token: STORAGE_TOKEN };
-    return fetch(STORAGE_URL, { method: 'POST', body: JSON.stringify(payload)})
-    .then(res => res.json());
-}
-
-
-async function getItem(key) {
-    const url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
-    return fetch(url).then(res => res.json());
+async function saveUsers() {
+    let usersAsString = JSON.stringify(users);
+    await setItem('users', usersAsString);
+    await loadUsers();
 }
 
 
 async function loadUsers() {
-    // await setItem('users', []); // remote storage für den key users löschen
-    let res = await getItem('users');   
-    let usersAsString = res.data.value;
-    console.log(usersAsString) // muss am ende weg!
-    users = await JSON.parse(usersAsString);
-}
-
-
-function loadCurrentUser() {
-    let currentUserDataAsString = localStorage.getItem('currentUserData');
-    currentUserData = JSON.parse(currentUserDataAsString);
-    currentUser = currentUserData[0]
-    console.log(currentUser);
-}
-
-
-async function saveCurrentUser() {
-    let currentUserDataAsString = JSON.stringify(currentUserData);
-    localStorage.setItem('currentUserData', currentUserDataAsString);
-    loadCurrentUser();
+    try {
+        let usersAsString = await getItem('users');  
+        users = await JSON.parse(usersAsString); 
+    } catch(e) {
+        console.warn('Could not load users');
+    }
+    let currentUserIndexAsString = localStorage.getItem('currentUserIndex');
+    let currentUserIndex = JSON.parse(currentUserIndexAsString);
+    currentUser = users[currentUserIndex];
 }
 
 

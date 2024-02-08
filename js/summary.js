@@ -1,4 +1,5 @@
-function initSummary() {
+async function initSummary() {
+    await init();
     renderNameSummary();
 }
 
