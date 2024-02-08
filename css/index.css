@@ -22,9 +22,10 @@
             transform: translate(-50%, -50%);
         }
         100% {
-            top: 32px; /* Abstand von oben */
-            left: 32px; /* Abstand von links */
+            top: 41px; /* Abstand von oben */
+            left: 85px; /* Abstand von links */
             transform: translate(0, 0);
+            transition: ease-in-out;
         }
     }
 
@@ -33,7 +34,7 @@
             width: 300px; /* Startgröße */
         }
         100% {
-            width: 100px; /* Endgröße */
+            width: 80px; /* Endgröße */
         }
     }
     
