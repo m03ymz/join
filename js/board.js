@@ -89,7 +89,7 @@ function openTaskFormOnBoard(columnId){
 }
 
 function closeTaskFormOnBoard(){
-    document.getElementById(`task-form`).style.right = "-700px";
+    document.getElementById(`task-form`).style.right = "-100%";
     document.getElementById(`overlay`).style.display = "none";
     document.getElementById(`content-board`).classList.remove('pointer_events-none');
     document.getElementById(`body`).classList.remove('overflow_hidden');
