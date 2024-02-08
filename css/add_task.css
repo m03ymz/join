@@ -269,9 +269,7 @@ width: 11px;
     align-items: center;  
  
 }
-.container_hover_subtasks_icons {
-  }
-  
+
   
  .container_subtasks_hover_icons{
     display: flex;
@@ -281,6 +279,7 @@ width: 11px;
  }
  .prio_button_standard{
     width: 88px;
+    cursor: pointer;
  }
  .container_subtasks_icons_edit{
     width: 16px;
@@ -292,9 +291,7 @@ width: 11px;
     width: 12px;
     margin-left: 8px;
  }
- .container_subtasks_icons_delete:hover{
-
- }
+ 
  .multiselect {
     width: 200px; /* Just an example width */
     position: relative;
@@ -331,6 +328,4 @@ width: 11px;
   }
   label:hover{
     background-color:#eeeeee;
-
-  }
-
+}
