@@ -22,7 +22,7 @@
             
             <div>
                 <p class="required_red_star">Title</p>
-                <input placeholder="Enter a title" class="input_field_title" type="text" required>
+              <input placeholder="Enter a title" class="input_field_title" type="text" required>
             </div>
 
             <div>
@@ -30,14 +30,22 @@
                 <textarea placeholder="Enter a Description" class="textarea_discription" name="" id="" cols="30" rows="10"></textarea>    
             </div>
 
-            <div>
-                <p>Assigned to</p>
-                <select class="input_assigned_to">
-                    <option selected>Select contacts to assign</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+            <div> 
+                <p>Assigned to</p>             
+                <form class="">
+                    <div class="multiselect">
+                      <div class="selectBox" onclick="showCheckboxes()">
+                        <select style="width: 24vw;" class="input_assigned_to">
+                          <option>Select an option</option>
+                        </select>
+                        <div class="overSelect"></div>
+                      </div>
+                      <div style="width: 24vw;" id="checkboxes">
+                        <!-- Placeholder for dynamically generated checkboxes -->
+                      </div>
+                    </div>
+                  </form>
+
             </div>
         </div>
 
@@ -51,23 +59,15 @@
 
             <div>
                 <p>Prio</p>
-                <div class="container_prio_buttons">
-                    <button id="prioButtonUrgentAddTask" class="main_color_urgent_button" onclick="toggleButtonUrgent()">Urgent
-                        <img id="urgentButtonIconRed" class="urgent_button_icon_red" src="assets/img/prio_up_red.svg">
-                        <img id="urgentButtonIconWhite" class="urgent_button_icon_white hide_icon" src="assets/img/prio_up_white.svg">
-                    </button>
-
-                    <button id="mediumButtonAddTask" class="main_color_medium_button" onclick="toggleButtonMedium()">Medium
-                        <img id="mediumButtonIconWhite" class="medium_button_icon_white" src="assets/img/medium_button_icon_white.svg">
-                        <img id="mediumButtonIconYellow" class="medium_button_icon_yellow hide_icon" src="assets/img/medium_button_icon_yellow.svg">
-                    </button>
-                    
-                    <button id="lowButtonAddTask" class="main_color_low_prio_button" onclick="toggleButtonLow()">Low
-                        <img id="lowButtonIconWhite" class="low_button_icon_white hide_icon" src="assets/img/low_button_icon_white.svg">
-                        <img id="lowButtonIconGreen" class="low_button_icon_green" src="assets/img/low_button_icon_green.svg">
-                    </button>
-                    
+                <div>
+                    <img id="urgentbuttonwhite" onclick="toggleButton('urgent')" class="prio_button_standard" src="assets/img/urgentwhite.svg" alt="">
+                    <img id="urgentbuttonred" onclick="toggleButton('urgent')" class="prio_button_standard hide_icon" src="assets/img/redurgent.svg" alt="">
+                    <img id="mediumbuttonorange" onclick="toggleButton('medium')" class="prio_button_standard " src="assets/img/medium_orange.svg" alt="">
+                    <img id="mediumbuttonwhite" onclick="toggleButton('medium')" class="prio_button_standard hide_icon" src="assets/img/medium_button_icon_white.svg" alt="">
+                    <img id="lowbuttonwhite" onclick="toggleButton('low')" class="prio_button_standard" src="assets/img/low_white.svg" alt="">
+                    <img id="lowbuttongreen" onclick="toggleButton('low')" class="prio_button_standard hide_icon" src="assets/img/low_button_icon_green.svg" alt="">
                 </div>
+
             </div>
         
             <div>
@@ -84,22 +84,20 @@
                 <div class="input_container">
                     <p>Subtasks</p>
                     <div class="input_field_container">
-                        <div class="input-wrapper">
+                        <div class="input_wrapper">
                             <input placeholder="Add new Subtask" class="input_field_subtasks" type="text" id="subtaskInput">
                             <div class="icon-container">
-                                <img onclick="cancelSubtask()" id="cancelSubtask" src="assets/img/Cancel_subtask.svg" alt="">
-                                <img id="smallLineSubtask" src="assets/img/small_line_subtask.svg" alt="">
-                                <img id="acceptTask" onclick="acceptTask()" src="assets/img/accept_subtask.svg">
+                                <img class="hide_icon" onclick="cancelSubtask()" id="cancelSubtask" src="assets/img/Cancel_subtask.svg" alt="">
+                                <img class="hide_icon" id="smallLineSubtask" src="assets/img/small_line_subtask.svg" alt="">
+                                <img id="addingSubtask" class="input_field_icon hide_icon hide_icon" onclick="addSubtask()" src="assets/img/accept_subtask.svg" alt="">
+                                <img id="acceptTask" onclick="acceptTask()" src="assets/img/Subtasks plus.svg">
                             </div>
                         </div>                        
-                        <img id="addingSubtask" class="input_field_icon hide_icon" onclick="addSubtask()" src="assets/img/Subtasks plus.svg" alt="">
-                       
-                     
 
-                        
-                        
+
                     </div>
                 </div>
+
                 <div id="subtaskContainer"></div>  
         </div>
         </div>
@@ -117,7 +115,8 @@
             </div>
         </div>
 
+        
         <script src="script.js"></script>
-        <script src="js/add_task.js"></script>
+    <script src="js/add_task.js"></script>
 </body>
 </html>

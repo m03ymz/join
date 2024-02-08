@@ -27,14 +27,21 @@
     margin-top: 100px;
 
 }/*leftside box */
-.input_field_title, .textarea_discription, .input_field_subtasks, .input_field_category, .input_field_due_date{
+.input_field_title, .textarea_discription, .input_field_category, .input_field_due_date{
     width: 24vw;
     border-radius: 8px;
     border: 1px solid lightgray;
     padding: 8px;
 }
-textarea:focus, input:focus, select:focus{
+textarea:focus, select:focus, input:focus{
     outline-color: rgb(117, 193, 255);
+}
+.input_field_subtasks:focus{
+    outline-color: white;
+}
+.input_wrapper:hover{ 
+    outline-color: rgb(117, 193, 255);
+
 }
 .input_assigned_to {
     width: 24vw;
@@ -60,7 +67,7 @@ textarea:focus, input:focus, select:focus{
     align-items: center; 
     justify-content: space-between;
     margin-right: 80px;
-   
+    
 }
 
 button{
@@ -126,35 +133,6 @@ button{
     box-shadow: 0px 2px 2px 0px rgba(61, 61, 61, 0.2);
   }
 
-  .toggled_color_urgent {
-    background: rgb(255, 0, 0);
-    color: white;
-    border-radius: 8px;
-    width: 20%;
-    height: auto;
-    justify-content: center;
-    box-shadow: unset !important;
-  }
-  .main_color_low_prio_button{
-    background: white;
-    color:#2A3647;
-    border-radius: 8px;
-    width: 20%;
-    height: auto;
-    padding: 16px;
-    justify-content: center;
-  }
-  .toggled_color_low{
-    background: #7ae229;
-    color: white;
-    border-radius: 8px;
-    width: 20%;
-    height: auto;
-    padding: 16px;
-    justify-content: center;
-    box-shadow: unset !important;
-  }
-
 .clear_task_button{
     background: #ffffff;
     border-radius: 8px;
@@ -182,7 +160,7 @@ background-color: #29ABE2;}
 input, button, textarea{
     cursor: pointer;
 }
-input:hover, textarea:hover, select:hover {
+textarea:hover, select:hover {
     box-shadow: 0px 2px 2px 0px rgba(61, 61, 61, 0.2);
 }
 
@@ -196,6 +174,7 @@ input:hover, textarea:hover, select:hover {
 
 .input_container {
     position: relative;
+
 }
 
 .input_field_container {
@@ -206,24 +185,24 @@ input:hover, textarea:hover, select:hover {
 .input_field_subtasks {
     width: 24vw;
 }
+.icon-container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+    
+}
 
 .input_field_icon {
-    position: absolute;
-    top: 50%;
-    right: 8px;
-    transform: translateY(-50%);
     cursor: pointer;
+    width: 8px;
 }
 .input_value_style{
-    margin-top: 8px;
+
     font-size: 14px;
     font-weight: 500;
-}
-.input_value_style:hover {
-    width: 24vw; /* Beispielbreite, kannst du anpassen */
-    border-radius: 6px;
-    background: #eeeeee;
-    cursor: pointer;
+ 
+
 }
 
 .container_subtask_icons{
@@ -239,6 +218,9 @@ input:hover, textarea:hover, select:hover {
 
 .input_field_subtasks {
     padding-left: 16px; /* Platz für die Icons */
+    border: none;
+    height: 24px;
+    border-radius: 8px;
 }
 
 .icon-container {
@@ -253,4 +235,97 @@ input:hover, textarea:hover, select:hover {
     width: 20px; /* Anpassen der Größe der Icons */
     height: 20px;
     margin-right: 5px; /* Abstand zwischen den Icons */
+}
+.container_for_input_fields{
+    width: 24vw;
+    border-radius: 8px;
+    border: 1px solid lightgray;
+    padding: 8px;
+    background-color: white;
+
+}
+#addingSubtask, #acceptTask, #cancelSubtask{
+    width: 16px;
+    cursor: pointer;
+}
+#smallLineSubtask{
+    height: 16px;
+}
+#addingSubtask{
+width: 11px;
+}
+
+.container_hover_subtasks_icons > div {
+  display: flex; /* Flexbox anzeigen */
+  margin-top: 12px;
+}
+.hover_li:hover{
+    width: 24vw; /* Beispielbreite, kannst du anpassen */
+    padding: 3px;
+    border-radius: 6px;
+    background: #eeeeee;
+    cursor: pointer; 
+    display: flex;
+    align-items: center;  
+ 
+}
+
+  
+ .container_subtasks_hover_icons{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    width: 80%;
+ }
+ .prio_button_standard{
+    width: 88px;
+    cursor: pointer;
+ }
+ .container_subtasks_icons_edit{
+    width: 16px;
+    margin-right: 8px;
+    margin-left: 81px;
+    
+ }
+ .container_subtasks_icons_delete{
+    width: 12px;
+    margin-left: 8px;
+ }
+ 
+ .multiselect {
+    width: 200px; /* Just an example width */
+    position: relative;
+    margin-bottom: 10px;
+  }
+
+  .selectBox {
+    position: relative;
+  }
+
+  .selectBox select {
+    width: 100%;
+  
+  }
+
+  .overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  #checkboxes {
+    display: none;
+    border: 1px #dadada solid;
+    max-height: 50px; /* Maximum height for scroll */
+    overflow-y: auto; /* Enable vertical scrollbar */
+    background-color: white
+  }
+
+  #checkboxes label {
+    display: block;
+  }
+  label:hover{
+    background-color:#eeeeee;
 }
