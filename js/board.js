@@ -82,7 +82,7 @@ function closeOverlay(){
 
 function openTaskFormOnBoard(columnId){
     targetColumnId = columnId;
-    document.getElementById(`task-form`).style.right = "500px";
+    document.getElementById(`task-form`).style.right = "20%";
     document.getElementById(`overlay`).style.display = "flex";
     document.getElementById(`content-board`).classList.add('pointer_events-none');
     document.getElementById(`body`).classList.add('overflow_hidden');
