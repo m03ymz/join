@@ -4,6 +4,12 @@ function initBoard(){
 let targetColumnId;
 
 function openOverlay(i){
+    let clickedElement = event.target;
+    while (clickedElement && !clickedElement.classList.contains('column_board')) {
+        clickedElement = clickedElement.parentElement;
+    }
+    if (clickedElement) {
+        let targetColumnId = clickedElement.id;
     document.getElementById('w3-include-board1').innerHTML = /*html*/ `
     <div class="task_overlay_box_board" id="task-overlay">
         <div class="task_overlay_top_board">
@@ -48,7 +54,7 @@ function openOverlay(i){
             </div>
         </div> 
         <div class="delete_edit_taskoverlay">
-            <div onclick="deleteTask(${i})" class="delete_box">
+            <div onclick="deleteTask('${targetColumnId}', ${i})" class="delete_box">
                 <img src="./assets/img/delete.svg" alt="">
                 <span>Delete</span>
             </div>
@@ -65,7 +71,7 @@ function openOverlay(i){
     document.getElementById(`overlay`).style.display = "flex";
     document.getElementById(`content-board`).classList.add('pointer_events-none');
     document.getElementById(`body`).classList.add('overflow_hidden');
-}
+}}
 
 function closeOverlay(){
     document.getElementById(`task-overlay`).style.right = "-700px";
@@ -100,6 +106,7 @@ let columns = {
 };
 
 function createTaskArray(targetColumnId) {
+    targetColumnId = (typeof targetColumnId === 'undefined') ? 'column_board' : targetColumnId;
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let date = document.getElementById('date');
@@ -115,6 +122,7 @@ function createTaskArray(targetColumnId) {
     description.value = '';
     date.value = '';
     renderTask(targetColumnId);
+    targetColumnId = 'column_board';
 }
 
 function renderTask(targetColumnId) {
@@ -186,7 +194,7 @@ function clearEmptyAlert() {
     
 }
 
-function deleteTask(i) {
+function deleteTask(targetColumnId, i) {
     columns[targetColumnId].splice(i, 1);
     renderTask(targetColumnId);
     closeOverlay();

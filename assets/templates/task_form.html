@@ -39,21 +39,32 @@
 
         <div>
             <p>Prio</p>
-            <div class="container_prio_buttons">
-                <button id="prioButtonUrgent" class="other_prio_buttons">Urgent</button>
-                <button class="medium_button">Medium</button> 
-                <button class="other_prio_buttons">Low</button>
-            </div>
+                <div class="container_prio_buttons">
+                    <button id="prioButtonUrgentAddTask" class="main_color_urgent_button" onclick="toggleButtonUrgent()">Urgent
+                        <img id="urgentButtonIconRed" class="urgent_button_icon_red" src="assets/img/prio_up_red.svg">
+                        <img id="urgentButtonIconWhite" class="urgent_button_icon_white hide_icon" src="assets/img/prio_up_white.svg">
+                    </button>
+
+                    <button id="mediumButtonAddTask" class="main_color_medium_button" onclick="toggleButtonMedium()">Medium
+                        <img id="mediumButtonIconWhite" class="medium_button_icon_white" src="assets/img/medium_button_icon_white.svg">
+                        <img id="mediumButtonIconYellow" class="medium_button_icon_yellow hide_icon" src="assets/img/medium_button_icon_yellow.svg">
+                    </button>
+                    
+                    <button id="lowButtonAddTask" class="main_color_low_prio_button" onclick="toggleButtonLow()">Low
+                        <img id="lowButtonIconWhite" class="low_button_icon_white hide_icon" src="assets/img/low_button_icon_white.svg">
+                        <img id="lowButtonIconGreen" class="low_button_icon_green" src="assets/img/low_button_icon_green.svg">
+                    </button>
+                </div>
         </div>
     
         <div>
             <p class="required_red_star">Category</p>
-            <select class="input_assigned_to">
-                <option selected>Select task category</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
+                <select class="input_assigned_to">
+                    <option selected>Select task category</option>
+                    <option value="1">Technical Task</option>
+                    <option value="2">User Story</option>
+                  
+                </select>
         </div>
     
         <div>
