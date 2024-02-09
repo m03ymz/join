@@ -4,9 +4,6 @@ async function initAddTask() {
 
 
 }
-
-let names = ["Alice", "Bob", "Charlie", "David", "Emma"];
-
   /* Subtask hinzufügen Beginn */
 function addSubtask() {
   let subtaskInput = document.getElementById('subtaskInput');
@@ -96,31 +93,8 @@ function toggleButton(priority) {
       mediumButtonWhite.classList.remove('hide_icon');
   }
 }
-document.getElementById('dropdown-toggle').addEventListener('click', function() {
-  document.getElementById('dropdown-container').classList.toggle('active');
-});
-function showCheckboxes() {
-  let checkboxes = document.getElementById("checkboxes");
-  checkboxes.style.display = checkboxes.style.display === "block" ? "none" : "block";
 
-  // Array mit Namen
 
-// Schleife, um Labels und Checkboxen dynamisch zu generieren
-let checkboxesContainer = document.getElementById("checkboxes");
-for (let i = 0; i < names.length; i++) {
-  let label = document.createElement("label");
-  label.setAttribute("for", names[i]);
-  let checkbox = document.createElement("input");
-  checkbox.setAttribute("type", "checkbox");
-  checkbox.setAttribute("id", names[i]);
-  
-  label.appendChild(checkbox);
-  label.appendChild(document.createTextNode(names[i]));
-  
-  checkboxesContainer.appendChild(label);
-}
-
-}
 
 
 
