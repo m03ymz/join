@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/add_task.css">
     <script src="js/storage.js"></script>
-    <script src="script.js"></script>
-    <script src="js/add_task.js"></script>
 </head>
 <body onload="initAddTask()">
     <div w3-include-html="./assets/templates/desktop_template.html"></div>
@@ -35,7 +33,7 @@
                 <form class="">
                     <div class="multiselect">
                       <div class="selectBox" onclick="showCheckboxes()">
-                        <select style="width: 24vw;" class="input_assigned_to">
+             
                           <option>Select an option</option>
                         </select>
                         <div class="overSelect"></div>
@@ -49,17 +47,19 @@
             </div>
         </div>
 
+
         <div class="box_right">
             <div>
                 <p class="required_red_star">Due date</p>
-                <div class="input_with_icon">
+                <div  class="input_with_icon">
                     <input placeholder="DD/MM/YYYY" class="input_field_due_date" type="date">
                     </div>
             </div>
 
             <div>
-                <p>Prio</p>
-                <div>
+                <div class="container_prio_title"><p>Prio</p></div>
+                <div class="container_prio_buttons">
+             
                     <img id="urgentbuttonwhite" onclick="toggleButton('urgent')" class="prio_button_standard" src="assets/img/urgentwhite.svg" alt="">
                     <img id="urgentbuttonred" onclick="toggleButton('urgent')" class="prio_button_standard hide_icon" src="assets/img/redurgent.svg" alt="">
                     <img id="mediumbuttonorange" onclick="toggleButton('medium')" class="prio_button_standard " src="assets/img/medium_orange.svg" alt="">
