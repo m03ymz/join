@@ -1,5 +1,6 @@
 async function initAddTask() {
   await init();
+  renderContactsAddTask();
   keyPressEnter();
 
 
@@ -99,3 +100,74 @@ function toggleButton(priority) {
 
 
 
+
+
+
+
+function renderContactsAddTask() {
+  let contactAreaForAll = document.getElementById('contacts_contact_list_add_task');
+  let contactAreaForMe = document.getElementById('me_contact_list_add_task');
+  for (let i = 0; i < currentUser.contacts.length; i++) {
+      let contact = currentUser.contacts[i];
+      let initials = getInitials(contact.name)
+      if (contact.me) {
+          contactAreaForMe.innerHTML += /*html*/`
+          <div class="contact_add_task" id="contact_add_task${i}" onclick="selectContactAddTask(${i})">
+              <div class="left_contact_add_task">
+                  <div class="initials_contact_add_task" style="background-color: ${contact.color}"><span>${initials}</span></div>
+                  <span>${contact.name}</span>
+              </div>
+              <input type="checkbox" id="checkbox_contact_add_task${i}" onchange="selectContactAddTask(${i})">
+          </div>
+      `;
+      } else {
+          contactAreaForAll.innerHTML += /*html*/`
+              <div class="contact_add_task" id="contact_add_task${i}" onclick="selectContactAddTask(${i})">
+                  <div class="left_contact_add_task">
+                      <div class="initials_contact_add_task" style="background-color: ${contact.color}"><span>${initials}</span></div>
+                      <span>${contact.name}</span>
+                  </div>
+                  <input type="checkbox" id="checkbox_contact_add_task${i}" onchange="selectContactAddTask(${i})">
+              </div>
+          `;
+      }
+  }
+}
+
+function openContactListAddTask() {
+  let contactBar = document.getElementById('contact_bar_select_contacts_add_task');
+  let contactList = document.getElementById('contact_list_add_task');
+  contactBar.innerHTML = /*html*/`
+      <div class="search_bar_select_contacts_add_task">
+          <input type="text" id="search_bar_contacts_add_task">
+          <img src="./assets/img/arrow_up_add_task.svg" alt="arrow up symbol" onclick="closeContactListAddTask()">
+      </div>
+  `;
+  contactList.style = 'display: flex';
+}
+
+function closeContactListAddTask() {
+  let contactBar = document.getElementById('contact_bar_select_contacts_add_task');
+  let contactList = document.getElementById('contact_list_add_task');
+  contactBar.innerHTML = /*html*/`
+      <div class="placeholder_select_contacts_add_task" onclick="openContactListAddTask()">
+          <span>Select contacts to assign</span>
+          <img src="./assets/img/arrow_down_add_task.svg" alt="arrow down symbol">
+      </div>
+  `;
+  contactList.style = 'display: none';
+}
+
+function selectContactAddTask(i) {
+  let contact = document.getElementById(`contact_add_task${i}`);
+  let checkbox = document.getElementById(`checkbox_contact_add_task${i}`);
+  if (checkbox.checked) {
+      contact.style.backgroundColor = 'unset';
+      contact.style.color = 'unset';
+      checkbox.checked = false;
+  } else {
+      contact.style.backgroundColor = '#2a3647';
+      contact.style.color = 'white';
+      checkbox.checked = true;
+  }
+}
