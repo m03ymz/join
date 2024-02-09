@@ -99,6 +99,9 @@ function toggleButton(priority) {
 document.getElementById('dropdown-toggle').addEventListener('click', function() {
   document.getElementById('dropdown-container').classList.toggle('active');
 });
+
+
+
 function showCheckboxes() {
   let checkboxes = document.getElementById("checkboxes");
   checkboxes.style.display = checkboxes.style.display === "block" ? "none" : "block";
