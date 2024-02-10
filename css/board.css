@@ -64,15 +64,16 @@
 }
 
 .button_board {
-     display: flex;
-     padding: 8px 16px;
-     justify-content: center;
-     align-items: center;
-     gap: 4px;
-     border-radius: 10px;
-     border: 1px solid #2A3647;
-     background: #2A3647;
-     cursor: pointer;
+    display: flex;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 10px;
+    border: 1px solid #2A3647;
+    background: #2A3647;
+    cursor: pointer;
+    transition: background-color 100ms ease-in-out; /* Dauer des Übergangs und Timing-Funktion für den normalen Zustand */
 }
 
 .button_board span {
@@ -88,6 +89,12 @@
 .button_board img {
     width: 32px;
     height: 32px;
+}
+
+.button_board:hover {
+    background-color: #29abe2;
+    border: none;
+    transition: background-color 300ms ease-in-out; /* Dauer des Übergangs und Timing-Funktion für den Hover-Zustand */
 }
 
 .top_bar_board {
@@ -440,6 +447,8 @@
     padding: 3px;
     cursor: pointer;
 }
+
+
 
 .card_board2 {
     display: flex;

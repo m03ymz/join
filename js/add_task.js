@@ -5,12 +5,12 @@ async function initAddTask() {
 
 
 }
-  /* Subtask hinzufügen Beginn */
+  // Subtask hinzufügen Start //
 function addSubtask() {
   let subtaskInput = document.getElementById('subtaskInput');
   let subtaskContainer = document.getElementById('subtaskContainer');
-  // Den eingegebenen Wert abrufen
-  let inputValue = subtaskInput.value;
+  let inputValue = subtaskInput.value;   // Den eingegebenen Wert abrufen
+
   if (inputValue) {
       let newSubtaskHTML = /*html*/ `
  <div class="container_hover_subtasks_icons show_on_hover">
@@ -30,13 +30,16 @@ function addSubtask() {
   newSubtaskHTM = '';
   } 
 }
-function keyPressEnter() { // Funktion für die Eingabe mit der Enter Taste
+
+// Funktion für die Eingabe mit der Enter Taste //
+function keyPressEnter() { 
   document.getElementById('subtaskInput').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
         addSubtask();
     }
   });
 }
+// Funktion Subtask haken (akzeptieren) //
 function acceptTask() {
   let cancelIcon = document.getElementById('cancelSubtask')
   let partingline = document.getElementById('smallLineSubtask')  
@@ -48,11 +51,13 @@ function acceptTask() {
     acceptTask.style.display = 'none';
   }
   
+  // Funtktion Subtask wiederrufen X (löschen) //
   function cancelSubtask() {
     let subtaskInput = document.getElementById('subtaskInput');
     
     subtaskInput.value = '';
   }
+
   function deleteListItem(deleteButton) {
     // Das übergeordnete div-Element auswählen
     let listItemContainer = deleteButton.parentElement.parentElement.parentElement;
@@ -63,6 +68,7 @@ function acceptTask() {
     subtaskContainer.classList.add = ('hide_icon');
 
 }
+// Prioritäten umschalten  start //
 function toggleButton(priority) {
   let urgentButtonWhite = document.getElementById('urgentbuttonwhite');
   let urgentButtonRed = document.getElementById('urgentbuttonred');
@@ -94,16 +100,10 @@ function toggleButton(priority) {
       mediumButtonWhite.classList.remove('hide_icon');
   }
 }
+//Prioritäten umschalten ende // 
 
 
-
-
-
-
-
-
-
-
+// Assigned to Start //
 function renderContactsAddTask() {
   let contactAreaForAll = document.getElementById('contacts_contact_list_add_task');
   let contactAreaForMe = document.getElementById('me_contact_list_add_task');
@@ -171,3 +171,4 @@ function selectContactAddTask(i) {
       checkbox.checked = true;
   }
 }
+// Assigned to end //
