@@ -76,3 +76,8 @@ function highlightPageDesktopTemplate() {
         document.getElementById('contacts_side_bar').style = 'background-color: #091931';
     }
 }
+
+
+function openDropdownMenuDesktopTemplate() {
+    document.getElementById('dropdown_menu_header_desktop_template').classList.toggle('display_none');
+}
