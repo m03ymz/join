@@ -40,7 +40,7 @@ async function addNewContactContacts() {
     console.log(currentUser);
     currentUser.contacts.push(contact);
     await saveUsers();
-    initContacts();
+    await initContacts();
     closeContactFormContacts();
 }
 
@@ -62,7 +62,7 @@ function renderContactsContacts() {
             let initials = getInitials(contact.name);
             if (contact.me == true) {
                 meAsContact.innerHTML = /*html*/`
-                    <div class="contact_contacts" onclick="renderContactDetailsContacts(${j})">
+                    <div class="contact_contacts hover_contact_contacts" id="contact_contacts${j}" onclick="renderContactDetailsContacts(${j}), toggleHighlightContactContacts(${j});">
                         <div><span class="contact_initials_contacts" style="background-color: ${contact.color}">${initials}</span></div>
                         <div>
                             <span id="contact_name_contacts">${contact.name}</span>
@@ -72,7 +72,7 @@ function renderContactsContacts() {
                 `;
             } else if (contact.name.charAt(0) === initial) {
                 contactList.innerHTML += /*html*/`
-                    <div class="contact_contacts" onclick="renderContactDetailsContacts(${j})">
+                    <div class="contact_contacts hover_contact_contacts" id="contact_contacts${j}" onclick="renderContactDetailsContacts(${j}), toggleHighlightContactContacts(${j});">
                         <div><span class="contact_initials_contacts" style="background-color: ${contact.color}">${initials}</span></div>
                         <div>
                             <span id="contact_name_contacts">${contact.name}</span>
@@ -106,6 +106,35 @@ function openContactDetailsContacts(j) {
     document.getElementById('name_contact_details_contacts').innerHTML = contact.name;
     document.getElementById('email_contact_information_contact_details_contacts').innerHTML = contact.email;
     document.getElementById('phone_contact_information_contact_details_contacts').innerHTML = contact.phone;
+}
+
+
+function removeHighlightContactContacts() {
+    let allContacts = document.querySelectorAll('.contact_contacts');
+    allContacts.forEach(element => {
+        element.classList.remove('highlighted_contact_contacts');
+        if (!element.classList.contains('hover_contact_contacts')) {
+            element.classList.add('hover_contact_contacts');
+        }
+    });
+}
+
+function addHighlightContactContacts(j) {
+    let contact = document.getElementById(`contact_contacts${j}`);
+    contact.classList.add('highlighted_contact_contacts');
+    contact.classList.remove('hover_contact_contacts');
+}
+
+function toggleHighlightContactContacts(j) {
+    let contact = document.getElementById(`contact_contacts${j}`);
+    if (contact.classList.contains('highlighted_contact_contacts')) {
+        contact.classList.add('hover_contact_contacts');
+        contact.classList.remove('highlighted_contact_contacts');
+        document.getElementById('contact_details_contacts').innerHTML = '';
+    } else {
+        removeHighlightContactContacts();
+        addHighlightContactContacts(j);
+    }
 }
 
 
@@ -180,7 +209,7 @@ function resetContactFormContacts() {
 async function deleteContactContacts(j) {
     currentUser.contacts.splice(j, 1);
     await saveUsers();
-    renderContactsContacts();
+    await initContacts();
     document.getElementById('contact_details_contacts').innerHTML = '';
     closeContactFormContacts();
 }
@@ -195,7 +224,8 @@ async function replaceContactsContacts(j) {
     contact.email = email;
     contact.phone = phone;
     await saveUsers();
-    renderContactsContacts();
+    await initContacts();
     renderContactDetailsContacts(j);
+    addHighlightContactContacts(j);
     closeContactFormContacts();
 }
