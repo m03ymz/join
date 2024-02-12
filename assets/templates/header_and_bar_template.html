@@ -1,12 +1,20 @@
 <header class="header_desktop_template">
+    <img src="/assets/img/logo_header_mobile_template.svg" alt="join logo" class="logo_header_mobile_template">
     <span class="title_header_desktop_template">Kanban Project Management Tool</span>
     <div class="right_header_desktop_template">
-        <img src="/assets/img/help_icon_header_desktop_template.svg" alt="help icon" onclick="redirectDesktopTemplate('help')">
-        <span id="initials_header_desktop_template">SM</span>
+        <img src="/assets/img/help_icon_header_desktop_template.svg" alt="help icon" onclick="redirectDesktopTemplate('help')" class="help_header_mobile_template">
+        <span id="initials_header_desktop_template" onclick="openDropdownMenuDesktopTemplate()">SM</span>
+    </div>
+    <div id="dropdown_menu_header_desktop_template" class="dropdown_menu_header_desktop_template display_none">
+        <a href="/help.html" class="help_dropdown_menu_mobile_template">Help</a>
+        <a href="/legal_notice.html">Legal Notice</a>
+        <a href="/privacy_policy.html">Privacy Policy</a>
+        <a href="/log_in.html">Log out</a>
+
     </div>
 </header>
 <div class="side_bar_desktop_template">
-        <img src="/assets/img/join_logo_side_bar.svg" alt="join_logo">
+        <img src="/assets/img/join_logo_side_bar.svg" alt="join_logo" class="logo_side_bar_desktop_template">
     <ul class="center_side_bar_desktop_template">
         <li onclick="redirect('summary')" id="summary_side_bar">
             <img src="/assets/img/summary_icon_side_bar.svg" alt="summary icon">
