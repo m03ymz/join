@@ -21,19 +21,18 @@
 
         <div> 
             <p>Assigned to</p>             
-            <form class="">
-                <div class="multiselect">
-                  <div class="selectBox" onclick="showCheckboxes()">
-                    <select style="width: 24vw;" class="input_assigned_to">
-                      <option>Select an option</option>
-                    </select>
-                    <div class="overSelect"></div>
-                  </div>
-                  <div style="width: 24vw;" id="checkboxes">
-                    <!-- Placeholder for dynamically generated checkboxes -->
-                  </div>
+            <div class="select_contacts_add_task">
+                <div id="contact_bar_select_contacts_add_task">
+                    <div class="placeholder_select_contacts_add_task" onclick="openContactListAddTask()">
+                        <span>Select contacts to assign</span>
+                        <img src="./assets/img/arrow_down_add_task.svg" alt="arrow down symbol">
+                    </div>
                 </div>
-              </form>
+                <div id="contact_list_add_task" style="display: none">
+                    <div id="me_contact_list_add_task"></div>
+                    <div id="contacts_contact_list_add_task"></div>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -61,7 +60,7 @@
         <div>
             <p class="required_red_star">Category</p>
                 <select id="category_task" class="input_assigned_to">
-                    <option selected>Select task category</option>
+                    <option selected hidden>Select task category</option>
                     <option value="Technical Task">Technical Task</option>
                     <option value="User Story">User Story</option>
                   
