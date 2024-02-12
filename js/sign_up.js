@@ -44,7 +44,7 @@ async function addUserSignUp() {
     user.contacts.push(contact);
     users.push(user);
     await saveUsers();
-    redirectToLogInSignUp();
+    redirect('log_in');
 }
 
 
