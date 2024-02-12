@@ -3,6 +3,7 @@
 }
 
 .main_content {
+    flex-wrap: wrap;
     display: flex;
     box-sizing: border-box;
     margin-right: 80px;
@@ -10,15 +11,21 @@
     background: #F6F7F8;
     margin-left: 232px;
     justify-content: space-around;
-    height: 600px;
+    height: auto;
+    background-color: red;
 }
 
 .box_left {
-
+    margin-left: 64px;
+    margin-right: 64px;
+    margin-bottom: 32px;
+    background-color: blue;
 }
 
 .box_right {
-    margin-right: 100px;
+    min-width: 300px;
+    margin-left: 64px;
+    background-color: green;
 }
 
 .headline_add_task {
@@ -26,6 +33,9 @@
     justify-content: flex-start;
     margin-left: 320px;
     margin-top: 100px;
+}
+h1{
+    margin: 0;
 }
 
 .input_field_title, .textarea_discription, .input_field_category, .input_field_due_date {
@@ -37,6 +47,7 @@
 
 .input_field_due_date {
     height: 20px;
+    min-width: 95%;
 }
 
 textarea:focus, select:focus, input:focus {
@@ -71,6 +82,7 @@ textarea:focus, select:focus, input:focus {
 }
 
 .container_bottom_add_task {
+    margin-top: 13px;
     margin-left: 232px;
     display: flex; 
     align-items: center; 
@@ -290,7 +302,8 @@ textarea:hover, select:hover {
 }
 
 .hover_li {
-    margin-top: 18px;
+    margin-top: 16px;
+    margin-bottom: 16px;
     display: flex;
     justify-content: space-between;
 }
@@ -302,7 +315,7 @@ textarea:hover, select:hover {
 }
 
 .prio_button_standard {
-    width: 128px;
+    width: 116px;
     cursor: pointer;
 }
 

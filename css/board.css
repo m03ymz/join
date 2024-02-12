@@ -58,9 +58,7 @@
 
 .lens_board {
     display: flex;
-margin-right: 16px;
-
-    
+    margin-right: 16px;  
 }
 
 .button_board {
@@ -96,6 +94,7 @@ margin-right: 16px;
     border: none;
     transition: background-color 100ms ease-in-out; /* Dauer des Übergangs und Timing-Funktion für den Hover-Zustand */
 }
+
 .image-container {
     position: relative;
     width: fit-content; /* oder die gewünschte Breite */
