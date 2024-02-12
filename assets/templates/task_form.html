@@ -19,23 +19,16 @@
                 <textarea placeholder="Enter a Description" class="textarea_discription" name="" id="" cols="30" rows="10"></textarea>    
             </div>
 
-            <div> 
-                <p>Assigned to</p>             
-            
-                <div class="select_contacts_add_task">
-                    <div id="contact_bar_select_contacts_add_task">
-                        <div class="placeholder_select_contacts_add_task" onclick="openContactListAddTask()">
-                            <span>Select contacts to assign</span>
-                            <img src="./assets/img/arrow_down_add_task.svg" alt="arrow down symbol">
-                        </div>
-                    </div>
-                    <div id="contact_list_add_task" style="display: none">
-                        <div id="me_contact_list_add_task"></div>
-                        <div id="contacts_contact_list_add_task"></div>
+        <div> 
+            <p>Assigned to</p>             
+            <div class="select_contacts_add_task">
+                <div id="contact_bar_select_contacts_add_task">
+                    <div class="placeholder_select_contacts_add_task" onclick="openContactListAddTask()">
+                        <span>Select contacts to assign</span>
+                        <img src="./assets/img/arrow_down_add_task.svg" alt="arrow down symbol">
                     </div>
                 </div>
-
-
+              </form>
 
             </div>
         </div>
@@ -60,15 +53,14 @@
                     <img id="lowbuttonwhite" onclick="toggleButton('low')" class="prio_button_standard" src="assets/img/low_white.svg" alt="">
                     <img id="lowbuttongreen" onclick="toggleButton('low')" class="prio_button_standard hide_icon" src="assets/img/low_button_icon_green.svg" alt="">
                 </div>
-
-            </div>
-        
-            <div>
-                <p class="required_red_star">Category</p>
-                <select class="input_assigned_to">
+        </div>
+    
+        <div>
+            <p class="required_red_star">Category</p>
+                <select id="category_task" class="input_assigned_to">
                     <option selected>Select task category</option>
-                    <option value="1">Technical Task</option>
-                    <option value="2">User Story</option>
+                    <option value="Technical Task">Technical Task</option>
+                    <option value="User Story">User Story</option>
                   
                 </select>
             </div>
