@@ -432,6 +432,7 @@ textarea:hover, select:hover {
     justify-content: space-between;
     padding: 4px 16px;
     border-radius: 8px;
+    margin-bottom: 1px;
 }
 
 .contact_add_task:hover {
@@ -458,4 +459,13 @@ textarea:hover, select:hover {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+}
+
+#selected_contacts_add_task {
+    width: 25vw;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
 }

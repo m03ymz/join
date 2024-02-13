@@ -1,8 +1,7 @@
 async function initAddTask() {
   await init();
-  renderContactsAddTask();
+  renderContactsAddTask('');
   keyPressEnter();
-
 
 }
   // Subtask hinzufügen Start //
@@ -104,34 +103,35 @@ function toggleButton(priority) {
 
 
 // Assigned to Start //
-function renderContactsAddTask() {
+function renderContactsAddTask(searchTerm) {
   let contactAreaForAll = document.getElementById('contacts_contact_list_add_task');
   let contactAreaForMe = document.getElementById('me_contact_list_add_task');
+  contactAreaForAll.innerHTML = '';
+  contactAreaForMe.innerHTML = '';
   for (let i = 0; i < currentUser.contacts.length; i++) {
-      let contact = currentUser.contacts[i];
-      let initials = getInitials(contact.name)
+    let contact = currentUser.contacts[i];
+    let initials = getInitials(contact.name);
+    if (contact.name.toLowerCase().startsWith(searchTerm.toLowerCase())) {
       if (contact.me) {
-          contactAreaForMe.innerHTML += /*html*/`
-          <div class="contact_add_task" id="contact_add_task${i}" onclick="selectContactAddTask(${i})">
-              <div class="left_contact_add_task">
-                  <div class="initials_contact_add_task" style="background-color: ${contact.color}"><span>${initials}</span></div>
-                  <span>${contact.name}</span>
-              </div>
-              <input type="checkbox" id="checkbox_contact_add_task${i}" onchange="selectContactAddTask(${i})">
-          </div>
-      `;
+          contactAreaForMe.innerHTML += generateContactsAddTaskHtml(i, contact, initials);
       } else {
-          contactAreaForAll.innerHTML += /*html*/`
-              <div class="contact_add_task" id="contact_add_task${i}" onclick="selectContactAddTask(${i})">
-                  <div class="left_contact_add_task">
-                      <div class="initials_contact_add_task" style="background-color: ${contact.color}"><span>${initials}</span></div>
-                      <span>${contact.name}</span>
-                  </div>
-                  <input type="checkbox" id="checkbox_contact_add_task${i}" onchange="selectContactAddTask(${i})">
-              </div>
-          `;
+          contactAreaForAll.innerHTML += generateContactsAddTaskHtml(i, contact, initials);
       }
+    }
+    checkSelectedContactsAddTask(i);
   }
+}
+
+function generateContactsAddTaskHtml(i, contact, initials) {
+  return /*html*/`
+    <div class="contact_add_task" id="contact_add_task${i}" onclick="selectContactAddTask(${i})">
+        <div class="left_contact_add_task">
+            <div class="initials_contact_add_task" style="background-color: ${contact.color}"><span>${initials}</span></div>
+            <span>${contact.name}</span>
+        </div>
+        <input type="checkbox" id="checkbox_contact_add_task${i}" onchange="selectContactAddTask(${i})">
+    </div>
+  `;
 }
 
 function openContactListAddTask() {
@@ -139,11 +139,13 @@ function openContactListAddTask() {
   let contactList = document.getElementById('contact_list_add_task');
   contactBar.innerHTML = /*html*/`
       <div class="search_bar_select_contacts_add_task">
-          <input type="text" id="search_bar_contacts_add_task">
+          <input type="text" id="search_bar_contacts_add_task" onkeyup="searchContactsAddTask()">
           <img src="./assets/img/arrow_up_add_task.svg" alt="arrow up symbol" onclick="closeContactListAddTask()">
       </div>
   `;
   contactList.style = 'display: flex';
+  hideSelectedContactsAddTask();
+  renderSelectedContactsAddTask();
 }
 
 function closeContactListAddTask() {
@@ -156,7 +158,21 @@ function closeContactListAddTask() {
       </div>
   `;
   contactList.style = 'display: none';
+  renderContactsAddTask('');
+  renderSelectedContactsAddTask();
+  showSelectedContactsAddTask();
+  for (let i = 0; i < currentUser.contacts.length; i++) {
+    let contact = currentUser.contacts[i];
+    let checkbox = document.getElementById(`checkbox_contact_add_task${i}`);
+    if (selectedContactsAddTask.includes(contact)) {
+      checkbox.checked = true;
+    } else {
+      checkbox.checked = false;
+    }
+  }
 }
+
+let selectedContactsAddTask = [];
 
 function selectContactAddTask(i) {
   let contact = document.getElementById(`contact_add_task${i}`);
@@ -165,10 +181,67 @@ function selectContactAddTask(i) {
       contact.style.backgroundColor = 'unset';
       contact.style.color = 'unset';
       checkbox.checked = false;
+      removeSelectedContactsAddTask(i);
   } else {
       contact.style.backgroundColor = '#2a3647';
       contact.style.color = 'white';
       checkbox.checked = true;
+      addSelectedContactsAddTask(i);
+  }
+  console.log(selectedContactsAddTask);
+}
+
+function checkSelectedContactsAddTask(i) {
+  let contact = document.getElementById(`contact_add_task${i}`);
+  let checkbox = document.getElementById(`checkbox_contact_add_task${i}`);
+  let currentContact = currentUser.contacts[i];
+  for (let j = 0; j < selectedContactsAddTask.length; j++) {
+    let selectedContact = selectedContactsAddTask[j];
+    if (currentContact === selectedContact) {
+      contact.style.backgroundColor = '#2a3647';
+      contact.style.color = 'white';
+      checkbox.checked = true;
+    }
   }
 }
+
+
+function addSelectedContactsAddTask(i) {
+  let contact = currentUser.contacts[i];
+  selectedContactsAddTask.push(contact);
+  renderSelectedContactsAddTask();
+}
+
+function removeSelectedContactsAddTask(i) {
+  let contact = currentUser.contacts[i];
+  let index = selectedContactsAddTask.indexOf(contact)
+  selectedContactsAddTask.splice(index, 1);
+  renderSelectedContactsAddTask();
+}
+
+function renderSelectedContactsAddTask() {
+  let selectedContactsDiv = document.getElementById('selected_contacts_add_task');
+  selectedContactsDiv.innerHTML = '';
+  for (let i = 0; i < selectedContactsAddTask.length; i++) {
+    let selectedContact = selectedContactsAddTask[i];
+    let initials = getInitials(selectedContact.name);
+    selectedContactsDiv.innerHTML += /*html*/`
+      <div class="initials_contact_add_task" style="background-color: ${selectedContact.color}"><span>${initials}</span></div>
+    `;
+  }
+}
+
+function showSelectedContactsAddTask() {
+  document.getElementById('selected_contacts_add_task').style = 'display: flex';
+}
+
+function hideSelectedContactsAddTask() {
+  document.getElementById('selected_contacts_add_task').style = 'display: none';
+}
+
+function searchContactsAddTask() {
+  let searchTerm = document.getElementById('search_bar_contacts_add_task').value;
+  renderContactsAddTask(searchTerm);
+}
+
 // Assigned to end //
