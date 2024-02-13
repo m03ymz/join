@@ -12,20 +12,20 @@
     margin-left: 232px;
     justify-content: space-around;
     height: auto;
-    background-color: red;
+    /* background-color: red; */
 }
 
 .box_left {
     margin-left: 64px;
     margin-right: 64px;
     margin-bottom: 32px;
-    background-color: blue;
+    /* background-color: blue; */
 }
 
 .box_right {
     min-width: 300px;
     margin-left: 64px;
-    background-color: green;
+    /* background-color: green; */
 }
 
 .headline_add_task {

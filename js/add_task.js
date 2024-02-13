@@ -2,9 +2,8 @@ async function initAddTask() {
   await init();
   renderContactsAddTask();
   keyPressEnter();
-
-
 }
+
   // Subtask hinzufügen Start //
 function addSubtask() {
   let subtaskInput = document.getElementById('subtaskInput');
@@ -27,7 +26,7 @@ function addSubtask() {
   subtaskContainer.innerHTML += newSubtaskHTML;
   // Eingabefeld leeren
   subtaskInput.value = '';
-  newSubtaskHTM = '';
+  newSubtaskHTML = '';
   } 
 }
 
@@ -202,7 +201,7 @@ function clearAllInputs() {
 
   let formattedDate = `${year}-${month}-${day}`;
 
-  document.getElementById('dueDateInput').min = formattedDate;   // Setzen des "min"-Attributs auf das aktuelle Datum
+  // document.getElementById('dueDateInput').min = formattedDate;   // Setzen des "min"-Attributs auf das aktuelle Datum
 
 //deactivate past days end //
  

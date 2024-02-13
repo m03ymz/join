@@ -1,5 +1,6 @@
 async function initBoard() {
     await init();
+    renderContactsAddTask();
 }
 
 let targetColumnId;
@@ -117,7 +118,7 @@ function createTaskArray(targetColumnId) {
     let description = document.getElementById('description');
     let date = document.getElementById('date');
     let category = document.getElementById('category_task');
-    let subtask = document.getElementById('subtask_value');
+    let subtask = document.getElementById('subtaskInput');
     let task = {
         "title": title.value,
         "description": description.value,
@@ -133,7 +134,7 @@ function createTaskArray(targetColumnId) {
     description.value = '';
     date.value = '';
     renderTask(targetColumnId);
-    targetColumnId = 'column_board';
+    // targetColumnId = 'column_board';
 }
 
 function renderTask(targetColumnId) {
