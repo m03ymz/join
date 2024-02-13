@@ -130,7 +130,7 @@ function generateContactsAddTaskHtml(i, contact, initials) {
             <div class="initials_contact_add_task" style="background-color: ${contact.color}"><span>${initials}</span></div>
             <span>${contact.name}</span>
         </div>
-        <input type="checkbox" id="checkbox_contact_add_task${i}" onchange="selectContactAddTask(${i})">
+        <input class="checkbox_contact_add_task" type="checkbox" id="checkbox_contact_add_task${i}" onchange="selectContactAddTask(${i})">
     </div>
   `;
 }
