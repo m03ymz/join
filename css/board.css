@@ -34,7 +34,7 @@
 
 .input_container_board {
     display: flex;
-    width: 312px;
+    width: 100%;
     padding: 8px 16px;
     align-items: center;
     gap: 10px;
@@ -58,9 +58,7 @@
 
 .lens_board {
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 16px;
+    margin-right: 16px;  
 }
 
 .button_board {
@@ -94,9 +92,29 @@
 .button_board:hover {
     background-color: #29abe2;
     border: none;
-    transition: background-color 300ms ease-in-out; /* Dauer des Übergangs und Timing-Funktion für den Hover-Zustand */
+    transition: background-color 100ms ease-in-out; /* Dauer des Übergangs und Timing-Funktion für den Hover-Zustand */
 }
 
+.image-container {
+    position: relative;
+    width: fit-content; /* oder die gewünschte Breite */
+}
+
+.bottom-image, .top-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.top-image {
+    opacity: 0; /* Macht das obere Bild anfangs unsichtbar */
+    transition: opacity 0.3s ease; /* Fügt eine Transition hinzu für einen sanften Übergang */
+}
+
+.image-container:hover .top-image {
+    opacity: 1; /* Macht das obere Bild sichtbar, wenn über das Container div gehovert wird */
+}
 .top_bar_board {
     display: flex;
     width: 1054px;

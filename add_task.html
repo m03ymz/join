@@ -53,9 +53,9 @@
         <div class="box_right">
             <div>
                 <p class="required_red_star">Due date</p>
-                <div  class="input_with_icon">
-                    <input placeholder="DD/MM/YYYY" class="input_field_due_date" type="date">
-                    </div>
+                <div class="input_with_icon">
+                    <input placeholder="DD/MM/YYYY" class="input_field_due_date" type="date" id="dueDateInput">
+                </div>
             </div>
 
             <div>
@@ -75,7 +75,7 @@
             <div>
                 <p class="required_red_star">Category</p>
                 <select class="input_assigned_to">
-                    <option selected>Select task category</option>
+                    <option selected hidden>Select task category</option>
                     <option value="1">Technical Task</option>
                     <option value="2">User Story</option>
                   
@@ -112,16 +112,11 @@
             </div>    
     
             <div class="">
-                <button class="clear_task_button">Clear</button>
+                <button class="clear_task_button" onclick="clearAllInputs()">Clear</button>
                 <button class="create_task_button">Create Task</button>
             </div>
         </div>
 
     
-
-
-        
-        <script src="script.js"></script>
+    <script src="script.js"></script>
     <script src="js/add_task.js"></script>
-</body>
-</html>

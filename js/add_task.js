@@ -245,3 +245,37 @@ function searchContactsAddTask() {
 }
 
 // Assigned to end //
+
+// Clear all Button start //
+function clearAllInputs() {
+  let inputs = document.getElementsByTagName('input');
+  for (let i = 0; i < inputs.length; i++) {
+      inputs[i].value = '';
+  }
+
+  let textareas = document.getElementsByTagName('textarea');
+  for (let i = 0; i < textareas.length; i++) {
+      textareas[i].value = '';
+  }
+
+  // Falls Weitere Eingabefelder vorhanden sind, können diese hier hinzugefügt werden, wenn nötig
+
+  let firstInput = document.querySelector('input');   // Fokus auf das erste Eingabefeld setzen, um die Benutzererfahrung zu verbessern, also, das mann nicht wieder ein eingabefeld anklicken muss.
+  if (firstInput) {
+      firstInput.focus();
+  }
+}
+
+//deactivate past days start //
+  let currentDate = new Date(); // JavaScript, um das aktuelle Datum zu erhalten
+
+  let year = currentDate.getFullYear();   // Formatierung des Datums für das HTML "date" Input-Element
+  let month = ('0' + (currentDate.getMonth() + 1)).slice(-2); // Monat beginnt bei 0
+  let day = ('0' + currentDate.getDate()).slice(-2);
+
+  let formattedDate = `${year}-${month}-${day}`;
+
+  document.getElementById('dueDateInput').min = formattedDate;   // Setzen des "min"-Attributs auf das aktuelle Datum
+
+//deactivate past days end //
+ 

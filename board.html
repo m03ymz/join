@@ -26,10 +26,13 @@
                 <h1>Board</h1>
                 <div class="task_container_board">
                     <div class="input_container_board">
-                        <input class="input_board" type="text" placeholder="Find Task">
+                        <input id="search_input_task" class="input_board" type="text" placeholder="Find Task">
                         <div class="lens_board">
-                            <img src="./assets/img/vector.svg" alt="">
-                            <img src="./assets/img/search.svg" alt="">
+                                <img  src="./assets/img/vector.svg">
+                                <div class="image-container">
+                                    <img class="bottom-image" src="./assets/img/search.svg" alt="">
+                                    <img class="top-image" src="assets/img/hover_search_icon.svg" alt="">
+                                </div>
                         </div>
                     </div>
                     <div>
@@ -61,12 +64,12 @@
         </div>
         
         <div class="distrubution_board">
-            <div id="column_board" class="column_board">
+            <div id="column_board" class="column_board" ondrop="moveTo('column_board')" ondragover="allowDrop(event)">
                 <div id="empty_box" class="empty_card_board">
                     <span>No tasks To do</span>
                 </div>
             </div>
-            <div id="column_board2" class="column_board">
+            <div id="column_board2" class="column_board" ondrop="moveTo('column_board2')" ondragover="allowDrop(event)">
                 <div draggable="true" ondragstart="" class="card_board">
                     <div onclick="openOverlay()" class="inner_card_board">
                         <div class="card_title_board">User Story</div>
@@ -89,7 +92,7 @@
                     </div>
                 </div>
             </div>
-            <div id="column_board3" class="column_board">
+            <div id="column_board3" class="column_board" ondrop="moveTo('column_board3')" ondragover="allowDrop(event)">
                 <!-- <div class="card_board"></div>
                 <div class="card_board"></div> -->
                 <div draggable="true" ondragstart="" class="card_board">
@@ -129,7 +132,7 @@
                     </div>
                 </div>
             </div>
-            <div id="column_board4" class="column_board">
+            <div id="column_board4" class="column_board" ondrop="moveTo('column_board4')" ondragover="allowDrop(event)">
                 <!-- <div class="card_board"></div> -->
                 <div draggable="true" ondragstart="" class="card_board">
                     <div onclick="openOverlay()" class="inner_card_board">
