@@ -499,6 +499,10 @@
     gap: 10px;
 }
 
+.drag-area-highlight {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
 /* .task_alert_board {
     width: 300px;
     height: 70px;
@@ -523,7 +527,7 @@
 
 .fullbox_task_form {
     height: auto;
-    width: 54%;
+    width: 64%;
     background-color: white;
     /* margin-left: 400px; */
     /* margin-top: 100px; */

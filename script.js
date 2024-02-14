@@ -51,6 +51,9 @@ function redirect(site) {
     window.location.href = site + '.html';
 }
 
+function redirectToPreviousPage() {
+    window.history.back();
+}
 
 function getInitials(name) {
     let cleanName = name.replace(/\(Me\)|[^a-zA-Z\s]/g, '').match(/[a-zA-Z]+/g);

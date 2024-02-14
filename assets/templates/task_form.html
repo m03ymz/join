@@ -42,7 +42,7 @@
     <div class="box_right">
         <div>
             <p class="required_red_star">Due date</p>
-            <input id="date" placeholder="DD/MM/YYYY" class="input_field_title" type="date">
+            <input id="date" placeholder="DD/MM/YYYY" class="input_field_title" type="date" required>
         </div>
 
         <div>
@@ -59,7 +59,7 @@
     
         <div>
             <p class="required_red_star">Category</p>
-                <select id="category_task" class="input_assigned_to">
+                <select id="category_task" class="input_assigned_to" required>
                     <option selected hidden>Select task category</option>
                     <option value="Technical Task">Technical Task</option>
                     <option value="User Story">User Story</option>
@@ -72,7 +72,7 @@
                 <p>Subtasks</p>
                 <div class="input_field_container">
                     <div class="input_wrapper">
-                        <input id="subtask_value" placeholder="Add new Subtask" class="input_field_subtasks" type="text" id="subtaskInput">
+                        <input placeholder="Add new Subtask" class="input_field_subtasks" type="text" id="subtaskInput">
                         <div class="icon-container">
                             <img class="hide_icon" onclick="cancelSubtask()" id="cancelSubtask" src="assets/img/Cancel_subtask.svg" alt="">
                             <img class="hide_icon" id="smallLineSubtask" src="assets/img/small_line_subtask.svg" alt="">
