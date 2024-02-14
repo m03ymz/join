@@ -143,7 +143,9 @@ function renderContactDetailsContacts(j) {
     let initials = getInitials(contact.name);
     document.getElementById('contact_details_contacts').innerHTML = /*html*/`
         <div class="top_contact_details_contacts">
-            <span id="initials_contact_details_contacts" style = "background-color: ${contact.color}">${initials}</span>
+            <div>
+                <span id="initials_contact_details_contacts" style = "background-color: ${contact.color}">${initials}</span>
+            </div>
             <div class="name_and_options_contact_details_contacts">
                 <span id="name_contact_details_contacts">${contact.name}</span>
                 <div class="options_contact_details_contacts">
@@ -160,11 +162,11 @@ function renderContactDetailsContacts(j) {
         <div class="contact_information_contact_details_contacts">
             <div>
                 <span>Email</span>
-                <span id="email_contact_information_contact_details_contacts">${contact.email}</span>
+                <a id="email_contact_information_contact_details_contacts" href="mailto:${contact.email}">${contact.email}</a>
             </div>
             <div>
                 <span>Phone</span>
-                <span id="phone_contact_information_contact_details_contacts">${contact.phone}</span>
+                <a id="phone_contact_information_contact_details_contacts" href="tel:${contact.phone}">${contact.phone}</a>
             </div>
         </div>
     `;
