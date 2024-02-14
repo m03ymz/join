@@ -1,31 +1,7 @@
-.headline_add_task {
-    font-size: 24px;
-}
-
-.main_content {
-    flex-wrap: wrap;
-    display: flex;
-    box-sizing: border-box;
-    margin-right: 80px;
-    height: 100vh;
-    background: #F6F7F8;
-    margin-left: 232px;
-    justify-content: space-around;
-    height: auto;
-    background-color: red;
-}
-
-.box_left {
-    margin-left: 64px;
-    margin-right: 64px;
-    margin-bottom: 32px;
-    background-color: blue;
-}
-
-.box_right {
-    min-width: 300px;
-    margin-left: 64px;
-    background-color: green;
+.container_headline_addtask{
+    height: 60px; 
+    display: flex; 
+    align-items: flex-end;
 }
 .headline_addtask{
     margin: 0;
@@ -643,8 +619,7 @@ textarea:hover, select:hover {
         justify-content: space-between;
         padding: 4px 16px;
         border-radius: 8px;
-        margin-bottom: 1px;
-}
+    }
     
     .contact_add_task:hover {
         cursor: pointer;
@@ -724,17 +699,4 @@ textarea:hover, select:hover {
 }
 @media (max-width: 321px){
     
-}
-
-#selected_contacts_add_task {
-    width: 25vw;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 8px;
-}
-
-.checkbox_contact_add_task[type="checkbox"] {
-    pointer-events: none;
 }
