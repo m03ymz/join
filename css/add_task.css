@@ -1,45 +1,16 @@
-.headline_add_task {
-    font-size: 24px;
+.container_headline_addtask{
+    height: 60px; 
+    display: flex; 
+    align-items: flex-end;
 }
-
-.main_content {
-    flex-wrap: wrap;
-    display: flex;
-    box-sizing: border-box;
-    margin-right: 80px;
-    height: 100vh;
-    background: #F6F7F8;
-    margin-left: 232px;
-    justify-content: space-around;
-    height: auto;
-    background-color: red;
-}
-
-.box_left {
-    margin-left: 64px;
-    margin-right: 64px;
-    margin-bottom: 32px;
-    background-color: blue;
-}
-
-.box_right {
-    min-width: 300px;
-    margin-left: 64px;
-    background-color: green;
-}
-
-.headline_add_task {
-    display: flex;
-    justify-content: flex-start;
-    margin-left: 320px;
-    margin-top: 100px;
-}
-h1{
+.headline_addtask{
     margin: 0;
+    margin-left: 164px;
+    font-size: 32px;
 }
 
 .input_field_title, .textarea_discription, .input_field_category, .input_field_due_date {
-    width: 24vw;
+    width: 50%;
     border-radius: 8px;
     border: 1px solid lightgray;
     padding: 8px;
@@ -50,24 +21,34 @@ h1{
     min-width: 95%;
 }
 
-textarea:focus, select:focus, input:focus {
+.input_field_title_addtask {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    height: 32px;
+    border: none;
+}
+.textarea_discription_addtask{
+    width: 100%; 
+    border-radius: 8px;
+    border: none;
+}
+
+textarea:focus, select:focus, input:focus, .input_field_title_addtask:focus, .textarea_discription_addtask:focus {
     outline-color: rgb(117, 193, 255);
 }
 
-.input_field_subtasks:focus {
-    outline-color: white;
-}
 
 .input_wrapper:hover {
     outline-color: rgb(117, 193, 255);
 }
 
 .input_assigned_to {
-    width: 100%;
-    height: 36px;
+width: 100%;
+    height: 34px;
     border-radius: 8px;
     border: 1px solid lightgray;
-    padding: 8px;
+
 }
 
 .input_fields {
@@ -109,55 +90,9 @@ button {
 .container_prio_title{
     margin-top: 60px;
 }
-.container_prio_buttons {
-    display: flex;
-    justify-content: space-between;
-}
 
-.main_color_medium_button {
-    padding: 16px 10px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    flex: 1 0 0;
-    border-radius: 10px;
-    background: #FFA800;
-    border: none;
-    color: white;
-    width: 108px;
-}
 
-.toggled_color_medium {
-    padding: 16px 10px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    flex: 1 0 0;
-    border-radius: 10px;
-    background: white;
-    border: none;
-    color: #2A3647;
-    width: 108px;
-}
-
-.urgent_button_icon_white, .urgent_button_icon_red, .medium_button_icon_white, .medium_button_icon_yellow, .low_button_icon_green, .low_button_icon_white {
-    width: 16px;
-    height: auto;
-}
-
-.main_color_urgent_button {
-    background: white;
-    border-radius: 8px;
-    width: 20%;
-    height: auto;
-    justify-content: center;
-}
-
-.urgent_button_icon_white, .urgent_button_icon_red, .low_button_icon_green, .low_button_icon_white {
-    margin-left: 8px;
-}
-
-.main_color_urgent_button:hover, .toggled_color_medium:hover, .main_color_low_prio_buttons:hover, .main_color_low_prio_button:hover {
+.main_color_urgent_button:hover, .toggled_color_medium:hover, .main_color_low_prio_buttons:hover, .main_color_low_prio_button:hover{
     box-shadow: 0px 2px 2px 0px rgba(61, 61, 61, 0.2);
 }
 
@@ -209,10 +144,7 @@ textarea:hover, select:hover {
 .input_field_container {
     position: relative;
     display: inline-block;
-}
-
-.input_field_subtasks {
-    width: 24vw;
+    width: 100%;
 }
 
 .icon-container {
@@ -230,12 +162,14 @@ textarea:hover, select:hover {
 .input_value_style {
     font-size: 14px;
     font-weight: 500;
+
 }
 
 .container_subtask_icons {
     display: flex;
     align-items: center;
     gap: 8px;
+    opacity: 0;
 }
 
 .input-wrapper {
@@ -244,11 +178,11 @@ textarea:hover, select:hover {
 }
 
 .input_field_subtasks {
-    padding-left: 16px;
     border: none;
     height: 32px;
     border-radius: 8px;
-    min-width: 330px;
+    width: 100%;
+  
 }
 
 .icon-container {
@@ -291,6 +225,7 @@ textarea:hover, select:hover {
     margin-top: 12px;
 }
 
+
 .hover_li:hover {
     margin-top: 8px;
     padding: 3px;
@@ -299,6 +234,7 @@ textarea:hover, select:hover {
     cursor: pointer;
     display: flex;
     align-items: center;
+   
 }
 
 .hover_li {
@@ -306,16 +242,26 @@ textarea:hover, select:hover {
     margin-bottom: 16px;
     display: flex;
     justify-content: space-between;
+
 }
 
-.container_subtasks_hover_icons {
+.container_subtasks_hover_icons { /* wahrscheinlich nicht die beste lösung*/
     display: flex;
     justify-content: flex-end;
-    width: 54px;
+    width: 20%;
+    margin-left: 125px;
+    opacity: 0;
+    position: absolute;
+    z-index: 99;
+    
+}
+.container_subtasks_hover_icons:hover{ /* wahrscheinlich nicht die beste lösung*/
+    opacity: 1;
+  
 }
 
 .prio_button_standard {
-    width: 116px;
+    width: 246px;
     cursor: pointer;
 }
 
@@ -328,17 +274,17 @@ textarea:hover, select:hover {
     width: 12px;
     margin-left: 8px;
     margin-right: 8px;
+}
+.hover_subtask{
+    background-color: red;
+    display: flex;
 
 }
 
 
 
 
-
-
-
-
-
+/* AB HIER ASSIGNED TO CSS */
 
 .select_contacts_add_task {
     width: 25vw;
@@ -376,42 +322,9 @@ textarea:hover, select:hover {
 .placeholder_select_contacts_add_task img:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.10);
+
 }
 
-.search_bar_select_contacts_add_task {
-    box-sizing: border-box;
-    width: 25vw;
-    display: flex;
-    justify-content: space-between;
-    padding: 4px 16px;
-    align-items: center;
-    gap: 10px;
-    border-radius: 8px;
-    border: 1px solid #D1D1D1;
-    color: black;
-}
-
-.search_bar_select_contacts_add_task:hover {
-    cursor: pointer;
-}
-
-.search_bar_select_contacts_add_task input {
-    background: transparent;
-    outline: none;
-    border: none;
-}
-
-.search_bar_select_contacts_add_task img {
-    height: 8px;
-    width: 8px;
-    padding: 8px;
-    border-radius: 50%;
-}
-
-.search_bar_select_contacts_add_task img:hover {
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.10);
-}
 
 #contact_list_add_task {
     max-height: 200px;
@@ -471,4 +384,319 @@ textarea:hover, select:hover {
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+}
+
+/* ENDE ASSIGNED TO CSS */
+
+
+/* AB HIER UPDATED CSS */
+#contentAddTask{
+    margin-left: 240px;
+    margin-top: 84px;
+    width: calc(100% - 240px); /* Anpassung hier */
+    box-sizing: border-box;
+    }
+.container_boxes_addtask{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: wrap;
+
+}
+
+.container_prio_buttons_addtask {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.container_prio_buttons_addtask > img {
+    width: 300px;
+}
+
+
+
+
+    
+/* Ab hier Assigned to CSS */
+    
+    .search_bar_select_contacts_add_task:hover {
+        cursor: pointer;
+    }
+    
+    .search_bar_select_contacts_add_task input {
+        background: transparent;
+        outline: none;
+        border: none;
+    }
+    
+    .search_bar_select_contacts_add_task img {
+        height: 8px;
+        width: 8px;
+        padding: 8px;
+        border-radius: 50%;
+    }
+    .prio_button_standard:hover{
+    }
+    
+    .search_bar_select_contacts_add_task img:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.10);
+    }
+    
+    #contact_list_add_task {
+        max-height: 200px;
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        scrollbar-width: thin;          
+        scrollbar-color: lightgray white; 
+    }
+    
+    #contact_list_add_task::-webkit-scrollbar {
+        width: 12px;               
+    }
+    
+    #contact_list_add_task::-webkit-scrollbar-track {
+        background: white;        
+    }
+    
+    #contact_list_add_task::-webkit-scrollbar-thumb {
+        background-color: lightgray;    
+        border-radius: 20px;       
+        border: 3px solid white;  
+    }
+    
+    .contact_add_task {
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 4px 16px;
+        border-radius: 8px;
+    }
+    
+    .contact_add_task:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.10);
+    }
+    
+    .left_contact_add_task {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    
+    .initials_contact_add_task {
+        box-sizing: border-box;
+        font-size: 12px;
+        width: 16px;
+        height: 16px;
+        padding: 18px;
+        background-color: #D1D1D1;
+        color: white;
+        border: 2px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+
+
+/* Stellt  sicher, dass alle spezifischen Stile, die die Breite betreffen, ebenfalls angepasst werden */
+    .placeholder_select_contacts_add_task, .search_bar_select_contacts_add_task {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 16px;
+    align-items: center;
+    gap: 10px;
+}
+
+    #contact_list_add_task {
+    max-height: 200px;
+    width: 100%; /* Stellt sicher, dass auch diese Container sich an die Breite anpassen */
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+/* Hier Ende Assigned to CSS */
+
+    
+    .left_box_addtask {
+        width: 400px;
+        padding: 20px; /* Fügt Padding hinzu, damit Inhalte nicht direkt am Rand sind */
+        box-sizing: border-box; /* Stellt sicher, dass das Padding Teil der max-width ist */        
+    }
+
+.right_box_addtask{
+   
+    width: 400px;
+    padding: 20px; /* Fügt Padding hinzu, damit Inhalte nicht direkt am Rand sind */
+    box-sizing: border-box; /* Stellt sicher, dass das Padding Teil der max-width ist */
+
+    
+}
+.container_prio_buttons_addtask > img {
+    width: 108px;
+}
+
+.bottom_container_addtask {
+    margin-top: 116px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.container_data_first_letter {
+   
+}
+
+.container_clear_and_create_task {
+ 
+}
+.parting_line{
+    margin: 0;
+    border-color: #f1f1f1;
+    opacity: 0.3;
+}
+    
+/* Ab hier Assigned to CSS */
+    
+    .search_bar_select_contacts_add_task:hover {
+        cursor: pointer;
+    }
+    
+    .search_bar_select_contacts_add_task input {
+        background: transparent;
+        outline: none;
+        border: none;
+    }
+    
+    .search_bar_select_contacts_add_task img {
+        height: 8px;
+        width: 8px;
+        padding: 8px;
+        border-radius: 50%;
+    }
+    
+    .search_bar_select_contacts_add_task img:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.10);
+    }
+    
+    #contact_list_add_task {
+        max-height: 200px;
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        scrollbar-width: thin;          
+        scrollbar-color: lightgray white; 
+    }
+    
+    #contact_list_add_task::-webkit-scrollbar {
+        width: 12px;               
+    }
+    
+    #contact_list_add_task::-webkit-scrollbar-track {
+        background: white;        
+    }
+    
+    #contact_list_add_task::-webkit-scrollbar-thumb {
+        background-color: lightgray;    
+        border-radius: 20px;       
+        border: 3px solid white;  
+    }
+    
+    .contact_add_task {
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 4px 16px;
+        border-radius: 8px;
+    }
+    
+    .contact_add_task:hover {
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.10);
+    }
+    
+    .left_contact_add_task {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    
+    .initials_contact_add_task {
+        box-sizing: border-box;
+        font-size: 12px;
+        width: 16px;
+        height: 16px;
+        padding: 18px;
+        background-color: #D1D1D1;
+        color: white;
+        border: 2px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+    .select_contacts_add_task, .placeholder_select_contacts_add_task, .search_bar_select_contacts_add_task {
+    width: 100%; 
+    box-sizing: border-box;
+    border: 1px solid #D1D1D1;
+    background-color: white;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Stellt  sicher, dass alle spezifischen Stile, die die Breite betreffen, ebenfalls angepasst werden */
+    .placeholder_select_contacts_add_task, .search_bar_select_contacts_add_task {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 16px;
+    align-items: center;
+    gap: 10px;
+}
+
+    #contact_list_add_task {
+    max-height: 200px;
+    width: 100%; /* Stellt sicher, dass auch diese Container sich an die Breite anpassen */
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+/* Hier Ende Assigned to CSS */
+/* UPDATED CSS END */
+
+@media (max-width: 1040px) {
+    .parting_line{
+        display: none;
+    }
+    .container_headline_addtask{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .headline_addtask{
+        margin-left: 0;
+    }
+}
+@media (max-width: 900px){
+    #contentAddTask{
+        margin-left: 0px;
+        display: flex;
+    }
+    #contentAddTask{
+      flex-direction: column;
+      width: 100%;
+    }
+}
+@media (max-width: 321px){
+    
 }

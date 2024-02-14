@@ -1,8 +1,27 @@
 async function initAddTask() {
   await init();
   renderContactsAddTask();
+  cancelSubtask()
   keyPressEnter();
+//accepttask und canceltask wurde hier wie keypressEnter global hinzugefügt aber leider klappte es nicht
 
+  document.getElementById('acceptTask').addEventListener('click', acceptTask); //NOTLÖSUNG !! TIMING PROBLEM, ALLE FUNKTIONEN WERDEN GELADEN AUSSER DIESE BEIDEN (Fehlermeldung vorhanden)
+  document.getElementById('cancelSubtask').addEventListener('click', cancelSubtask); //NOTLÖSUNG !! TIMING PROBLEM, ALLE FUNKTIONEN WERDEN GELADEN AUSSER DIESE BEIDEN (Fehlermeldung vorhanden)
+
+
+
+}
+function toggleSubtaskButtons() {
+  let toggleIconAdd = document.getElementById('addingSubtask');
+  let toggleIconAccept = document.getElementById('acceptTask');
+  let toggleIconCancel = document.getElementById('cancelSubtask');
+
+  // Ausblenden von 'addingSubtask' und 'cancelSubtask'
+  toggleIconAdd.style.display = 'none';
+  toggleIconCancel.style.display = 'none';
+
+  // Anzeigen von 'acceptTask'
+  toggleIconAccept.style.display = 'block'; // oder 'inline', je nachdem, wie es vorher war
 
 }
   // Subtask hinzufügen Start //
@@ -17,9 +36,12 @@ function addSubtask() {
   <div class="hover_li">
     <li class="input_value_style">${inputValue}</li> 
    <div class="container_subtasks_hover_icons"> 
-   <img class="container_subtasks_icons_edit" src="assets/img/edit_icon.svg" alt="">
-   <img class=".container_subtasks_icons show_on_hover" src="assets/img/small_line_subtask.svg" alt="">
-   <img class="container_subtasks_icons_delete" src="assets/img/delete.svg" alt="" onclick="deleteListItem(this)">
+   <img id="editIcon" class="container_subtasks_icons_edit" src="assets/img/edit_icon.svg" onclick="editListItem()">
+   <img class="container_subtasks_icons" src="assets/img/small_line_subtask.svg">
+   <img class="container_subtasks_icons_delete" src="assets/img/delete.svg" onclick="deleteListItem(this)">
+   <img id="hideIcon" class="hide_icon" src="assets/img/accept_subtask.svg"  onclick="updateListItem()">
+
+
    </div>
   </div>
 </div>`;
@@ -29,6 +51,7 @@ function addSubtask() {
   subtaskInput.value = '';
   newSubtaskHTM = '';
   } 
+  toggleSubtaskButtons();
 }
 
 // Funktion für die Eingabe mit der Enter Taste //
@@ -45,29 +68,89 @@ function acceptTask() {
   let partingline = document.getElementById('smallLineSubtask')  
   let acceptTask = document.getElementById('acceptTask')
   let inputFieldIcon = document.getElementById('addingSubtask');
+  let subtaskInput = document.getElementById("subtaskInput").value;
+
+  // Überprüfe, ob die Länge des eingegebenen Texts mindestens 3 Zeichen beträgt
+  if (subtaskInput.length < 3) {
+    // Zeige eine Meldung an, dass mindestens 3 Zeichen erforderlich sind
+    alert("Bitte geben Sie mindestens 3 Zeichen ein.");
+    return false; // Unterbricht die Ausführung der Funktion
+  } else {
+    // Setze die Anzeige entsprechend, wenn die Eingabe gültig ist
     inputFieldIcon.style.display = 'block';
     cancelIcon.style.display = 'block';
     partingline.style.display ='block';
     acceptTask.style.display = 'none';
+
+    // Füge hier den entsprechenden Code für die Aufgabe hinzu
+    console.log("Aufgabe annehmen");
   }
+}
   
   // Funtktion Subtask wiederrufen X (löschen) //
   function cancelSubtask() {
     let subtaskInput = document.getElementById('subtaskInput');
     
     subtaskInput.value = '';
+    toggleSubtaskButtons()
   }
 
-  function deleteListItem(deleteButton) {
-    // Das übergeordnete div-Element auswählen
-    let listItemContainer = deleteButton.parentElement.parentElement.parentElement;
-    
-    // Das li-Element innerhalb des übergeordneten div-Elements auswählen und seinen Inhalt löschen
-    let listItem = listItemContainer.querySelector('.input_value_style');
-    listItem.textContent = ''; // Löscht den Inhalt des li-Elements
-    subtaskContainer.classList.add = ('hide_icon');
-
+// delete Subtask //
+function deleteListItem(element) {
+  // Übergeordnetes Element finden und entfernen
+  let listItem = element.closest('.container_hover_subtasks_icons');
+  listItem.remove();
 }
+// JavaScript
+function editListItem() {
+  // Dem ersten Element style.display none geben
+  let editIcon = document.getElementById('editIcon');
+  if (editIcon) {
+      editIcon.style.display = 'none';
+  }
+  
+  // Dem zweiten Element style.display block geben
+  let hideIcon = document.getElementById('hideIcon');
+  if (hideIcon) {
+      hideIcon.style.display = 'block';
+  }
+
+  // Das <li> Element durch ein <input> Feld ersetzen
+  let listItem = document.querySelector('.input_value_style');
+  if (listItem) {
+      let inputValue = listItem.textContent.trim();
+      let inputField = document.createElement('input');
+      inputField.type = 'text';
+      inputField.value = inputValue;
+      inputField.className = 'input_value_style';
+      inputField.disabled = false; // Input-Feld aktivieren, damit man rein schreiben kann
+      listItem.parentNode.replaceChild(inputField, listItem);
+  }
+}
+// Funktion zum Aktualisieren des <li> Elements
+function updateListItem() {
+  // Den Wert des Input-Felds abrufen
+  let inputValue = document.querySelector('.input_value_style').value;
+  
+  // Das <li> Element auswählen und den Wert aktualisieren
+  let listItem = document.querySelector('.input_value_style');
+  if (listItem) {
+      listItem.textContent = inputValue;
+      listItem.disabled = true; // Input-Feld deaktivieren, nachdem es aktualisiert wurde
+  }
+
+  // Das Bearbeiten-Icon wieder anzeigen und das Annehmen-Icon ausblenden
+  let editIcon = document.getElementById('editIcon');
+  if (editIcon) {
+      editIcon.style.display = 'block';
+  }
+  let hideIcon = document.getElementById('hideIcon');
+  if (hideIcon) {
+      hideIcon.style.display = 'none';
+  }
+}
+
+
 // Prioritäten umschalten  start //
 function toggleButton(priority) {
   let urgentButtonWhite = document.getElementById('urgentbuttonwhite');
@@ -203,6 +286,5 @@ function clearAllInputs() {
   let formattedDate = `${year}-${month}-${day}`;
 
   document.getElementById('dueDateInput').min = formattedDate;   // Setzen des "min"-Attributs auf das aktuelle Datum
-
 //deactivate past days end //
  

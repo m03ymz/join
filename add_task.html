@@ -3,120 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Task</title>
+    <script src="js/storage.js"></script>
     <link rel="icon" type="image/x-icon" href="./assets/img/logo_favicon.svg">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/add_task.css">
-    <script src="js/storage.js"></script>
+    <link rel="stylesheet" href="task_form_dummy.css">
+    <title>Document</title>
 </head>
 <body onload="initAddTask()">
-    <div w3-include-html="./assets/templates/header_and_bar_template.html"></div>
+    <div  w3-include-html="./assets/templates/header_and_bar_template.html"></div>
+
+<div id="contentAddTask">
     
-    <div class="headline_add_task"><h1>Add Task</h1></div>
-
-    <div class="main_content">
-        
-        <div class="box_left">
-            
-            <div>
-                <p class="required_red_star">Title</p>
-              <input placeholder="Enter a title" class="input_field_title" type="text" required>
-            </div>
-
-            <div>
-                <p>Description</p>
-                <textarea placeholder="Enter a Description" class="textarea_discription" name="" id="" cols="30" rows="10"></textarea>    
-            </div>
-
-            <div> 
-                <p>Assigned to</p>             
-            
-                <div class="select_contacts_add_task">
-                    <div id="contact_bar_select_contacts_add_task">
-                        <div class="placeholder_select_contacts_add_task" onclick="openContactListAddTask()">
-                            <span>Select contacts to assign</span>
-                            <img src="./assets/img/arrow_down_add_task.svg" alt="arrow down symbol">
-                        </div>
-                    </div>
-                    <div id="contact_list_add_task" style="display: none">
-                        <div id="me_contact_list_add_task"></div>
-                        <div id="contacts_contact_list_add_task"></div>
-                    </div>
-                </div>
-
-
-
-            </div>
-        </div>
-
-
-        <div class="box_right">
-            <div>
-                <p class="required_red_star">Due date</p>
-                <div class="input_with_icon">
-                    <input placeholder="DD/MM/YYYY" class="input_field_due_date" type="date" id="dueDateInput">
-                </div>
-            </div>
-
-            <div>
-                <div class="container_prio_title"><p>Prio</p></div>
-                <div class="container_prio_buttons">
-             
-                    <img id="urgentbuttonwhite" onclick="toggleButton('urgent')" class="prio_button_standard" src="assets/img/urgentwhite.svg" alt="">
-                    <img id="urgentbuttonred" onclick="toggleButton('urgent')" class="prio_button_standard hide_icon" src="assets/img/redurgent.svg" alt="">
-                    <img id="mediumbuttonorange" onclick="toggleButton('medium')" class="prio_button_standard " src="assets/img/medium_orange.svg" alt="">
-                    <img id="mediumbuttonwhite" onclick="toggleButton('medium')" class="prio_button_standard hide_icon" src="assets/img/medium_button_icon_white.svg" alt="">
-                    <img id="lowbuttonwhite" onclick="toggleButton('low')" class="prio_button_standard" src="assets/img/low_white.svg" alt="">
-                    <img id="lowbuttongreen" onclick="toggleButton('low')" class="prio_button_standard hide_icon" src="assets/img/low_button_icon_green.svg" alt="">
-                </div>
-
-            </div>
-        
-            <div>
-                <p class="required_red_star">Category</p>
-                <select class="input_assigned_to">
-                    <option selected hidden>Select task category</option>
-                    <option value="1">Technical Task</option>
-                    <option value="2">User Story</option>
-                  
-                </select>
-            </div>
-        
-            <div>
-                <div class="input_container">
-                    <p>Subtasks</p>
-                    <div class="input_field_container">
-                        <div class="input_wrapper">
-                            <input placeholder="Add new Subtask" class="input_field_subtasks" type="text" id="subtaskInput">
-                            <div class="icon-container">
-                                <img class="hide_icon" onclick="cancelSubtask()" id="cancelSubtask" src="assets/img/Cancel_subtask.svg" alt="">
-                                <img class="hide_icon" id="smallLineSubtask" src="assets/img/small_line_subtask.svg" alt="">
-                                <img id="addingSubtask" class="input_field_icon hide_icon hide_icon" onclick="addSubtask()" src="assets/img/accept_subtask.svg" alt="">
-                                <img id="acceptTask" onclick="acceptTask()" src="assets/img/Subtasks plus.svg">
-                            </div>
-                        </div>                        
-
-
-                    </div>
-                </div>
-
-                <div id="subtaskContainer"></div>  
-        </div>
-        </div>
+    <div class="container_headline_addtask">
+        <h1 class="headline_addtask">Add Task</h1>
     </div>
 
+        <form>
+            <div class="container_boxes_addtask">
 
-        <div class="container_bottom_add_task">
-            <div class="container_data_first_letter">
-                <p class="required_red_star">This field is required</p>
-            </div>    
-    
-            <div class="">
-                <button class="clear_task_button" onclick="clearAllInputs()">Clear</button>
-                <button class="create_task_button">Create Task</button>
+                                <!--LEFT SIDE START-->
+
+                <div class="left_box_addtask">
+                    <div>
+                        <p class="required_red_star">Title</p>
+                      <input placeholder="Enter a title" class="input_field_title_addtask" type="text" required>
+                    </div>
+
+                    <div>
+                        <p>Description</p>
+                        <textarea placeholder="Enter a Description" class="textarea_discription_addtask" name="" id="" cols="30" rows="10"></textarea>    
+                    </div>
+
+                    <div> 
+                        <p>Assigned to</p>             
+                    
+                        <div class="select_contacts_add_task">
+                            <div id="contact_bar_select_contacts_add_task">
+                                <div class="placeholder_select_contacts_add_task" onclick="openContactListAddTask()">
+                                    <span>Select contacts to assign</span>
+                                    <img src="./assets/img/arrow_down_add_task.svg" alt="arrow down symbol">
+                                </div>
+                            </div>
+                            <div id="contact_list_add_task" style="display: none">
+                                <div id="me_contact_list_add_task"></div>
+                                <div id="contacts_contact_list_add_task"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--LEFT SIDE END-->
+
+                <hr class="parting_line">
+
+                <!--RIGHT SIDE START-->
+                <div class="right_box_addtask">
+                    <div>
+                        <p class="required_red_star">Due date</p>
+                        <div class="input_with_icon">
+                            <input  placeholder="DD/MM/YYYY" class="input_field_due_date" type="date" id="dueDateInput" required> 
+                        </div>
+                    </div>
+                
+                    <div>
+                        <div class="container_prio_title"><p>Prio</p></div>
+                        
+                        <div class="container_prio_buttons_addtask">
+                            <img id="urgentbuttonwhite" onclick="toggleButton('urgent')" class="prio_button_standard" src="assets/img/urgentwhite.svg" alt="">
+                            <img id="urgentbuttonred" onclick="toggleButton('urgent')" class="prio_button_standard hide_icon" src="assets/img/redurgent.svg" alt="">
+                            <img id="mediumbuttonorange" onclick="toggleButton('medium')" class="prio_button_standard " src="assets/img/medium_orange.svg" alt="">
+                            <img id="mediumbuttonwhite" onclick="toggleButton('medium')" class="prio_button_standard hide_icon" src="assets/img/medium_button_icon_white.svg" alt="">
+                            <img id="lowbuttonwhite" onclick="toggleButton('low')" class="prio_button_standard" src="assets/img/low_white.svg" alt="">
+                            <img id="lowbuttongreen" onclick="toggleButton('low')" class="prio_button_standard hide_icon" src="assets/img/low_button_icon_green.svg" alt="">
+                        </div>
+        
+                    </div>
+
+                    <div>
+                        <p class="required_red_star">Category</p>
+                        <select class="input_assigned_to" >
+                            <option selected hidden >Select task category</option>
+                            <option value="1">Technical Task</option>
+                            <option value="2">User Story</option>
+                          
+                        </select>
+                    </div>
+
+                    <div>
+                        <div class="input_container">
+                            <p>Subtasks</p>
+                            <div class="input_field_container">
+                                <div class="input_wrapper">
+                                    <input placeholder="Add new Subtask" class="input_field_subtasks" type="text" id="subtaskInput">
+                                    <div class="icon-container">
+                                        <img class="hide_icon" onclick="cancelSubtask()" id="cancelSubtask" src="assets/img/Cancel_subtask.svg" alt="">
+                                        <img class="hide_icon" id="smallLineSubtask" src="assets/img/small_line_subtask.svg" alt="">
+                                        <img id="addingSubtask" class="input_field_icon  hide_icon" onclick="addSubtask()" src="assets/img/accept_subtask.svg" alt="">
+                                        <img id="acceptTask" onclick="acceptTask()" src="assets/img/Subtasks plus.svg">
+                                    </div>
+                                </div>                        
+        
+        
+                            </div>
+                        </div>
+        
+                        <div id="subtaskContainer"></div>  
+                    </div>
+
+                </div>
             </div>
-        </div>
+            
+            <div class="bottom_container_addtask">
+                <div class="container_data_first_letter">
+                    <p class="required_red_star">This field is required</p>
+                </div>
+            
+                <div class="container_clear_and_create_task">
+                    <button class="clear_task_button" onclick="clearAllInputs()">Clear</button>
+                    <button class="create_task_button">Create Task</button>
+                </div>
+            </div>
+            
+        </form>
+        
 
-    
-    <script src="script.js"></script>
-    <script src="js/add_task.js"></script>
+        
+
+</div>
+
+
+ 
+<script src="js/add_task.js"></script>    
+<script src="script.js"></script>
+</body>
+</html>
