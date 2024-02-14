@@ -64,12 +64,12 @@
         </div>
         
         <div class="distrubution_board">
-            <div id="column_board" class="column_board" ondrop="moveTo('column_board')" ondragover="allowDrop(event)">
+            <div id="column_board" class="column_board" ondrop="moveTo('column_board')" ondragleave="removeHighlight('column_board')" ondragover="allowDrop(event); highlight('column_board')">
                 <div id="empty_box" class="empty_card_board">
                     <span>No tasks To do</span>
                 </div>
             </div>
-            <div id="column_board2" class="column_board" ondrop="moveTo('column_board2')" ondragover="allowDrop(event)">
+            <div id="column_board2" class="column_board" ondrop="moveTo('column_board2')" ondragleave="removeHighlight('column_board2')" ondragover="allowDrop(event); highlight('column_board2')">
                 <div draggable="true" ondragstart="" class="card_board">
                     <div onclick="openOverlay()" class="inner_card_board">
                         <div class="card_title_board">User Story</div>
@@ -92,7 +92,7 @@
                     </div>
                 </div>
             </div>
-            <div id="column_board3" class="column_board" ondrop="moveTo('column_board3')" ondragover="allowDrop(event)">
+            <div id="column_board3" class="column_board" ondrop="moveTo('column_board3')" ondragleave="removeHighlight('column_board3')" ondragover="allowDrop(event); highlight('column_board3')">
                 <!-- <div class="card_board"></div>
                 <div class="card_board"></div> -->
                 <div draggable="true" ondragstart="" class="card_board">
@@ -132,7 +132,7 @@
                     </div>
                 </div>
             </div>
-            <div id="column_board4" class="column_board" ondrop="moveTo('column_board4')" ondragover="allowDrop(event)">
+            <div id="column_board4" class="column_board" ondrop="moveTo('column_board4')" ondragleave="removeHighlight('column_board4')" ondragover="allowDrop(event); highlight('column_board4')">
                 <!-- <div class="card_board"></div> -->
                 <div draggable="true" ondragstart="" class="card_board">
                     <div onclick="openOverlay()" class="inner_card_board">
