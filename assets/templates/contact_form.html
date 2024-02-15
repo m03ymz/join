@@ -11,14 +11,14 @@
         <div id="pfp_contact_form"><img src="/assets/img/pfp_placeholder_icon_contact_form.svg" alt="person icon"></div>
         <div class="form_right_contact_form">
             <div class="x_contact_form"><img src="./assets/img/x_icon_contact_form.svg" alt="x icon" onclick="closeContactFormContacts()"></div>
-            <form>
+            <form onsubmit="addNewContactContacts(); return false" >
                 <input required id="name_contact_form" type="text" placeholder="Name">
                 <input required id="email_contact_form" type="email" placeholder="Email">
-                <input required id="phone_contact_form" type="phone" placeholder="Phone">
+                <input required id="phone_contact_form" type="tel" placeholder="Phone">
                 <div id="buttons_contact_form">
                     <div class="add_buttons_contact_form">
                         <button onclick="closeContactFormContacts()" type="button" class="cancel_button_contact_form">Cancel</button>
-                        <button onclick="addNewContactContacts()" type="button" class="create_button_contact_form">Create contact<img src="./assets/img/check_icon_contact_form.svg" alt="check icon"></button>
+                        <button class="create_button_contact_form">Create contact<img src="./assets/img/check_icon_contact_form.svg" alt="check icon"></button>
                     </div>
                 </div>
             </form>

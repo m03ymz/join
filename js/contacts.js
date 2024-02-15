@@ -7,7 +7,6 @@ async function initContacts() {
     renderContactsContacts();
 }
 
-
 function openContactFormContacts() {
     resetContactFormContacts();
     document.getElementById('bg_contact_form').style = 'display: unset';
@@ -62,7 +61,7 @@ function renderContactsContacts() {
             let initials = getInitials(contact.name);
             if (contact.me == true) {
                 meAsContact.innerHTML = /*html*/`
-                    <div class="contact_contacts hover_contact_contacts" id="contact_contacts${j}" onclick="renderContactDetailsContacts(${j}), toggleHighlightContactContacts(${j});">
+                    <div class="contact_contacts hover_contact_contacts" id="contact_contacts${j}" onclick="renderContactDetailsContacts(${j}), toggleHighlightContactContacts(${j}), showContactDetailsContacts()">
                         <div><span class="contact_initials_contacts" style="background-color: ${contact.color}">${initials}</span></div>
                         <div>
                             <span id="contact_name_contacts">${contact.name}</span>
@@ -72,7 +71,7 @@ function renderContactsContacts() {
                 `;
             } else if (contact.name.charAt(0) === initial) {
                 contactList.innerHTML += /*html*/`
-                    <div class="contact_contacts hover_contact_contacts" id="contact_contacts${j}" onclick="renderContactDetailsContacts(${j}), toggleHighlightContactContacts(${j});">
+                    <div class="contact_contacts hover_contact_contacts" id="contact_contacts${j}" onclick="renderContactDetailsContacts(${j}), toggleHighlightContactContacts(${j}), showContactDetailsContacts()">
                         <div><span class="contact_initials_contacts" style="background-color: ${contact.color}">${initials}</span></div>
                         <div>
                             <span id="contact_name_contacts">${contact.name}</span>
@@ -142,6 +141,7 @@ function renderContactDetailsContacts(j) {
     let contact = currentUser.contacts[j];
     let initials = getInitials(contact.name);
     document.getElementById('contact_details_contacts').innerHTML = /*html*/`
+                    <div class="blue_arrow_left_mobile_right_contacts" onclick="showLeftContacts(), toggleHighlightContactContacts(${j})"><img src="./assets/img/blue_arrow_left.svg" alt="blue arrow left icon"></div>
         <div class="top_contact_details_contacts">
             <div>
                 <span id="initials_contact_details_contacts" style = "background-color: ${contact.color}">${initials}</span>
@@ -169,6 +169,10 @@ function renderContactDetailsContacts(j) {
                 <a id="phone_contact_information_contact_details_contacts" href="tel:${contact.phone}">${contact.phone}</a>
             </div>
         </div>
+        <div id="mobile_options_contact_contacts" style = "display: none">
+                <div><span class="edit_mobile_options_contact_contacts" onclick="editContactContacts(${j}), hideContactDetailsOptionsContacts()">Edit</span></div>
+                <div><span class="delete_mobile_options_contact_contacts" onclick="deleteContactContacts(${j}), hideContactDetailsOptionsContacts()">Delete</span></div>
+        </div>
     `;
 }
 
@@ -179,7 +183,7 @@ function editContactContacts(j) {
     openContactFormContacts();
     document.getElementById('title_left_contact_form').innerHTML = 'Edit contact';
     document.getElementById('subheading_contact_form').style = 'display: none';
-    document.getElementById('pfp_contact_form').innerHTML = /*html*/`<span id="initials_contact_details_contacts" style = "background-color: ${contact.color}">${initials}</span>`;
+    document.getElementById('pfp_contact_form').innerHTML = /*html*/`<span class="initials_contact_details_contacts" style = "background-color: ${contact.color}">${initials}</span>`;
     document.getElementById('name_contact_form').value = contact.name;
     document.getElementById('email_contact_form').value = contact.email;
     document.getElementById('phone_contact_form').value = contact.phone;
@@ -232,4 +236,30 @@ async function replaceContactsContacts(j) {
     renderContactDetailsContacts(j);
     addHighlightContactContacts(j);
     closeContactFormContacts();
+}
+
+
+function showContactDetailsContacts() {
+    if (window.innerWidth <= 720) {
+    document.getElementById('left_contacts').style = 'display: none';
+    document.getElementById('right_contacts').style = 'display: flex';
+    }
+}
+
+
+function showLeftContacts() {
+    document.getElementById('left_contacts').style = 'display: unset';
+    document.getElementById('right_contacts').style = 'display: none';
+}
+
+function showContactDetailsOptionsContacts() {
+    if (window.innerWidth <= 720) {
+    document.getElementById('mobile_options_contact_contacts').style = 'display: flex';
+    }
+}
+
+function hideContactDetailsOptionsContacts() {
+    if (window.innerWidth <= 720) {
+        document.getElementById('mobile_options_contact_contacts').style = 'display: none';
+    }
 }

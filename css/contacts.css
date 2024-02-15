@@ -49,6 +49,7 @@
 
 #me_as_contact {
     box-sizing: border-box;
+    height: 100px;
     padding: 16px 40px;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.10);
 }
@@ -181,7 +182,6 @@
 }
 
 .right_contacts {
-    border: 4px dotted red;
     width: 100%;
     box-sizing: border-box;
     margin-left: 80px;
@@ -193,7 +193,6 @@
 }
 
 .top_right_contacts {
-    border: 4px dotted rgb(0, 21, 255);
     width: 100%;
     display: flex;
     align-items: center;
@@ -224,7 +223,6 @@
 }
 
 .top_contact_details_contacts {
-    border: 4px dotted green;
     display: flex;
     align-items: center;
     gap: 32px;
@@ -241,6 +239,19 @@
     justify-content: center;
     align-items: center;
     font-size: 40px;
+}
+
+.initials_contact_details_contacts {
+    background-color: orange;
+    color: white;
+    border: 4px solid white;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
 }
 
 .name_and_options_contact_details_contacts {
@@ -361,15 +372,22 @@
 
 
 #contact_form {
+    box-sizing: border-box;
     width: 1000px;
     position: absolute;
-    left: 50%;
+    z-index: 4;
+    left: 100%;
     top: 50%;
     transform: translate(-50%, -50%);
-    z-index: 4;
     aspect-ratio: 2 / 1;
-    box-sizing: border-box;
     display: flex;
+    animation: slideToLeft 150ms forwards; 
+}
+
+@keyframes slideToLeft {
+    to {
+      left: 50%; 
+    }
 }
 
 
@@ -547,8 +565,8 @@
 
 .delete_button_contact_form {
     display: flex;
-    height: 32px;
-    padding: 24px 16px;
+    height: 40px;
+    padding: 8px 16px;
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -556,7 +574,7 @@
     border: 1px solid #2A3647;
     background: white;
     color: #2A3647;
-    font-size: 18px;
+    font-size: 20px;
     transition: all 150ms ease-in-out;
 }
 
@@ -629,7 +647,99 @@
     background-color: #29ABE2;
 }
 
+#mobile_options_contact_contacts {
+    box-sizing: border-box;
+    background-color: white;
+    height: 100px;
+    width: 120px;
+    position: absolute;
+    z-index: 3;
+    bottom: 100px;
+    left: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    color: #2A3647;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transition: all 150ms ease-in-out;
+    padding: 16px;
+    animation: slideToLeftOptions 150ms forwards; 
+}
 
+@keyframes slideToLeftOptions {
+    to {
+        left: 80%;
+    }
+}
+
+.edit_mobile_options_contact_contacts {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 34px;
+    background-image: url(/assets/img/edit_icon_contacts.svg);
+    background-repeat: no-repeat;
+    background-position: left 8px center;
+    display: flex;
+    align-items: center;
+    height: 16px;
+    font-size: 15px;
+    border-radius: 8px;
+}
+
+.edit_mobile_options_contact_contacts:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.10);
+    color: #29ABE2;
+    background-image: url(/assets/img/blue_edit_icon_contacts.svg);
+}
+
+.delete_mobile_options_contact_contacts {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 34px;
+    background-image: url(/assets/img/delete_icon_contacts.svg);
+    background-repeat: no-repeat;
+    background-position: left 8px center;
+    display: flex;
+    align-items: center;
+    height: 16px;
+    font-size: 15px;
+    border-radius: 8px;
+}
+
+.delete_mobile_options_contact_contacts:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.10);
+    color: #29ABE2;
+    background-image: url(/assets/img/blue_delete_icon_contacts.svg);
+}
+
+.blue_arrow_left_mobile_right_contacts {
+    width: 100%;
+    display: none;
+    justify-content: flex-end;
+    position: absolute;
+    z-index: 1;
+    top: 160px;
+    right: 32px;
+}
+
+.blue_arrow_left_mobile_right_contacts img {
+    height: 24px;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.blue_arrow_left_mobile_right_contacts img:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.10);
+}
 
 
 @media(max-width: 1350px) {
@@ -729,34 +839,29 @@
         font-size: 15px;
         padding-top: 20px;
         padding-bottom: 20px;
-
     }
 
     .create_button_contact_form {
         font-size: 15px;
         padding-top: 20px;
         padding-bottom: 20px;
-
     }
 
     .delete_button_contact_form {
         font-size: 15px;
         padding-top: 20px;
         padding-bottom: 20px;
-
     }
 
     .save_button_contact_form {
         font-size: 15px;
         padding-top: 20px;
         padding-bottom: 20px;
-
     }
 
     .x_contact_form img {
         margin-top: -60px;
     }
-
 }
 
 @media(max-width: 1000px) {
@@ -774,7 +879,7 @@
     }
 
     .top_left_contacts button {
-        width: 260px;
+        width: 280px;
     }
 }
 
@@ -800,9 +905,20 @@
 
     #contact_form {
         width: unset;
-        height: 88%;
+        max-width: 90%;
+        max-height: 88%;
+        left: 50%;
+        top: 100%;
+        height: 100%;
         aspect-ratio: 1 / 2;
         flex-direction: column;
+        animation: slideToTop 150ms forwards; 
+    }
+
+    @keyframes slideToTop {
+        to {
+          top: 50%; 
+        }
     }
 
     .left_contact_form {
@@ -831,6 +947,10 @@
     .right_contact_form {
         height: 54%;
         width: unset;
+        padding: unset;
+        padding-left: 56px;
+        padding-right: 56px;
+        padding-bottom: 56px;
         border-top-right-radius: unset;
         border-bottom-left-radius: 30px;
         flex-direction: column;
@@ -839,7 +959,7 @@
     }
 
     #pfp_contact_form {
-        margin-top: -14vh;
+        margin-top: -8vh;
     }
 
     #pfp_contact_form img {
@@ -885,9 +1005,29 @@
         border-radius: 10px;
     }
 
+    .edit_buttons_contact_form {
+        justify-content: center;
+    }
+
+    .delete_button_contact_form {
+        height: 48px;
+        font-size: 18px;
+        padding-top: 8px;    
+        padding-bottom: 8px;   
+    }
+
+    .save_button_contact_form {
+        height: 48px;
+        font-size: 18px;
+        padding-top: 8px;    
+        padding-bottom: 8px;   
+    }
+}
+
 @media(max-width: 720px) {
     .right_contacts {
         display: none;
+        margin-right: 40px;
     }
 
     .content_contacts {
@@ -921,6 +1061,14 @@
     .mobile_add_contact_button_contacts {
         display: flex;
     }
+
+    .options_contact_details_contacts {
+        display: none;
+    }
+
+    .blue_arrow_left_mobile_right_contacts {
+        display: flex;
+    }
 }
 
 @media(max-width: 600px) {
@@ -934,12 +1082,101 @@
 }
 
 @media(max-width: 480px) {
+    .right_contacts {
+        margin-right: 16px;
+        margin-left: 16px;
+    }
+
+    .content_contacts h1 {
+        font-size: 48px;
+    }
+
+    #name_contact_details_contacts {
+        font-size: 24px;
+    }
+
+    #initials_contact_details_contacts {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+    }
+
+    .initials_contact_details_contacts {
+        width: 100px;
+        height: 100px;
+        font-size: 40px;
+    }
+
     #me_as_contact {
         padding: 16px 10%;
     }
 
     #contact_list_contacts {
         padding: 0px 10%;
+    }
+
+    #contact_form {
+        width: 300px;
+        max-width: 90%;
+        max-height: 88%;
+        height: 600px;
+        aspect-ratio: 1 / 2;
+        flex-direction: column;
+    }
+
+    .right_contact_form {
+        padding-left: 32px;
+        padding-right: 32px;
+        padding-bottom: 32px;
+        gap: 8px;
+    }
+
+    #pfp_contact_form {
+        margin-top: -60px;
+    }
+
+    #pfp_contact_form img {
+        height: 100px;
+    }
+    
+    .form_right_contact_form form {
+        height: 100%;
+        gap: 16px;
+    }
+
+    .create_button_contact_form {
+        height: 40px;
+        padding: 1vh 16px;
+        font-size: 18px;
+        border-radius: 10px;
+    }
+
+    #title_left_contact_form {
+        font-size: 32px;
+    }
+
+    #subheading_contact_form {
+        font-size: 15px;
+    }
+
+    .mobile_x_contact_form img {
+        margin-top: -16px;
+        margin-right: unset;
+        height: 24px;
+    }
+
+    .delete_button_contact_form {
+        height: 40px;
+        font-size: 16px;
+        padding-top: 8px;    
+        padding-bottom: 8px;   
+    }
+
+    .save_button_contact_form {
+        height: 40px;
+        font-size: 16px;
+        padding-top: 8px;    
+        padding-bottom: 8px;   
     }
 }
 
