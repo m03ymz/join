@@ -81,10 +81,7 @@ button {
     margin-right: 16px;
 }
 
-.container_bottom_add_task {
-    display: flex;
-    align-items: center;
-}
+
 
 .hide_icon {
     display: none;
@@ -250,13 +247,12 @@ textarea:hover, select:hover {
 .container_subtasks_hover_icons { /* wahrscheinlich nicht die beste lösung*/
     display: flex;
     justify-content: flex-end;
-    width: 20%;
-    margin-left: 125px;
+    width: 100%;
     opacity: 0;
-    position: absolute;
+    position: sticky;
     z-index: 99;
-    
 }
+
 .container_subtasks_hover_icons:hover{ /* wahrscheinlich nicht die beste lösung*/
     opacity: 1;
   
