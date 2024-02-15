@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/add_task.css">
     <script src="js/storage.js"></script>
-
+    <script src="js/board.js"></script>
 </head>
 
 <body onload="initAddTask()">
@@ -19,8 +19,8 @@
     <div class="container_headline_addtask">
         <h1 class="headline_addtask">Add Task</h1>
     </div>
+    <form onsubmit="createTaskArray(targetColumnId); redirect('board'); return false;">
 
-        <form>
             <div class="container_boxes_addtask">
 
                                 <!--LEFT SIDE START-->
@@ -28,12 +28,12 @@
                 <div class="left_box_addtask">
                     <div>
                         <p class="required_red_star">Title</p>
-                      <input placeholder="Enter a title" class="input_field_title_addtask" type="text" required>
+                      <input id="title" placeholder="Enter a title" class="input_field_title_addtask" type="text" required>
                     </div>
 
                     <div>
                         <p>Description</p>
-                        <textarea placeholder="Enter a Description" class="textarea_discription_addtask" name="" id="" cols="30" rows="10"></textarea>    
+                        <textarea id="description" placeholder="Enter a Description" class="textarea_discription_addtask" cols="30" rows="10"></textarea>    
                     </div>
 
                     <div> 
@@ -62,7 +62,7 @@
                     <div>
                         <p class="required_red_star">Due date</p>
                         <div class="input_with_icon">
-                            <input  placeholder="DD/MM/YYYY" class="input_field_due_date" type="date" id="dueDateInput" required> 
+                            <input  id="date" placeholder="DD/MM/YYYY" class="input_field_due_date" type="date" id="dueDateInput" required required> 
                         </div>
                     </div>
                 
@@ -82,10 +82,10 @@
 
                     <div>
                         <p class="required_red_star">Category</p>
-                        <select class="input_assigned_to" >
+                        <select id="category_task" class="input_assigned_to" required >
                             <option selected hidden >Select task category</option>
-                            <option value="1">Technical Task</option>
-                            <option value="2">User Story</option>
+                            <option value="Technical Task">Technical Task</option>
+                            <option value="User Story">User Story</option>
                           
                         </select>
                     </div>
@@ -123,15 +123,10 @@
             
                 <div class="container_clear_and_create_task">
                     <button class="clear_task_button" onclick="clearAllInputs()">Clear</button>
-                    <button class="create_task_button">Create Task</button>
+                    <button class="create_task_button" type="submit">Create Task</button>
                 </div>
             </div>
-            
         </form>
-        
-
-        
-
 </div>
 
 

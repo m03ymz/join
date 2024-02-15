@@ -37,10 +37,10 @@ async function addNewContactContacts() {
         'color': color,
         'me': false
     };
-    console.log(currentUser);
     currentUser.contacts.push(contact);
     await saveUsers();
-    await initContacts();
+    extractContactsInitials();
+    renderContactsContacts();
     closeContactFormContacts();
 }
 
@@ -211,7 +211,8 @@ function resetContactFormContacts() {
 async function deleteContactContacts(j) {
     currentUser.contacts.splice(j, 1);
     await saveUsers();
-    await initContacts();
+    extractContactsInitials();
+    renderContactsContacts();
     document.getElementById('contact_details_contacts').innerHTML = '';
     closeContactFormContacts();
 }
@@ -226,7 +227,8 @@ async function replaceContactsContacts(j) {
     contact.email = email;
     contact.phone = phone;
     await saveUsers();
-    await initContacts();
+    extractContactsInitials();
+    renderContactsContacts();
     renderContactDetailsContacts(j);
     addHighlightContactContacts(j);
     closeContactFormContacts();

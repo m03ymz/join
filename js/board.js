@@ -1,6 +1,9 @@
 async function initBoard() {
     await init();
+    // await createStaticTasks();
+    renderTask();
     renderContactsAddTask();
+    
 }
 
 let targetColumnId;
@@ -17,7 +20,7 @@ function openOverlay(taskId){
     //     let tasks = columns[targetColumnId];
     //     let taskNumber = tasks[i];
 
-    let task = tasks[taskId];
+    let task = currentUser.tasks[taskId];
     let targetColumnId = task.column;
     if (document.getElementById(targetColumnId)) {
         let backgroundColor = (task.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
@@ -106,10 +109,9 @@ function closeTaskFormOnBoard(){
     document.getElementById(`body`).classList.remove('overflow_hidden');
 }
 
-let tasks = [];
 let taskIdCounter = 0;
 
-function createTaskArray(targetColumnId) {
+async function createTaskArray(targetColumnId) {
     targetColumnId = (typeof targetColumnId === 'undefined') ? 'column_board' : targetColumnId;
     let title = document.getElementById('title');
     let description = document.getElementById('description');
@@ -125,23 +127,79 @@ function createTaskArray(targetColumnId) {
         "subtask": subtask.value,
         "column": targetColumnId,
         "id": taskIdCounter,
+        "contacts": selectedContactsAddTask,
         "prio": selectedPriority
         // "id": id+1
         // "category": targetColumnId
     }
-    tasks.push(task);
+    currentUser.tasks.push(task);
     taskIdCounter++;
     // columns[targetColumnId].push(task);
     // // console.log(tasks);
     title.value = '';
     description.value = '';
     date.value = '';
+    await saveUsers();
     renderTask();
     // targetColumnId = 'column_board';
 }
 
+async function createStaticTasks() {
+    let task = [{
+        "title": 'Kochwelt Page & Recipe Recommender',
+        "description": 'Build start page with recipe recommendation...',
+        "date": '20.12.2024',
+        "category": 'User Story',
+        "subtask": 'xxx',
+        "column": 'column_board2',
+        "id": 0
+        // "id": id+1
+        // "category": targetColumnId
+    },
+    {
+        "title": 'aaa',
+        "description": 'ggg',
+        "date": '20.12.2024',
+        "category": 'User Story',
+        "subtask": 'xxx',
+        "column": 'column_board3',
+        "id": 1
+        // "id": id+1
+        // "category": targetColumnId
+    },
+    {
+        "title": 'aaa',
+        "description": 'ggg',
+        "date": '20.12.2024',
+        "category": 'User Story',
+        "subtask": 'xxx',
+        "column": 'column_board3',
+        "id": 2
+        // "id": id+1
+        // "category": targetColumnId
+    },
+    {
+        "title": 'aaa',
+        "description": 'ggg',
+        "date": '20.12.2024',
+        "category": 'User Story',
+        "subtask": 'xxx',
+        "column": 'column_board4',
+        "id": 3
+        // "id": id+1
+        // "category": targetColumnId
+    }]
+    // currentUser.tasks.splice(0,1);
+    // currentUser.tasks.push(...task);
+    await saveUsers();
+}
+
+function addSelectedContactsToBoard() {
+    currentUser.tasks.push(selectedContactsAddTask)
+}
+
 function renderTask() {
-    let columnTasks1 = tasks.filter(task => task.column == 'column_board');
+    let columnTasks1 = currentUser.tasks.filter(task => task.column == 'column_board');
     document.getElementById(`column_board`).innerHTML = '';
     
     for (let i = 0; i < columnTasks1.length; i++) {
@@ -163,7 +221,7 @@ function renderTask() {
                 <div class="card_img_main_board">
                     <div class="card_img_box_board">
                         <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></div>
-                        <div class="card_img_board"><img  src="./assets/img/profile2.svg" alt=""></div>
+                        <div class="card_img_board"><img src="./assets/img/profile2.svg" alt=""></div>
                         <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
                     </div>
                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
@@ -173,7 +231,7 @@ function renderTask() {
         `;
     }
 
-    let columnTasks2 = tasks.filter(task => task.column == 'column_board2');
+    let columnTasks2 = currentUser.tasks.filter(task => task.column == 'column_board2');
     document.getElementById(`column_board2`).innerHTML = '';
     // let countColumn1 = columnTasks1.length;
     
@@ -207,7 +265,7 @@ function renderTask() {
         `;
     }
 
-    let columnTasks3 = tasks.filter(task => task.column == 'column_board3');
+    let columnTasks3 = currentUser.tasks.filter(task => task.column == 'column_board3');
     document.getElementById(`column_board3`).innerHTML = '';
     // let countColumn1 = columnTasks1.length;
     
@@ -241,7 +299,7 @@ function renderTask() {
         `;
     }
 
-    let columnTasks4 = tasks.filter(task => task.column == 'column_board4');
+    let columnTasks4 = currentUser.tasks.filter(task => task.column == 'column_board4');
     document.getElementById(`column_board4`).innerHTML = '';
     // let countColumn1 = columnTasks1.length;
     
@@ -322,11 +380,12 @@ function clearEmptyAlert() {
     
 }
 
-function deleteTask(taskId) {
-    tasks.splice(taskId, 1);
-    for (let i = taskId; i < tasks.length; i++) {
-        tasks[i].id = i; // Ändere die ID der Aufgabe
+async function deleteTask(taskId) {
+    currentUser.tasks.splice(taskId, 1);
+    for (let i = taskId; i < currentUser.tasks.length; i++) {
+        currentUser.tasks[i].id = i; // Ändere die ID der Aufgabe
     }
+    await saveUsers();
     renderTask();
     closeOverlay();
     taskIdCounter--;
@@ -394,6 +453,7 @@ function clearTask() {
 //     }
 //     }
 
+// alte suchfunktion
 
 // document.addEventListener('DOMContentLoaded', function() {
 //     document.getElementById('search_input_task').addEventListener('keyup', function() {
@@ -401,58 +461,58 @@ function clearTask() {
 //     });
 // });
 
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('search_input_task').addEventListener('keyup', function() {
-        searchTask();
-    });
-});
+// document.addEventListener('DOMContentLoaded', function() {
+//     document.getElementById('search_input_task').addEventListener('keyup', function() {
+//         searchTask();
+//     });
+// });
 
-function searchTask() {
-    let searchInput = document.getElementById('search_input_task').value.toLowerCase();
-    let tasks = columns[targetColumnId];
-    let filteredTasks = tasks.filter(task => task.title.toLowerCase().includes(searchInput));
+// function searchTask() {
+//     let searchInput = document.getElementById('search_input_task').value.toLowerCase();
+//     let tasks = columns[targetColumnId];
+//     let filteredTasks = currentUser.tasks.filter(task => task.title.toLowerCase().includes(searchInput));
     
-    renderFilteredTasks('column_board', filteredTasks);
-    renderFilteredTasks('column_board2', filteredTasks);
-    renderFilteredTasks('column_board3', filteredTasks);
-}
+//     renderFilteredTasks('column_board', filteredTasks);
+//     renderFilteredTasks('column_board2', filteredTasks);
+//     renderFilteredTasks('column_board3', filteredTasks);
+// }
 
-function renderFilteredTasks(targetColumnId, filteredTasks) {
-    // let targetColumnId = 'column_board'; // Annahme, dass es nur eine Spalte gibt, ändere dies entsprechend deiner Struktur
-    // document.getElementById(`${targetColumnId}`).innerHTML = '';
-    let columnElement = document.getElementById(targetColumnId);
-    columnElement.innerHTML = '';
+// function renderFilteredTasks(targetColumnId, filteredTasks) {
+//     // let targetColumnId = 'column_board'; // Annahme, dass es nur eine Spalte gibt, ändere dies entsprechend deiner Struktur
+//     // document.getElementById(`${targetColumnId}`).innerHTML = '';
+//     let columnElement = document.getElementById(targetColumnId);
+//     columnElement.innerHTML = '';
 
-    for (let i = 0; i < filteredTasks.length; i++) {
-        let taskNumber = filteredTasks[i];
-        let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
-        document.getElementById(`${targetColumnId}`).innerHTML += /*html*/ `
-        <div id="new_content${i}" draggable="true" ondragstart="startDragging(${i})" class="card_board2">
-            <div onclick="openOverlay(${i})" class="inner_card_board2">
-                <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
-                <div class="card_text_board"><b>${taskNumber.title}</b></div>
-                <div class="card_text2_board">${taskNumber.description}</div>
-                <div class="progressbar_box_board">
-                    <div class="progressbar_board">
-                        <div class="progressbar_filter_board"></div>
-                    </div>
-                    <div class="progressbar_text_board">1/2 Subtasks</div>
-                </div>
-                <div class="card_img_main_board">
-                    <div class="card_img_box_board">
-                        <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></div>
-                        <div class="card_img_board"><img  src="./assets/img/profile2.svg" alt=""></div>
-                        <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
-                    </div>
-                    <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
-                </div>
-            </div>
-        </div>
-        `;
-    }  
+//     for (let i = 0; i < filteredTasks.length; i++) {
+//         let taskNumber = filteredTasks[i];
+//         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
+//         document.getElementById(`${targetColumnId}`).innerHTML += /*html*/ `
+//         <div id="new_content${i}" draggable="true" ondragstart="startDragging(${i})" class="card_board2">
+//             <div onclick="openOverlay(${i})" class="inner_card_board2">
+//                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
+//                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
+//                 <div class="card_text2_board">${taskNumber.description}</div>
+//                 <div class="progressbar_box_board">
+//                     <div class="progressbar_board">
+//                         <div class="progressbar_filter_board"></div>
+//                     </div>
+//                     <div class="progressbar_text_board">1/2 Subtasks</div>
+//                 </div>
+//                 <div class="card_img_main_board">
+//                     <div class="card_img_box_board">
+//                         <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></div>
+//                         <div class="card_img_board"><img  src="./assets/img/profile2.svg" alt=""></div>
+//                         <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
+//                     </div>
+//                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
+//                 </div>
+//             </div>
+//         </div>
+//         `;
+//     }  
 
     
-}
+// }
 
 // function renderFilteredTasks2(filteredTasks) {
 //     let targetColumnId = 'column_board2'; // Annahme, dass es nur eine Spalte gibt, ändere dies entsprechend deiner Struktur
@@ -534,8 +594,9 @@ function allowDrop(ev) {
     ev.preventDefault();
 }
 
-function moveTo(category) {
-    tasks[currentDraggedElement]['column'] = category;
+async function moveTo(category) {
+    currentUser.tasks[currentDraggedElement]['column'] = category;
+    await saveUsers();
     renderTask();
 }
 
