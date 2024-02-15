@@ -67,6 +67,8 @@ function acceptTask() {
   let acceptTask = document.getElementById('acceptTask')
   let inputFieldIcon = document.getElementById('addingSubtask');
   let subtaskInput = document.getElementById("subtaskInput").value;
+  document.getElementById('acceptTask').addEventListener('click', acceptTask); //NOTLÖSUNG !! TIMING PROBLEM, ALLE FUNKTIONEN WERDEN GELADEN AUSSER DIESE BEIDEN (Fehlermeldung vorhanden)
+  document.getElementById('cancelSubtask').addEventListener('click', cancelSubtask); //NOTLÖSUNG !! TIMING PROBLEM, ALLE FUNKTIONEN WERDEN GELADEN AUSSER DIESE BEIDEN (Fehlermeldung vorhanden)
 
   // Überprüfe, ob die Länge des eingegebenen Texts mindestens 3 Zeichen beträgt
   if (subtaskInput.length < 3) {
@@ -224,7 +226,6 @@ function selectContactAddTask(i) {
       checkbox.checked = true;
       addSelectedContactsAddTask(i);
   }
-  console.log(selectedContactsAddTask);
 }
 
 function checkSelectedContactsAddTask(i) {
@@ -302,15 +303,15 @@ function clearAllInputs() {
   }
 }
 
+
 //deactivate past days start //
-  let currentDate = new Date(); // JavaScript, um das aktuelle Datum zu erhalten
+let currentDate = new Date(); // JavaScript, um das aktuelle Datum zu erhalten
 
-  let year = currentDate.getFullYear();   // Formatierung des Datums für das HTML "date" Input-Element
-  let month = ('0' + (currentDate.getMonth() + 1)).slice(-2); // Monat beginnt bei 0
-  let day = ('0' + currentDate.getDate()).slice(-2);
+let year = currentDate.getFullYear();   // Formatierung des Datums für das HTML "date" Input-Element
+let month = ('0' + (currentDate.getMonth() + 1)).slice(-2); // Monat beginnt bei 0
+let day = ('0' + currentDate.getDate()).slice(-2);
 
-  let formattedDate = `${year}-${month}-${day}`;
+let formattedDate = `${year}-${month}-${day}`;
 
-  document.getElementById('dueDateInput').min = formattedDate;   // Setzen des "min"-Attributs auf das aktuelle Datum
+document.getElementById('date').min = formattedDate;   // Setzen des "min"-Attributs auf das aktuelle Datum
 //deactivate past days end //
- 

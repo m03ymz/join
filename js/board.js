@@ -3,14 +3,14 @@ async function initBoard() {
     // currentUser.tasks = [];
     // await saveUsers();
     renderTask();
-    renderContactsAddTask();
-    
+    renderContactsAddTask('');
 }
+
 
 let targetColumnId;
 // let currentDraggedElement;
 
-function openOverlay(taskId){
+function openOverlay(taskId, j){
     // let clickedElement = event.target;
     // while (clickedElement && !clickedElement.classList.contains('column_board')) {
     //     clickedElement = clickedElement.parentElement;
@@ -48,20 +48,7 @@ function openOverlay(taskId){
             <span class="textcolor_taskoverlay">Assigned To:</span>
         </div>
         <div>
-            <div class="task_overlay_assigned">
-                <div class="assigned_profiles">
-                    <img src="./assets/img/profile1.svg" alt="">
-                    <span>Emmanuel Mauer</span>
-                </div>
-                <div class="assigned_profiles">
-                    <img src="./assets/img/profile2.svg" alt="">
-                    <span>Marcel Bauer</span>
-                </div>
-                <div class="assigned_profiles">
-                    <img src="./assets/img/profile3.svg" alt="">
-                    <span>Anton Mayer</span>
-                </div>
-            </div>
+            <div class="task_overlay_assigned" id="task_overlay_assigned${taskId}"></div>
             <div class="subtasks_taskoverlay">
                 <span>Subtasks</span>
                 <div><input type="checkbox"><span>Implement Recipe Recommendation</span></div>
@@ -80,8 +67,17 @@ function openOverlay(taskId){
             </div>
         </div>
     </div>
-    
     `;
+    // for (let j = 0; j < task.contacts.length; j++) {
+        let contact = task.contacts[j];    
+        let initials = getInitials(contact.name)
+        document.getElementById(`task_overlay_assigned${taskId}`).innerHTML += /*html*/`
+            <div class="assigned_profiles">
+                    <span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span>
+                    <span>${contact.name}</span>
+            </div>
+        `;
+    // }
     document.getElementById(`task-overlay`).style.right = "500px";
     document.getElementById(`overlay`).style.display = "flex";
     document.getElementById(`content-board`).classList.add('pointer_events-none');
@@ -119,6 +115,8 @@ async function createTaskArray(targetColumnId) {
     let date = document.getElementById('date');
     let category = document.getElementById('category_task');
     let subtask = document.getElementById('subtaskInput');
+
+    
     
     let task = {
         "title": title.value,
@@ -156,10 +154,11 @@ function renderTask() {
     for (let i = 0; i < columnTasks1.length; i++) {
         let taskNumber = columnTasks1[i];
         let taskId = taskNumber.id;
+        let j;
         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
         document.getElementById(`column_board`).innerHTML += /*html*/ `
         <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
-            <div onclick="openOverlay(${taskId})" class="inner_card_board2">
+            <div onclick="openOverlay(${taskId}, ${j})" class="inner_card_board2">
                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
                 <div class="card_text2_board">${taskNumber.description}</div>
@@ -170,16 +169,19 @@ function renderTask() {
                     <div class="progressbar_text_board">1/2 Subtasks</div>
                 </div>
                 <div class="card_img_main_board">
-                    <div class="card_img_box_board">
-                        <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></div>
-                        <div class="card_img_board"><img src="./assets/img/profile2.svg" alt=""></div>
-                        <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
-                    </div>
+                    <div class="card_img_box_board" id="card_img_box_board${i}"></div>
                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
                 </div>
             </div>
         </div>
         `;
+        for (let j = 0; j < taskNumber.contacts.length; j++) {
+            let contact = taskNumber.contacts[j];    
+            let initials = getInitials(contact.name)
+            document.getElementById(`card_img_box_board${i}`).innerHTML += /*html*/`
+                <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
+            `;
+        }
     }
 
     let columnTasks2 = currentUser.tasks.filter(task => task.column == 'column_board2');
@@ -214,6 +216,13 @@ function renderTask() {
             </div>
         </div>
         `;
+        for (let j = 0; j < taskNumber.contacts.length; j++) {
+            let contact = taskNumber.contacts[j];    
+            let initials = getInitials(contact.name)
+            document.getElementById(`card_img_box_board${i}`).innerHTML += /*html*/`
+                <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
+            `;
+        }
     }
 
     let columnTasks3 = currentUser.tasks.filter(task => task.column == 'column_board3');
@@ -248,6 +257,13 @@ function renderTask() {
             </div>
         </div>
         `;
+        for (let j = 0; j < taskNumber.contacts.length; j++) {
+            let contact = taskNumber.contacts[j];    
+            let initials = getInitials(contact.name)
+            document.getElementById(`card_img_box_board${i}`).innerHTML += /*html*/`
+                <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
+            `;
+        }
     }
 
     let columnTasks4 = currentUser.tasks.filter(task => task.column == 'column_board4');
@@ -282,6 +298,13 @@ function renderTask() {
             </div>
         </div>
         `;
+        for (let j = 0; j < taskNumber.contacts.length; j++) {
+            let contact = taskNumber.contacts[j];    
+            let initials = getInitials(contact.name)
+            document.getElementById(`card_img_box_board${i}`).innerHTML += /*html*/`
+                <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
+            `;
+        }
     }
 
     clearEmptyAlert();
