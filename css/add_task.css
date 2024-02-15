@@ -402,6 +402,15 @@ textarea:hover, select:hover {
     pointer-events: none;
 }
 
+.select_contacts_add_task, .placeholder_select_contacts_add_task, .search_bar_select_contacts_add_task {
+    width: 100%; 
+    box-sizing: border-box;
+    border: 1px solid #D1D1D1;
+    background-color: white;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
 /* ENDE ASSIGNED TO CSS */
 
 
@@ -431,96 +440,9 @@ textarea:hover, select:hover {
     width: 300px;
 }
 
-
-
-
-    
-/* Ab hier Assigned to CSS */
-    
-    .search_bar_select_contacts_add_task:hover {
-        cursor: pointer;
-    }
-    
-    .search_bar_select_contacts_add_task input {
-        background: transparent;
-        outline: none;
-        border: none;
-    }
-    
-    .search_bar_select_contacts_add_task img {
-        height: 8px;
-        width: 8px;
-        padding: 8px;
-        border-radius: 50%;
-    }
-    .prio_button_standard:hover{
-    }
-    
-    .search_bar_select_contacts_add_task img:hover {
-        cursor: pointer;
-        background-color: rgba(0, 0, 0, 0.10);
-    }
-    
-    #contact_list_add_task {
-        max-height: 200px;
-        box-sizing: border-box;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        overflow-y: auto;
-        scrollbar-width: thin;          
-        scrollbar-color: lightgray white; 
-    }
-    
-    #contact_list_add_task::-webkit-scrollbar {
-        width: 12px;               
-    }
-    
-    #contact_list_add_task::-webkit-scrollbar-track {
-        background: white;        
-    }
-    
-    #contact_list_add_task::-webkit-scrollbar-thumb {
-        background-color: lightgray;    
-        border-radius: 20px;       
-        border: 3px solid white;  
-    }
-    
-    .contact_add_task {
-        box-sizing: border-box;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 4px 16px;
-        border-radius: 8px;
-    }
-    
-    .contact_add_task:hover {
-        cursor: pointer;
-        background-color: rgba(0, 0, 0, 0.10);
-    }
-    
-    .left_contact_add_task {
-        display: flex;
-        align-items: center;
-        gap: 16px;
-    }
-    
-    .initials_contact_add_task {
-        box-sizing: border-box;
-        font-size: 12px;
-        width: 16px;
-        height: 16px;
-        padding: 18px;
-        background-color: #D1D1D1;
-        color: white;
-        border: 2px solid white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-    }
-
+.checkbox_contact_add_task[type="checkbox"] {
+    pointer-events: none;
+}
 
 /* Stellt  sicher, dass alle spezifischen Stile, die die Breite betreffen, ebenfalls angepasst werden */
     .placeholder_select_contacts_add_task, .search_bar_select_contacts_add_task {
@@ -636,6 +558,7 @@ textarea:hover, select:hover {
         justify-content: space-between;
         padding: 4px 16px;
         border-radius: 8px;
+        margin-bottom: 1px;
     }
     
     .contact_add_task:hover {
@@ -663,6 +586,7 @@ textarea:hover, select:hover {
         align-items: center;
         border-radius: 50%;
     }
+
     .select_contacts_add_task, .placeholder_select_contacts_add_task, .search_bar_select_contacts_add_task {
     width: 100%; 
     box-sizing: border-box;
@@ -686,6 +610,10 @@ textarea:hover, select:hover {
     width: 100%; /* Stellt sicher, dass auch diese Container sich an die Breite anpassen */
     overflow-y: auto;
     scrollbar-width: thin;
+}
+
+.checkbox_contact_add_task[type="checkbox"] {
+    pointer-events: none;
 }
 
 /* Hier Ende Assigned to CSS */
