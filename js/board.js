@@ -1,6 +1,7 @@
 async function initBoard() {
     await init();
-    // await createStaticTasks();
+    // currentUser.tasks = [];
+    // await saveUsers();
     renderTask();
     renderContactsAddTask('');
 }
@@ -114,6 +115,8 @@ async function createTaskArray(targetColumnId) {
     let date = document.getElementById('date');
     let category = document.getElementById('category_task');
     let subtask = document.getElementById('subtaskInput');
+
+    
     
     let task = {
         "title": title.value,
@@ -140,54 +143,8 @@ async function createTaskArray(targetColumnId) {
     // targetColumnId = 'column_board';
 }
 
-async function createStaticTasks() {
-    let task = [{
-        "title": 'Kochwelt Page & Recipe Recommender',
-        "description": 'Build start page with recipe recommendation...',
-        "date": '20.12.2024',
-        "category": 'User Story',
-        "subtask": 'xxx',
-        "column": 'column_board2',
-        "id": 0
-        // "id": id+1
-        // "category": targetColumnId
-    },
-    {
-        "title": 'aaa',
-        "description": 'ggg',
-        "date": '20.12.2024',
-        "category": 'User Story',
-        "subtask": 'xxx',
-        "column": 'column_board3',
-        "id": 1
-        // "id": id+1
-        // "category": targetColumnId
-    },
-    {
-        "title": 'aaa',
-        "description": 'ggg',
-        "date": '20.12.2024',
-        "category": 'User Story',
-        "subtask": 'xxx',
-        "column": 'column_board3',
-        "id": 2
-        // "id": id+1
-        // "category": targetColumnId
-    },
-    {
-        "title": 'aaa',
-        "description": 'ggg',
-        "date": '20.12.2024',
-        "category": 'User Story',
-        "subtask": 'xxx',
-        "column": 'column_board4',
-        "id": 3
-        // "id": id+1
-        // "category": targetColumnId
-    }]
-    // currentUser.tasks.splice(0,1);
-    // currentUser.tasks.push(...task);
-    await saveUsers();
+function addSelectedContactsToBoard() {
+    currentUser.tasks.push(selectedContactsAddTask)
 }
 
 function renderTask() {
@@ -354,6 +311,142 @@ function renderTask() {
     
 }
 
+// function renderTask() {
+//     let columnTasks1 = currentUser.tasks.filter(task => task.column == 'column_board');
+//     document.getElementById(`column_board`).innerHTML = '';
+//     let count = 0;
+
+//     for (let i = 0; i < columnTasks1.length; i++) {
+//         let taskNumber = columnTasks1[i];
+//         let taskId = count + i;
+//         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
+//         document.getElementById(`column_board`).innerHTML += /*html*/ `
+//         <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
+//             <div onclick="openOverlay(${taskId})" class="inner_card_board2">
+//                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
+//                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
+//                 <div class="card_text2_board">${taskNumber.description}</div>
+//                 <div class="progressbar_box_board">
+//                     <div class="progressbar_board">
+//                         <div class="progressbar_filter_board"></div>
+//                     </div>
+//                     <div class="progressbar_text_board">1/2 Subtasks</div>
+//                 </div>
+//                 <div class="card_img_main_board">
+//                     <div class="card_img_box_board">
+//                         <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></div>
+//                         <div class="card_img_board"><img src="./assets/img/profile2.svg" alt=""></div>
+//                         <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
+//                     </div>
+//                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
+//                 </div>
+//             </div>
+//         </div>
+//         `;
+//     }
+
+//     let columnTasks2 = currentUser.tasks.filter(task => task.column == 'column_board2');
+//     document.getElementById(`column_board2`).innerHTML = '';
+
+//     for (let i = 0; i < columnTasks2.length; i++) {
+//         let taskNumber = columnTasks2[i];
+//         let taskId = count + columnTasks1.length + i;
+//         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
+//         document.getElementById(`column_board2`).innerHTML += /*html*/ `
+//         <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
+//             <div onclick="openOverlay(${taskId})" class="inner_card_board2">
+//                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
+//                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
+//                 <div class="card_text2_board">${taskNumber.description}</div>
+//                 <div class="progressbar_box_board">
+//                     <div class="progressbar_board">
+//                         <div class="progressbar_filter_board"></div>
+//                     </div>
+//                     <div class="progressbar_text_board">1/2 Subtasks</div>
+//                 </div>
+//                 <div class="card_img_main_board">
+//                     <div class="card_img_box_board">
+//                         <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></div>
+//                         <div class="card_img_board"><img src="./assets/img/profile2.svg" alt=""></div>
+//                         <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
+//                     </div>
+//                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
+//                 </div>
+//             </div>
+//         </div>
+//         `;
+//     }
+
+//     let columnTasks3 = currentUser.tasks.filter(task => task.column == 'column_board3');
+//     document.getElementById(`column_board3`).innerHTML = '';
+
+//     for (let i = 0; i < columnTasks3.length; i++) {
+//         let taskNumber = columnTasks3[i];
+//         let taskId = count + columnTasks1.length + columnTasks2.length + i;
+//         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
+//         document.getElementById(`column_board3`).innerHTML += /*html*/ `
+//         <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
+//             <div onclick="openOverlay(${taskId})" class="inner_card_board2">
+//                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
+//                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
+//                 <div class="card_text2_board">${taskNumber.description}</div>
+//                 <div class="progressbar_box_board">
+//                     <div class="progressbar_board">
+//                         <div class="progressbar_filter_board"></div>
+//                     </div>
+//                     <div class="progressbar_text_board">1/2 Subtasks</div>
+//                 </div>
+//                 <div class="card_img_main_board">
+//                     <div class="card_img_box_board">
+//                         <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></div>
+//                         <div class="card_img_board"><img src="./assets/img/profile2.svg" alt=""></div>
+//                         <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
+//                     </div>
+//                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
+//                 </div>
+//             </div>
+//         </div>
+//         `;
+//     }
+
+//     let columnTasks4 = currentUser.tasks.filter(task => task.column == 'column_board4');
+//     document.getElementById(`column_board4`).innerHTML = '';
+
+//     for (let i = 0; i < columnTasks4.length; i++) {
+//         let taskNumber = columnTasks4[i];
+//         let taskId = count + columnTasks1.length + columnTasks2.length + columnTasks3.length + i;
+//         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
+//         document.getElementById(`column_board4`).innerHTML += /*html*/ `
+//         <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
+//             <div onclick="openOverlay(${taskId})" class="inner_card_board2">
+//                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
+//                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
+//                 <div class="card_text2_board">${taskNumber.description}</div>
+//                 <div class="progressbar_box_board">
+//                     <div class="progressbar_board">
+//                         <div class="progressbar_filter_board"></div>
+//                     </div>
+//                     <div class="progressbar_text_board">1/2 Subtasks</div>
+//                 </div>
+//                 <div class="card_img_main_board">
+//                     <div class="card_img_box_board">
+//                         <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></
+//                         <div class="card_img_board"><img  src="./assets/img/profile2.svg" alt=""></div>
+//                         <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
+//                     </div>
+//                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
+//                 </div>
+//             </div>
+//         </div>
+//         `;
+//     }
+
+//     clearEmptyAlert();
+//     closeTaskFormOnBoard();
+    
+// }
+
+
 function clearEmptyAlert() {
     let column1 = document.getElementById('column_board');
     let column2 = document.getElementById('column_board2');
@@ -398,13 +491,13 @@ function clearEmptyAlert() {
 
 async function deleteTask(taskId) {
     currentUser.tasks.splice(taskId, 1);
-    for (let i = taskId; i < currentUser.tasks.length; i++) {
-        currentUser.tasks[i].id = i; // Ändere die ID der Aufgabe
-    }
+    // for (let i = taskId; i < currentUser.tasks.length; i++) {
+    //     currentUser.tasks[i].id = i; // Ändere die ID der Aufgabe
+    // }
+    taskIdCounter--;
     await saveUsers();
     renderTask();
-    closeOverlay();
-    taskIdCounter--;
+    closeOverlay();   
 }
 
 function clearTask() {
@@ -624,3 +717,54 @@ function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
     
+
+// async function createStaticTasks() {
+//     let task = [{
+//         "title": 'Kochwelt Page & Recipe Recommender',
+//         "description": 'Build start page with recipe recommendation...',
+//         "date": '20.12.2024',
+//         "category": 'User Story',
+//         "subtask": 'xxx',
+//         "column": 'column_board2',
+//         "id": 0
+//         // "id": id+1
+//         // "category": targetColumnId
+//     },
+//     {
+//         "title": 'aaa',
+//         "description": 'ggg',
+//         "date": '20.12.2024',
+//         "category": 'User Story',
+//         "subtask": 'xxx',
+//         "column": 'column_board3',
+//         "id": 1
+//         // "id": id+1
+//         // "category": targetColumnId
+//     },
+//     {
+//         "title": 'aaa',
+//         "description": 'ggg',
+//         "date": '20.12.2024',
+//         "category": 'User Story',
+//         "subtask": 'xxx',
+//         "column": 'column_board3',
+//         "id": 2
+//         // "id": id+1
+//         // "category": targetColumnId
+//     },
+//     {
+//         "title": 'aaa',
+//         "description": 'ggg',
+//         "date": '20.12.2024',
+//         "category": 'User Story',
+//         "subtask": 'xxx',
+//         "column": 'column_board4',
+//         "id": 3
+//         // "id": id+1
+//         // "category": targetColumnId
+//     }]
+//     // currentUser.tasks.splice(0,3);
+       // await saveUsers();
+//     // currentUser.tasks.push(...task);
+//     
+// }

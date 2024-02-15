@@ -8,7 +8,9 @@
     margin-left: 164px;
     font-size: 32px;
 }
-
+#description{
+border: 1px solid lightgray;
+}
 .input_field_title, .textarea_discription, .input_field_category, .input_field_due_date {
     width: 50%;
     border-radius: 8px;
@@ -26,7 +28,7 @@
     box-sizing: border-box;
     border-radius: 8px;
     height: 32px;
-    border: none;
+    border: 1px solid lightgray;
 }
 .textarea_discription_addtask{
     width: 100%; 
@@ -559,6 +561,7 @@ textarea:hover, select:hover {
 
 .bottom_container_addtask {
     margin-top: 116px;
+    margin-bottom: 32px;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -709,6 +712,12 @@ textarea:hover, select:hover {
     #contentAddTask{
       flex-direction: column;
       width: 100%;
+    }
+    .bottom_container_addtask{
+        position: sticky;
+        bottom: 80px;
+        background: #F6F7F8;
+        padding: 16px;
     }
 }
 @media (max-width: 321px){
