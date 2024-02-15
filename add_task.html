@@ -13,13 +13,13 @@
 
 <body onload="initAddTask()">
     <div  w3-include-html="./assets/templates/header_and_bar_template.html"></div>
-
+    <form onsubmit="createTaskArray(targetColumnId); redirect('board'); return false;">
 <div id="contentAddTask">
     
     <div class="container_headline_addtask">
         <h1 class="headline_addtask">Add Task</h1>
     </div>
-    <form onsubmit="createTaskArray(targetColumnId); redirect('board'); return false;">
+    
 
             <div class="container_boxes_addtask">
 
