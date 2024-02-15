@@ -3,7 +3,6 @@ async function initBoard() {
     // await createStaticTasks();
     renderTask();
     renderContactsAddTask();
-    
 }
 
 let targetColumnId;
@@ -118,6 +117,8 @@ async function createTaskArray(targetColumnId) {
     let date = document.getElementById('date');
     let category = document.getElementById('category_task');
     let subtask = document.getElementById('subtaskInput');
+
+    
     
     let task = {
         "title": title.value,
