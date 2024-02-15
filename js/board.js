@@ -9,7 +9,7 @@ async function initBoard() {
 let targetColumnId;
 // let currentDraggedElement;
 
-function openOverlay(taskId, j){
+function openOverlay(taskId){
     // let clickedElement = event.target;
     // while (clickedElement && !clickedElement.classList.contains('column_board')) {
     //     clickedElement = clickedElement.parentElement;
@@ -67,7 +67,7 @@ function openOverlay(taskId, j){
         </div>
     </div>
     `;
-    // for (let j = 0; j < task.contacts.length; j++) {
+    for (let j = 0; j < task.contacts.length; j++) {
         let contact = task.contacts[j];    
         let initials = getInitials(contact.name)
         document.getElementById(`task_overlay_assigned${taskId}`).innerHTML += /*html*/`
@@ -76,7 +76,7 @@ function openOverlay(taskId, j){
                     <span>${contact.name}</span>
             </div>
         `;
-    // }
+    }
     document.getElementById(`task-overlay`).style.right = "500px";
     document.getElementById(`overlay`).style.display = "flex";
     document.getElementById(`content-board`).classList.add('pointer_events-none');
@@ -197,11 +197,10 @@ function renderTask() {
     for (let i = 0; i < columnTasks1.length; i++) {
         let taskNumber = columnTasks1[i];
         let taskId = taskNumber.id;
-        let j;
         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
         document.getElementById(`column_board`).innerHTML += /*html*/ `
         <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
-            <div onclick="openOverlay(${taskId}, ${j})" class="inner_card_board2">
+            <div onclick="openOverlay(${taskId})" class="inner_card_board2">
                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
                 <div class="card_text2_board">${taskNumber.description}</div>
