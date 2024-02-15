@@ -7,12 +7,14 @@
 
 .inner_top_board {
     display: flex;
-    width: 1056px;
+    /* width: 1056px; */
     justify-content: space-between;
     align-items: center; 
     padding-right: 88px;
     padding-top: 79.5px;
     padding-bottom: 79.5px;
+    width: 95%;
+    margin-right: 32px; 
 }
 
 .inner_top_board h1 {
@@ -117,8 +119,8 @@
 }
 .top_bar_board {
     display: flex;
-    width: 1054px;
-    justify-content: flex-start;
+    /* width: 1054px; */
+    /* justify-content: flex-start; */
     align-items: flex-start;
     gap: 26px;
     padding-right: 64px;
@@ -126,10 +128,36 @@
     font-size: 20px;
     font-style: normal;
     font-weight: 700;
-    line-height: 120%; 
+    line-height: 120%;
+    width: 100%; 
+    justify-content: center;
 }
 
-.bar_board {
+.bar_board1 {
+    display: flex;
+    width: 244px;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.bar_board2{
+    display: flex;
+    width: 244px;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.bar_board3 {
+    display: flex;
+    width: 244px;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.bar_board4 {
     display: flex;
     width: 244px;
     justify-content: space-between;
@@ -157,6 +185,7 @@
     min-height: 590px;
     margin-top: 5px;
     margin-bottom: 20px;
+    justify-content: center;
 }
 
 .column_board {
@@ -314,7 +343,19 @@
     gap: 10px;
 }
 
-.bar_board span {
+.bar_board1 span {
+    padding-left: 10px;
+}
+
+.bar_board2 span {
+    padding-left: 10px;
+}
+
+.bar_board3 span {
+    padding-left: 10px;
+}
+
+.bar_board4 span {
     padding-left: 10px;
 }
 
@@ -517,6 +558,51 @@
     align-items: center;
     font-size: 20px;
 } */
+
+@media(max-width: 1450px) {
+    .top_bar_board {
+        justify-content: flex-start;
+    }
+    .distrubution_board {
+        display: unset;
+    }
+    .column_board {
+        width: 100%;
+        flex-direction: unset;
+    }
+    .bar_board2 {
+        display: none;
+    }
+    .bar_board3 {
+        display: none;
+    }
+    .bar_board4 {
+        display: none;
+    }
+    .bar_board1 {
+        width: 95%;
+    }
+    
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
