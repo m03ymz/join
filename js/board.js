@@ -116,6 +116,7 @@ function createTaskArray(targetColumnId) {
     let date = document.getElementById('date');
     let category = document.getElementById('category_task');
     let subtask = document.getElementById('subtaskInput');
+    
     let task = {
         "title": title.value,
         "description": description.value,
@@ -123,7 +124,8 @@ function createTaskArray(targetColumnId) {
         "category": category.value,
         "subtask": subtask.value,
         "column": targetColumnId,
-        "id": taskIdCounter
+        "id": taskIdCounter,
+        "prio": selectedPriority
         // "id": id+1
         // "category": targetColumnId
     }

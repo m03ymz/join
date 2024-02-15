@@ -2,12 +2,11 @@ async function initAddTask() {
   await init();
   renderContactsAddTask('');
   keyPressEnter();
+
 //accepttask und canceltask wurde hier wie keypressEnter global hinzugefügt aber leider klappte es nicht
 
   document.getElementById('acceptTask').addEventListener('click', acceptTask); //NOTLÖSUNG !! TIMING PROBLEM, ALLE FUNKTIONEN WERDEN GELADEN AUSSER DIESE BEIDEN (Fehlermeldung vorhanden)
   document.getElementById('cancelSubtask').addEventListener('click', cancelSubtask); //NOTLÖSUNG !! TIMING PROBLEM, ALLE FUNKTIONEN WERDEN GELADEN AUSSER DIESE BEIDEN (Fehlermeldung vorhanden)
-
-
 
 }
 function toggleSubtaskButtons() {
@@ -34,14 +33,12 @@ function addSubtask() {
       let newSubtaskHTML = /*html*/ `
  <div class="container_hover_subtasks_icons show_on_hover">
   <div class="hover_li">
-    <li class="input_value_style">${inputValue}</li> 
+    <li class="input_value_style">${inputValue} <input class="hide_icon"  id="editInput" type="text"></li> 
    <div class="container_subtasks_hover_icons"> 
    <img id="editIcon" class="container_subtasks_icons_edit" src="assets/img/edit_icon.svg" onclick="editListItem()">
    <img class="container_subtasks_icons" src="assets/img/small_line_subtask.svg">
    <img class="container_subtasks_icons_delete" src="assets/img/delete.svg" onclick="deleteListItem(this)">
    <img id="hideIcon" class="hide_icon" src="assets/img/accept_subtask.svg"  onclick="updateListItem()">
-
-
    </div>
   </div>
 </div>`;
@@ -62,6 +59,7 @@ function keyPressEnter() {
     }
   });
 }
+
 // Funktion Subtask haken (akzeptieren) //
 function acceptTask() {
   let cancelIcon = document.getElementById('cancelSubtask')
@@ -81,9 +79,6 @@ function acceptTask() {
     cancelIcon.style.display = 'block';
     partingline.style.display ='block';
     acceptTask.style.display = 'none';
-
-    // Füge hier den entsprechenden Code für die Aufgabe hinzu
-    console.log("Aufgabe annehmen");
   }
 }
   
@@ -101,57 +96,11 @@ function deleteListItem(element) {
   let listItem = element.closest('.container_hover_subtasks_icons');
   listItem.remove();
 }
-// JavaScript
-function editListItem() {
-  // Dem ersten Element style.display none geben
-  let editIcon = document.getElementById('editIcon');
-  if (editIcon) {
-      editIcon.style.display = 'none';
-  }
-  
-  // Dem zweiten Element style.display block geben
-  let hideIcon = document.getElementById('hideIcon');
-  if (hideIcon) {
-      hideIcon.style.display = 'block';
-  }
-
-  // Das <li> Element durch ein <input> Feld ersetzen
-  let listItem = document.querySelector('.input_value_style');
-  if (listItem) {
-      let inputValue = listItem.textContent.trim();
-      let inputField = document.createElement('input');
-      inputField.type = 'text';
-      inputField.value = inputValue;
-      inputField.className = 'input_value_style';
-      inputField.disabled = false; // Input-Feld aktivieren, damit man rein schreiben kann
-      listItem.parentNode.replaceChild(inputField, listItem);
-  }
-}
-// Funktion zum Aktualisieren des <li> Elements
-function updateListItem() {
-  // Den Wert des Input-Felds abrufen
-  let inputValue = document.querySelector('.input_value_style').value;
-  
-  // Das <li> Element auswählen und den Wert aktualisieren
-  let listItem = document.querySelector('.input_value_style');
-  if (listItem) {
-      listItem.textContent = inputValue;
-      listItem.disabled = true; // Input-Feld deaktivieren, nachdem es aktualisiert wurde
-  }
-
-  // Das Bearbeiten-Icon wieder anzeigen und das Annehmen-Icon ausblenden
-  let editIcon = document.getElementById('editIcon');
-  if (editIcon) {
-      editIcon.style.display = 'block';
-  }
-  let hideIcon = document.getElementById('hideIcon');
-  if (hideIcon) {
-      hideIcon.style.display = 'none';
-  }
-}
-
 
 // Prioritäten umschalten  start //
+let selectedPriority;
+
+
 function toggleButton(priority) {
   let urgentButtonWhite = document.getElementById('urgentbuttonwhite');
   let urgentButtonRed = document.getElementById('urgentbuttonred');
@@ -167,6 +116,7 @@ function toggleButton(priority) {
       mediumButtonWhite.classList.remove('hide_icon');
       lowButtonWhite.classList.remove('hide_icon');
       lowButtonGreen.classList.add('hide_icon');
+      selectedPriority = 'urgent';
   } else if (priority === 'medium') {
       mediumButtonOrange.classList.toggle('hide_icon');
       mediumButtonWhite.classList.toggle('hide_icon');
@@ -174,6 +124,7 @@ function toggleButton(priority) {
       urgentButtonRed.classList.add('hide_icon');
       lowButtonWhite.classList.remove('hide_icon');
       lowButtonGreen.classList.add('hide_icon');
+      selectedPriority = 'medium';
   } else if (priority === 'low') {
       lowButtonWhite.classList.toggle('hide_icon');
       lowButtonGreen.classList.toggle('hide_icon');
@@ -181,10 +132,10 @@ function toggleButton(priority) {
       urgentButtonRed.classList.add('hide_icon');
       mediumButtonOrange.classList.add('hide_icon');
       mediumButtonWhite.classList.remove('hide_icon');
+      selectedPriority = 'low';
   }
 }
 //Prioritäten umschalten ende // 
-
 
 // Assigned to Start //
 function renderContactsAddTask(searchTerm) {
@@ -257,6 +208,7 @@ function closeContactListAddTask() {
 }
 
 let selectedContactsAddTask = [];
+
 
 function selectContactAddTask(i) {
   let contact = document.getElementById(`contact_add_task${i}`);
