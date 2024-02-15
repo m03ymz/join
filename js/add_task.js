@@ -224,7 +224,6 @@ function selectContactAddTask(i) {
       checkbox.checked = true;
       addSelectedContactsAddTask(i);
   }
-  console.log(selectedContactsAddTask);
 }
 
 function checkSelectedContactsAddTask(i) {

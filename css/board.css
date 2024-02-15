@@ -333,6 +333,21 @@
     background: #FFF;
 }
 
+.initials_card_img_board {
+    box-sizing: border-box;
+    font-size: 12px;
+    width: 16px;
+    height: 16px;
+    padding: 18px;
+    background-color: #D1D1D1;
+    color: white;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
 .prio_media_board {
     display: flex;
     width: 24px;
