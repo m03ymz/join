@@ -1,8 +1,10 @@
 .content_summary {
+    border: 4px dotted red;
     margin-left: 320px;
     margin-right: 80px;
     margin-top: 160px;
     margin-bottom: 80px;
+    box-sizing: border-box;
 }
 
 .top_summary {
@@ -12,10 +14,17 @@
     margin-bottom: 40px;
 }
 
-.top_summary div {
+.parting_line_top_summary {
     height: 60px;
     width: 4px;
     background-color: #29ABE2;
+}
+
+.mobile_parting_line_top_summary {
+    height: 4px;
+    width: 100px;
+    background-color: #29ABE2;
+    display: none;
 }
 
 .top_summary span {
@@ -215,4 +224,98 @@
     font-size: 64px;
     font-weight: 600;
     color: #29ABE2;
+}
+
+@media(max-width: 1400px) {
+    .greet_right_main_summary {
+        font-size: 32px;
+    }
+    
+    .name_right_main_summary {
+        font-size: 48px;
+    }
+
+    .left_main_summary {
+        width: unset;
+    }
+
+    .right_main_summary {
+        width: unset;
+    }
+}
+
+@media(max-width: 1300px) {
+    .main_summary {
+        justify-content: unset;
+        gap: 32px;
+    }
+}
+
+@media(max-width: 1200px) {
+    .right_main_summary {
+        display: none;
+    }
+
+    .main_summary {
+        justify-content: center;
+    }
+}
+
+@media(max-width: 1000px) {
+    .top_summary {
+        align-items: unset;
+        flex-direction: column;
+        gap: unset;
+        margin-bottom: 40px;
+    }
+
+    .parting_line_top_summary {
+        display: none;
+    }
+
+    .mobile_parting_line_top_summary {
+        display: unset;
+        margin-top: 16px;
+    }
+}
+
+@media(max-width: 900px) {
+    .content_summary {
+        margin-left: 80px;
+        margin-top: 140px;
+    }
+
+    .content_summary h1 {
+        font-size: 56px;
+    }
+
+    .top_summary span {
+        font-size: 22px;
+    }
+
+    .to_do_top_left_main_summary {   
+        padding: 24px 32px;
+    }
+
+    .done_top_left_main_summary {  
+        padding: 24px 32px;
+    }
+
+    .center_left_main_summary {  
+        padding: 24px 32px;
+        gap: 32px;
+    }
+
+    .bottom_left_main_summary div {   
+        padding: 12px 23px;
+    }
+
+    .bold_numbers_left_main_summary {
+        font-size: 64px;
+    }
+    
+    /* .icon_size_left_main_summary {
+        height: 64px;
+        width: 64px;
+    } */
 }
