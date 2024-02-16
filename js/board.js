@@ -1,27 +1,16 @@
 async function initBoard() {
     await init();
+    // delete currentUser.taskId;
     // currentUser.tasks = [];
     // await saveUsers();
     renderTask();
     renderContactsAddTask('');
 }
 
-
 let targetColumnId;
-let taskIdCounter = 0;
-// let currentDraggedElement;
+let taskIdCounter;
 
 function openOverlay(taskId){
-    // let clickedElement = event.target;
-    // while (clickedElement && !clickedElement.classList.contains('column_board')) {
-    //     clickedElement = clickedElement.parentElement;
-    // }
-    // if (clickedElement) {
-    //     let targetColumnId = clickedElement.id;
-
-    //     let tasks = columns[targetColumnId];
-    //     let taskNumber = tasks[i];
-
     let task = currentUser.tasks[taskId];
     let targetColumnId = task.column;
     if (document.getElementById(targetColumnId)) {
@@ -118,6 +107,10 @@ async function createTaskArray(targetColumnId) {
     let date = document.getElementById('date');
     let category = document.getElementById('category_task');
     let subtask = document.getElementById('subtaskInput');
+    taskIdCounter = currentUser.taskId;
+    if (taskIdCounter == undefined) {
+        taskIdCounter = 0;
+    }
     let task = {
         "title": title.value,
         "description": description.value,
@@ -135,13 +128,11 @@ async function createTaskArray(targetColumnId) {
     }
     currentUser.tasks.push(task);
     taskIdCounter++;
-    // columns[targetColumnId].push(task);
-    // // console.log(tasks);
+    currentUser.taskId = taskIdCounter;
     title.value = '';
     description.value = '';
     date.value = '';
     await saveUsers();
-    renderTask();
     // targetColumnId = 'column_board';
 }
 
@@ -492,7 +483,9 @@ async function deleteTask(taskId) {
     for (let i = taskId; i < currentUser.tasks.length; i++) {
         currentUser.tasks[i].id = i; // Ändere die ID der Aufgabe
     }
+    taskIdCounter = currentUser.taskId
     taskIdCounter--;
+    currentUser.taskId = taskIdCounter;
     await saveUsers();
     renderTask();
     closeOverlay();   

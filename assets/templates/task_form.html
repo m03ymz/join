@@ -4,7 +4,7 @@
         <img class="x_button_board" onclick="closeTaskFormOnBoard()" src="./assets/img/close.svg" alt="">
 
     </div>
-    <form onsubmit="createTaskArray(targetColumnId); return false;">
+    <form onsubmit="createTaskArray(targetColumnId), renderTask(); return false;">
 
             <div class="container_boxes_addtask">
 
@@ -46,7 +46,7 @@
                     <div>
                         <p class="required_red_star">Due date</p>
                         <div class="input_with_icon">
-                            <input  id="date" placeholder="DD/MM/YYYY" class="input_field_due_date" type="date" id="dueDateInput" required> 
+                            <input  id="date" placeholder="DD/MM/YYYY" class="input_field_due_date" type="date" id="dueDateInput"> 
                         </div>
                     </div>
                 

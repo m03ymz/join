@@ -2,7 +2,6 @@ async function initAddTask() {
   await init();
   renderContactsAddTask('');
   keyPressEnter();
-
 //accepttask und canceltask wurde hier wie keypressEnter global hinzugefügt aber leider klappte es nicht
 
   document.getElementById('acceptTask').addEventListener('click', acceptTask); //NOTLÖSUNG !! TIMING PROBLEM, ALLE FUNKTIONEN WERDEN GELADEN AUSSER DIESE BEIDEN (Fehlermeldung vorhanden)
