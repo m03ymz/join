@@ -24,33 +24,76 @@ function toggleSubtaskButtons() {
 }
 
   // Subtask hinzufügen Start //
-function addSubtask() {
-  let subtaskInput = document.getElementById('subtaskInput');
-  let subtaskContainer = document.getElementById('subtaskContainer');
-  let inputValue = subtaskInput.value;   // Den eingegebenen Wert abrufen
-
-  if (inputValue) {
+  function addSubtask() {
+    let subtaskInput = document.getElementById('subtaskInput');
+    let subtaskContainer = document.getElementById('subtaskContainer');
+    let inputValue = subtaskInput.value; // Den eingegebenen Wert abrufen
+  
+    if (inputValue) {
       let newSubtaskHTML = /*html*/ `
- <div class="container_hover_subtasks_icons show_on_hover">
-  <div class="hover_li">
-    <li class="input_value_style">${inputValue} <input class="hide_icon"  id="editInput" type="text"></li> 
-   <div class="container_subtasks_hover_icons"> 
-   <img id="editIcon" class="container_subtasks_icons_edit" src="assets/img/edit_icon.svg" onclick="editListItem()">
-   <img class="container_subtasks_icons" src="assets/img/small_line_subtask.svg">
-   <img class="container_subtasks_icons_delete" src="assets/img/delete.svg" onclick="deleteListItem(this)">
-   <img id="hideIcon" class="hide_icon" src="assets/img/accept_subtask.svg"  onclick="updateListItem()">
+  <div class="container_hover_subtasks_icons show_on_hover">
+   <div class="hover_li">
+     <li id="writtenSubTask" class="input_value_style">${inputValue}</li><input class="hide_icon" id="editInputSubtask" type="text"><li id="newSubtask"></li>
+    <div class="container_subtasks_hover_icons"> 
+    <img id="editIcon" class="container_subtasks_icons_edit" src="assets/img/edit_icon.svg" onclick="editListItem()">
+    <img class="container_subtasks_icons" src="assets/img/small_line_subtask.svg">
+    <img class="container_subtasks_icons_delete" src="assets/img/delete.svg" onclick="deleteListItem(this)">
+    <img class="hide_icon"  id="editButton" src="assets/img/accept_subtask.svg"  onclick="updateListItem()">
+    </div>
    </div>
-  </div>
-</div>`;
-      
-  subtaskContainer.innerHTML += newSubtaskHTML;
-  // Eingabefeld leeren
-  subtaskInput.value = '';
-  newSubtaskHTML = '';
-  } 
-  toggleSubtaskButtons();
-}
+  </div>`;
+  
+      subtaskContainer.innerHTML += newSubtaskHTML;
+      // Eingabefeld leeren
+      subtaskInput.value = '';
+      newSubtaskHTML = '';
+    } 
+  
+    // Hier fügen wir den Code ein, um das Element auszublenden
+    document.getElementById('newSubtask').style.display = 'none';
+  
+    toggleSubtaskButtons();
+  }
 
+
+  function editListItem() {
+    // Zugriff auf das Eingabefeld
+    let editInputSubtask = document.getElementById('editInputSubtask');
+    // Zugriff auf den Bearbeitungsknopf
+    let editButton = document.getElementById('editButton');
+    // Zugriff auf das zu bearbeitende Element und das Kommentarelement
+    let writtenSubTask = document.getElementById('writtenSubTask');
+    let newComment = document.getElementById('newSubtask');
+  
+    if (writtenSubTask) {
+      writtenSubTask.style.display = 'none'; // Ausblenden des writtenSubTask-Elements
+      editInputSubtask.style.display = 'block'; // Eingabefeld anzeigen
+      editButton.style.display = 'block'; // Bearbeitungsknopf anzeigen
+      newComment.style.display = 'none'; // Kommentarelement ausblenden
+    }
+  
+    // Das aktuell geklickte Edit-Icon ausblenden. Da mehrere Icons mit derselben ID existieren können,
+    // sollte die ID einzigartig gemacht oder ein anderer Ansatz verwendet werden.
+    // Für dieses Beispiel nehmen wir an, dass es nur ein solches Icon gibt oder dass wir das erste gefundene ausblenden.
+    document.getElementById('editIcon').style.display = 'none';
+  }
+function updateListItem() {
+  // Zugriff auf das Eingabefeld
+  let editInputSubtask = document.getElementById('editInputSubtask');
+  let inputValue = editInputSubtask.value; // Den eingegebenen Wert abrufen
+  document.getElementById('newSubtask').style.display = 'block'; // oder 'inline', je nach Layout
+
+
+  // Prüfen, ob ein Wert eingegeben wurde
+  if (inputValue.trim() !== '') {
+    // Zugriff auf das <li>-Element und Aktualisierung seines Inhalts
+    let newSubtask = document.getElementById('newSubtask');
+    newSubtask.innerHTML = inputValue; // Setzen des neuen Inhalts
+    editInputSubtask.style.display = 'none'
+    // Optional: Eingabefeld ausblenden oder Wert löschen nach der Aktualisierung
+    editInputSubtask.value = ''; // Eingabewert löschen
+  }
+}
 // Funktion für die Eingabe mit der Enter Taste //
 function keyPressEnter() { 
   document.getElementById('subtaskInput').addEventListener('keypress', function(event) {
