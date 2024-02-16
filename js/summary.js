@@ -31,13 +31,13 @@ function changeTextSummary(id, color) {
 function setGreetSummary() {
     let hour = new Date().getHours();
     let greeting;
-    if (hour >= 5 && hour < 12) {
+    if (hour >= 6 && hour < 12) {
         greeting = 'Good morning';
-    } else if (hour >= 12 && hour < 17) {
+    } else if (hour >= 12 && hour < 18) {
         greeting = 'Good afternoon';
-    } else if (hour >= 17 && hour < 20) {
+    } else if (hour >= 18 && hour < 24) {
         greeting = 'Good evening';
-    } else if (hour >= 20 && hour < 24) {
+    } else if (hour >= 0 && hour < 6) {
         greeting = 'Good night';
     } else {
         greeting = 'Hello'; 

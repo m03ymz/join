@@ -1,5 +1,4 @@
 .content_summary {
-    border: 4px dotted red;
     margin-left: 320px;
     margin-right: 80px;
     margin-top: 160px;
@@ -282,7 +281,6 @@
 @media(max-width: 900px) {
     .content_summary {
         margin-left: 80px;
-        margin-top: 140px;
     }
 
     .content_summary h1 {
@@ -309,13 +307,104 @@
     .bottom_left_main_summary div {   
         padding: 12px 23px;
     }
+}
+
+@media(max-width: 600px) {
+    .content_summary {
+        margin-left: 56px;
+        margin-right: 56px;
+    }
 
     .bold_numbers_left_main_summary {
-        font-size: 64px;
+        font-size: 56px;
+    }
+
+    .icon_size_left_main_summary {
+        height: 56px;
+        width: 56px;
+    }
+
+    .top_left_main_summary {
+        gap: 27px;
+        margin-bottom: 24px;
+    }
+
+    .center_left_main_summary {
+        margin-bottom: 24px;
+        gap: 24px;
     }
     
-    /* .icon_size_left_main_summary {
-        height: 64px;
-        width: 64px;
-    } */
+    .bottom_left_main_summary {
+        gap: 24px;
+    }
+}
+
+@media(max-width: 500px) {
+    .content_summary {
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+}
+
+@media(max-width: 420px) {
+    .mobile_parting_line_top_summary {
+        width: 80px;
+    }
+
+    .bold_numbers_left_main_summary {
+        font-size: 40px;
+    }
+
+    .icon_size_left_main_summary {
+        height: 40px;
+        width: 40px;
+    }
+
+    .content_summary h1 {
+        font-size: 40px;
+    }
+
+    .top_summary span {
+        font-size: 20px;
+    }
+
+    .to_do_top_left_main_summary {   
+        padding: 20px 20px;
+    }
+
+    .done_top_left_main_summary {  
+        padding: 20px 20px;
+    }
+
+    .center_left_main_summary {  
+        padding: 20px 20px;
+        gap: 20px;
+    }
+
+    .bottom_left_main_summary div {   
+        padding: 12px 16px;
+    }
+
+    .top_left_main_summary {
+        gap: 22px;
+        margin-bottom: 16px;
+    }
+
+    .center_left_main_summary {
+        margin-bottom: 16px;
+        gap: 10px;
+    }
+    
+    .bottom_left_main_summary {
+        gap: 12px;
+    }
+
+    .left_main_summary {
+        font-size: 13px;
+    }
+
+    .date_center_left_main_summary :nth-child(odd) {
+        font-size: 15px;
+    }
+
 }
