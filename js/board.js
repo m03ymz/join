@@ -8,6 +8,7 @@ async function initBoard() {
 
 
 let targetColumnId;
+let taskIdCounter = 0;
 // let currentDraggedElement;
 
 function openOverlay(taskId){
@@ -106,7 +107,9 @@ function closeTaskFormOnBoard(){
     document.getElementById(`body`).classList.remove('overflow_hidden');
 }
 
-let taskIdCounter = 0;
+function addSelectedContactsToBoard() {
+    currentUser.tasks.push(selectedContactsAddTask)
+}
 
 async function createTaskArray(targetColumnId) {
     targetColumnId = (typeof targetColumnId === 'undefined') ? 'column_board' : targetColumnId;
@@ -115,9 +118,6 @@ async function createTaskArray(targetColumnId) {
     let date = document.getElementById('date');
     let category = document.getElementById('category_task');
     let subtask = document.getElementById('subtaskInput');
-
-    
-    
     let task = {
         "title": title.value,
         "description": description.value,
@@ -141,10 +141,6 @@ async function createTaskArray(targetColumnId) {
     await saveUsers();
     renderTask();
     // targetColumnId = 'column_board';
-}
-
-function addSelectedContactsToBoard() {
-    currentUser.tasks.push(selectedContactsAddTask)
 }
 
 function renderTask() {
@@ -491,9 +487,9 @@ function clearEmptyAlert() {
 
 async function deleteTask(taskId) {
     currentUser.tasks.splice(taskId, 1);
-    // for (let i = taskId; i < currentUser.tasks.length; i++) {
-    //     currentUser.tasks[i].id = i; // Ändere die ID der Aufgabe
-    // }
+    for (let i = taskId; i < currentUser.tasks.length; i++) {
+        currentUser.tasks[i].id = i; // Ändere die ID der Aufgabe
+    }
     taskIdCounter--;
     await saveUsers();
     renderTask();
