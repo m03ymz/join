@@ -2,7 +2,7 @@
         position: relative;
         width: 100vw;
         height: 100vh;
-        display: flex;
+        display: flex;  
         justify-content: center;
         align-items: center;
     }
@@ -37,4 +37,8 @@
             width: 80px; /* Endgröße */
         }
     }
+    @media (max-width: 320px){
+        
+    }
+
     

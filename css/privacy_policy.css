@@ -1,9 +1,6 @@
 .main_content_policy{
-    margin-left: 320px; 
-    margin-top: 160px; 
-    width: 70%; 
-    height: 800px;
-
+    margin-left: 248px; 
+    margin-top: 80px;
 }
 h1{
     padding: 32px;
@@ -11,5 +8,38 @@ h1{
     font-weight: 700;
 }
 .container_paragraph{
-    padding: 32px;
+    padding: 16px;
+}
+.container_back_arrow{
+    background-color: red;
+    width: 100%;
+    right: 32px;
+}
+.back_arrow{
+    margin-top: 80px;
+    position: absolute;
+    right: 32px;
+
+}
+@media (max-width: 900px){
+    .main_content_policy{
+        margin: 0;
+        margin-top: 80px;
+        padding: 32px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    h1{
+        margin-top: 42px;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        font-size: 32px;
+    }
+    .back_arrow{
+        margin-top: -8px;
+        right: 8px;
+    }
 }

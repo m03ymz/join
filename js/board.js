@@ -120,7 +120,11 @@ async function createTaskArray(targetColumnId) {
         "column": targetColumnId,
         "id": taskIdCounter,
         "contacts": selectedContactsAddTask,
-        "prio": selectedPriority
+        "prio": selectedPriority,
+        "addTaskSubtask": subtaskInputValue
+
+        // "id": id+1
+        // "category": targetColumnId
     }
     currentUser.tasks.push(task);
     taskIdCounter++;

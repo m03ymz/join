@@ -27,7 +27,7 @@ function toggleSubtaskButtons() {
     let subtaskInput = document.getElementById('subtaskInput');
     let subtaskContainer = document.getElementById('subtaskContainer');
     let inputValue = subtaskInput.value; // Den eingegebenen Wert abrufen
-  
+
     if (inputValue) {
       let newSubtaskHTML = /*html*/ `
   <div class="container_hover_subtasks_icons show_on_hover">
@@ -42,6 +42,9 @@ function toggleSubtaskButtons() {
    </div>
   </div>`;
   
+  let subtaskInputValue; 
+  subtaskInputValue = 'inputValue';
+
       subtaskContainer.innerHTML += newSubtaskHTML;
       // Eingabefeld leeren
       subtaskInput.value = '';

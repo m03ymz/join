@@ -479,19 +479,16 @@ textarea:hover, select:hover {
 
 .bottom_container_addtask {
     margin-top: 116px;
-    margin-bottom: 32px;
     display: flex;
     justify-content: space-between;
     width: 100%;
+    position: sticky;
+    bottom: 0px;
+    background-color:#f1f1f1;
+    height: 64px;
+    align-items: center;
 }
 
-.container_data_first_letter {
-   
-}
-
-.container_clear_and_create_task {
- 
-}
 .parting_line{
     margin: 0;
     border-color: #f1f1f1;
@@ -637,13 +634,43 @@ textarea:hover, select:hover {
       flex-direction: column;
       width: 100%;
     }
-    .bottom_container_addtask{
-        position: sticky;
-        bottom: 80px;
-        background: #F6F7F8;
-        padding: 16px;
-    }
+    .clear_task_button{
+        display: none;
+   }
+   .bottom_container_addtask{
+    bottom: 80px;
+    right: 32px; 
+}
 }
 @media (max-width: 321px){
-    
+    .right_box_addtask{
+        width: 100%;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+    #lowbuttonwhite, #urgentbuttonwhite, #mediumbuttonwhite, #mediumbuttonorange, #lowbuttongreen, #urgentbuttonred{
+        width: 80px;
+    }
+    .create_task_button{
+        display: flex;
+        justify-content: center;
+        margin-right: 32px;
+        width: 116px;
+        height: 40px;
+    }
+    .bottom_container_addtask{
+        display: flex;
+        align-items: center;
+    }
+    .required_red_star{
+        font-size: 12px;
+        width: 116px;
+        margin-right: 0;
+    }
+    .left_box_addtask{
+        width: 90%;
+    }
+    .required_red_star{
+        margin-left: 16px;
+    }
 }
