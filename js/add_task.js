@@ -1,102 +1,63 @@
+let subtaskValues = []; // Global definierte Variable für Subtask-Werte
+
 async function initAddTask() {
   await init();
   renderContactsAddTask('');
   keyPressEnter();
-//accepttask und canceltask wurde hier wie keypressEnter global hinzugefügt aber leider klappte es nicht
 
-  document.getElementById('acceptTask').addEventListener('click', acceptTask); //NOTLÖSUNG !! TIMING PROBLEM, ALLE FUNKTIONEN WERDEN GELADEN AUSSER DIESE BEIDEN (Fehlermeldung vorhanden)
-  document.getElementById('cancelSubtask').addEventListener('click', cancelSubtask); //NOTLÖSUNG !! TIMING PROBLEM, ALLE FUNKTIONEN WERDEN GELADEN AUSSER DIESE BEIDEN (Fehlermeldung vorhanden)
-
-}
-function toggleSubtaskButtons() {
-  let toggleIconAdd = document.getElementById('addingSubtask');
-  let toggleIconAccept = document.getElementById('acceptTask');
-  let toggleIconCancel = document.getElementById('cancelSubtask');
-
-  // Ausblenden von 'addingSubtask' und 'cancelSubtask'
-  toggleIconAdd.style.display = 'none';
-  toggleIconCancel.style.display = 'none';
-
-  // Anzeigen von 'acceptTask'
-  toggleIconAccept.style.display = 'block'; // oder 'inline', je nachdem, wie es vorher war
-
+  // Korrektur: Entfernung der rekursiven Event Listener in acceptTask und cancelSubtask
+  document.getElementById('acceptTask').addEventListener('click', acceptTask);
+  document.getElementById('cancelSubtask').addEventListener('click', cancelSubtask);
 }
 
-  // Subtask hinzufügen Start //
-  function addSubtask() {
-    let subtaskInput = document.getElementById('subtaskInput');
-    let subtaskContainer = document.getElementById('subtaskContainer');
-    let inputValue = subtaskInput.value; // Den eingegebenen Wert abrufen
+// function toggleSubtaskButtons() {
+//   let toggleIconAdd = document.getElementById('addingSubtask');
+//   let toggleIconAccept = document.getElementById('acceptTask');
+//   let toggleIconCancel = document.getElementById('cancelSubtask');
 
-    if (inputValue) {
-      let newSubtaskHTML = /*html*/ `
-  <div class="container_hover_subtasks_icons show_on_hover">
-   <div class="hover_li">
-     <li id="writtenSubTask" class="input_value_style">${inputValue}</li><input class="hide_icon" id="editInputSubtask" type="text"><li id="newSubtask"></li>
-    <div class="container_subtasks_hover_icons"> 
-    <img id="editIcon" class="container_subtasks_icons_edit" src="assets/img/edit_icon.svg" onclick="editListItem()">
-    <img class="container_subtasks_icons" src="assets/img/small_line_subtask.svg">
-    <img class="container_subtasks_icons_delete" src="assets/img/delete.svg" onclick="deleteListItem(this)">
-    <img class="hide_icon"  id="editButton" src="assets/img/accept_subtask.svg"  onclick="updateListItem()">
-    </div>
-   </div>
-  </div>`;
-  
-  let subtaskInputValue; 
-  subtaskInputValue = 'inputValue';
+//   toggleIconAdd.style.display = 'none';
+//   toggleIconCancel.style.display = 'none';
+//   toggleIconAccept.style.display = 'block';
+// } 
 
-      subtaskContainer.innerHTML += newSubtaskHTML;
-      // Eingabefeld leeren
-      subtaskInput.value = '';
-      newSubtaskHTML = '';
-    } 
-  
-    // Hier fügen wir den Code ein, um das Element auszublenden
-    document.getElementById('newSubtask').style.display = 'none';
-  
-    toggleSubtaskButtons();
-  }
-
-
-  function editListItem() {
-    // Zugriff auf das Eingabefeld
-    let editInputSubtask = document.getElementById('editInputSubtask');
-    // Zugriff auf den Bearbeitungsknopf
-    let editButton = document.getElementById('editButton');
-    // Zugriff auf das zu bearbeitende Element und das Kommentarelement
-    let writtenSubTask = document.getElementById('writtenSubTask');
-    let newComment = document.getElementById('newSubtask');
-  
-    if (writtenSubTask) {
-      writtenSubTask.style.display = 'none'; // Ausblenden des writtenSubTask-Elements
-      editInputSubtask.style.display = 'block'; // Eingabefeld anzeigen
-      editButton.style.display = 'block'; // Bearbeitungsknopf anzeigen
-      newComment.style.display = 'none'; // Kommentarelement ausblenden
-    }
-  
-    // Das aktuell geklickte Edit-Icon ausblenden. Da mehrere Icons mit derselben ID existieren können,
-    // sollte die ID einzigartig gemacht oder ein anderer Ansatz verwendet werden.
-    // Für dieses Beispiel nehmen wir an, dass es nur ein solches Icon gibt oder dass wir das erste gefundene ausblenden.
-    document.getElementById('editIcon').style.display = 'none';
-  }
-function updateListItem() {
-  // Zugriff auf das Eingabefeld
-  let editInputSubtask = document.getElementById('editInputSubtask');
-  let inputValue = editInputSubtask.value; // Den eingegebenen Wert abrufen
-  document.getElementById('newSubtask').style.display = 'block'; // oder 'inline', je nach Layout
-
-
-  // Prüfen, ob ein Wert eingegeben wurde
-  if (inputValue.trim() !== '') {
-    // Zugriff auf das <li>-Element und Aktualisierung seines Inhalts
-    let newSubtask = document.getElementById('newSubtask');
-    newSubtask.innerHTML = inputValue; // Setzen des neuen Inhalts
-    editInputSubtask.style.display = 'none'
-    // Optional: Eingabefeld ausblenden oder Wert löschen nach der Aktualisierung
-    editInputSubtask.value = ''; // Eingabewert löschen
+function addSubtask() {
+  let subtaskInput = document.getElementById('subtaskInput');
+  let inputValue = subtaskInput.value;
+  if (inputValue) {
+    subtaskValues.push(inputValue); // Verwendung der globalen Variable
+    subtaskInput.value = '';
+    renderSubtasks(); // Aufruf von renderSubtasks, um die Liste zu aktualisieren
   }
 }
-// Funktion für die Eingabe mit der Enter Taste //
+
+function renderSubtasks() {
+  let subtaskContainer = document.getElementById('subtaskContainer');
+  subtaskContainer.innerHTML = ''; // Löscht den aktuellen Inhalt, um Duplikate zu vermeiden
+  for (let i = 0; i < subtaskValues.length; i++) {
+    let subtask = subtaskValues[i];
+    
+    subtaskContainer.innerHTML += /*html*/ `
+    <div class="container_hover_subtasks_icons show_on_hover">
+     <div class="hover_li">
+       <li class="input_value_style">${subtask}</li> <!-- Korrektur: Verwendung von subtask statt inputValue -->
+      <div class="container_subtasks_hover_icons"> 
+      <img class="container_subtasks_icons_edit" src="assets/img/edit_icon.svg" onclick="editListItem()">
+      <img class="container_subtasks_icons" src="assets/img/small_line_subtask.svg">
+      <img class="container_subtasks_icons_delete" src="assets/img/delete.svg" onclick="deleteListItem(this)">
+      <img class="hide_icon" src="assets/img/accept_subtask.svg" onclick="updateListItem()">
+      </div>
+     </div>
+    </div>`;
+  }
+}
+
+function cancelSubtask() {
+  let subtaskInput = document.getElementById('subtaskInput');
+  
+  subtaskInput.value = '';
+  toggleSubtaskButtons(); // Stellt die Sichtbarkeit der Buttons nach dem Löschen wieder her
+}
+
 function keyPressEnter() { 
   document.getElementById('subtaskInput').addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
@@ -105,43 +66,35 @@ function keyPressEnter() {
   });
 }
 
-// Funktion Subtask haken (akzeptieren) //
+// Korrigierte Funktion Subtask haken (akzeptieren)
 function acceptTask() {
-  let cancelIcon = document.getElementById('cancelSubtask')
-  let partingline = document.getElementById('smallLineSubtask')  
-  let acceptTask = document.getElementById('acceptTask')
-  let inputFieldIcon = document.getElementById('addingSubtask');
-  let subtaskInput = document.getElementById("subtaskInput").value;
-  document.getElementById('acceptTask').addEventListener('click', acceptTask); //NOTLÖSUNG !! TIMING PROBLEM, ALLE FUNKTIONEN WERDEN GELADEN AUSSER DIESE BEIDEN (Fehlermeldung vorhanden)
-  document.getElementById('cancelSubtask').addEventListener('click', cancelSubtask); //NOTLÖSUNG !! TIMING PROBLEM, ALLE FUNKTIONEN WERDEN GELADEN AUSSER DIESE BEIDEN (Fehlermeldung vorhanden)
+    let subtaskInput = document.getElementById("subtaskInput").value;
+    let cancelIcon = document.getElementById('cancelSubtask')
+    let partingline = document.getElementById('smallLineSubtask')  
+    let acceptTask = document.getElementById('acceptTask')
+    let inputFieldIcon = document.getElementById('addingSubtask');
 
-  // Überprüfe, ob die Länge des eingegebenen Texts mindestens 3 Zeichen beträgt
   if (subtaskInput.length < 3) {
-    // Zeige eine Meldung an, dass mindestens 3 Zeichen erforderlich sind
     alert("Bitte geben Sie mindestens 3 Zeichen ein.");
     return false; // Unterbricht die Ausführung der Funktion
   } else {
-    // Setze die Anzeige entsprechend, wenn die Eingabe gültig ist
+    
     inputFieldIcon.style.display = 'block';
     cancelIcon.style.display = 'block';
     partingline.style.display ='block';
     acceptTask.style.display = 'none';
   }
 }
-  
-  // Funtktion Subtask wiederrufen X (löschen) //
-  function cancelSubtask() {
-    let subtaskInput = document.getElementById('subtaskInput');
-    
-    subtaskInput.value = '';
-    toggleSubtaskButtons()
-  }
 
-// delete Subtask //
+function cancelSubtask() {
+  let subtaskInput = document.getElementById('subtaskInput');
+    
+  subtaskInput.value = '';
+  toggleSubtaskButtons();
+}
+
 function deleteListItem(element) {
-  // Übergeordnetes Element finden und entfernen
-  let listItem = element.closest('.container_hover_subtasks_icons');
-  listItem.remove();
+  element.closest('.container_hover_subtasks_icons').remove();
 }
 
 // Prioritäten umschalten  start //

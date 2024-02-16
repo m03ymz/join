@@ -41,8 +41,7 @@ function openOverlay(taskId){
             <div class="task_overlay_assigned" id="task_overlay_assigned${taskId}"></div>
             <div class="subtasks_taskoverlay">
                 <span>Subtasks</span>
-                <div><input type="checkbox"><span>Implement Recipe Recommendation</span></div>
-                <div><input type="checkbox"><span>Start Page Layout</span></div>
+                <div><input type="checkbox"><span>Implement Recipe Recommendation</span></div><div><input type="checkbox"><span>Start Page Layout</span></div>
             </div>
         </div> 
         <div class="delete_edit_taskoverlay">
@@ -116,15 +115,12 @@ async function createTaskArray(targetColumnId) {
         "description": description.value,
         "date": date.value,
         "category": category.value,
-        "subtask": subtask.value,
+        "subtask": subtaskValues,
         "column": targetColumnId,
         "id": taskIdCounter,
         "contacts": selectedContactsAddTask,
-        "prio": selectedPriority,
-        // "addTaskSubtask": subtaskInputValue
-
-        // "id": id+1
-        // "category": targetColumnId
+        "prio": selectedPriority
+     
     }
     currentUser.tasks.push(task);
     taskIdCounter++;
