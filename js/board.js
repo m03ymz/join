@@ -7,23 +7,10 @@ async function initBoard() {
     renderContactsAddTask('');
 }
 
-
-
 let targetColumnId;
 let taskIdCounter;
-// let currentDraggedElement;
 
 function openOverlay(taskId){
-    // let clickedElement = event.target;
-    // while (clickedElement && !clickedElement.classList.contains('column_board')) {
-    //     clickedElement = clickedElement.parentElement;
-    // }
-    // if (clickedElement) {
-    //     let targetColumnId = clickedElement.id;
-
-    //     let tasks = columns[targetColumnId];
-    //     let taskNumber = tasks[i];
-
     let task = currentUser.tasks[taskId];
     let targetColumnId = task.column;
     if (document.getElementById(targetColumnId)) {
@@ -134,14 +121,10 @@ async function createTaskArray(targetColumnId) {
         "id": taskIdCounter,
         "contacts": selectedContactsAddTask,
         "prio": selectedPriority
-        // "id": id+1
-        // "category": targetColumnId
     }
     currentUser.tasks.push(task);
     taskIdCounter++;
     currentUser.taskId = taskIdCounter;
-    // columns[targetColumnId].push(task);
-    // // console.log(tasks);
     title.value = '';
     description.value = '';
     date.value = '';
