@@ -69,3 +69,10 @@ function updateRememberMe() {
         localStorage.removeItem('rememberedData');
     }
 }
+
+function logInAsGuest() {
+    let currentUserIndex = users.findIndex(user => user.guest === true);
+    let currentUserIndexAsString = JSON.stringify(currentUserIndex);
+    localStorage.setItem('currentUserIndex', currentUserIndexAsString);
+    redirect('summary');
+}
