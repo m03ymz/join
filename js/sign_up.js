@@ -4,6 +4,7 @@ async function initSignUp() {
 }
 
 
+
 function checkDataSignUp() {
     document.getElementById('sign_up_button_center_sign_up').disabled = true;
     let email = document.getElementById('email_sign_up').value.toLowerCase();
