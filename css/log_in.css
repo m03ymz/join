@@ -11,6 +11,7 @@
 .top_log_in {
     box-sizing: border-box;
     width: 100%;
+    font-size: 18px;
     display: flex;
     justify-content: space-between;
 }
@@ -19,6 +20,7 @@
     display: flex;
     align-items: center;
     gap: 32px;
+    color: #2A3647;
 }
 
 .sign_up_button_right_top_log_in {
@@ -75,6 +77,7 @@
 }
 
 .email_input_center_log_in {
+    box-sizing: border-box;
     display: flex;
     width: 420px;
     padding: 16px 24px;
@@ -93,6 +96,7 @@
 }
 
 .password_input_center_log_in {
+    box-sizing: border-box;
     display: flex;
     width: 420px;
     padding: 16px 24px;
@@ -158,10 +162,9 @@
     border-radius: 8px;
     border: 1px solid #2A3647;
     background: white;
-    color: var(--Version-2-main-color, #2A3647);
+    color: #2A3647;
     font-size: 21px;
     font-weight: 700;
-    line-height: 120%;
     transition: all 150ms ease-in-out;
 }
 
@@ -176,19 +179,188 @@
     box-sizing: border-box;
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+}
+
+.info_bottom_log_in {
+    display: flex;
     gap: 32px;
 }
 
-.bottom_log_in span {
+.info_bottom_log_in span {
     color: #A8A8A8;
     font-size: 16px;
     font-weight: 400;
     transition: all 150ms ease-in-out;
 }
 
-.bottom_log_in span:hover {
+.info_bottom_log_in span:hover {
     cursor: pointer;
     color: #29ABE2;
+}
+
+.mobile_bottom_log_in {
+    box-sizing: border-box;
+    width: 100%;
+    display: none;
+    font-size: 18px;
+    justify-content: center;
+}
+
+.mobile_bottom_log_in div {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    color: #2A3647;
+}
+
+.sign_up_button_mobile_bottom_log_in {
+    display: flex;
+    padding: 15px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: #2A3647;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    transition: all 150ms ease-in-out;
+}
+
+.sign_up_button_mobile_bottom_log_in:hover {
+    cursor: pointer;
+    background-color: #29ABE2;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+
+@media(max-width: 900px) {
+    .content_log_in {
+        padding: 40px 10%;
+    }
+
+    .top_log_in img {
+        height: 100px;
+    }
+
+    .center_log_in {
+        padding: 48px 5%;
+    }
+}
+
+@media(max-width: 675px) {
+    .center_log_in {
+        width: 80%;
+    }
+
+    .center_log_in h1 {
+        font-size: 48px;
+    }
+    
+    .email_input_center_log_in {
+        width: 100%;
+        padding: 8px 16px;
+        font-size: 20px;
+    }
+    
+    .password_input_center_log_in {
+        width: 100%;
+        padding: 8px 16px;
+        font-size: 20px;
+    }
+    
+    .checkbox_center_log_in {
+        padding: 32px 16px;
+    }
+    
+}
+
+@media(max-width: 500px) {
+    .top_log_in img {
+        height: 80px;
+    }
+
+    .right_top_log_in {
+        display: none;
+    }
+
+    .center_log_in {
+        padding: 32px 5%;
+    }
+
+    .buttons_center_log_in {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .log_in_button_center_log_in {
+        width: 180px;
+        height: 48px;
+        padding: 15px 24px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+    
+    .guest_log_in_button_center_log_in {
+        width: 180px;
+        height: 48px;
+        padding: 15px 24px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .mobile_bottom_log_in {
+        display: flex;
+    }
+}
+
+@media(max-width: 400px) {
+    .content_log_in {
+        padding: 40px 5%;
+    }
+
+    .center_log_in {
+        width: 90%;
+    }
+
+    .center_log_in h1 {
+        font-size: 40px;
+    }
+
+    .input_center_log_in {
+        gap: 16px;
+    }
+
+    .email_input_center_log_in {
+        width: 100%;
+        padding: 8px 16px;
+        font-size: 18px;
+    }
+    
+    .password_input_center_log_in {
+        width: 100%;
+        padding: 8px 16px;
+        font-size: 18px;
+    }
+
+    .checkbox_center_log_in {
+        padding: 24px 16px;
+    }
+
+    .log_in_button_center_log_in {
+        width: 160px;
+        font-size: 16px;
+    }
+    
+    .guest_log_in_button_center_log_in {
+        width: 160px;
+        font-size: 16px;
+    }
 }

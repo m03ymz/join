@@ -14,7 +14,7 @@
 <body onload="initLogIn()">
     <div class="content_log_in">
         <div class="top_log_in">
-            <img class="login_logo" src="./assets/img/join_logo_log_in.svg" alt="join logo">
+            <img src="./assets/img/join_logo_log_in.svg" alt="join logo">
             <div class="right_top_log_in">
                 <div>
                     <span>Not a Join user?</span>
@@ -40,8 +40,16 @@
             </form>
         </div>
         <div class="bottom_log_in">
-            <span onclick="redirect('privacy_policy')">Privacy Policy</span>
-            <span onclick="redirect('legal_notice')">Legal notice</span>
+            <div class="mobile_bottom_log_in">
+                <div>
+                    <span>Not a Join user?</span>
+                    <button class="sign_up_button_right_top_log_in" onclick="redirect('sign_up')">Sign up</button>
+                </div>
+            </div>
+            <div class="info_bottom_log_in">
+                <span onclick="redirect('privacy_policy')">Privacy Policy</span>
+                <span onclick="redirect('legal_notice')">Legal notice</span>
+            </div>
         </div>
     </div>
 </body>

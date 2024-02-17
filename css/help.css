@@ -2,24 +2,25 @@
     margin-left: 320px;
     margin-right: 80px;
     margin-top: 160px;
+    margin-bottom: 80px;
 }
 
 .content_help ol>li::marker {
     font-weight: 700;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .content_help h1{
-    font-size: 64px;
+    font-size: 60px;
 }
 
 .content_help h3{
-    font-size: 32px;
+    font-size: 30px;
 }
 
 .content_help h4{
-    font-size: 24px;
-    margin: 0;
+    font-size: 20px;
+    margin-bottom: 4px;
     margin-top: 24px;
 }
 
@@ -29,4 +30,69 @@
 
 .margin_paragraph_help {
     margin-top: 0;
+}
+
+.blue_arrow_icon_help {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -80px;
+}
+
+.blue_arrow_icon_help img {
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.blue_arrow_icon_help img:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media(max-width: 900px) {
+    .content_help {
+        margin-left: 80px;
+        margin-bottom: 120px;
+    }
+}
+
+@media(max-width: 600px) {
+    .content_help {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+}
+
+@media(max-width: 420px) {
+    .content_help {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+
+    .blue_arrow_icon_help {
+        margin-bottom: -60px;
+    }
+
+    .content_help h1{
+        font-size: 48px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+    
+    .content_help h3{
+        font-size: 26px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+    
+    .content_help h4{
+        font-size: 18px;
+        margin: 0;
+        margin-top: 16px;
+        margin-bottom: 8px;
+    }
+
+    .content_help ol>li::marker {
+        font-size: 18px;
+    }
 }
