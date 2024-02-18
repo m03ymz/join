@@ -2,6 +2,7 @@ async function initSummary() {
     await init();
     renderNameSummary();
     setGreetSummary();
+    renderAllTaskInfosSummary();
 }
 
 
@@ -43,4 +44,39 @@ function setGreetSummary() {
         greeting = 'Hello'; 
     }
     document.getElementById('greet_summary').innerHTML = greeting;
+}
+
+function renderAllTaskInfosSummary() {
+    let tasksToDo = currentUser.tasks.filter(task => task.column == 'column_board');
+    let tasksInProgress = currentUser.tasks.filter(task => task.column == 'column_board2');
+    let tasksAwaiting = currentUser.tasks.filter(task => task.column == 'column_board3');
+    let tasksDone = currentUser.tasks.filter(task => task.column == 'column_board4');
+    let urgentTasks = currentUser.tasks.filter(task => task.prio === 'urgent');
+    let earliestUrgentDate = calcEarliestUrgentTaskDate(urgentTasks);
+    document.getElementById('to_do_tasks_summary').innerHTML = tasksToDo.length;
+    document.getElementById('done_tasks_summary').innerHTML = tasksDone.length;
+    document.getElementById('urgent_tasks_summary').innerHTML = urgentTasks.length;
+    document.getElementById('date_summary').innerHTML = earliestUrgentDate ? formatDate(earliestUrgentDate) : "no date set";
+    document.getElementById('all_tasks_summary').innerHTML = currentUser.tasks.length;
+    document.getElementById('in_progress_tasks_summary').innerHTML = tasksInProgress.length;
+    document.getElementById('awaiting_tasks_summary').innerHTML = tasksAwaiting.length;
+}
+
+function calcEarliestUrgentTaskDate(urgentTasks) {
+    let earliestUrgentDate = null;
+    if (urgentTasks.length > 1) {
+        let filteredTasks = urgentTasks.filter(task => task.date.trim() !== ""); 
+        if (filteredTasks.length > 0) {
+            filteredTasks.sort((a, b) => new Date(a.date) - new Date(b.date));
+            earliestUrgentDate = new Date(filteredTasks[0].date);
+        }
+    } else if (urgentTasks.length === 1 && urgentTasks[0].date.trim() !== "") { 
+        earliestUrgentDate = new Date(urgentTasks[0].date);
+    }
+    return earliestUrgentDate;
+}
+
+function formatDate(date) {
+    let options = { month: 'long', day: 'numeric', year: 'numeric' };
+    return date.toLocaleDateString('en-US', options);
 }

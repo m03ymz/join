@@ -23,26 +23,26 @@
         <div class="main_summary">
             <div class="left_main_summary">
                 <div class="top_left_main_summary">
-                    <div class="to_do_top_left_main_summary" onmouseover="changeIconOnMouseOverSummary('to_do_icon_summary'), changeTextSummary('to_do_text_summary', 'white')"  onmouseout="changeIconOnMouseOutSummary('to_do_icon_summary'), changeTextSummary('to_do_text_summary', '#2A3647')">
+                    <div class="to_do_top_left_main_summary" onmouseover="changeIconOnMouseOverSummary('to_do_icon_summary'), changeTextSummary('to_do_text_summary', 'white')"  onmouseout="changeIconOnMouseOutSummary('to_do_icon_summary'), changeTextSummary('to_do_text_summary', '#2A3647')" onclick="redirect('board')">
                         <img src="./assets/img/to_do_icon_summary.svg" alt="to-do icon" class="icon_size_left_main_summary" id="to_do_icon_summary">
                         <div>
-                            <span class="bold_numbers_left_main_summary">1</span>
+                            <span class="bold_numbers_left_main_summary" id="to_do_tasks_summary">1</span>
                             <span class="text_color_left_main_summary" id="to_do_text_summary">To-do</span>
                         </div>
                     </div>
-                    <div class="done_top_left_main_summary" onmouseover="changeIconOnMouseOverSummary('done_icon_summary'), changeTextSummary('done_text_summary', 'white')"  onmouseout="changeIconOnMouseOutSummary('done_icon_summary'), changeTextSummary('done_text_summary', '#2A3647')">
+                    <div class="done_top_left_main_summary" onmouseover="changeIconOnMouseOverSummary('done_icon_summary'), changeTextSummary('done_text_summary', 'white')"  onmouseout="changeIconOnMouseOutSummary('done_icon_summary'), changeTextSummary('done_text_summary', '#2A3647')" onclick="redirect('board')">
                         <img src="./assets/img/done_icon_summary.svg" alt="done icon" class="icon_size_left_main_summary" id="done_icon_summary">
                         <div>
-                            <span class="bold_numbers_left_main_summary">1</span>
+                            <span class="bold_numbers_left_main_summary" id="done_tasks_summary">1</span>
                             <span class="text_color_left_main_summary" id="done_text_summary">Done</span>
                         </div>
                     </div>
                 </div>
-                <div class="center_left_main_summary" onmouseover="changeTextSummary('urgent_text_summary', 'white'), changeTextSummary('date_summary', 'white'), changeTextSummary('date_text_summary', 'white')" onmouseout="changeTextSummary('urgent_text_summary', '#2A3647'), changeTextSummary('date_summary', '#2A3647'), changeTextSummary('date_text_summary', '#2A3647')">
+                <div class="center_left_main_summary" onmouseover="changeTextSummary('urgent_text_summary', 'white'), changeTextSummary('date_summary', 'white'), changeTextSummary('date_text_summary', 'white')" onmouseout="changeTextSummary('urgent_text_summary', '#2A3647'), changeTextSummary('date_summary', '#2A3647'), changeTextSummary('date_text_summary', '#2A3647')" onclick="redirect('board')">
                     <div class="urgent_center_left_main_summary">
                         <img src="./assets/img/urgent_icon_summary.svg" alt="urgent icon" class="icon_size_left_main_summary">
                         <div>
-                            <span class="bold_numbers_left_main_summary">1</span>
+                            <span class="bold_numbers_left_main_summary" id="urgent_tasks_summary">1</span>
                             <span class="text_color_left_main_summary" id="urgent_text_summary">Urgent</span>
                         </div>                    
                     </div>
@@ -53,16 +53,16 @@
                     </div>
                 </div>
                 <div class="bottom_left_main_summary">
-                    <div onmouseover="changeTextSummary('tasks_in_board_text_summary', 'white')" onmouseout="changeTextSummary('tasks_in_board_text_summary', '#2A3647')">
-                        <span class="bold_numbers_left_main_summary">5</span>
+                    <div onmouseover="changeTextSummary('tasks_in_board_text_summary', 'white')" onmouseout="changeTextSummary('tasks_in_board_text_summary', '#2A3647')" onclick="redirect('board')">
+                        <span class="bold_numbers_left_main_summary" id="all_tasks_summary">5</span>
                         <span class="text_color_left_main_summary" id="tasks_in_board_text_summary">Tasks in<br>Board</span>
                     </div>
-                    <div onmouseover="changeTextSummary('tasks_in_progress_text_summary', 'white')" onmouseout="changeTextSummary('tasks_in_progress_text_summary', '#2A3647')">
-                        <span class="bold_numbers_left_main_summary">2</span>
+                    <div onmouseover="changeTextSummary('tasks_in_progress_text_summary', 'white')" onmouseout="changeTextSummary('tasks_in_progress_text_summary', '#2A3647')" onclick="redirect('board')">
+                        <span class="bold_numbers_left_main_summary" id="in_progress_tasks_summary">2</span>
                         <span class="text_color_left_main_summary" id="tasks_in_progress_text_summary">Tasks In<br>Progress</span>
                     </div>
-                    <div onmouseover="changeTextSummary('awaiting_feedback_text_summary', 'white')" onmouseout="changeTextSummary('awaiting_feedback_text_summary', '#2A3647')">
-                        <span class="bold_numbers_left_main_summary">2</span>
+                    <div onmouseover="changeTextSummary('awaiting_feedback_text_summary', 'white')" onmouseout="changeTextSummary('awaiting_feedback_text_summary', '#2A3647')" onclick="redirect('board')">
+                        <span class="bold_numbers_left_main_summary" id="awaiting_tasks_summary">2</span>
                         <span class="text_color_left_main_summary" id="awaiting_feedback_text_summary">Awaiting<br>Feedback</span>
                     </div>
                 </div>
