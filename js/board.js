@@ -143,7 +143,6 @@ async function createTaskArray(targetColumnId) {
     let description = document.getElementById('description');
     let date = document.getElementById('date');
     let category = document.getElementById('category_task');
-    let subtask = document.getElementById('subtaskInput');
     taskIdCounter = currentUser.taskId;
     if (taskIdCounter == undefined) {
         taskIdCounter = 0;
