@@ -15,6 +15,20 @@ function openOverlay(taskId){
     let targetColumnId = task.column;
     if (document.getElementById(targetColumnId)) {
         let backgroundColor = (task.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
+        let subtasksHTML = task.subtask.map(subtask => `<div><input type="checkbox"><span>${subtask}</span></div>`).join('');
+        let assignedProfilesHTML = task.contacts.map(contact => {
+            let initials = getInitials(contact.name);
+            return /*html*/`
+                <div class="assigned_profiles">
+                    <span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span>
+                    <span>${contact.name}</span>
+                </div>
+            `;
+        }).join('');
+        // let subtasksSpan = task.subtask.length > 0 ? `<span>Subtasks</span>` : '';
+        let subtasksText = task.subtask.length === 1 ? 'Subtask' : 'Subtasks';
+        let subtasksSpan = task.subtask.length > 0 ? `<span>${subtasksText}</span>` : '';
+        let priorityText = task.prio ? task.prio : 'Medium';
         document.getElementById('w3-include-board1').innerHTML = /*html*/ `
         <div class="task_overlay_box_board" id="task-overlay">
         <div class="task_overlay_top_board">
@@ -31,17 +45,19 @@ function openOverlay(taskId){
             <div class="priority_taskoverlay">
                 <span class="textcolor_taskoverlay">Priority:</span>
                 <div class="priority_taskoverlay2">
-                    <span>Medium</span>
+                    <span>${priorityText}</span>
                     <img src="./assets/img/prio_media.svg" alt="">
                 </div>
             </div>
             <span class="textcolor_taskoverlay">Assigned To:</span>
         </div>
         <div>
-            <div class="task_overlay_assigned" id="task_overlay_assigned${taskId}"></div>
+        <div class="task_overlay_assigned" id="task_overlay_assigned${taskId}">
+                        ${assignedProfilesHTML} <!-- Hier werden die zugewiesenen Profile eingefügt -->
+                    </div>
             <div class="subtasks_taskoverlay">
-                <span>Subtasks</span>
-                <div><input type="checkbox"><span>Implement Recipe Recommendation</span></div><div><input type="checkbox"><span>Start Page Layout</span></div>
+                ${subtasksSpan}
+                ${subtasksHTML} <!-- Hier wird der HTML-Code für die Subtasks eingefügt -->
             </div>
         </div> 
         <div class="delete_edit_taskoverlay">
@@ -57,24 +73,24 @@ function openOverlay(taskId){
         </div>
     </div>
     `;
-    for (let j = 0; j < task.contacts.length; j++) {
-        let contact = task.contacts[j];    
-        let initials = getInitials(contact.name)
-        document.getElementById(`task_overlay_assigned${taskId}`).innerHTML += /*html*/`
-            <div class="assigned_profiles">
-                    <span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span>
-                    <span>${contact.name}</span>
-            </div>
-        `;
-    }
-    document.getElementById(`task-overlay`).style.right = "500px";
+    // for (let j = 0; j < task.contacts.length; j++) {
+    //     let contact = task.contacts[j];    
+    //     let initials = getInitials(contact.name)
+    //     document.getElementById(`task_overlay_assigned${taskId}`).innerHTML += /*html*/`
+    //         <div class="assigned_profiles">
+    //                 <span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span>
+    //                 <span>${contact.name}</span>
+    //         </div>
+    //     `;
+    // }
+    document.getElementById(`task-overlay`).style.display = "unset";
     document.getElementById(`overlay`).style.display = "flex";
     document.getElementById(`content-board`).classList.add('pointer_events-none');
     document.getElementById(`body`).classList.add('overflow_hidden');
 }}
 
 function closeOverlay(){
-    document.getElementById(`task-overlay`).style.right = "-700px";
+    document.getElementById(`task-overlay`).style.display = "none";
     document.getElementById(`overlay`).style.display = "none";
     document.getElementById(`content-board`).classList.remove('pointer_events-none');
     document.getElementById(`body`).classList.remove('overflow_hidden');
@@ -82,14 +98,14 @@ function closeOverlay(){
 
 function openTaskFormOnBoard(columnId){
     targetColumnId = columnId;
-    document.getElementById(`task-form`).style.right = "20%";
+    document.getElementById(`task-form`).style.display = "unset";
     document.getElementById(`overlay`).style.display = "flex";
     document.getElementById(`content-board`).classList.add('pointer_events-none');
     document.getElementById(`body`).classList.add('overflow_hidden');
 }
 
 function closeTaskFormOnBoard(){
-    document.getElementById(`task-form`).style.right = "-100%";
+    document.getElementById(`task-form`).style.display = "none";
     document.getElementById(`overlay`).style.display = "none";
     document.getElementById(`content-board`).classList.remove('pointer_events-none');
     document.getElementById(`body`).classList.remove('overflow_hidden');
@@ -132,166 +148,13 @@ async function createTaskArray(targetColumnId) {
     // targetColumnId = 'column_board';
 }
 
-function renderTask() {
-    let columnTasks1 = currentUser.tasks.filter(task => task.column == 'column_board');
-    document.getElementById(`column_board`).innerHTML = '';
-    
-    for (let i = 0; i < columnTasks1.length; i++) {
-        let taskNumber = columnTasks1[i];
-        let taskId = taskNumber.id;
-        let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
-        document.getElementById(`column_board`).innerHTML += /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
-            <div onclick="openOverlay(${taskId})" class="inner_card_board2">
-                <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
-                <div class="card_text_board"><b>${taskNumber.title}</b></div>
-                <div class="card_text2_board">${taskNumber.description}</div>
-                <div class="progressbar_box_board">
-                    <div class="progressbar_board">
-                        <div class="progressbar_filter_board"></div>
-                    </div>
-                    <div class="progressbar_text_board">1/2 Subtasks</div>
-                </div>
-                <div class="card_img_main_board">
-                    <div class="card_img_box_board" id="card_img_box_board${i}"></div>
-                    <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
-                </div>
-            </div>
-        </div>
-        `;
-        for (let j = 0; j < taskNumber.contacts.length; j++) {
-            let contact = taskNumber.contacts[j];    
-            let initials = getInitials(contact.name)
-            document.getElementById(`card_img_box_board${i}`).innerHTML += /*html*/`
-                <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
-            `;
-        }
-    }
-
-    let columnTasks2 = currentUser.tasks.filter(task => task.column == 'column_board2');
-    document.getElementById(`column_board2`).innerHTML = '';
-    // let countColumn1 = columnTasks1.length;
-    
-    for (let i = 0; i < columnTasks2.length; i++) {
-        let taskNumber = columnTasks2[i];
-        // let columnIndex = tasks.filter(task => task.column == 'column_board').length + i;
-        let taskId = taskNumber.id
-        let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
-        document.getElementById(`column_board2`).innerHTML += /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
-            <div onclick="openOverlay(${taskId})" class="inner_card_board2">
-                <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
-                <div class="card_text_board"><b>${taskNumber.title}</b></div>
-                <div class="card_text2_board">${taskNumber.description}</div>
-                <div class="progressbar_box_board">
-                    <div class="progressbar_board">
-                        <div class="progressbar_filter_board"></div>
-                    </div>
-                    <div class="progressbar_text_board">1/2 Subtasks</div>
-                </div>
-                <div class="card_img_main_board">
-                    <div class="card_img_box_board" id="card_img_box_board${i}"></div>
-                    <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
-                </div>
-            </div>
-        </div>
-        `;
-        for (let j = 0; j < taskNumber.contacts.length; j++) {
-            let contact = taskNumber.contacts[j];    
-            let initials = getInitials(contact.name)
-            document.getElementById(`card_img_box_board${i}`).innerHTML += /*html*/`
-                <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
-            `;
-        }
-    }
-
-    let columnTasks3 = currentUser.tasks.filter(task => task.column == 'column_board3');
-    document.getElementById(`column_board3`).innerHTML = '';
-    // let countColumn1 = columnTasks1.length;
-    
-    for (let i = 0; i < columnTasks3.length; i++) {
-        let taskNumber = columnTasks3[i];
-        // let columnIndex = tasks.filter(task => task.column == 'column_board').length + i;
-        let taskId = taskNumber.id
-        let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
-        document.getElementById(`column_board3`).innerHTML += /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
-            <div onclick="openOverlay(${taskId})" class="inner_card_board2">
-                <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
-                <div class="card_text_board"><b>${taskNumber.title}</b></div>
-                <div class="card_text2_board">${taskNumber.description}</div>
-                <div class="progressbar_box_board">
-                    <div class="progressbar_board">
-                        <div class="progressbar_filter_board"></div>
-                    </div>
-                    <div class="progressbar_text_board">1/2 Subtasks</div>
-                </div>
-                <div class="card_img_main_board">
-                    <div class="card_img_box_board" id="card_img_box_board${i}"></div>
-                    <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
-                </div>
-            </div>
-        </div>
-        `;
-        for (let j = 0; j < taskNumber.contacts.length; j++) {
-            let contact = taskNumber.contacts[j];    
-            let initials = getInitials(contact.name)
-            document.getElementById(`card_img_box_board${i}`).innerHTML += /*html*/`
-                <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
-            `;
-        }
-    }
-
-    let columnTasks4 = currentUser.tasks.filter(task => task.column == 'column_board4');
-    document.getElementById(`column_board4`).innerHTML = '';
-    // let countColumn1 = columnTasks1.length;
-    
-    for (let i = 0; i < columnTasks4.length; i++) {
-        let taskNumber = columnTasks4[i];
-        // let columnIndex = tasks.filter(task => task.column == 'column_board').length + i;
-        let taskId = taskNumber.id
-        let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
-        document.getElementById(`column_board4`).innerHTML += /*html*/ `
-        <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
-            <div onclick="openOverlay(${taskId})" class="inner_card_board2">
-                <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
-                <div class="card_text_board"><b>${taskNumber.title}</b></div>
-                <div class="card_text2_board">${taskNumber.description}</div>
-                <div class="progressbar_box_board">
-                    <div class="progressbar_board">
-                        <div class="progressbar_filter_board"></div>
-                    </div>
-                    <div class="progressbar_text_board">1/2 Subtasks</div>
-                </div>
-                <div class="card_img_main_board">
-                    <div class="card_img_box_board" id="card_img_box_board${i}"></div>
-                    <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
-                </div>
-            </div>
-        </div>
-        `;
-        for (let j = 0; j < taskNumber.contacts.length; j++) {
-            let contact = taskNumber.contacts[j];    
-            let initials = getInitials(contact.name)
-            document.getElementById(`card_img_box_board${i}`).innerHTML += /*html*/`
-                <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
-            `;
-        }
-    }
-
-    clearEmptyAlert();
-    closeTaskFormOnBoard();
-    
-}
-
 // function renderTask() {
 //     let columnTasks1 = currentUser.tasks.filter(task => task.column == 'column_board');
 //     document.getElementById(`column_board`).innerHTML = '';
-//     let count = 0;
-
+    
 //     for (let i = 0; i < columnTasks1.length; i++) {
 //         let taskNumber = columnTasks1[i];
-//         let taskId = count + i;
+//         let taskId = taskNumber.id;
 //         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
 //         document.getElementById(`column_board`).innerHTML += /*html*/ `
 //         <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
@@ -306,24 +169,29 @@ function renderTask() {
 //                     <div class="progressbar_text_board">1/2 Subtasks</div>
 //                 </div>
 //                 <div class="card_img_main_board">
-//                     <div class="card_img_box_board">
-//                         <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></div>
-//                         <div class="card_img_board"><img src="./assets/img/profile2.svg" alt=""></div>
-//                         <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
-//                     </div>
+//                     <div class="card_img_box_board" id="card_img_box_board${i}"></div>
 //                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
 //                 </div>
 //             </div>
 //         </div>
 //         `;
+//         for (let j = 0; j < taskNumber.contacts.length; j++) {
+//             let contact = taskNumber.contacts[j];    
+//             let initials = getInitials(contact.name)
+//             document.getElementById(`card_img_box_board${i}`).innerHTML += /*html*/`
+//                 <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
+//             `;
+//         }
 //     }
 
 //     let columnTasks2 = currentUser.tasks.filter(task => task.column == 'column_board2');
 //     document.getElementById(`column_board2`).innerHTML = '';
-
+//     // let countColumn1 = columnTasks1.length;
+    
 //     for (let i = 0; i < columnTasks2.length; i++) {
 //         let taskNumber = columnTasks2[i];
-//         let taskId = count + columnTasks1.length + i;
+//         // let columnIndex = tasks.filter(task => task.column == 'column_board').length + i;
+//         let taskId = taskNumber.id
 //         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
 //         document.getElementById(`column_board2`).innerHTML += /*html*/ `
 //         <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
@@ -338,24 +206,29 @@ function renderTask() {
 //                     <div class="progressbar_text_board">1/2 Subtasks</div>
 //                 </div>
 //                 <div class="card_img_main_board">
-//                     <div class="card_img_box_board">
-//                         <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></div>
-//                         <div class="card_img_board"><img src="./assets/img/profile2.svg" alt=""></div>
-//                         <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
-//                     </div>
+//                     <div class="card_img_box_board" id="card_img_box_board${i}"></div>
 //                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
 //                 </div>
 //             </div>
 //         </div>
 //         `;
+//         for (let j = 0; j < taskNumber.contacts.length; j++) {
+//             let contact = taskNumber.contacts[j];    
+//             let initials = getInitials(contact.name)
+//             document.getElementById(`card_img_box_board${i}`).innerHTML += /*html*/`
+//                 <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
+//             `;
+//         }
 //     }
 
 //     let columnTasks3 = currentUser.tasks.filter(task => task.column == 'column_board3');
 //     document.getElementById(`column_board3`).innerHTML = '';
-
+//     // let countColumn1 = columnTasks1.length;
+    
 //     for (let i = 0; i < columnTasks3.length; i++) {
 //         let taskNumber = columnTasks3[i];
-//         let taskId = count + columnTasks1.length + columnTasks2.length + i;
+//         // let columnIndex = tasks.filter(task => task.column == 'column_board').length + i;
+//         let taskId = taskNumber.id
 //         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
 //         document.getElementById(`column_board3`).innerHTML += /*html*/ `
 //         <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
@@ -370,24 +243,29 @@ function renderTask() {
 //                     <div class="progressbar_text_board">1/2 Subtasks</div>
 //                 </div>
 //                 <div class="card_img_main_board">
-//                     <div class="card_img_box_board">
-//                         <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></div>
-//                         <div class="card_img_board"><img src="./assets/img/profile2.svg" alt=""></div>
-//                         <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
-//                     </div>
+//                     <div class="card_img_box_board" id="card_img_box_board${i}"></div>
 //                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
 //                 </div>
 //             </div>
 //         </div>
 //         `;
+//         for (let j = 0; j < taskNumber.contacts.length; j++) {
+//             let contact = taskNumber.contacts[j];    
+//             let initials = getInitials(contact.name)
+//             document.getElementById(`card_img_box_board${i}`).innerHTML += /*html*/`
+//                 <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
+//             `;
+//         }
 //     }
 
 //     let columnTasks4 = currentUser.tasks.filter(task => task.column == 'column_board4');
 //     document.getElementById(`column_board4`).innerHTML = '';
-
+//     // let countColumn1 = columnTasks1.length;
+    
 //     for (let i = 0; i < columnTasks4.length; i++) {
 //         let taskNumber = columnTasks4[i];
-//         let taskId = count + columnTasks1.length + columnTasks2.length + columnTasks3.length + i;
+//         // let columnIndex = tasks.filter(task => task.column == 'column_board').length + i;
+//         let taskId = taskNumber.id
 //         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
 //         document.getElementById(`column_board4`).innerHTML += /*html*/ `
 //         <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
@@ -402,23 +280,25 @@ function renderTask() {
 //                     <div class="progressbar_text_board">1/2 Subtasks</div>
 //                 </div>
 //                 <div class="card_img_main_board">
-//                     <div class="card_img_box_board">
-//                         <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></
-//                         <div class="card_img_board"><img  src="./assets/img/profile2.svg" alt=""></div>
-//                         <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
-//                     </div>
+//                     <div class="card_img_box_board" id="card_img_box_board${i}"></div>
 //                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
 //                 </div>
 //             </div>
 //         </div>
 //         `;
+//         for (let j = 0; j < taskNumber.contacts.length; j++) {
+//             let contact = taskNumber.contacts[j];    
+//             let initials = getInitials(contact.name)
+//             document.getElementById(`card_img_box_board${i}`).innerHTML += /*html*/`
+//                 <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
+//             `;
+//         }
 //     }
 
 //     clearEmptyAlert();
 //     closeTaskFormOnBoard();
     
 // }
-
 
 function clearEmptyAlert() {
     let column1 = document.getElementById('column_board');
@@ -481,19 +361,6 @@ function clearTask() {
     date.value = '';
 }
 
-// function startDragging(i) {
-//     currentDraggedElement = i;
-// }
-
-// function allowDrop(ev) {
-//     ev.preventDefault();
-// }
-
-// function moveTo(category) {
-//     columns[currentDraggedElement]['category'] = category;
-//     renderTask(targetColumnId);
-// }
-
 // function changeCategoryColor(){
 //     document.getElementById('category_task').addEventListener('change', function() {
 //         let selectedOption = this.value;
@@ -504,168 +371,6 @@ function clearTask() {
 //             cardTitleBoard.style.background = '#0038FF'; // Set it back to default color if another option is selected
 //         }
 //     });
-// }
-
-// function searchTask() {
-//     let title = columns.column_board.filter(t => t['title'] == search_input_task.value);
-
-//     for (let i = 0; i < columns.column_board.length; i++) {
-//         const element = title[i];
-//         document.getElementById(`${targetColumnId}`).innerHTML += /*html*/ `
-//         <div id="new_content${i}" draggable="true" ondragstart="startDragging(${i})" class="card_board2">
-//             <div onclick="openOverlay(${i})" class="inner_card_board2">
-//                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
-//                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
-//                 <div class="card_text2_board">${taskNumber.description}</div>
-//                 <div class="progressbar_box_board">
-//                     <div class="progressbar_board">
-//                         <div class="progressbar_filter_board"></div>
-//                     </div>
-//                     <div class="progressbar_text_board">1/2 Subtasks</div>
-//                 </div>
-//                 <div class="card_img_main_board">
-//                     <div class="card_img_box_board">
-//                         <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></div>
-//                         <div class="card_img_board"><img  src="./assets/img/profile2.svg" alt=""></div>
-//                         <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
-//                     </div>
-//                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
-//                 </div>
-//             </div>
-//         </div>
-//         `;
-//     }
-//     }
-
-// alte suchfunktion
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     document.getElementById('search_input_task').addEventListener('keyup', function() {
-//         searchTask();
-//     });
-// });
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     document.getElementById('search_input_task').addEventListener('keyup', function() {
-//         searchTask();
-//     });
-// });
-
-// function searchTask() {
-//     let searchInput = document.getElementById('search_input_task').value.toLowerCase();
-//     let tasks = columns[targetColumnId];
-//     let filteredTasks = currentUser.tasks.filter(task => task.title.toLowerCase().includes(searchInput));
-    
-//     renderFilteredTasks('column_board', filteredTasks);
-//     renderFilteredTasks('column_board2', filteredTasks);
-//     renderFilteredTasks('column_board3', filteredTasks);
-// }
-
-// function renderFilteredTasks(targetColumnId, filteredTasks) {
-//     // let targetColumnId = 'column_board'; // Annahme, dass es nur eine Spalte gibt, ändere dies entsprechend deiner Struktur
-//     // document.getElementById(`${targetColumnId}`).innerHTML = '';
-//     let columnElement = document.getElementById(targetColumnId);
-//     columnElement.innerHTML = '';
-
-//     for (let i = 0; i < filteredTasks.length; i++) {
-//         let taskNumber = filteredTasks[i];
-//         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
-//         document.getElementById(`${targetColumnId}`).innerHTML += /*html*/ `
-//         <div id="new_content${i}" draggable="true" ondragstart="startDragging(${i})" class="card_board2">
-//             <div onclick="openOverlay(${i})" class="inner_card_board2">
-//                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
-//                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
-//                 <div class="card_text2_board">${taskNumber.description}</div>
-//                 <div class="progressbar_box_board">
-//                     <div class="progressbar_board">
-//                         <div class="progressbar_filter_board"></div>
-//                     </div>
-//                     <div class="progressbar_text_board">1/2 Subtasks</div>
-//                 </div>
-//                 <div class="card_img_main_board">
-//                     <div class="card_img_box_board">
-//                         <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></div>
-//                         <div class="card_img_board"><img  src="./assets/img/profile2.svg" alt=""></div>
-//                         <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
-//                     </div>
-//                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
-//                 </div>
-//             </div>
-//         </div>
-//         `;
-//     }  
-
-    
-// }
-
-// function renderFilteredTasks2(filteredTasks) {
-//     let targetColumnId = 'column_board2'; // Annahme, dass es nur eine Spalte gibt, ändere dies entsprechend deiner Struktur
-//     document.getElementById(`${targetColumnId}`).innerHTML = '';
-
-//     for (let i = 0; i < filteredTasks.length; i++) {
-//         let taskNumber = filteredTasks[i];
-//         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
-//         document.getElementById(`${targetColumnId}`).innerHTML += /*html*/ `
-//         <div id="new_content${i}" draggable="true" ondragstart="startDragging(${i})" class="card_board2">
-//             <div onclick="openOverlay(${i})" class="inner_card_board2">
-//                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
-//                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
-//                 <div class="card_text2_board">${taskNumber.description}</div>
-//                 <div class="progressbar_box_board">
-//                     <div class="progressbar_board">
-//                         <div class="progressbar_filter_board"></div>
-//                     </div>
-//                     <div class="progressbar_text_board">1/2 Subtasks</div>
-//                 </div>
-//                 <div class="card_img_main_board">
-//                     <div class="card_img_box_board">
-//                         <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></div>
-//                         <div class="card_img_board"><img  src="./assets/img/profile2.svg" alt=""></div>
-//                         <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
-//                     </div>
-//                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
-//                 </div>
-//             </div>
-//         </div>
-//         `;
-//     }  
-
-    
-// }
-
-// function renderFilteredTasks3(filteredTasks) {
-//     let targetColumnId = 'column_board3'; // Annahme, dass es nur eine Spalte gibt, ändere dies entsprechend deiner Struktur
-//     document.getElementById(`${targetColumnId}`).innerHTML = '';
-
-//     for (let i = 0; i < filteredTasks.length; i++) {
-//         let taskNumber = filteredTasks[i];
-//         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
-//         document.getElementById(`${targetColumnId}`).innerHTML += /*html*/ `
-//         <div id="new_content${i}" draggable="true" ondragstart="startDragging(${i})" class="card_board2">
-//             <div onclick="openOverlay(${i})" class="inner_card_board2">
-//                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
-//                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
-//                 <div class="card_text2_board">${taskNumber.description}</div>
-//                 <div class="progressbar_box_board">
-//                     <div class="progressbar_board">
-//                         <div class="progressbar_filter_board"></div>
-//                     </div>
-//                     <div class="progressbar_text_board">1/2 Subtasks</div>
-//                 </div>
-//                 <div class="card_img_main_board">
-//                     <div class="card_img_box_board">
-//                         <div class="card_img_board"><img src="./assets/img/profile1.svg" alt=""></div>
-//                         <div class="card_img_board"><img  src="./assets/img/profile2.svg" alt=""></div>
-//                         <div class="card_img_board"><img src="./assets/img/profile3.svg" alt=""></div>
-//                     </div>
-//                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
-//                 </div>
-//             </div>
-//         </div>
-//         `;
-//     }  
-
-    
 // }
 
 let currentDraggedElement;
@@ -682,6 +387,8 @@ async function moveTo(category) {
     currentUser.tasks[currentDraggedElement]['column'] = category;
     await saveUsers();
     renderTask();
+    let searchField = document.getElementById('search_input_task');
+    searchField.value = '';
 }
 
 function highlight(id) {
@@ -744,216 +451,13 @@ function removeHighlight(id) {
 //     
 // }
 
-// function searchTask() {
-//     let searchInput1 = document.getElementById('search_input_task').value.toLowerCase();
-//     // let filteredTasks = currentUser.tasks.filter(task => task.title.toLowerCase().includes(searchInput));
-//     let columnTasks1 = currentUser.tasks.filter(task => task.title == searchInput1);
-//     document.getElementById(`column_board`).innerHTML = '';
-    
-//     for (let i = 0; i < columnTasks1.length; i++) {
-//         let taskNumber = columnTasks1[i];
-//         let taskId = taskNumber.id;
-//         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
-//         document.getElementById(`column_board`).innerHTML += /*html*/ `
-//         <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
-//             <div onclick="openOverlay(${taskId})" class="inner_card_board2">
-//                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
-//                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
-//                 <div class="card_text2_board">${taskNumber.description}</div>
-//                 <div class="progressbar_box_board">
-//                     <div class="progressbar_board">
-//                         <div class="progressbar_filter_board"></div>
-//                     </div>
-//                     <div class="progressbar_text_board">1/2 Subtasks</div>
-//                 </div>
-//                 <div class="card_img_main_board">
-//                     <div class="card_img_box_board" id="card_img_box_board${i}"></div>
-//                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
-//                 </div>
-//             </div>
-//         </div>
-//         `;
-//         for (let j = 0; j < taskNumber.contacts.length; j++) {
-//             let contact = taskNumber.contacts[j];    
-//             let initials = getInitials(contact.name)
-//             document.getElementById(`card_img_box_board${i}`).innerHTML += /*html*/`
-//                 <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
-//             `;
-//         }
-//     }
-
-//     let searchInput2 = document.getElementById('search_input_task').value.toLowerCase();
-//     // let filteredTasks = currentUser.tasks.filter(task => task.title.toLowerCase().includes(searchInput));
-//     let columnTasks2 = currentUser.tasks.filter(task => task.title == searchInput2);
-//     document.getElementById(`column_board`).innerHTML = '';
-    
-//     for (let i = 0; i < columnTasks2.length; i++) {
-//         let taskNumber = columnTasks2[i];
-//         let taskId = taskNumber.id;
-//         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
-//         document.getElementById(`column_board2`).innerHTML += /*html*/ `
-//         <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
-//             <div onclick="openOverlay(${taskId})" class="inner_card_board2">
-//                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
-//                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
-//                 <div class="card_text2_board">${taskNumber.description}</div>
-//                 <div class="progressbar_box_board">
-//                     <div class="progressbar_board">
-//                         <div class="progressbar_filter_board"></div>
-//                     </div>
-//                     <div class="progressbar_text_board">1/2 Subtasks</div>
-//                 </div>
-//                 <div class="card_img_main_board">
-//                     <div class="card_img_box_board" id="card_img_box_board${i}"></div>
-//                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
-//                 </div>
-//             </div>
-//         </div>
-//         `;
-//         for (let j = 0; j < taskNumber.contacts.length; j++) {
-//             let contact = taskNumber.contacts[j];    
-//             let initials = getInitials(contact.name)
-//             document.getElementById(`card_img_box_board${i}`).innerHTML += /*html*/`
-//                 <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
-//             `;
-//         }
-//     }
-// }
-
-// function searchTask() {
-//     let searchInput = document.getElementById('search_input_task').value.trim().toLowerCase();
-//     let filteredTasks = currentUser.tasks.filter(task => task.title.toLowerCase().includes(searchInput));
-
-//     // Leeren Sie beide Spalten, um eine korrekte Anzeige sicherzustellen
-//     document.getElementById('column_board').innerHTML = '';
-//     document.getElementById('column_board2').innerHTML = '';
-
-//     // Teilen Sie die gefilterten Aufgaben in zwei Teile für jede Spalte
-//     let halfLength = Math.ceil(filteredTasks.length / 2);
-//     let tasksForColumn1 = filteredTasks.slice(0, halfLength);
-//     let tasksForColumn2 = filteredTasks.slice(halfLength);
-
-//     displayTasks(tasksForColumn1, 'column_board');
-//     displayTasks(tasksForColumn2, 'column_board2');
-// }
-
-// function displayTasks(tasks, columnId) {
-//     for (let i = 0; i < tasks.length; i++) {
-//         let taskNumber = tasks[i];
-//         let taskId = taskNumber.id;
-//         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
-//         let cardImgBoxId = `card_img_box_${columnId}${i}`; // Eindeutige ID für das Bildfeld
-
-//         document.getElementById(columnId).innerHTML += `
-//         <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
-//             <div onclick="openOverlay(${taskId})" class="inner_card_board2">
-//                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
-//                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
-//                 <div class="card_text2_board">${taskNumber.description}</div>
-//                 <div class="progressbar_box_board">
-//                     <div class="progressbar_board">
-//                         <div class="progressbar_filter_board"></div>
-//                     </div>
-//                     <div class="progressbar_text_board">1/2 Subtasks</div>
-//                 </div>
-//                 <div class="card_img_main_board">
-//                     <div class="card_img_box_board" id="${cardImgBoxId}"></div>
-//                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
-//                 </div>
-//             </div>
-//         </div>
-//         `;
-
-//         for (let j = 0; j < taskNumber.contacts.length; j++) {
-//             let contact = taskNumber.contacts[j];
-//             let initials = getInitials(contact.name);
-//             document.getElementById(cardImgBoxId).innerHTML += `
-//                 <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
-//             `;
-//         }
-//     }
-// }
-
-// document.getElementById('search_input_task').addEventListener('keyup', function() {
-//     searchTask();
-// });
-
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('search_input_task').addEventListener('keyup', function() {
-        searchTask();
-    });
-});
-
-// function searchTask() {
-//     let searchInput = document.getElementById('search_input_task').value.trim().toLowerCase();
-//     let filteredTasks = currentUser.tasks.filter(task => task.title.toLowerCase().startsWith(searchInput));
-
-//     // Leeren Sie alle Spalten, um eine korrekte Anzeige sicherzustellen
-//     document.getElementById('column_board').innerHTML = '';
-//     document.getElementById('column_board2').innerHTML = '';
-//     document.getElementById('column_board3').innerHTML = '';
-//     document.getElementById('column_board4').innerHTML = '';
-
-//     // Teilen Sie die gefilterten Aufgaben in vier Teile für jede Spalte
-//     let quarterLength = Math.ceil(filteredTasks.length / 4);
-//     let tasksForColumn1 = filteredTasks.slice(0, quarterLength);
-//     let tasksForColumn2 = filteredTasks.slice(quarterLength, quarterLength * 2);
-//     let tasksForColumn3 = filteredTasks.slice(quarterLength * 2, quarterLength * 3);
-//     let tasksForColumn4 = filteredTasks.slice(quarterLength * 3);
-
-//     displayTasks(tasksForColumn1, 'column_board');
-//     displayTasks(tasksForColumn2, 'column_board2');
-//     displayTasks(tasksForColumn3, 'column_board3');
-//     displayTasks(tasksForColumn4, 'column_board4');
-// }
-
-// function displayTasks(tasks, columnId) {
-//     for (let i = 0; i < tasks.length; i++) {
-//         let taskNumber = tasks[i];
-//         let taskId = taskNumber.id;
-//         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
-//         let cardImgBoxId = `card_img_box_${columnId}${i}`; // Eindeutige ID für das Bildfeld
-
-//         document.getElementById(columnId).innerHTML += `
-//         <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
-//             <div onclick="openOverlay(${taskId})" class="inner_card_board2">
-//                 <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
-//                 <div class="card_text_board"><b>${taskNumber.title}</b></div>
-//                 <div class="card_text2_board">${taskNumber.description}</div>
-//                 <div class="progressbar_box_board">
-//                     <div class="progressbar_board">
-//                         <div class="progressbar_filter_board"></div>
-//                     </div>
-//                     <div class="progressbar_text_board">1/2 Subtasks</div>
-//                 </div>
-//                 <div class="card_img_main_board">
-//                     <div class="card_img_box_board" id="${cardImgBoxId}"></div>
-//                     <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
-//                 </div>
-//             </div>
-//         </div>
-//         `;
-
-//         for (let j = 0; j < taskNumber.contacts.length; j++) {
-//             let contact = taskNumber.contacts[j];
-//             let initials = getInitials(contact.name);
-//             document.getElementById(cardImgBoxId).innerHTML += `
-//                 <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
-//             `;
-//         }
-//     }
-// }
-
-// // Event-Listener für das input-Ereignis hinzufügen
-// document.getElementById('search_input_task').addEventListener('input', function() {
-//     searchTask();
-// });
-
 // document.addEventListener('DOMContentLoaded', function() {
 //     document.getElementById('search_input_task').addEventListener('keyup', function() {
 //         searchTask();
 //     });
 // });
+
+
 
 // // RICHTIGE SUCHFUNKTION
 
@@ -1015,6 +519,163 @@ function searchTask(searchInput) {
 }
 
 // // RICHTIGE SUCHFUNKTION
+
+// RICHTIGE RENDERFUNKTION
+
+function renderTask() {
+    let columnTasks1 = currentUser.tasks.filter(task => task.column == 'column_board');
+    document.getElementById(`column_board`).innerHTML = '';
+    renderTasks(columnTasks1, 'column_board');
+
+    let columnTasks2 = currentUser.tasks.filter(task => task.column == 'column_board2');
+    document.getElementById(`column_board2`).innerHTML = '';
+    renderTasks(columnTasks2, 'column_board2');
+
+    let columnTasks3 = currentUser.tasks.filter(task => task.column == 'column_board3');
+    document.getElementById(`column_board3`).innerHTML = '';
+    renderTasks(columnTasks3, 'column_board3');
+
+    let columnTasks4 = currentUser.tasks.filter(task => task.column == 'column_board4');
+    document.getElementById(`column_board4`).innerHTML = '';
+    renderTasks(columnTasks4, 'column_board4');
+
+    clearEmptyAlert();
+    closeTaskFormOnBoard();
+}
+
+function renderTasks(columnTasks, columnId) {
+    for (let i = 0; i < columnTasks.length; i++) {
+        let taskNumber = columnTasks[i];
+        let taskId = taskNumber.id;
+        let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
+        
+        let containerId = `card_img_box_${columnId}_${i}`; // Unique container ID
+        
+        document.getElementById(columnId).innerHTML += /*html*/ `
+            <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
+                <div onclick="openOverlay(${taskId})" class="inner_card_board2">
+                    <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
+                    <div class="card_text_board"><b>${taskNumber.title}</b></div>
+                    <div class="card_text2_board">${taskNumber.description}</div>
+                    <div class="progressbar_box_board">
+                        <div class="progressbar_board">
+                            <div class="progressbar_filter_board"></div>
+                        </div>
+                        <div class="progressbar_text_board">1/2 Subtasks</div>
+                    </div>
+                    <div class="card_img_main_board">
+                        <div class="card_img_box_board" id="${containerId}"></div>
+                        <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        renderContactImages(containerId, taskNumber.contacts);
+    }
+}
+
+function renderContactImages(containerId, contacts) {
+    for (let contact of contacts) {
+        let initials = getInitials(contact.name);
+        document.getElementById(containerId).innerHTML += /*html*/`
+            <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
+        `;
+    }
+}
+
+// RICHTIGE RENDERFUNKTION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // RICHTIGE RENDERFUNKTION
+
+// function renderTask() {
+//     let columnTasks1 = currentUser.tasks.filter(task => task.column == 'column_board');
+//     document.getElementById(`column_board`).innerHTML = '';
+//     renderTasks(columnTasks1, 'column_board');
+
+//     let columnTasks2 = currentUser.tasks.filter(task => task.column == 'column_board2');
+//     document.getElementById(`column_board2`).innerHTML = '';
+//     renderTasks(columnTasks2, 'column_board2');
+
+//     let columnTasks3 = currentUser.tasks.filter(task => task.column == 'column_board3');
+//     document.getElementById(`column_board3`).innerHTML = '';
+//     renderTasks(columnTasks3, 'column_board3');
+
+//     let columnTasks4 = currentUser.tasks.filter(task => task.column == 'column_board4');
+//     document.getElementById(`column_board4`).innerHTML = '';
+//     renderTasks(columnTasks4, 'column_board4');
+
+//     clearEmptyAlert();
+//     closeTaskFormOnBoard();
+// }
+
+// function renderTasks(columnTasks, columnId) {
+//     for (let i = 0; i < columnTasks.length; i++) {
+//         let taskNumber = columnTasks[i];
+//         let taskId = taskNumber.id;
+//         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
+        
+//         let containerId = `card_img_box_${columnId}_${i}`; // Unique container ID
+        
+//         document.getElementById(columnId).innerHTML += /*html*/ `
+//             <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
+//                 <div onclick="openOverlay(${taskId})" class="inner_card_board2">
+//                     <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
+//                     <div class="card_text_board"><b>${taskNumber.title}</b></div>
+//                     <div class="card_text2_board">${taskNumber.description}</div>
+//                     <div class="progressbar_box_board">
+//                         <div class="progressbar_board">
+//                             <div class="progressbar_filter_board"></div>
+//                         </div>
+//                         <div class="progressbar_text_board">1/2 Subtasks</div>
+//                     </div>
+//                     <div class="card_img_main_board">
+//                         <div class="card_img_box_board" id="${containerId}"></div>
+//                         <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
+//                     </div>
+//                 </div>
+//             </div>
+//         `;
+        
+//         renderContactImages(containerId, taskNumber.contacts);
+//     }
+// }
+
+// function renderContactImages(containerId, contacts) {
+//     for (let contact of contacts) {
+//         let initials = getInitials(contact.name);
+//         document.getElementById(containerId).innerHTML += /*html*/`
+//             <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
+//         `;
+//     }
+// }
+
+// // RICHTIGE RENDERFUNKTION
 
 
 

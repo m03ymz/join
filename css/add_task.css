@@ -482,7 +482,6 @@ textarea:hover, select:hover {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    position: sticky;
     bottom: 0px;
     background-color:#f1f1f1;
     height: 64px;

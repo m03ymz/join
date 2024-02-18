@@ -116,7 +116,7 @@ function toggleButton(priority) {
       mediumButtonWhite.classList.remove('hide_icon');
       lowButtonWhite.classList.remove('hide_icon');
       lowButtonGreen.classList.add('hide_icon');
-      selectedPriority = 'urgent';
+      selectedPriority = 'Urgent';
   } else if (priority === 'medium') {
       mediumButtonOrange.classList.toggle('hide_icon');
       mediumButtonWhite.classList.toggle('hide_icon');
@@ -124,7 +124,7 @@ function toggleButton(priority) {
       urgentButtonRed.classList.add('hide_icon');
       lowButtonWhite.classList.remove('hide_icon');
       lowButtonGreen.classList.add('hide_icon');
-      selectedPriority = 'medium';
+      selectedPriority = 'Medium';
   } else if (priority === 'low') {
       lowButtonWhite.classList.toggle('hide_icon');
       lowButtonGreen.classList.toggle('hide_icon');
@@ -132,7 +132,7 @@ function toggleButton(priority) {
       urgentButtonRed.classList.add('hide_icon');
       mediumButtonOrange.classList.add('hide_icon');
       mediumButtonWhite.classList.remove('hide_icon');
-      selectedPriority = 'low';
+      selectedPriority = 'Low';
   }
 }
 //Prioritäten umschalten ende // 
