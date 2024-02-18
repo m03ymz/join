@@ -279,6 +279,20 @@ function searchContactsAddTask() {
   renderContactsAddTask(searchTerm);
 }
 
+function resetContactAddTask() {
+  let contacts = document.querySelectorAll('.contact_add_task');
+  contacts.forEach(contact => {
+      contact.style.backgroundColor = 'unset';
+      contact.style.color = 'unset';
+      selectedContactsAddTask = [];
+      let checkbox = contact.querySelector('.checkbox_contact_add_task');
+      if (checkbox) {
+          checkbox.checked = false;
+      }
+  });
+  closeContactListAddTask();
+}
+
 // Assigned to end //
 
 // Clear all Button start //
