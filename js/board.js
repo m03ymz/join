@@ -29,6 +29,28 @@ function openOverlay(taskId){
         let subtasksText = task.subtask.length === 1 ? 'Subtask' : 'Subtasks';
         let subtasksSpan = task.subtask.length > 0 ? `<span>${subtasksText}</span>` : '';
         let priorityText = task.prio ? task.prio : 'Medium';
+
+        let priorityImage;
+        switch (priorityText) {
+            case 'Urgent':
+                priorityImage = './assets/img/prio_up_red.svg';
+                break;
+            case 'Low':
+                priorityImage = './assets/img/prio_low.svg';
+                break;
+            default:
+                priorityImage = './assets/img/prio_media.svg';
+                break;
+        }
+
+        let taskDate = new Date(task.date);
+        let day = taskDate.getDate();
+        let month = taskDate.getMonth() + 1; // Monate beginnen bei 0, also +1 für den korrekten Monat
+        let year = taskDate.getFullYear();
+        day = (day < 10) ? '0' + day : day;
+        month = (month < 10) ? '0' + month : month;
+        let formattedDate = `${day}/${month}/${year}`;
+
         document.getElementById('w3-include-board1').innerHTML = /*html*/ `
         <div class="task_overlay_box_board" id="task-overlay">
         <div class="task_overlay_top_board">
@@ -40,13 +62,13 @@ function openOverlay(taskId){
                 <span>${task.description}</span>
             <div class="date_taskoverlay">
                 <span class="textcolor_taskoverlay">Due date:</span>
-                <span>${task.date}</span>
+                <span>${formattedDate}</span>
             </div>
             <div class="priority_taskoverlay">
                 <span class="textcolor_taskoverlay">Priority:</span>
                 <div class="priority_taskoverlay2">
                     <span>${priorityText}</span>
-                    <img src="./assets/img/prio_media.svg" alt="">
+                    <img src="${priorityImage}" alt="">
                 </div>
             </div>
             <span class="textcolor_taskoverlay">Assigned To:</span>
@@ -144,6 +166,7 @@ async function createTaskArray(targetColumnId) {
     title.value = '';
     description.value = '';
     date.value = '';
+    category.selectedIndex = 0;
     await saveUsers();
     // targetColumnId = 'column_board';
 }
@@ -550,6 +573,19 @@ function renderTasks(columnTasks, columnId) {
         let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
         
         let containerId = `card_img_box_${columnId}_${i}`; // Unique container ID
+
+        let priorityImage;
+        switch (taskNumber.prio) {
+            case 'Urgent':
+                priorityImage = './assets/img/prio_up_red.svg';
+                break;
+            case 'Low':
+                priorityImage = './assets/img/prio_low.svg';
+                break;
+            default:
+                priorityImage = './assets/img/prio_media.svg';
+                break;
+        }
         
         document.getElementById(columnId).innerHTML += /*html*/ `
             <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
@@ -565,7 +601,7 @@ function renderTasks(columnTasks, columnId) {
                     </div>
                     <div class="card_img_main_board">
                         <div class="card_img_box_board" id="${containerId}"></div>
-                        <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
+                        <img class="pro_media_board" src="${priorityImage}" alt="">
                     </div>
                 </div>
             </div>
