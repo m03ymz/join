@@ -65,7 +65,7 @@
                     <div>
                         <p class="required_red_star">Due date</p>
                         <div class="input_with_icon">
-                            <input  id="date" placeholder="DD/MM/YYYY" class="input_field_due_date" type="date" id="dueDateInput"> 
+                            <input  id="date" placeholder="DD/MM/YYYY" class="input_field_due_date" type="date" id="dueDateInput" required> 
                         </div>
                     </div>
                 
@@ -84,7 +84,7 @@
                     <div>
                         <p class="required_red_star">Category</p>
                         <select id="category_task" class="input_assigned_to" required >
-                            <option selected hidden >Select task category</option>
+                            <option value="" disabled selected hidden>Select task category</option>
                             <option value="Technical Task">Technical Task</option>
                             <option value="User Story">User Story</option>
                           
