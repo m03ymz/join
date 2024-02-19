@@ -247,7 +247,6 @@ textarea:hover, select:hover {
 .container_subtasks_hover_icons { /* wahrscheinlich nicht die beste lösung*/
     display: flex;
     justify-content: flex-end;
-    width: 100%;
     opacity: 0;
     position: sticky;
     z-index: 99;
@@ -649,13 +648,7 @@ textarea:hover, select:hover {
     }
     #lowbuttonwhite, #urgentbuttonwhite, #mediumbuttonwhite, #mediumbuttonorange, #lowbuttongreen, #urgentbuttonred{
         width: 80px;
-    }
-    .create_task_button{
-        display: flex;
-        justify-content: center;
-        margin-right: 32px;
-        width: 116px;
-        height: 40px;
+    
     }
     .bottom_container_addtask{
         display: flex;
