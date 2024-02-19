@@ -16,7 +16,8 @@
 
 <style>
     .bar_board{
-        border: 4px dotted red;}
+        border: 4px dotted red;
+    }
 </style>
 <body id="body" onload="initBoard()">
     <div w3-include-html="./assets/templates/header_and_bar_template.html"></div>
@@ -29,7 +30,7 @@
 
         <div class="top_board">
             <div class="inner_top_board">
-               <div class="headline_board"><h1>Board</h1></div>
+                <h1>Board</h1>
                 <div class="task_container_board">
                     <div class="input_container_board">
                         <input id="search_input_task" class="input_board" type="text" placeholder="Find Task">
@@ -43,7 +44,7 @@
                     </div>
                     <div>
                         <div onclick="openTaskFormOnBoard()" class="button_board">
-                            <span class="addtask_button_board">Add task</span>
+                            <span>Add task</span>
                             <img src="./assets/img/add.svg" alt="">
                         </div>
                     </div>

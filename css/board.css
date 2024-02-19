@@ -539,7 +539,7 @@
 }
 
 .bar_icon_board button {
-    background-image: url(/assets/img/plus_board.svg);
+    background-image: url(./assets/img/plus_board.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;
@@ -548,7 +548,7 @@
 
 .bar_icon_board button:hover {
     cursor: pointer;
-    background-image: url(/assets/img/blue_plus_board.svg);
+    background-image: url(./assets/img/blue_plus_board.svg);
 }
 
 .inner_card_board2 {
