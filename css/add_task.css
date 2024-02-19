@@ -34,6 +34,7 @@ border: 1px solid lightgray;
     width: 100%; 
     border-radius: 8px;
     border: none;
+    border: 1px solid lightgrey;
 }
 
 textarea:focus, select:focus, input:focus, .input_field_title_addtask:focus, .textarea_discription_addtask:focus {
