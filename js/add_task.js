@@ -24,9 +24,9 @@ function addSubtask() {
   let subtaskInput = document.getElementById('subtaskInput');
   let inputValue = subtaskInput.value;
   if (inputValue) {
-    subtaskValues.push(inputValue); // Verwendung der globalen Variable
-    subtaskInput.value = '';
-    renderSubtasks(); // Aufruf von renderSubtasks, um die Liste zu aktualisieren
+      subtaskValues.push({ subtask: inputValue, checked: false });
+      subtaskInput.value = '';
+      renderSubtasks(); 
   }
 }
 
@@ -34,7 +34,7 @@ function renderSubtasks() {
   let subtaskContainer = document.getElementById('subtaskContainer');
   subtaskContainer.innerHTML = ''; // Löscht den aktuellen Inhalt, um Duplikate zu vermeiden
   for (let i = 0; i < subtaskValues.length; i++) {
-    let subtask = subtaskValues[i];
+    let subtask = subtaskValues[i].subtask;
     
     subtaskContainer.innerHTML += /*html*/ `
     <div class="container_hover_subtasks_icons show_on_hover">
