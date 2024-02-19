@@ -563,6 +563,20 @@
 
 /* Edit Form CSS Start */
 
+.edit_container_boxes_addtask {
+display: flex;
+justify-content: space-evenly;
+width: 100%;
+flex-wrap: wrap;
+
+}
+
+.container_boxes_addtask_form{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+   
+}
 .fullbox_edit_form{
     width: 401px;
     background-color: white;
@@ -576,7 +590,9 @@
     max-height: 560px;
     z-index: 3;
     animation: slideToLeft 150ms forwards;
-    overflow: auto;
+    overflow: scroll;
+  
+   
 }
 .edit_task_button{
     background: #2A3647;
@@ -596,6 +612,7 @@
 /* Stil für die Scrollbar */
 .fullbox_edit_form::-webkit-scrollbar {
     width: 8px; /* Macht die Scrollbar dünner */
+
 }
 
 .fullbox_edit_form::-webkit-scrollbar-track {
@@ -629,7 +646,7 @@
     font-size: 20px;
 } */
 
-@media(max-width: 1450px) {
+@media(max-width: 1120px) {
     .top_bar_board {
         justify-content: flex-start;
     }
@@ -652,11 +669,26 @@
     .bar_board1 {
         width: 95%;
     }
-    
+    @media (max-width: 1120px) {
+        .addtask_button_board{
+            display: none;
+        }
+        .task_container_board{
+            flex-direction: column-reverse;            
+        }
+        .input_container_board {
+            top: 240px;
+            width: 50%;
+            margin-right: 50%;
+        }
+    }
+    @media (max-width: 900px){
+       .content_board{
+        margin: 32px;
+        margin-left: 0;
+       }
 
-
-
-
+    }
 }
 
 
@@ -677,29 +709,31 @@
 
 
 
-
-
 /* task_form css */
+.bottom_container_addtask_form{
+    margin-top: 116px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    bottom: 0px;
+    height: 64px;
+    align-items: center;
+}
 
 .fullbox_task_form {
     width: 64%;
+   width: 800px;
+    min-width: 320px; /* Minimale Breite, um zu kleine Darstellungen zu vermeiden */
     background-color: white;
-    /* margin-left: 400px; */
-    /* margin-top: 100px; */
-    /* margin-bottom: 100px; */
     border-radius: 30px;
     padding: 40px;
     position: fixed;
-    /* top: 3%;
-    right: -100%; */
-    /* transition: right 0.2s ease-in-out; */
     z-index: 3;
     gap: 24px;
     left: 100%;
     top: 50%;
     transform: translate(-50%, -50%);
     animation: slideToLeft 150ms forwards;
-    height: 70vh;
 }
 
 @keyframes slideToLeft {

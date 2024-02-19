@@ -10,16 +10,6 @@ async function initAddTask() {
   document.getElementById('cancelSubtask').addEventListener('click', cancelSubtask);
 }
 
-// function toggleSubtaskButtons() {
-//   let toggleIconAdd = document.getElementById('addingSubtask');
-//   let toggleIconAccept = document.getElementById('acceptTask');
-//   let toggleIconCancel = document.getElementById('cancelSubtask');
-
-//   toggleIconAdd.style.display = 'none';
-//   toggleIconCancel.style.display = 'none';
-//   toggleIconAccept.style.display = 'block';
-// } 
-
 function addSubtask() {
   let subtaskInput = document.getElementById('subtaskInput');
   let inputValue = subtaskInput.value;
@@ -116,7 +106,7 @@ function toggleButton(priority) {
       mediumButtonWhite.classList.remove('hide_icon');
       lowButtonWhite.classList.remove('hide_icon');
       lowButtonGreen.classList.add('hide_icon');
-      selectedPriority = 'Urgent';
+      selectedPriority = 'Urgent'; 
   } else if (priority === 'medium') {
       mediumButtonOrange.classList.toggle('hide_icon');
       mediumButtonWhite.classList.toggle('hide_icon');
