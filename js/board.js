@@ -20,7 +20,9 @@ function openOverlay(taskId){
     let targetColumnId = task.column;
     if (document.getElementById(targetColumnId)) {
         let backgroundColor = (task.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
-        let subtasksHTML = task.subtask.map(subtask => `<div><input type="checkbox"><span>${subtask}</span></div>`).join('');
+        let subtasksHTML = task.subtask.map((subtask, index) => {
+            return `<div class="subtask_taskoverlay"><input type="checkbox" onchange="updateProgress(${taskId}, ${index})" ${subtask.checked ? 'checked' : ''}><span>${subtask.subtask}</span></div>`;
+        }).join('');
         let assignedProfilesHTML = task.contacts.map(contact => {
             let initials = getInitials(contact.name);
             return /*html*/`
@@ -32,7 +34,7 @@ function openOverlay(taskId){
         }).join('');
         // let subtasksSpan = task.subtask.length > 0 ? `<span>Subtasks</span>` : '';
         let subtasksText = task.subtask.length === 1 ? 'Subtask' : 'Subtasks';
-        let subtasksSpan = task.subtask.length > 0 ? `<span>${subtasksText}</span>` : '';
+        let subtasksSpan = task.subtask.length > 0 ? `<span class="subtask_span_taskoverlay">${subtasksText}</span>` : '';
         let priorityText = task.prio ? task.prio : 'Medium';
 
         let priorityImage;
@@ -93,7 +95,7 @@ function openOverlay(taskId){
                 <span>Delete</span>
             </div>
             <img src="./assets/img/vector2.svg" alt="">
-            <div onclick="editTask()" class="edit_box">
+            <div onclick="editTask('${taskId}')" class="edit_box">
                 <img src="./assets/img/edit.svg" alt="">
                 <span>Edit</span>
             </div>
@@ -115,6 +117,31 @@ function openOverlay(taskId){
     document.getElementById(`content-board`).classList.add('pointer_events-none');
     document.getElementById(`body`).classList.add('overflow_hidden');
 }}
+
+async function updateProgress(taskId, subtaskIndex) {
+    let task = currentUser.tasks.find(task => task.id === taskId);
+    if (task) {
+        task.subtask[subtaskIndex].checked = !task.subtask[subtaskIndex].checked;
+        updateProgressBar(task);
+        await saveUsers();
+    }
+}
+
+function updateProgressBar(task) {
+    let totalSubtasks = task.subtask.length;
+    let checkedSubtasks = task.subtask.filter(subtask => subtask.checked).length;
+    let progress = (checkedSubtasks / totalSubtasks) * 100;
+    let progressBar = document.getElementById(`progress_${task.id}`);
+    let progressText = document.getElementById(`progressText_${task.id}`);
+    if (progressBar && progressText) {
+        progressBar.style.width = `${progress}%`;
+        progressText.textContent = `${checkedSubtasks}/${totalSubtasks} Subtasks`;
+    }
+}
+
+function calculateProgress(totalSubtasks, checkedSubtasks) {
+    return totalSubtasks > 0 ? (checkedSubtasks / totalSubtasks) * 100 : 0;
+}
 
 function closeOverlay(){
     document.getElementById(`task-overlay`).style.display = "none";
@@ -589,6 +616,10 @@ function renderTasks(columnTasks, columnId) {
         
         let containerId = `card_img_box_${columnId}_${i}`; // Unique container ID
 
+        let totalSubtasks = taskNumber.subtask.length;
+        let checkedSubtasks = taskNumber.subtask.filter(subtask => subtask.checked).length;
+        let task = currentUser.tasks.find(task => task.id === taskId);
+        
         let priorityImage;
         switch (taskNumber.prio) {
             case 'Urgent':
@@ -609,11 +640,11 @@ function renderTasks(columnTasks, columnId) {
                     <div class="card_text_board"><b>${taskNumber.title}</b></div>
                     <div class="card_text2_board">${taskNumber.description}</div>
                     <div class="progressbar_box_board">
-                        <div class="progressbar_board">
-                            <div class="progressbar_filter_board"></div>
+                        <div id="progressbar_${taskId}" class="progressbar_board">
+                            <div id="progress_${taskId}" class="progressbar_filter_board"></div>
                         </div>
-                        <div class="progressbar_text_board">1/2 Subtasks</div>
-                    </div>
+                        <div id="progressText_${taskId}" class="progressbar_text_board">${checkedSubtasks}/${totalSubtasks} Subtasks</div>
+                    </div>                   
                     <div class="card_img_main_board">
                         <div class="card_img_box_board" id="${containerId}"></div>
                         <img class="pro_media_board" src="${priorityImage}" alt="">
@@ -623,6 +654,7 @@ function renderTasks(columnTasks, columnId) {
         `;
         
         renderContactImages(containerId, taskNumber.contacts);
+        updateProgressBar(task);
     }
 }
 
@@ -728,9 +760,71 @@ function renderContactImages(containerId, contacts) {
 
 // // RICHTIGE RENDERFUNKTION
 
-function editTask() {
-    document.getElementById(`task-overlay`).style.display = "none";
-    document.getElementById(`edit-form`).style.display = "unset";
+function editTask(taskId) {
+    // console.log("Edit Task with ID:", taskId);
+    let task = currentUser.tasks[taskId];
+    // console.log(task)
+
+    if (task) {
+        // Fülle das Bearbeitungsformular mit den Daten der Aufgabe
+        document.getElementById('edit_title').value = task.title;
+        document.getElementById('edit_description').value = task.description;
+        document.getElementById('edit_date').value = task.date;
+        // document.getElementById('edit_category_task').value = task.category;
+
+        // Fülle die Subtasks im Bearbeitungsformular, wenn vorhanden
+        let subtaskContainer = document.getElementById('edit_subtaskContainer');
+        subtaskContainer.innerHTML = '';
+        if (task.subtask && task.subtask.length > 0) {
+            task.subtask.forEach(subtask => {
+                subtaskContainer.innerHTML += `<div>${subtask}</div>`;
+            });
+        }
+
+        // Fülle die Priorität im Bearbeitungsformular
+        // Hier musst du deine eigene Logik basierend auf deinen UI-Elementen implementieren
+
+        // Speichere die taskId als Datenattribut im Submit-Button, um sie beim Speichern zu verwenden
+        document.getElementById('editTaskSubmit').dataset.taskId = taskId;
+        // let taskId = document.getElementById('editTaskSubmit').value;
+
+
+        document.getElementById(`task-overlay`).style.display = "none";
+        document.getElementById(`edit-form`).style.display = "unset";
+    }
+}
+
+async function saveEditedTask() {
+    let taskId = document.getElementById('editTaskSubmit').dataset.taskId;
+    // let taskId = document.getElementById('editTaskSubmit').value;
+    // console.log("Task ID:", taskId); // Debugging-Ausgabe
+
+    // Durchlaufe das Array, um die Aufgabe mit der entsprechenden ID zu finden
+    let taskIndex = -1;
+    for (let i = 0; i < currentUser.tasks.length; i++) {
+        if (currentUser.tasks[i].id == taskId) {
+            taskIndex = i;
+            break;
+        }
+    }
+
+    // Überprüfe, ob die Aufgabe gefunden wurde
+    if (taskIndex !== -1) {
+        // Aktualisiere die Daten der Aufgabe
+        currentUser.tasks[taskIndex].title = document.getElementById('edit_title').value;
+        currentUser.tasks[taskIndex].description = document.getElementById('edit_description').value;
+        currentUser.tasks[taskIndex].date = document.getElementById('edit_date').value;
+        // currentUser.tasks[taskIndex].category = document.getElementById('edit_category_task').value;
+
+        // Speichere die aktualisierten Daten
+        await saveUsers();
+
+        // Rendere die Aufgaben neu
+        renderTask();
+
+        // Schließe das Bearbeitungsformular
+        closeTaskEditOnBoard();
+    }
 }
 
 function closeTaskEditOnBoard(){
