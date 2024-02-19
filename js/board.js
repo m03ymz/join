@@ -88,7 +88,7 @@ function openOverlay(taskId){
                 <span>Delete</span>
             </div>
             <img src="./assets/img/vector2.svg" alt="">
-            <div class="edit_box">
+            <div onclick="editTask()" class="edit_box">
                 <img src="./assets/img/edit.svg" alt="">
                 <span>Edit</span>
             </div>
@@ -722,6 +722,11 @@ function renderContactImages(containerId, contacts) {
 // }
 
 // // RICHTIGE RENDERFUNKTION
+
+function editTask() {
+    document.getElementById(`task-overlay`).style.display = "none";
+    document.getElementById(`edit-form`).style.display = "unset";
+}
 
 
 
