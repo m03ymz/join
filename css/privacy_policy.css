@@ -10,11 +10,12 @@ h1{
 .container_paragraph{
     padding: 16px;
 }
-.container_back_arrow{
-    background-color: red;
+.container_back_arrow {
     width: 100%;
     right: 32px;
+    cursor: pointer;
 }
+
 .back_arrow{
     margin-top: 80px;
     position: absolute;
