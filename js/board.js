@@ -5,11 +5,6 @@ async function initBoard() {
     // await saveUsers();
     renderTask();
     renderContactsAddTask('');
- 
-        // Event Listener für das Hinzufügen von Subtasks, analog zu initAddTask in add_task.js
-        document.getElementById('acceptTask').addEventListener('click', addSubtask);
-        
-      
 }
 
 let targetColumnId;
