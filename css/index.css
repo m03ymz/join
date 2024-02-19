@@ -16,6 +16,10 @@
         height: auto;
         animation: moveLogo 1.5s ease forwards, scaleLogo 2s ease forwards;
     }
+    .logo_white{
+        display: none;
+    }
+  
 
     @keyframes moveLogo {
         0% {
@@ -37,8 +41,17 @@
             width: 80px; /* Endgröße */
         }
     }
-    @media (max-width: 320px){
-        
+    @media (max-width: 1080px){
+         .logo_dark{
+            display: none;
+        }
+        .logo_white{
+            display: block;
+        }
+        body{
+            background-color: #2A3647;
+        }
+     
     }
 
     

@@ -250,6 +250,7 @@ textarea:hover, select:hover {
     opacity: 0;
     position: sticky;
     z-index: 99;
+    width: 70%;
 }
 
 .container_subtasks_hover_icons:hover{ /* wahrscheinlich nicht die beste lösung*/
@@ -265,6 +266,7 @@ textarea:hover, select:hover {
 .container_subtasks_icons_edit {
     width: 16px;
     margin-right: 8px;
+    display: none;
 }
 
 .container_subtasks_icons_delete {
@@ -421,6 +423,7 @@ textarea:hover, select:hover {
     justify-content: space-evenly;
     width: 100%;
     flex-wrap: wrap;
+   
 
 }
 
@@ -477,12 +480,11 @@ textarea:hover, select:hover {
 }
 
 .bottom_container_addtask {
-    margin-top: 116px;
+    margin-top: 172px;
     display: flex;
     justify-content: space-between;
     width: 100%;
     bottom: 0px;
-    background-color:#f1f1f1;
     height: 64px;
     align-items: center;
 }
@@ -636,8 +638,19 @@ textarea:hover, select:hover {
         display: none;
    }
    .bottom_container_addtask{
+    margin-bottom: 80px;
+    position: sticky;
     bottom: 80px;
     right: 32px; 
+    background-color: #eeeeee;
+}
+.container_boxes_addtask{
+    margin-top: 0;
+    margin-bottom: 80px;
+}
+.container_data_first_letter{
+    font-size: 12px;
+    margin-left: 16px;
 }
 }
 @media (max-width: 321px){
