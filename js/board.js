@@ -829,5 +829,40 @@ function closeTaskEditOnBoard(){
     document.getElementById(`body`).classList.remove('overflow_hidden');
 }
 
+function toggleButtonEdit(priority) {
+    let urgentButtonWhite = document.getElementById('edit_urgentbuttonwhite');
+    let urgentButtonRed = document.getElementById('edit_urgentbuttonred');
+    let mediumButtonOrange = document.getElementById('edit_mediumbuttonorange');
+    let mediumButtonWhite = document.getElementById('edit_mediumbuttonwhite');
+    let lowButtonWhite = document.getElementById('edit_lowbuttonwhite');
+    let lowButtonGreen = document.getElementById('edit_lowbuttongreen');
+  
+    if (priority === 'urgent') {
+        urgentButtonWhite.classList.toggle('hide_icon');
+        urgentButtonRed.classList.toggle('hide_icon');
+        mediumButtonOrange.classList.add('hide_icon');
+        mediumButtonWhite.classList.remove('hide_icon');
+        lowButtonWhite.classList.remove('hide_icon');
+        lowButtonGreen.classList.add('hide_icon');
+        selectedPriority = 'Urgent';
+    } else if (priority === 'medium') {
+        mediumButtonOrange.classList.toggle('hide_icon');
+        mediumButtonWhite.classList.toggle('hide_icon');
+        urgentButtonWhite.classList.remove('hide_icon');
+        urgentButtonRed.classList.add('hide_icon');
+        lowButtonWhite.classList.remove('hide_icon');
+        lowButtonGreen.classList.add('hide_icon');
+        selectedPriority = 'Medium';
+    } else if (priority === 'low') {
+        lowButtonWhite.classList.toggle('hide_icon');
+        lowButtonGreen.classList.toggle('hide_icon');
+        urgentButtonWhite.classList.remove('hide_icon');
+        urgentButtonRed.classList.add('hide_icon');
+        mediumButtonOrange.classList.add('hide_icon');
+        mediumButtonWhite.classList.remove('hide_icon');
+        selectedPriority = 'Low';
+    }
+  }
+
 
 
