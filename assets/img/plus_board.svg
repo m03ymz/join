@@ -1,8 +1,5 @@
-<svg width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Capa 1">
-<g id="Group 11">
-<path id="Vector 13" d="M5 1.5V9.5" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-<path id="Vector 14" d="M9 5.57544L1 5.57544" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
-</g>
-</g>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+<path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+<path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
 </svg>

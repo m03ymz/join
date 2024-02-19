@@ -51,7 +51,7 @@ function renderAllTaskInfosSummary() {
     let tasksInProgress = currentUser.tasks.filter(task => task.column == 'column_board2');
     let tasksAwaiting = currentUser.tasks.filter(task => task.column == 'column_board3');
     let tasksDone = currentUser.tasks.filter(task => task.column == 'column_board4');
-    let urgentTasks = currentUser.tasks.filter(task => task.prio === 'urgent');
+    let urgentTasks = currentUser.tasks.filter(task => task.prio === 'Urgent');
     let earliestUrgentDate = calcEarliestUrgentTaskDate(urgentTasks);
     document.getElementById('to_do_tasks_summary').innerHTML = tasksToDo.length;
     document.getElementById('done_tasks_summary').innerHTML = tasksDone.length;
@@ -64,17 +64,18 @@ function renderAllTaskInfosSummary() {
 
 function calcEarliestUrgentTaskDate(urgentTasks) {
     let earliestUrgentDate = null;
-    if (urgentTasks.length > 1) {
-        let filteredTasks = urgentTasks.filter(task => task.date.trim() !== ""); 
-        if (filteredTasks.length > 0) {
-            filteredTasks.sort((a, b) => new Date(a.date) - new Date(b.date));
-            earliestUrgentDate = new Date(filteredTasks[0].date);
+    let urgentTasksWithDate = urgentTasks.filter(task => task.date.trim() !== ""); 
+    if (urgentTasksWithDate.length > 0) {
+        if (urgentTasksWithDate.length === 1) {
+            earliestUrgentDate = new Date(urgentTasksWithDate[0].date);
+        } else {
+            urgentTasksWithDate.sort((a, b) => new Date(a.date) - new Date(b.date));
+            earliestUrgentDate = new Date(urgentTasksWithDate[0].date);
         }
-    } else if (urgentTasks.length === 1 && urgentTasks[0].date.trim() !== "") { 
-        earliestUrgentDate = new Date(urgentTasks[0].date);
     }
     return earliestUrgentDate;
 }
+
 
 function formatDate(date) {
     let options = { month: 'long', day: 'numeric', year: 'numeric' };

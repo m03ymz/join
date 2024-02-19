@@ -327,3 +327,9 @@ let formattedDate = `${year}-${month}-${day}`;
 
 document.getElementById('date').min = formattedDate;   // Setzen des "min"-Attributs auf das aktuelle Datum
 //deactivate past days end //
+
+
+async function submitFormAddTask() {
+  await createTaskArray(targetColumnId);
+  redirect('board');
+}
