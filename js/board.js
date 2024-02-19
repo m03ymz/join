@@ -88,7 +88,7 @@ function openOverlay(taskId){
                 <span>Delete</span>
             </div>
             <img src="./assets/img/vector2.svg" alt="">
-            <div onclick="editTask()" class="edit_box">
+            <div onclick="editTask('${taskId}')" class="edit_box">
                 <img src="./assets/img/edit.svg" alt="">
                 <span>Edit</span>
             </div>
@@ -723,9 +723,71 @@ function renderContactImages(containerId, contacts) {
 
 // // RICHTIGE RENDERFUNKTION
 
-function editTask() {
-    document.getElementById(`task-overlay`).style.display = "none";
-    document.getElementById(`edit-form`).style.display = "unset";
+function editTask(taskId) {
+    // console.log("Edit Task with ID:", taskId);
+    let task = currentUser.tasks[taskId];
+    // console.log(task)
+
+    if (task) {
+        // Fülle das Bearbeitungsformular mit den Daten der Aufgabe
+        document.getElementById('edit_title').value = task.title;
+        document.getElementById('edit_description').value = task.description;
+        document.getElementById('edit_date').value = task.date;
+        // document.getElementById('edit_category_task').value = task.category;
+
+        // Fülle die Subtasks im Bearbeitungsformular, wenn vorhanden
+        let subtaskContainer = document.getElementById('edit_subtaskContainer');
+        subtaskContainer.innerHTML = '';
+        if (task.subtask && task.subtask.length > 0) {
+            task.subtask.forEach(subtask => {
+                subtaskContainer.innerHTML += `<div>${subtask}</div>`;
+            });
+        }
+
+        // Fülle die Priorität im Bearbeitungsformular
+        // Hier musst du deine eigene Logik basierend auf deinen UI-Elementen implementieren
+
+        // Speichere die taskId als Datenattribut im Submit-Button, um sie beim Speichern zu verwenden
+        document.getElementById('editTaskSubmit').dataset.taskId = taskId;
+        // let taskId = document.getElementById('editTaskSubmit').value;
+
+
+        document.getElementById(`task-overlay`).style.display = "none";
+        document.getElementById(`edit-form`).style.display = "unset";
+    }
+}
+
+async function saveEditedTask() {
+    let taskId = document.getElementById('editTaskSubmit').dataset.taskId;
+    // let taskId = document.getElementById('editTaskSubmit').value;
+    // console.log("Task ID:", taskId); // Debugging-Ausgabe
+
+    // Durchlaufe das Array, um die Aufgabe mit der entsprechenden ID zu finden
+    let taskIndex = -1;
+    for (let i = 0; i < currentUser.tasks.length; i++) {
+        if (currentUser.tasks[i].id == taskId) {
+            taskIndex = i;
+            break;
+        }
+    }
+
+    // Überprüfe, ob die Aufgabe gefunden wurde
+    if (taskIndex !== -1) {
+        // Aktualisiere die Daten der Aufgabe
+        currentUser.tasks[taskIndex].title = document.getElementById('edit_title').value;
+        currentUser.tasks[taskIndex].description = document.getElementById('edit_description').value;
+        currentUser.tasks[taskIndex].date = document.getElementById('edit_date').value;
+        // currentUser.tasks[taskIndex].category = document.getElementById('edit_category_task').value;
+
+        // Speichere die aktualisierten Daten
+        await saveUsers();
+
+        // Rendere die Aufgaben neu
+        renderTask();
+
+        // Schließe das Bearbeitungsformular
+        closeTaskEditOnBoard();
+    }
 }
 
 function closeTaskEditOnBoard(){

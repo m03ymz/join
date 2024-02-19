@@ -12,18 +12,18 @@
                 <div class="left_box_addtask">
                     <div>
                         <p class="required_red_star">Title</p>
-                      <input id="title" placeholder="Enter a title" class="input_field_title_addtask" type="text" required>
+                      <input id="edit_title" placeholder="Enter a title" class="input_field_title_addtask" type="text" required>
                     </div>
 
                     <div>
                         <p>Description</p>
-                        <textarea id="description" placeholder="Enter a Description" class="textarea_discription_addtask" cols="30" rows="10"></textarea>    
+                        <textarea id="edit_description" placeholder="Enter a Description" class="textarea_discription_addtask" cols="30" rows="10"></textarea>    
                     </div>
 
         <div> 
             <p>Assigned to</p>             
             <div class="select_contacts_add_task">
-                <div id="contact_bar_select_contacts_add_task">
+                <div id="edit_contact_bar_select_contacts_add_task">
                     <div class="placeholder_select_contacts_add_task" onclick="openContactListAddTask()">
                         <span>Select contacts to assign</span>
                         <img src="./assets/img/arrow_down_add_task.svg" alt="arrow down symbol">
@@ -45,7 +45,7 @@
                     <div>
                         <p class="required_red_star">Due date</p>
                         <div class="input_with_icon">
-                            <input  id="date" placeholder="DD/MM/YYYY" class="input_field_due_date" type="date" id="dueDateInput" required> 
+                            <input  id="edit_date" placeholder="DD/MM/YYYY" class="input_field_due_date" type="date" id="dueDateInput" required> 
                         </div>
                     </div>
                 
@@ -61,19 +61,19 @@
                         </div>
                     </div>
 
-                    <div>
+                    <!-- <div>
                         <p class="required_red_star">Category</p>
-                        <select id="category_task" class="input_assigned_to" required >
+                        <select id="edit_category_task" class="input_assigned_to" required >
                             <option value="" disabled selected hidden>Select task category</option>
                             <option value="Technical Task">Technical Task</option>
                             <option value="User Story">User Story</option>
                           
                         </select>
-                    </div>
+                    </div> -->
 
                     <div>
                         <div class="input_container">
-                            <p>Subtasks</p>
+                            <p>cons</p>
                             <div class="input_field_container">
                                 <div class="input_wrapper">
                                     <input placeholder="Add new Subtask" class="input_field_subtasks" type="text" id="subtaskInput">
@@ -89,7 +89,7 @@
                             </div>
                         </div>
         
-                        <div id="subtaskContainer"></div>  
+                        <div id="edit_subtaskContainer"></div>  
                     </div>
 
                 </div>
@@ -104,7 +104,7 @@
             
                 <div class="container_clear_and_create_task">
               
-                    <button class="edit_task_button" type="submit">Ok</button>
+                    <button id="editTaskSubmit" onclick="saveEditedTask('taskId')" class="edit_task_button" type="button">Ok</button>
                 </div>
             </div>
         </form>
