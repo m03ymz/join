@@ -499,6 +499,9 @@ function searchTask(searchInput) {
     document.getElementById('column_board3').innerHTML = '';
     document.getElementById('column_board4').innerHTML = '';
 
+    // Variable, um zu überprüfen, ob Ergebnisse gefunden wurden
+    let resultsFound = false;
+
     // Durchlaufen Sie jede Spalte und rendern Sie nur die passenden Aufgaben
     ['column_board', 'column_board2', 'column_board3', 'column_board4'].forEach(columnId => {
         let tasksForColumn = allTasks.filter(task => task.column === columnId && searchRegex.test(task.title.charAt(0)));
@@ -536,8 +539,16 @@ function searchTask(searchInput) {
                     <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
                 `;
             }
+
+            // Setzen Sie die Variable auf true, da Ergebnisse gefunden wurden
+            resultsFound = true;
         }
     });
+
+    // Wenn keine Ergebnisse gefunden wurden, zeigen Sie einen Alert an
+    if (!resultsFound) {
+        alert('Keine Ergebnisse gefunden');
+    }
 }
 
 // // RICHTIGE SUCHFUNKTION
