@@ -275,37 +275,31 @@
 }
 
 .progressbar_board {
-    display: flex;
-    width: 56px;
-    padding-right: 64px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 10px;
+    width: 120px;
+    height: 8px;
+    background-color: #f4f4f4;
     border-radius: 8px;
-    background: #F4F4F4;
+    overflow: hidden;
 }
 
 .progressbar_filter_board {
-    height: 8px;
-    align-self: stretch;
-    border-radius: 16px;
-    background: var(--Version-2-main-color, #4589FF);
+    width: 0;
+    height: 100%;
+    border-radius: 8px;
+    background-color: #4589ff;
 }
 
 .progressbar_box_board {
     display: flex;
-    padding: 0px 8px 2px 0px;
     align-items: center;
-    gap: 11px;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 5px;
 }
 
 .progressbar_text_board {
-    color: #000;
     font-size: 12px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
+    color: black; 
 }
 
 .card_img_main_board {
@@ -429,11 +423,25 @@
 }
 
 .subtasks_taskoverlay {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
     margin-top: 20px;
+}
+
+.subtask_span_taskoverlay {
+    font-size: 20px;
+    color: #2A3647;
+}
+
+.subtask_taskoverlay {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0px 16px;
+    display: flex;
+    gap: 16px;
 }
 
 .assigned_profiles {
