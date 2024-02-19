@@ -7,6 +7,7 @@ async function initContacts() {
     renderContactsContacts();
 }
 
+
 function openContactFormContacts() {
     resetContactFormContacts();
     document.getElementById('bg_contact_form').style = 'display: unset';
@@ -69,7 +70,7 @@ function renderContactsContacts() {
                         </div>
                     </div>
                 `;
-            } else if (contact.name.charAt(0) === initial) {
+            } else if (contact.name.charAt(0).toUpperCase() === initial) {
                 contactList.innerHTML += /*html*/`
                     <div class="contact_contacts hover_contact_contacts" id="contact_contacts${j}" onclick="renderContactDetailsContacts(${j}), toggleHighlightContactContacts(${j}), showContactDetailsContacts()">
                         <div><span class="contact_initials_contacts" style="background-color: ${contact.color}">${initials}</span></div>
