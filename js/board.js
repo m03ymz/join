@@ -728,5 +728,12 @@ function editTask() {
     document.getElementById(`edit-form`).style.display = "unset";
 }
 
+function closeTaskEditOnBoard(){
+    document.getElementById(`edit-form`).style.display = "none";
+    document.getElementById(`overlay`).style.display = "none";
+    document.getElementById(`content-board`).classList.remove('pointer_events-none');
+    document.getElementById(`body`).classList.remove('overflow_hidden');
+}
+
 
 
