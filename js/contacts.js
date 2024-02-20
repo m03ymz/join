@@ -200,7 +200,7 @@ function editContactContacts(j) {
 function resetContactFormContacts() {
     document.getElementById('title_left_contact_form').innerHTML = 'Add contact';
     document.getElementById('subheading_contact_form').style = 'display: unset';
-    document.getElementById('pfp_contact_form').innerHTML = /*html*/`<img src="/assets/img/pfp_placeholder_icon_contact_form.svg" alt="person icon">`;
+    document.getElementById('pfp_contact_form').innerHTML = /*html*/`<img src="./assets/img/pfp_placeholder_icon_contact_form.svg" alt="person icon">`;
     document.getElementById('name_contact_form').value = '';
     document.getElementById('email_contact_form').value = '';
     document.getElementById('phone_contact_form').value = '';
