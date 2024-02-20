@@ -243,7 +243,6 @@ function checkSelectedContactsAddTask(i) {
   }
 }
 
-
 function addSelectedContactsAddTask(i) {
   let contact = currentUser.contacts[i];
   selectedContactsAddTask.push(contact);
@@ -310,7 +309,6 @@ function clearAllInputs() {
       textareas[i].value = '';
   }
 
-  // Falls Weitere Eingabefelder vorhanden sind, können diese hier hinzugefügt werden, wenn nötig
 
   let firstInput = document.querySelector('input');   // Fokus auf das erste Eingabefeld setzen, um die Benutzererfahrung zu verbessern, also, das mann nicht wieder ein eingabefeld anklicken muss.
   if (firstInput) {
