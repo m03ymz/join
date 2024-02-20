@@ -1,4 +1,5 @@
 .content_board {
+    /* border: 2px dashed red; */
     margin-left: 240px;
     margin-top: 83px;
     padding-left: 64px;
@@ -6,6 +7,7 @@
 }
 
 .inner_top_board {
+    /* border: 2px dashed green; */
     box-sizing: border-box;
     display: flex;
     /* width: 1056px; */
@@ -117,6 +119,7 @@
     opacity: 1; /* Macht das obere Bild sichtbar, wenn über das Container div gehovert wird */
 }
 .top_bar_board {
+    /* border: 2px dashed blue; */
     box-sizing: border-box;
     display: flex;
     /* width: 1054px; */
@@ -177,6 +180,7 @@
 }
 
 .distrubution_board {
+    /* border: 2px dashed violet; */
     display: flex;
     align-items: flex-start;
     gap: 26px;
@@ -188,6 +192,7 @@
 }
 
 .column_board {
+    /* border: 2px dashed turquoise; */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -539,7 +544,7 @@
 }
 
 .bar_icon_board button {
-    background-image: url(./assets/img/plus_board.svg);
+    background-image: url(../assets/img/plus_board.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;
@@ -548,7 +553,7 @@
 
 .bar_icon_board button:hover {
     cursor: pointer;
-    background-image: url(./assets/img/blue_plus_board.svg);
+    background-image: url(../assets/img/blue_plus_board.svg);
 }
 
 .inner_card_board2 {

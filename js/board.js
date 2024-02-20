@@ -134,10 +134,6 @@ function updateProgressBar(task) {
     }
 }
 
-function calculateProgress(totalSubtasks, checkedSubtasks) {
-    return totalSubtasks > 0 ? (checkedSubtasks / totalSubtasks) * 100 : 0;
-}
-
 function closeOverlay(){
     document.getElementById(`task-overlay`).style.display = "none";
     document.getElementById(`overlay`).style.display = "none";
