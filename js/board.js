@@ -5,6 +5,7 @@ async function initBoard() {
     // await saveUsers();
     renderTask();
     renderContactsAddTask('');
+    // renderContactsAddTaskEdit('');
 }
 
 let targetColumnId;
@@ -286,15 +287,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function searchTask(searchInput) {
     let allTasks = currentUser.tasks;
-    let searchRegex = new RegExp('^' + searchInput, 'i');
+    let searchWords = searchInput.split(/\s+/).map(word => word.trim().toLowerCase());
+    let searchRegex = searchWords.map(word => new RegExp(word, 'i'));
     document.getElementById('column_board').innerHTML = '';
     document.getElementById('column_board2').innerHTML = '';
     document.getElementById('column_board3').innerHTML = '';
     document.getElementById('column_board4').innerHTML = '';
-    let resultsFound = false;
 
     ['column_board', 'column_board2', 'column_board3', 'column_board4'].forEach(columnId => {
-        let tasksForColumn = allTasks.filter(task => task.column === columnId && searchRegex.test(task.title.charAt(0)));
+        let tasksForColumn = allTasks.filter(task => task.column === columnId && searchWords.every(word => task.title.toLowerCase().includes(word)));
 
         for (let i = 0; i < tasksForColumn.length; i++) {
             let taskNumber = tasksForColumn[i];
@@ -329,12 +330,8 @@ function searchTask(searchInput) {
                     <div class="card_img_board"><span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span></div>
                 `;
             }
-            resultsFound = true;
         }
     });
-    if (!resultsFound) {
-        alert('Keine Ergebnisse gefunden');
-    }
 }
 
 function renderTask() {
@@ -382,6 +379,7 @@ function renderTasks(columnTasks, columnId) {
                 priorityImage = './assets/img/prio_media.svg';
                 break;
         }
+        let progressBarHtml = renderProgressBar(taskId, totalSubtasks, checkedSubtasks);
         
         document.getElementById(columnId).innerHTML += /*html*/ `
             <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
@@ -389,12 +387,7 @@ function renderTasks(columnTasks, columnId) {
                     <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
                     <div class="card_text_board"><b>${taskNumber.title}</b></div>
                     <div class="card_text2_board">${taskNumber.description}</div>
-                    <div class="progressbar_box_board">
-                        <div id="progressbar_${taskId}" class="progressbar_board">
-                            <div id="progress_${taskId}" class="progressbar_filter_board"></div>
-                        </div>
-                        <div id="progressText_${taskId}" class="progressbar_text_board">${checkedSubtasks}/${totalSubtasks} Subtasks</div>
-                    </div>
+                    ${progressBarHtml}
                     <div class="card_img_main_board">
                         <div class="card_img_box_board" id="${containerId}"></div>
                         <img class="pro_media_board" src="${priorityImage}" alt="">
@@ -427,11 +420,34 @@ function editTask(taskId) {
         let subtaskContainer = document.getElementById('edit_subtaskContainer');
         subtaskContainer.innerHTML = '';
         if (task.subtask && task.subtask.length > 0) {
-            task.subtask.forEach(subtask => {
-                subtaskContainer.innerHTML += `<div>${subtask}</div>`;
-            });
+            for (let i = 0; i < task.subtask.length; i++) {
+                const subtaskArray = task.subtask[i].subtask;
+                if (Array.isArray(subtaskArray)) {
+                    subtaskArray.forEach(subtaskItem => {
+                        subtaskContainer.innerHTML += `<div>${subtaskItem.subtask}</div>`;
+                    });
+                } else {
+                    // Handle case where subtaskArray is not an array
+                    console.error("Subtask is not an array:", subtaskArray);
+                }
+            }
         }
         toggleButtonEdit(task.prio);
+
+        let assignedProfilesContainer = document.getElementById('edit_selected_contacts_add_task');
+        assignedProfilesContainer.innerHTML = '';
+        // Iterate over selected contacts and render them
+        task.contacts.forEach(contact => {
+            let initials = getInitials(contact.name);
+            let contactHTML = `
+                <div class="assigned_profiles">
+                    <span style="background-color: ${contact.color}" class="initials_card_img_board">${initials}</span>
+                    <span>${contact.name}</span>
+                </div>
+            `;
+            assignedProfilesContainer.innerHTML += contactHTML;
+        });
+
         document.getElementById('editTaskSubmit').dataset.taskId = taskId;
         // let taskId = document.getElementById('editTaskSubmit').value;
         document.getElementById(`task-overlay`).style.display = "none";
@@ -501,6 +517,144 @@ function toggleButtonEdit(priority) {
         selectedPriority = 'Low';
     }
   }
+
+  function renderProgressBar(taskId, totalSubtasks, checkedSubtasks) {
+    if (totalSubtasks > 0) {
+        return /*html*/ `
+            <div class="progressbar_box_board">
+                <div id="progressbar_${taskId}" class="progressbar_board">
+                    <div id="progress_${taskId}" class="progressbar_filter_board"></div>
+                </div>
+                <div id="progressText_${taskId}" class="progressbar_text_board">${checkedSubtasks}/${totalSubtasks} Subtasks</div>
+            </div>`;
+    } else {
+        return '';
+    }
+}
+
+function openContactListAddTaskEdit() {
+    let contactBar = document.getElementById('edit_contact_bar_select_contacts_add_task');
+    let contactList = document.getElementById('edit_contact_list_add_task');
+    contactBar.innerHTML = /*html*/`
+        <div class="search_bar_select_contacts_add_task">
+            <input type="text" id="edit_search_bar_contacts_add_task" onkeyup="searchContactsAddTaskEdit()">
+            <img src="./assets/img/arrow_up_add_task.svg" alt="arrow up symbol" onclick="closeContactListAddTaskEdit()">
+        </div>
+    `;
+    contactList.style = 'display: flex';
+    hideSelectedContactsAddTaskEdit();
+    renderSelectedContactsAddTaskEdit();
+  }
+
+  function closeContactListAddTaskEdit() {
+    let contactBar = document.getElementById('edit_contact_bar_select_contacts_add_task');
+    let contactList = document.getElementById('edit_contact_list_add_task');
+    contactBar.innerHTML = /*html*/`
+        <div class="placeholder_select_contacts_add_task" onclick="openContactListAddTaskEdit()">
+            <span>Select contacts to assign</span>
+            <img src="./assets/img/arrow_down_add_task.svg" alt="arrow down symbol">
+        </div>
+    `;
+    contactList.style = 'display: none';
+    renderContactsAddTaskEdit('');
+    renderSelectedContactsAddTaskEdit();
+    showSelectedContactsAddTaskEdit();
+    for (let i = 0; i < currentUser.contacts.length; i++) {
+      let contact = currentUser.contacts[i];
+      let checkbox = document.getElementById(`edit_checkbox_contact_add_task${i}`);
+      if (selectedContactsAddTaskEdit.includes(contact)) {
+        checkbox.checked = true;
+      } else {
+        checkbox.checked = false;
+      }
+    }
+  }
+  
+  let selectedContactsAddTaskEdit = [];
+  
+  function selectContactAddTaskEdit(i) {
+    let contact = document.getElementById(`edit_contact_add_task${i}`);
+    let checkbox = document.getElementById(`edit_checkbox_contact_add_task${i}`);
+    if (checkbox.checked) {
+        contact.style.backgroundColor = 'unset';
+        contact.style.color = 'unset';
+        checkbox.checked = false;
+        removeSelectedContactsAddTaskEdit(i);
+    } else {
+        contact.style.backgroundColor = '#2a3647';
+        contact.style.color = 'white';
+        checkbox.checked = true;
+        addSelectedContactsAddTaskEdit(i);
+    }
+  }
+  
+  function checkSelectedContactsAddTaskEdit(i) {
+    let contact = document.getElementById(`edit_contact_add_task${i}`);
+    let checkbox = document.getElementById(`edit_checkbox_contact_add_task${i}`);
+    let currentContact = currentUser.contacts[i];
+    for (let j = 0; j < selectedContactsAddTaskEdit.length; j++) {
+      let selectedContact = selectedContactsAddTaskEdit[j];
+      if (currentContact === selectedContact) {
+        contact.style.backgroundColor = '#2a3647';
+        contact.style.color = 'white';
+        checkbox.checked = true;
+      }
+    }
+  }
+  
+  function addSelectedContactsAddTaskEdit(i) {
+    let contact = currentUser.contacts[i];
+    selectedContactsAddTaskEdit.push(contact);
+    renderSelectedContactsAddTaskEdit();
+  }
+  
+  function removeSelectedContactsAddTaskEdit(i) {
+    let contact = currentUser.contacts[i];
+    let index = selectedContactsAddTaskEdit.indexOf(contact)
+    selectedContactsAddTaskEdit.splice(index, 1);
+    renderSelectedContactsAddTaskEdit();
+  }
+  
+  function renderSelectedContactsAddTaskEdit() {
+    let selectedContactsDiv = document.getElementById('edit_selected_contacts_add_task');
+    selectedContactsDiv.innerHTML = '';
+    for (let i = 0; i < selectedContactsAddTaskEdit.length; i++) {
+      let selectedContact = selectedContactsAddTaskEdit[i];
+      let initials = getInitials(selectedContact.name);
+      selectedContactsDiv.innerHTML += /*html*/`
+        <div class="initials_contact_add_task" style="background-color: ${selectedContact.color}"><span>${initials}</span></div>
+      `;
+    }
+  }
+  
+  function showSelectedContactsAddTaskEdit() {
+    document.getElementById('edit_selected_contacts_add_task').style = 'display: flex';
+  }
+  
+  function hideSelectedContactsAddTaskEdit() {
+    document.getElementById('edit_selected_contacts_add_task').style = 'display: none';
+  }
+  
+  function searchContactsAddTaskEdit() {
+    let searchTerm = document.getElementById('edit_search_bar_contacts_add_task').value;
+    renderContactsAddTaskEdit(searchTerm);
+  }
+  
+  function resetContactAddTaskEdit() {
+    let contacts = document.querySelectorAll('.contact_add_task');
+    contacts.forEach(contact => {
+        contact.style.backgroundColor = 'unset';
+        contact.style.color = 'unset';
+        selectedContactsAddTaskEdit = [];
+        let checkbox = contact.querySelector('.checkbox_contact_add_task');
+        if (checkbox) {
+            checkbox.checked = false;
+        }
+    });
+    closeContactListAddTaskEdit();
+  }
+
+  
 
 
 

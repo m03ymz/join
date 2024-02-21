@@ -52,33 +52,46 @@
             </div>
         </div>
 
-        <div class="top_bar_board">
-            <div class="bar_board1">
-                <span>To do</span>
-                <div onclick="openTaskFormOnBoard('column_board')" class="bar_icon_board"><button></button></div>
-            </div>
-            <div class="bar_board2">
-                <span>In progress</span>
-                <div onclick="openTaskFormOnBoard('column_board2')" class="bar_icon_board"><button></button></div>
-            </div>
-            <div class="bar_board3">
-                <span>Await feedback</span>
-                <div onclick="openTaskFormOnBoard('column_board3')" class="bar_icon_board"><button></button></div>
-            </div>
-            <div class="bar_board4">
-                <span>Done</span>
-            </div>
-        </div>
-        
         <div class="distrubution_board">
-            <div id="column_board" class="column_board" ondrop="moveTo('column_board')" ondragleave="removeHighlight('column_board')" ondragover="allowDrop(event); highlight('column_board')">
-                <div id="empty_box" class="empty_card_board">
-                    <span>No tasks To do</span>
+            <div class="box_board1">
+                <div class="top_bar_boardd">
+                    <div class="bar_board1">
+                        <span>To do</span>
+                        <div onclick="openTaskFormOnBoard('column_board')" class="bar_icon_board"><button></button></div>
+                    </div>
+                </div>
+                <div id="column_board" class="column_board" ondrop="moveTo('column_board')" ondragleave="removeHighlight('column_board')" ondragover="allowDrop(event); highlight('column_board')">
+                    <div id="empty_box" class="empty_card_board">
+                        <span>No tasks To do</span>
+                    </div>
                 </div>
             </div>
-            <div id="column_board2" class="column_board" ondrop="moveTo('column_board2')" ondragleave="removeHighlight('column_board2')" ondragover="allowDrop(event); highlight('column_board2')"></div>
-            <div id="column_board3" class="column_board" ondrop="moveTo('column_board3')" ondragleave="removeHighlight('column_board3')" ondragover="allowDrop(event); highlight('column_board3')"></div>
-            <div id="column_board4" class="column_board" ondrop="moveTo('column_board4')" ondragleave="removeHighlight('column_board4')" ondragover="allowDrop(event); highlight('column_board4')"></div>
+            <div class="box_board2">
+                <div class="top_bar_boardd">
+                    <div class="bar_board2">
+                        <span>In progress</span>
+                        <div onclick="openTaskFormOnBoard('column_board2')" class="bar_icon_board"><button></button></div>
+                    </div>
+                </div>
+                <div id="column_board2" class="column_board" ondrop="moveTo('column_board2')" ondragleave="removeHighlight('column_board2')" ondragover="allowDrop(event); highlight('column_board2')"></div>
+            </div>
+            <div class="box_board3">
+                <div class="top_bar_boardd">
+                    <div class="bar_board3">
+                        <span>Await feedback</span>
+                        <div onclick="openTaskFormOnBoard('column_board3')" class="bar_icon_board"><button></button></div>
+                    </div>
+                </div>
+                <div id="column_board3" class="column_board" ondrop="moveTo('column_board3')" ondragleave="removeHighlight('column_board3')" ondragover="allowDrop(event); highlight('column_board3')"></div>
+            </div>
+            <div class="box_board4">
+                <div class="top_bar_boardd">
+                    <div class="bar_board4">
+                        <span>Done</span>
+                    </div>
+                </div>
+                <div id="column_board4" class="column_board" ondrop="moveTo('column_board4')" ondragleave="removeHighlight('column_board4')" ondragover="allowDrop(event); highlight('column_board4')"></div>
+            </div>
         </div>
     </div>
 

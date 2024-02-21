@@ -116,11 +116,12 @@
 .image-container:hover .top-image {
     opacity: 1; /* Macht das obere Bild sichtbar, wenn über das Container div gehovert wird */
 }
-.top_bar_board {
+
+/* .top_bar_board {
     box-sizing: border-box;
     display: flex;
-    /* width: 1054px; */
-    /* justify-content: flex-start; */
+    width: 1054px;
+    justify-content: flex-start;
     align-items: flex-start;
     gap: 26px;
     color: var(--menu-color, #42526E);
@@ -130,7 +131,7 @@
     line-height: 120%;
     width: 100%; 
     justify-content: center;
-}
+} */
 
 .bar_board1 {
     display: flex;
@@ -138,6 +139,11 @@
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
+    color: var(--menu-color, #42526E);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
 }
 
 .bar_board2{
@@ -146,6 +152,11 @@
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
+    color: var(--menu-color, #42526E);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
 }
 
 .bar_board3 {
@@ -154,6 +165,11 @@
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
+    color: var(--menu-color, #42526E);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
 }
 
 .bar_board4 {
@@ -162,6 +178,11 @@
     justify-content: space-between;
     align-items: center;
     flex-shrink: 0;
+    color: var(--menu-color, #42526E);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
 }
 
 .top_bar_board img {
@@ -194,6 +215,7 @@
     gap: 16px;
     align-self: stretch;
     width: 244px;
+    min-height: 590px;
 }
 
 .card_board2 {
@@ -654,50 +676,72 @@ flex-wrap: wrap;
     font-size: 20px;
 } */
 
-@media(max-width: 1120px) {
-    .top_bar_board {
-        justify-content: flex-start;
-    }
+@media(max-width: 1320px) {
     .distrubution_board {
         display: unset;
+    }
+    .box_board2 {
+        margin-top: 20px;
+    }
+    
+    .box_board3 {
+        margin-top: 20px;
+    }
+    
+    .box_board4 {
+        margin-top: 20px;
+        margin-bottom: 50px;
     }
     .column_board {
         width: 100%;
         flex-direction: unset;
+        min-height: 0;
     }
-    .bar_board2 {
-        display: none;
-    }
-    .bar_board3 {
-        display: none;
-    }
-    .bar_board4 {
-        display: none;
+    /* .top_bar_board {
+        justify-content: flex-start;
     }
     .bar_board1 {
         width: 95%;
-    }
-    @media (max-width: 1120px) {
-        .addtask_button_board{
-            display: none;
-        }
-        .task_container_board{
-            flex-direction: column-reverse;            
-        }
-        .input_container_board {
-            top: 240px;
-            width: 50%;
-            margin-right: 50%;
-        }
-    }
-    @media (max-width: 900px){
-       .content_board{
-        margin: 32px;
-        margin-left: 0;
-       }
+    } */
+}
 
+@media (max-width: 1120px) {
+    /* .addtask_button_board{
+        display: none;
+    } */
+    /* .task_container_board{
+        flex-direction: column-reverse;            
+    } */
+    /* .input_container_board {
+        top: 240px;
+        width: 50%;
+        margin-right: 50%;
+    }  */
+    .input_container_board {
+        position: absolute;
+        top: 250px;
+        width: 55%;
+        padding-left: 0;
+    } 
+}
+
+@media (max-width: 900px){
+   .content_board{
+    margin: 0;
+    margin-left: 0;
+    padding-right: 0;
+    margin-top: 50px;
+    padding-left: 32px;
+    }
+   .input_container_board {
+        width: 86%;
+    } 
+    .bar_board1 {
+    margin-top: 50px;
     }
 }
+
+
 
 
 
