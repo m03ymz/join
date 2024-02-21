@@ -77,10 +77,28 @@ function highlightPageDesktopTemplate() {
         document.getElementById('board_side_bar').style = 'background-color: #091931';
     } else if (currentPage === '/contacts.html') {
         document.getElementById('contacts_side_bar').style = 'background-color: #091931';
+    } else if (currentPage === '/privacy_policy.html') {
+        document.getElementById('privacy_policy_side_bar').style = 'background-color: #091931';
+    } else if (currentPage === '/legal_notice.html') {
+        document.getElementById('legal_notice_side_bar').style = 'background-color: #091931';
+    } else if (currentPage === '/privacy_policy_unlogged.html') {
+        document.getElementById('privacy_policy_side_bar').style = 'background-color: #091931';
+    } else if (currentPage === '/legal_notice_unlogged.html') {
+        document.getElementById('legal_notice_side_bar').style = 'background-color: #091931';
     }
 }
 
 
 function openDropdownMenuDesktopTemplate() {
     document.getElementById('dropdown_menu_header_desktop_template').classList.toggle('display_none');
+}
+
+function hideRightSideHeaderAndSidebarCenter() {
+    document.getElementById('right_header_desktop_template').style = 'display: none';
+    document.getElementById('center_side_bar_desktop_template').style = 'display: none';
+}
+
+function showRightSideHeaderAndSidebarCenter() {
+    document.getElementById('right_header_desktop_template').style = 'display: flex';
+    document.getElementById('center_side_bar_desktop_template').style = 'display: flex';
 }

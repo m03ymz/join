@@ -24,7 +24,7 @@ function checkDataSignUp() {
 
 async function addUserSignUp() {
     let name = document.getElementById('name_sign_up').value;
-    let email = document.getElementById('email_sign_up').value;
+    let email = document.getElementById('email_sign_up').value.toLowerCase();
     let password = document.getElementById('password_sign_up').value;
     let randomIndex = Math.floor(Math.random() * contactColors.length);
     let color = contactColors[randomIndex];

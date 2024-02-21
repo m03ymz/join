@@ -7,7 +7,6 @@ async function initContacts() {
     renderContactsContacts();
 }
 
-
 function openContactFormContacts() {
     resetContactFormContacts();
     document.getElementById('bg_contact_form').style = 'display: unset';

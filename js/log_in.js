@@ -4,6 +4,7 @@ async function initLogIn() {
     console.log(users); 
 }
 
+
 function checkDataLogIn() {
     let email = document.getElementById('email_log_in').value.toLowerCase();
     let password = document.getElementById("password_log_in").value;

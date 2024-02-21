@@ -396,10 +396,6 @@ textarea:hover, select:hover {
     margin-top: 8px;
 }
 
-.checkbox_contact_add_task[type="checkbox"] {
-    pointer-events: none;
-}
-
 .select_contacts_add_task, .placeholder_select_contacts_add_task, .search_bar_select_contacts_add_task {
     width: 100%; 
     box-sizing: border-box;
@@ -439,9 +435,6 @@ textarea:hover, select:hover {
     width: 300px;
 }
 
-.checkbox_contact_add_task[type="checkbox"] {
-    pointer-events: none;
-}
 
 /* Stellt  sicher, dass alle spezifischen Stile, die die Breite betreffen, ebenfalls angepasst werden */
     .placeholder_select_contacts_add_task, .search_bar_select_contacts_add_task {
