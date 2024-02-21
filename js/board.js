@@ -386,8 +386,8 @@ function renderTasks(columnTasks, columnId) {
                     <div class="task_card_top_board">
                         <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
                         <div>
-                            <img src="./assets/img/arrow_up.png" alt="">
-                            <img src="./assets/img/arrow_down.png" alt="">
+                            <img onclick="moveTaskUp(${taskId})" src="./assets/img/arrow_up.png" alt="">
+                            <img onclick="moveTaskDown(${taskId})" src="./assets/img/arrow_down.png" alt="">
                         </div>
                     </div>
                     <div class="card_text_board"><b>${taskNumber.title}</b></div>
@@ -664,6 +664,18 @@ function openContactListAddTaskEdit() {
         redirect('add_task');
     }
   }
+
+  function moveTaskDown(taskId) {
+    let task = currentUser.tasks[taskId];
+    if (task.column === 'column_board') {
+        task.column = 'column_board2';
+    } else if (task.column === 'column_board2') {
+        task.column = 'column_board3';
+    } else if (task.column === 'column_board3') {
+        task.column = 'column_board4';
+    }
+    renderTask();
+}
 
 
   
