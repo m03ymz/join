@@ -495,7 +495,7 @@ textarea:hover, select:hover {
 }
 
 .bottom_container_addtask {
-    margin-top: 172px;
+    margin-top: 80px;
     display: flex;
     justify-content: space-between;
     width: 100%;
