@@ -94,18 +94,18 @@
                     <div>
                         <p class="required_red_star">Category</p>
                         <div>
-                            <div class="placeholder_select_contacts_add_task" onclick="toggleSubtask()" tabindex="0">
-                                <span id="category_task">Select Subtask Category</span>
-                            <img class="arrowImage" src="./assets/img/arrow_down_add_task.svg">
+                            <div class="placeholder_select_contacts_add_task" onclick="toggleSubtask(event)" tabindex="0">
+                              <span id="category_task">Select Subtask Category</span>
+                              <img class="arrowImage" src="./assets/img/arrow_down_add_task.svg">
+                            </div>
                           </div>
-                        </div>
-                        <div style="display: block">
-                          <div id="categorySubtasks" style="display: none; background-color: white; border: 1px solid lightgray;">
-                            <ul id="technicalTaskAddtask" onclick="returnSelectedCategory('technicalTaskAddtask')"  class="subtask_category_addtask">Technical Task</ul>
-                            <ul id="userStoryAddtask"     onclick="returnSelectedCategory('userStoryAddtask')"  class="subtask_category_addtask">User Story</ul>
+                          <div style="display: block">
+                            <div id="categorySubtasks" style="display: none; background-color: white; border: 1px solid lightgray;">
+                              <ul id="technicalTaskAddtask" onclick="returnSelectedCategory('Technical Task')" class="subtask_category_addtask">Technical Task</ul>
+                              <ul id="userStoryAddtask" onclick="returnSelectedCategory('User Story')" class="subtask_category_addtask">User Story</ul>
+                            </div>
                           </div>
-                        </div>
-
+                          
                         
                     <div>
                         <div class="input_container">
@@ -129,21 +129,6 @@
                     <div id="selected_contacts_add_task"></div>                    
                 </div>
                 </div>
-
-
-                       <!-- NICHT LÖSCHEN !! -->    <!-- NICHT LÖSCHEN !! -->
-                        <!-- NICHT LÖSCHEN !! -->   <!-- NICHT LÖSCHEN !! -->
-
-
-            
-                        <!-- <p class="required_red_star">Category</p>
-                        <select id="category_task" class="select_subtasks_addtask"  required >
-                            <option value="" disabled selected hidden>Select task category</option>
-                            <option value="Technical Task">Technical Task</option>
-                            <option value="User Story">User Story</option>
-                        </select>
-                    </div> -->
-                    
 
                 </div>
                 <!--RIGHT SIDE END-->

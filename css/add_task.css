@@ -47,6 +47,10 @@ textarea:focus, select:focus, input:focus, .input_field_title_addtask:focus, .te
 
 }
 
+.hover_li:hover .container_subtasks_hover_icons {
+    opacity: 1;
+}
+
 .input_wrapper:hover {
     outline-color: rgb(117, 193, 255);
 }
@@ -188,6 +192,8 @@ textarea:hover, select:hover {
     opacity: 0;
 }
 
+
+
 .input-wrapper {
     position: relative;
     display: inline-block;
@@ -262,7 +268,7 @@ textarea:hover, select:hover {
     margin-top: 16px;
     margin-bottom: 16px;
     display: flex;
-    background-color: green;
+  
 }
 
 .container_subtasks_hover_icons {
@@ -273,6 +279,7 @@ textarea:hover, select:hover {
 
 .container_subtasks_hover_icons:hover {
     opacity: 1;
+
 }
 
 .prio_button_standard {
@@ -618,3 +625,10 @@ textarea:hover, select:hover {
         background-color: white;
       }
       
+      [contenteditable="true"]:hover {
+        /* Deaktiviert den Hover-Effekt für editierbare Elemente */
+    }
+
+    .accept_edited_subtask {
+       margin-right: 8px !important
+    }
