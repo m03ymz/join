@@ -10,39 +10,44 @@
     <script src="js/storage.js"></script>
     <script src="script.js"></script>
     <script src="js/board.js"></script>
-    <script src="js/add_task.js"></script>    
 </head>
+
 
 <body onload="initAddTask()">
     <div  w3-include-html="./assets/templates/header_and_bar_template.html"></div>
+
+
     <form onsubmit="submitFormAddTask(); return false;">
-<div id="contentAddTask">
+        <div id="contentAddTask">
     
-    <div class="container_headline_addtask">
-        <h1 class="headline_addtask">Add Task</h1>
-    </div>
-    
+
+            <div class="container_headline_addtask">
+                <h1 class="headline_addtask">Add Task</h1>
+            </div>
+
 
             <div class="container_boxes_addtask">
 
-                                <!--LEFT SIDE START-->
+                <!--LEFT SIDE START-->
 
                 <div class="left_box_addtask">
                     <div>
                         <p class="required_red_star">Title</p>
-                      <input id="title" placeholder="Enter a title" class="input_field_title_addtask" type="text" required>
+                        <input id="title" placeholder="Enter a title" class="input_field_title_addtask" type="text" required>
                     </div>
+
 
                     <div>
                         <p>Description</p>
                         <textarea id="description" placeholder="Enter a Description" class="textarea_discription_addtask" cols="30" rows="10"></textarea>    
                     </div>
 
+
                     <div> 
                         <p>Assigned to</p>             
-                    
+
                         <div class="select_contacts_add_task">
-                            <div id="contact_bar_select_contacts_add_task">
+                            <div id="contact_bar_select_contacts_add_task" >
                                 <div class="placeholder_select_contacts_add_task" onclick="openContactListAddTask()">
                                     <span>Select contacts to assign</span>
                                     <img src="./assets/img/arrow_down_add_task.svg" alt="arrow down symbol">
@@ -58,7 +63,11 @@
                 </div>
                 <!--LEFT SIDE END-->
 
+
+
+                
                 <hr class="parting_line">
+
 
                 <!--RIGHT SIDE START-->
                 <div class="right_box_addtask">
@@ -69,6 +78,7 @@
                         </div>
                     </div>
                 
+
                     <div>
                         <div class="container_prio_title"><p>Prio</p></div>
                         <div class="container_prio_buttons_addtask">
@@ -83,14 +93,20 @@
 
                     <div>
                         <p class="required_red_star">Category</p>
-                        <select id="category_task" class="input_assigned_to" required >
-                            <option value="" disabled selected hidden>Select task category</option>
-                            <option value="Technical Task">Technical Task</option>
-                            <option value="User Story">User Story</option>
-                          
-                        </select>
-                    </div>
+                        <div>
+                            <div class="placeholder_select_contacts_add_task" onclick="toggleSubtask()" tabindex="0">
+                                <span id="category_task">Select Subtask Category</span>
+                            <img class="arrowImage" src="./assets/img/arrow_down_add_task.svg">
+                          </div>
+                        </div>
+                        <div style="display: block">
+                          <div id="categorySubtasks" style="display: none; background-color: white; border: 1px solid lightgray;">
+                            <ul id="technicalTaskAddtask" onclick="returnSelectedCategory('technicalTaskAddtask')"  class="subtask_category_addtask">Technical Task</ul>
+                            <ul id="userStoryAddtask"     onclick="returnSelectedCategory('userStoryAddtask')"  class="subtask_category_addtask">User Story</ul>
+                          </div>
+                        </div>
 
+                        
                     <div>
                         <div class="input_container">
                             <p>Subtasks</p>
@@ -104,34 +120,52 @@
                                         <img id="acceptTask" src="assets/img/Subtasks plus.svg">
                                     </div>
                                 </div>                        
-        
-        
                             </div>
                         </div>
-        
+
                         <div id="subtaskContainer"></div> 
-                         
                     </div>
+                      </div>
+                    <div id="selected_contacts_add_task"></div>                    
+                </div>
+                </div>
+
+
+                       <!-- NICHT LÖSCHEN !! -->    <!-- NICHT LÖSCHEN !! -->
+                        <!-- NICHT LÖSCHEN !! -->   <!-- NICHT LÖSCHEN !! -->
+
+
+            
+                        <!-- <p class="required_red_star">Category</p>
+                        <select id="category_task" class="select_subtasks_addtask"  required >
+                            <option value="" disabled selected hidden>Select task category</option>
+                            <option value="Technical Task">Technical Task</option>
+                            <option value="User Story">User Story</option>
+                        </select>
+                    </div> -->
+                    
 
                 </div>
-            </div>
-            
+                <!--RIGHT SIDE END-->
 
-            
+            </div>
+
+
             <div class="bottom_container_addtask">
                 <div class="container_data_first_letter">
                     <p class="required_red_star">This field is required</p>
                 </div>
-            
+
                 <div class="container_clear_and_create_task">
                     <button class="clear_task_button" onclick="clearAllInputs()">Clear</button>
                     <button class="create_task_button" type="submit">Create Task</button>
                 </div>
             </div>
-        </form>
-</div>
+        </div>
+    </form>
 
 
-
+    
+<script src="js/add_task.js"></script>    <!--Important for future Due Dates only! -->   
 </body>
 </html>

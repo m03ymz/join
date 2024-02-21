@@ -178,7 +178,7 @@ async function createTaskArray(targetColumnId) {
         "title": title.value,
         "description": description.value,
         "date": date.value,
-        "category": category.value,
+        "category": selectionCategory,
         "subtask": subtaskValues,
         "column": targetColumnId,
         "id": taskIdCounter,
