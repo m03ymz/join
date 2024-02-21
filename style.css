@@ -154,7 +154,6 @@ body {
 }
 
 .bottom_side_bar_desktop_template {
-    border: 2px dotted rgb(4, 0, 255);
     box-sizing: border-box;
     width: 100%;
     display: flex;
@@ -165,7 +164,6 @@ body {
 }
 
 .bottom_side_bar_desktop_template div { 
-    border: 2px dotted red;
     box-sizing: border-box;
     width: 100%;
     display: flex;
@@ -175,7 +173,6 @@ body {
 }
 
 .bottom_side_bar_desktop_template span {
-    border: 2px dotted green;
     box-sizing: border-box;
     display: flex;
     justify-content: center;

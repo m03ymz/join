@@ -1,6 +1,6 @@
 async function initPrivacyPolicy() {
-    await init();
-    hideRightSideHeaderAndSidebarCenter();
+    await includeHTML();
+    highlightPageDesktopTemplate();
 }
 
 
