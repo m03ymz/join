@@ -7,7 +7,6 @@ async function initContacts() {
     renderContactsContacts();
 }
 
-
 function openContactFormContacts() {
     resetContactFormContacts();
     document.getElementById('bg_contact_form').style = 'display: unset';
@@ -207,7 +206,7 @@ function resetContactFormContacts() {
     document.getElementById('buttons_contact_form').innerHTML = /*html*/`
         <div class="add_buttons_contact_form">
             <button onclick="closeContactFormContacts()" type="button" class="cancel_button_contact_form">Cancel</button>
-            <button onclick="addNewContactContacts()" type="button" class="create_button_contact_form">Create contact<img src="./assets/img/check_icon_contact_form.svg" alt="check icon"></button>
+            <button class="create_button_contact_form">Create contact<img src="./assets/img/check_icon_contact_form.svg" alt="check icon"></button>
         </div>
     `;
 }

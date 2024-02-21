@@ -23,8 +23,10 @@
                 <div class="input_center_sign_up">
                     <input required class="name_input_center_sign_up" type="text" placeholder="Name" id="name_sign_up">
                     <input required class="email_input_center_sign_up" type="email" placeholder="Email" id="email_sign_up">
+                    <span id="email_feedback_input_center_sign_up">Invalid credentials!</span>
                     <input required class="password_input_center_sign_up" type="password" placeholder="Password" id="password_sign_up">
                     <input required class="password_input_center_sign_up" type="password" placeholder="Confirm Password" id="confirm_password_sign_up">
+                    <span id="password_feedback_input_center_sign_up">Invalid credentials!</span>
                 </div>
                 <div class="checkbox_center_sign_up">
                     <input required type="checkbox">
@@ -36,8 +38,8 @@
             </form>
         </div>
         <div class="bottom_sign_up">
-            <span onclick="redirect('privacy_policy')">Privacy Policy</span>
-            <span onclick="redirect('legal_notice')">Legal notice</span>
+            <span onclick="redirect('privacy_policy_unlogged')">Privacy Policy</span>
+            <span onclick="redirect('legal_notice_unlogged')">Legal notice</span>
         </div>
     </div>
 </body>

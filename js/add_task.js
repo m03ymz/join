@@ -224,14 +224,14 @@ function renderContactsAddTask(searchTerm) {
     let initials = getInitials(contact.name);
 
     if (contact.name.toLowerCase().startsWith(searchTerm.toLowerCase())) {
-      let html = generateContactsAddTaskHtml(i, contact, initials);
+      let isSelected = selectedContactsAddTask.includes(contact);
       if (contact.me) {
-        contactAreaForMe.innerHTML += html;
+        contactAreaForMe.innerHTML += generateContactsAddTaskHtml(i, contact, initials, isSelected);
       } else {
-        contactAreaForAll.innerHTML += html;
+        contactAreaForAll.innerHTML += generateContactsAddTaskHtml(i, contact, initials, isSelected);
       }
-    }
     checkSelectedContactsAddTask(i);
+    }
   }
 }
 
@@ -246,16 +246,16 @@ function renderContactsAddTask(searchTerm) {
  * @param {string} initials - The initials of the contact's name.
  * @returns {string} The HTML string representing the contact item.
  */
-function generateContactsAddTaskHtml(i, contact, initials) {
+function generateContactsAddTaskHtml(i, contact, initials, isSelected) {
+  let checkboxStyle = isSelected ? 'background-color: #2a3647; color: white;' : '';
+  let checkboxChecked = isSelected ? 'checked' : '';
   return /*html*/`
     <div class="contact_add_task" id="contact_add_task${i}" onclick="selectContactAddTask(${i})">
-      <div class="left_contact_add_task">
-        <div class="initials_contact_add_task" style="background-color: ${contact.color}">
-          <span>${initials}</span>
+        <div class="left_contact_add_task">
+            <div class="initials_contact_add_task" style="background-color: ${contact.color}"><span>${initials}</span></div>
+            <span>${contact.name}</span>
         </div>
-        <span>${contact.name}</span>
-      </div>
-      <input class="checkbox_contact_add_task" type="checkbox" id="checkbox_contact_add_task${i}" onchange="selectContactAddTask(${i})">
+        <input class="checkbox_contact_add_task" type="checkbox" id="checkbox_contact_add_task${i}" onchange="selectContactAddTask(${i})" style="${checkboxStyle}" ${checkboxChecked}>
     </div>
   `;
 }

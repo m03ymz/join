@@ -410,10 +410,6 @@ textarea:hover, select:hover {
     margin-top: 8px;
 }
 
-.checkbox_contact_add_task[type="checkbox"] {
-    pointer-events: none;
-}
-
 .select_contacts_add_task, .placeholder_select_contacts_add_task, .search_bar_select_contacts_add_task {
     width: 100%;
     box-sizing: border-box;
@@ -455,11 +451,31 @@ textarea:hover, select:hover {
     width: 300px;
 }
 
-.left_box_addtask {
-    width: 400px;
-    padding: 20px;
-    box-sizing: border-box;
+
+/* Stellt  sicher, dass alle spezifischen Stile, die die Breite betreffen, ebenfalls angepasst werden */
+    .placeholder_select_contacts_add_task, .search_bar_select_contacts_add_task {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 16px;
+    align-items: center;
+    gap: 10px;
 }
+
+    #contact_list_add_task {
+    max-height: 200px;
+    width: 100%; /* Stellt sicher, dass auch diese Container sich an die Breite anpassen */
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+/* Hier Ende Assigned to CSS */
+
+    
+    .left_box_addtask {
+        width: 400px;
+        padding: 20px; /* Fügt Padding hinzu, damit Inhalte nicht direkt am Rand sind */
+        box-sizing: border-box; /* Stellt sicher, dass das Padding Teil der max-width ist */        
+    }
 
 .right_box_addtask {
     width: 400px;

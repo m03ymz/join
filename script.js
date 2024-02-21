@@ -51,6 +51,7 @@ function redirect(site) {
     window.location.href = site + '.html';
 }
 
+
 function redirectToPreviousPage() {
     window.history.back();
 }
@@ -69,14 +70,22 @@ function renderInitialsDesktopTemplate() {
 
 function highlightPageDesktopTemplate() {
     let currentPage = window.location.pathname;
-    if (currentPage === '/summary.html') {
+    if (currentPage.includes('/summary.html')) {
         document.getElementById('summary_side_bar').style = 'background-color: #091931';
-    } else if (currentPage === '/add_task.html') {
+    } else if (currentPage.includes('/add_task.html')) {
         document.getElementById('add_task_side_bar').style = 'background-color: #091931';
-    } else if (currentPage === '/board.html') {
+    } else if (currentPage.includes('/board.html')) {
         document.getElementById('board_side_bar').style = 'background-color: #091931';
-    } else if (currentPage === '/contacts.html') {
+    } else if (currentPage.includes('/contacts.html')) {
         document.getElementById('contacts_side_bar').style = 'background-color: #091931';
+    } else if (currentPage.includes('/privacy_policy.html')) {
+        document.getElementById('privacy_policy_side_bar').style = 'background-color: #091931';
+    } else if (currentPage.includes('/legal_notice.html')) {
+        document.getElementById('legal_notice_side_bar').style = 'background-color: #091931';
+    } else if (currentPage.includes('/privacy_policy_unlogged.html')) {
+        document.getElementById('privacy_policy_side_bar').style = 'background-color: #091931';
+    } else if (currentPage.includes('/legal_notice_unlogged.html')) {
+        document.getElementById('legal_notice_side_bar').style = 'background-color: #091931';
     }
 }
 

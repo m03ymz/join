@@ -26,15 +26,16 @@
             <h1>Log in</h1>
             <form onsubmit="checkDataLogIn(); return false;">
                 <div class="input_center_log_in">
-                    <input required class="email_input_center_log_in" type="email" placeholder="Email" id="email_log_in">
-                    <input required class="password_input_center_log_in" type="password" placeholder="Password" id="password_log_in">
+                    <input required class="email_input_center_log_in" type="email" placeholder="Email" id="email_log_in" onfocus="resetUserFeedbackLogIn()">
+                    <input required class="password_input_center_log_in" type="password" placeholder="Password" id="password_log_in" onfocus="resetUserFeedbackLogIn()">
+                    <span id="feedback_input_center_log_in">Invalid credentials!</span>
                 </div>
                 <div class="checkbox_center_log_in">
                     <input type="checkbox" id="remember_me_log_in" onchange="updateRememberMe()">
                     <span>Remember me</span>
                 </div>
                 <div class="buttons_center_log_in">
-                    <button class="log_in_button_center_log_in">Log in</button>
+                    <button type="submit" class="log_in_button_center_log_in">Log in</button>
                     <button type="button" class="guest_log_in_button_center_log_in" onclick="logInAsGuest()">Guest Log in</button>
                 </div>
             </form>
@@ -47,8 +48,8 @@
                 </div>
             </div>
             <div class="info_bottom_log_in">
-                <span onclick="redirect('privacy_policy')">Privacy Policy</span>
-                <span onclick="redirect('legal_notice')">Legal notice</span>
+                <span onclick="redirect('privacy_policy_unlogged')">Privacy Policy</span>
+                <span onclick="redirect('legal_notice_unlogged')">Legal notice</span>
             </div>
         </div>
     </div>
