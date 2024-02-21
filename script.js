@@ -51,6 +51,7 @@ function redirect(site) {
     window.location.href = site + '.html';
 }
 
+
 function redirectToPreviousPage() {
     window.history.back();
 }

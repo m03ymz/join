@@ -20,7 +20,10 @@ function checkDataStatementLogIn(foundUser, email, password) {
         localStorage.setItem('currentUserIndex', currentUserIndexAsString);
         redirect('summary');
     } else {  
-        alert("Ungültige Anmeldeinformationen. Bitte überprüfen Sie Ihre E-Mail und Ihr Passwort.");
+        // alert("Ungültige Anmeldeinformationen. Bitte überprüfen Sie Ihre E-Mail und Ihr Passwort.");
+        document.getElementById('email_log_in').style = 'border: 1px solid red';
+        document.getElementById('password_log_in').style = 'border: 1px solid red';
+        document.getElementById('feedback_input_center_log_in').style = 'display: unset';
     }
 }
 
@@ -75,4 +78,10 @@ function logInAsGuest() {
     let currentUserIndexAsString = JSON.stringify(currentUserIndex);
     localStorage.setItem('currentUserIndex', currentUserIndexAsString);
     redirect('summary');
+}
+
+function resetUserFeedbackLogIn() {
+    document.getElementById('email_log_in').style = 'border: 1px solid #D1D1D1';
+    document.getElementById('password_log_in').style = 'border: 1px solid #D1D1D1';
+    document.getElementById('feedback_input_center_log_in').style = 'display: none';
 }

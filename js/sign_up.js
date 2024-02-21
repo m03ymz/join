@@ -13,8 +13,13 @@ function checkDataSignUp() {
     let foundEmail = users.filter(user => user.email === email);
     if (password !== confirmPassword) {
       alert("Die Passwörter stimmen nicht überein. Bitte überprüfen Sie Ihre Eingabe.");
+      document.getElementById('password_sign_up').style = 'border: 1px solid red';
+      document.getElementById('confirm_password_sign_up').style = 'border: 1px solid red';
+      document.getElementById('password_feedback_input_center_sign_up').style = 'display: unset';
     } else if (foundEmail.length > 0) {
       alert("E-Mail-Adresse ist bereits vergeben. Bitte verwenden Sie eine andere E-Mail-Adresse.");
+      document.getElementById('email_sign_up').style = 'border: 1px solid red';
+      document.getElementById('email_feedback_input_center_sign_up').style = 'display: unset';
     } else {
       addUserSignUp(); 
     }
@@ -49,3 +54,14 @@ async function addUserSignUp() {
 }
 
 
+function resetEmailUserFeedbackLogIn() {
+  document.getElementById('email_log_in').style = 'border: 1px solid #D1D1D1';
+  document.getElementById('password_log_in').style = 'border: 1px solid #D1D1D1';
+  document.getElementById('feedback_input_center_log_in').style = 'display: none';
+}
+
+function resetPasswordUserFeedbackLogIn() {
+  document.getElementById('password_sign_up').style = 'border: 1px solid #D1D1D1';
+  document.getElementById('confirm_password_sign_up').style = 'border: 1px solid #D1D1D1';
+  document.getElementById('feedback_input_center_log_in').style = 'display: none';
+}
