@@ -5,7 +5,6 @@ async function initBoard() {
     // await saveUsers();
     renderTask();
     renderContactsAddTask('');
-    // renderContactsAddTaskEdit('');
 }
 
 let targetColumnId;
@@ -133,6 +132,10 @@ function updateProgressBar(task) {
         progressBar.style.width = `${progress}%`;
         progressText.textContent = `${checkedSubtasks}/${totalSubtasks} Subtasks`;
     }
+}
+
+function calculateProgress(totalSubtasks, checkedSubtasks) {
+    return totalSubtasks > 0 ? (checkedSubtasks / totalSubtasks) * 100 : 0;
 }
 
 function closeOverlay(){
@@ -380,7 +383,13 @@ function renderTasks(columnTasks, columnId) {
         document.getElementById(columnId).innerHTML += /*html*/ `
             <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
                 <div onclick="openOverlay(${taskId})" class="inner_card_board2">
-                    <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
+                    <div class="task_card_top_board">
+                        <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
+                        <div>
+                            <img src="./assets/img/arrow_up.png" alt="">
+                            <img src="./assets/img/arrow_down.png" alt="">
+                        </div>
+                    </div>
                     <div class="card_text_board"><b>${taskNumber.title}</b></div>
                     <div class="card_text2_board">${taskNumber.description}</div>
                     ${progressBarHtml}
@@ -649,6 +658,16 @@ function openContactListAddTaskEdit() {
     });
     closeContactListAddTaskEdit();
   }
+
+  function changeAddTask(){
+    if (window.innerWidth <= 900) {
+        redirect('add_task');
+    }
+  }
+
+
+  
+  
 
   
 

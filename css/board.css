@@ -205,7 +205,7 @@
     align-items: flex-start;
     gap: 26px;
     flex-shrink: 0;
-    min-height: 590px;
+    min-height: 540px;
     margin-top: 5px;
     margin-bottom: 20px;
     justify-content: center;
@@ -219,12 +219,12 @@
     gap: 16px;
     align-self: stretch;
     width: 244px;
-    min-height: 590px;
+    min-height: 540px;
 }
 
 .card_board2 {
     display: flex;
-    width: 210px;
+    min-width: 210px;
     /* height: 230px;  */
     min-height: 100px;
     padding: 16px;
@@ -595,6 +595,18 @@
     background-color: rgba(0, 0, 0, 0.05);
 }
 
+.task_card_top_board {
+    display: flex;
+    align-items: center;
+    width: 210px;
+    justify-content: space-between;
+}
+
+.task_card_top_board img {
+    height: 28px;
+    width: 28px;
+}
+
 /* Edit Form CSS Start */
 
 .edit_container_boxes_addtask {
@@ -700,6 +712,28 @@ flex-wrap: wrap;
         width: 100%;
         flex-direction: unset;
         min-height: 0;
+        overflow-x: auto;
+    }
+    .bar_board1 {
+        margin-top: 20px;
+        width: unset;
+    }
+    .bar_board2 {
+        margin-top: 20px;
+        width: unset;
+    }
+    
+    .bar_board3 {
+        margin-top: 20px;
+        width: unset;
+    }
+    
+    .bar_board4 {
+        margin-top: 20px;
+        width: unset;
+    }
+    .empty_card_board {
+        width: 100%;
     }
     /* .top_bar_board {
         justify-content: flex-start;
@@ -730,18 +764,37 @@ flex-wrap: wrap;
 }
 
 @media (max-width: 900px){
-   .content_board{
+   .content_board {
     margin: 0;
     margin-left: 0;
-    padding-right: 0;
+    padding-right: 8px;
     margin-top: 50px;
-    padding-left: 32px;
+    padding-left: 8px;
+    padding-bottom: 50px;
     }
    .input_container_board {
         width: 86%;
     } 
     .bar_board1 {
     margin-top: 50px;
+    }
+    .button_board span {
+        display: none;
+    }
+    .button_board {
+        padding: 4px 8px;
+    }
+}
+
+@media (max-width: 350px){
+    .input_container_board {
+        gap: 0;
+    }
+}
+
+@media (max-width: 325px){
+    .bottom-image, .top-image {
+        left: -4px;
     }
 }
 
