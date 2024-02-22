@@ -66,11 +66,6 @@ function renderSubtasks() {
 }
 
 
-function returnSelectedCategory(x){
-  selectionCategory = document.getElementById(x).innerHTML;
-  document.getElementById('category_task').innerHTML = selectionCategory;
-}
-
 
 function editListItem(index) {
   console.log("editListItem aufgerufen mit Index:", index); // Zum Debuggen hinzufügen
@@ -487,15 +482,11 @@ function toggleSubtask() {
 
 let selectionCategory;
 
-function returnSelectedCategory(categoryName) {
-  // Setzen des gewählten Kategorienamens
-  document.getElementById('category_task').textContent = categoryName;
-
-  // Ausblenden des Kategorienbereichs
+function returnSelectedCategory(i){
+  selectionCategory = i;
+  document.getElementById('category_task').innerHTML = i;
   let element = document.getElementById('categorySubtasks');
   element.style.display = 'none';
-
-  // Rücksetzen der ArrowImage-Transformation
   let image = document.querySelector('.arrowImage');
   image.style.transform = '';
 }

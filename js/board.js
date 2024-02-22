@@ -1,7 +1,7 @@
 async function initBoard() {
     await init();
     // delete currentUser.taskId;
-    // currentUser.tasks.splice(-1);
+    // currentUser.tasks.splice(0, 1);
     // await saveUsers();
     renderTask();
     renderContactsAddTask('');
