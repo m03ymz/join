@@ -22,11 +22,11 @@
             <form onsubmit="checkDataSignUp(); return false;">
                 <div class="input_center_sign_up">
                     <input required class="name_input_center_sign_up" type="text" placeholder="Name" id="name_sign_up">
-                    <input required class="email_input_center_sign_up" type="email" placeholder="Email" id="email_sign_up">
-                    <span id="email_feedback_input_center_sign_up">Invalid credentials!</span>
-                    <input required class="password_input_center_sign_up" type="password" placeholder="Password" id="password_sign_up">
-                    <input required class="password_input_center_sign_up" type="password" placeholder="Confirm Password" id="confirm_password_sign_up">
-                    <span id="password_feedback_input_center_sign_up">Invalid credentials!</span>
+                    <input required class="email_input_center_sign_up" type="email" placeholder="Email" id="email_sign_up" onfocus="resetEmailUserFeedbackSignUp()">
+                    <span id="email_feedback_input_center_sign_up">Ups! your email is already taken</span>
+                    <input required class="password_input_center_sign_up" type="password" placeholder="Password" id="password_sign_up" onfocus="resetPasswordUserFeedbackSignUp()">
+                    <input required class="password_input_center_sign_up" type="password" placeholder="Confirm Password" id="confirm_password_sign_up" onfocus="resetPasswordUserFeedbackSignUp()">
+                    <span id="password_feedback_input_center_sign_up">Ups! your password don't match</span>
                 </div>
                 <div class="checkbox_center_sign_up">
                     <input required type="checkbox">

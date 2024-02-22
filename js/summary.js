@@ -29,6 +29,7 @@ function changeTextSummary(id, color) {
     text.style = `color: ${color}`;
 }
 
+
 function setGreetSummary() {
     let hour = new Date().getHours();
     let greeting;
@@ -46,6 +47,7 @@ function setGreetSummary() {
     document.getElementById('greet_summary').innerHTML = greeting;
 }
 
+
 function renderAllTaskInfosSummary() {
     let tasksToDo = currentUser.tasks.filter(task => task.column == 'column_board');
     let tasksInProgress = currentUser.tasks.filter(task => task.column == 'column_board2');
@@ -61,6 +63,7 @@ function renderAllTaskInfosSummary() {
     document.getElementById('in_progress_tasks_summary').innerHTML = tasksInProgress.length;
     document.getElementById('awaiting_tasks_summary').innerHTML = tasksAwaiting.length;
 }
+
 
 function calcEarliestUrgentTaskDate(urgentTasks) {
     let earliestUrgentDate = null;

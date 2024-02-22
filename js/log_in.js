@@ -20,9 +20,8 @@ function checkDataStatementLogIn(foundUser, email, password) {
         localStorage.setItem('currentUserIndex', currentUserIndexAsString);
         redirect('summary');
     } else {  
-        // alert("Ungültige Anmeldeinformationen. Bitte überprüfen Sie Ihre E-Mail und Ihr Passwort.");
-        document.getElementById('email_log_in').style = 'border: 1px solid red';
-        document.getElementById('password_log_in').style = 'border: 1px solid red';
+        document.getElementById('email_log_in').style = 'border: 1px solid #FF8190';
+        document.getElementById('password_log_in').style = 'border: 1px solid #FF8190';
         document.getElementById('feedback_input_center_log_in').style = 'display: unset';
     }
 }
@@ -64,6 +63,7 @@ function checkRememberedDataStatementLogIn(emailInput, passwordInput, rememberMe
     }
 }
 
+
 function updateRememberMe() {
     let rememberMeCheckbox = document.getElementById('remember_me_log_in');
     if (rememberMeCheckbox.checked === true) {
@@ -73,12 +73,14 @@ function updateRememberMe() {
     }
 }
 
+
 function logInAsGuest() {
     let currentUserIndex = users.findIndex(user => user.guest === true);
     let currentUserIndexAsString = JSON.stringify(currentUserIndex);
     localStorage.setItem('currentUserIndex', currentUserIndexAsString);
     redirect('summary');
 }
+
 
 function resetUserFeedbackLogIn() {
     document.getElementById('email_log_in').style = 'border: 1px solid #D1D1D1';

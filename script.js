@@ -56,6 +56,7 @@ function redirectToPreviousPage() {
     window.history.back();
 }
 
+
 function getInitials(name) {
     let cleanName = name.replace(/\(Me\)|[^a-zA-Z\s]/g, '').match(/[a-zA-Z]+/g);
     let initials = cleanName.map(word => word.charAt(0).toUpperCase()).join('').slice(0, 3);
