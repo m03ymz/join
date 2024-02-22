@@ -1,7 +1,7 @@
 async function initBoard() {
     await init();
     // delete currentUser.taskId;
-    // currentUser.tasks = [];
+    // currentUser.tasks.splice(-1);
     // await saveUsers();
     renderTask();
     renderContactsAddTask('');
@@ -178,7 +178,7 @@ async function createTaskArray(targetColumnId) {
         "title": title.value,
         "description": description.value,
         "date": date.value,
-        "category": selectionCategory,
+        // "category": selectionCategory,
         "subtask": subtaskValues,
         "column": targetColumnId,
         "id": taskIdCounter,

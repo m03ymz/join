@@ -161,6 +161,8 @@ function deleteListItem(element, id) {
 }
 
 
+let selectedPriority;
+
 /**
  * Toggles the visibility of priority buttons based on the selected priority.
  * Updates the `selectedPriority` variable to reflect the current priority.
@@ -480,6 +482,8 @@ function toggleSubtask(event) {
     image.style.transform = '';
   }
 }
+
+let selectionCategory;
 
 function returnSelectedCategory(categoryName) {
   // Setzen des gewählten Kategorienamens

@@ -24,7 +24,6 @@ async function init() {
     await includeHTML();
     renderInitialsDesktopTemplate();
     highlightPageDesktopTemplate();
-    console.log(currentUser);
 }
 
 
