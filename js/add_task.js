@@ -69,6 +69,7 @@ function renderSubtasks() {
 }
 
 
+
 function editListItem(index) {
   let editableElement = document.getElementById(`subtaskContent-${index}`);
   let editIcon = document.querySelector(`.container_subtasks_icons_edit[onclick="editListItem(${index})"]`);
@@ -160,6 +161,16 @@ function deleteListItem(element, id) {
   renderSubtasks();
 }
 
+
+/**
+ * Placeholder function for editing a list item. Needs to be implemented.
+ */
+function editListItem() {
+  // Implementation needed
+}
+
+
+let selectedPriority;
 
 /**
  * Toggles the visibility of priority buttons based on the selected priority.
@@ -481,23 +492,13 @@ function toggleSubtask(event) {
   }
 }
 
-function returnSelectedCategory(categoryName) {
-  // Setzen des gewählten Kategorienamens
-  document.getElementById('category_task').textContent = categoryName;
+let selectionCategory;
 
-  // Ausblenden des Kategorienbereichs
+function returnSelectedCategory(i){
+  selectionCategory = i;
+  document.getElementById('category_task').innerHTML = i;
   let element = document.getElementById('categorySubtasks');
   element.style.display = 'none';
-
-  // Rücksetzen der ArrowImage-Transformation
   let image = document.querySelector('.arrowImage');
   image.style.transform = '';
 }
-
-let selectionCategory;
-
-function returnSelectedCategory(x){
-  selectionCategory = document.getElementById(x).innerHTML;
-  document.getElementById('category_task').innerHTML = selectionCategory;
-}  
-  
