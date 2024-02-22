@@ -731,6 +731,12 @@ function toggleButtonEdit(priority) {
     }
   }
 
+
+
+
+
+
+
   /**
  * Renders a progress bar for a task.
  * 
@@ -754,168 +760,242 @@ function toggleButtonEdit(priority) {
 }
 
 /**
- * Opens the contact list for adding contacts to edit a task.
+ * Renders contacts for adding tasks, filtered by a search term. It updates two areas:
+ * one for "Me" contacts and another for all other contacts. Contacts are filtered
+ * to only include those whose names start with the provided search term.
+ *
+ * @param {string} searchTerm - The term used to filter contacts by name.
  */
-function openContactListAddTaskEdit() {
-    let contactBar = document.getElementById('edit_contact_bar_select_contacts_add_task');
-    let contactList = document.getElementById('edit_contact_list_add_task');
-    contactBar.innerHTML = /*html*/`
-        <div class="search_bar_select_contacts_add_task">
-            <input type="text" id="edit_search_bar_contacts_add_task" onkeyup="searchContactsAddTaskEdit()">
-            <img src="./assets/img/arrow_up_add_task.svg" alt="arrow up symbol" onclick="closeContactListAddTaskEdit()">
-        </div>
-    `;
-    contactList.style = 'display: flex';
-    hideSelectedContactsAddTaskEdit();
-    renderSelectedContactsAddTaskEdit();
-  }
-
-  /**
- * Closes the contact list for adding contacts to edit a task.
- */
-  function closeContactListAddTaskEdit() {
-    let contactBar = document.getElementById('edit_contact_bar_select_contacts_add_task');
-    let contactList = document.getElementById('edit_contact_list_add_task');
-    contactBar.innerHTML = /*html*/`
-        <div class="placeholder_select_contacts_add_task" onclick="openContactListAddTaskEdit()">
-            <span>Select contacts to assign</span>
-            <img src="./assets/img/arrow_down_add_task.svg" alt="arrow down symbol">
-        </div>
-    `;
-    contactList.style = 'display: none';
-    renderContactsAddTaskEdit('');
-    renderSelectedContactsAddTaskEdit();
-    showSelectedContactsAddTaskEdit();
+function renderContactsAddTask(searchTerm) {
+    let contactAreaForAll = document.getElementById('contacts_contact_list_add_task');
+    let contactAreaForMe = document.getElementById('me_contact_list_add_task');
+  
+    contactAreaForAll.innerHTML = '';
+    contactAreaForMe.innerHTML = '';
+  
     for (let i = 0; i < currentUser.contacts.length; i++) {
       let contact = currentUser.contacts[i];
-      let checkbox = document.getElementById(`edit_checkbox_contact_add_task${i}`);
-      if (selectedContactsAddTaskEdit.includes(contact)) {
-        checkbox.checked = true;
-      } else {
-        checkbox.checked = false;
+      let initials = getInitials(contact.name);
+  
+      if (contact.name.toLowerCase().startsWith(searchTerm.toLowerCase())) {
+        let isSelected = selectedContactsAddTask.includes(contact);
+        if (contact.me) {
+          contactAreaForMe.innerHTML += generateContactsAddTaskHtml(i, contact, initials, isSelected);
+        } else {
+          contactAreaForAll.innerHTML += generateContactsAddTaskHtml(i, contact, initials, isSelected);
+        }
+      checkSelectedContactsAddTask(i);
       }
     }
   }
   
-  let selectedContactsAddTaskEdit = [];
   
   /**
- * Selects or deselects a contact for adding to edit a task.
- * 
- * @param {number} i - The index of the contact.
- */
-  function selectContactAddTaskEdit(i) {
-    let contact = document.getElementById(`edit_contact_add_task${i}`);
-    let checkbox = document.getElementById(`edit_checkbox_contact_add_task${i}`);
+   * Generates HTML content for a contact item, including a div with their initials,
+   * name, and a checkbox for selection. This HTML content is used in the task addition
+   * interface.
+   *
+   * @param {number} i - The index of the contact in the array, used to assign unique IDs.
+   * @param {Object} contact - The contact object containing information like name and color.
+   * @param {string} initials - The initials of the contact's name.
+   * @returns {string} The HTML string representing the contact item.
+   */
+  function generateContactsAddTaskHtml(i, contact, initials, isSelected) {
+    let checkboxStyle = isSelected ? 'background-color: #2a3647; color: white;' : '';
+    let checkboxChecked = isSelected ? 'checked' : '';
+    return /*html*/`
+      <div class="contact_add_task" id="contact_add_task${i}" onclick="selectContactAddTask(${i})">
+          <div class="left_contact_add_task">
+              <div class="initials_contact_add_task" style="background-color: ${contact.color}"><span>${initials}</span></div>
+              <span>${contact.name}</span>
+          </div>
+          <input class="checkbox_contact_add_task" type="checkbox" id="checkbox_contact_add_task${i}" onchange="selectContactAddTask(${i})" style="${checkboxStyle}" ${checkboxChecked}>
+      </div>
+    `;
+  }
+  
+  
+  /**
+   * Opens the contact list for adding tasks. This function modifies the HTML content of
+   * the contact bar to include a search bar and sets the contact list display style to flex,
+   * making it visible.
+   */
+  function openContactListAddTask() {
+    let contactBar = document.getElementById('contact_bar_select_contacts_add_task');
+    let contactList = document.getElementById('contact_list_add_task');
+  
+    contactBar.innerHTML = /*html*/`
+      <div tabindex="0" class="search_bar_select_contacts_add_task" >
+        <input type="text" id="search_bar_contacts_add_task" onkeyup="searchContactsAddTask()">
+        <img src="./assets/img/arrow_up_add_task.svg" alt="arrow up symbol" onclick="closeContactListAddTask()">
+      </div>
+    `;
+    contactList.style = 'display: flex';
+    hideSelectedContactsAddTask();
+    renderSelectedContactsAddTask();
+  }
+  
+  
+  /**
+   * Closes the contact list used for adding tasks. It resets the HTML content of the contact
+   * bar to show a placeholder and sets the contact list display style to none, hiding it.
+   * Also, it updates the checkboxes based on whether contacts are selected.
+   */
+  function closeContactListAddTask() {
+    let contactBar = document.getElementById('contact_bar_select_contacts_add_task');
+    let contactList = document.getElementById('contact_list_add_task');
+  
+    contactBar.innerHTML = /*html*/`
+      <div class="placeholder_select_contacts_add_task" onclick="openContactListAddTask()">
+        <span>Select contacts to assign</span>
+        <img src="./assets/img/arrow_down_add_task.svg" alt="arrow down symbol">
+      </div>
+    `;
+    contactList.style = 'display: none';
+    renderContactsAddTask('');
+    renderSelectedContactsAddTask();
+    showSelectedContactsAddTask();
+  }
+  
+  
+  let selectedContactsAddTask = [];
+  
+  
+  /**
+   * Toggles the selection status of a specific contact for task assignment.
+   * If the contact is currently selected (checkbox checked), it deselects it by
+   * resetting the background color and unchecking the checkbox, and vice versa.
+   * It also updates the internal list of selected contacts accordingly.
+   *
+   * @param {number} i - Index of the contact in the currentUser.contacts array.
+   */
+  function selectContactAddTask(i) {
+    let contact = document.getElementById(`contact_add_task${i}`);
+    let checkbox = document.getElementById(`checkbox_contact_add_task${i}`);
     if (checkbox.checked) {
-        contact.style.backgroundColor = 'unset';
-        contact.style.color = 'unset';
-        checkbox.checked = false;
-        removeSelectedContactsAddTaskEdit(i);
+      contact.style.backgroundColor = 'unset';
+      contact.style.color = 'unset';
+      checkbox.checked = false;
+      removeSelectedContactsAddTask(i);
     } else {
-        contact.style.backgroundColor = '#2a3647';
-        contact.style.color = 'white';
-        checkbox.checked = true;
-        addSelectedContactsAddTaskEdit(i);
+      contact.style.backgroundColor = '#2a3647';
+      contact.style.color = 'white';
+      checkbox.checked = true;
+      addSelectedContactsAddTask(i);
     }
   }
   
+  
   /**
- * Checks if a contact is selected for adding to edit a task.
- * 
- * @param {number} i - The index of the contact.
- */
-  function checkSelectedContactsAddTaskEdit(i) {
-    let contact = document.getElementById(`edit_contact_add_task${i}`);
-    let checkbox = document.getElementById(`edit_checkbox_contact_add_task${i}`);
+   * Checks if a contact is already selected for the task. If so, it updates the UI
+   * to reflect the selection status by changing the background color and checking
+   * the checkbox.
+   *
+   * @param {number} i - Index of the contact in the currentUser.contacts array.
+   */
+  function checkSelectedContactsAddTask(i) {
+    let contact = document.getElementById(`contact_add_task${i}`);
+    let checkbox = document.getElementById(`checkbox_contact_add_task${i}`);
     let currentContact = currentUser.contacts[i];
-    for (let j = 0; j < selectedContactsAddTaskEdit.length; j++) {
-      let selectedContact = selectedContactsAddTaskEdit[j];
-      if (currentContact === selectedContact) {
-        contact.style.backgroundColor = '#2a3647';
-        contact.style.color = 'white';
-        checkbox.checked = true;
-      }
+    if (selectedContactsAddTask.includes(currentContact)) {
+      contact.style.backgroundColor = '#2a3647';
+      contact.style.color = 'white';
+      checkbox.checked = true;
     }
   }
   
+  
   /**
- * Adds a selected contact to edit a task.
- * 
- * @param {number} i - The index of the contact.
- */
-  function addSelectedContactsAddTaskEdit(i) {
+   * Adds a contact to the list of selected contacts for the task. It also
+   * triggers the rendering of the selected contacts to reflect the change.
+   *
+   * @param {number} i - Index of the contact in the currentUser.contacts array.
+   */
+  function addSelectedContactsAddTask(i) {
     let contact = currentUser.contacts[i];
-    selectedContactsAddTaskEdit.push(contact);
-    renderSelectedContactsAddTaskEdit();
+    selectedContactsAddTask.push(contact);
+    renderSelectedContactsAddTask();
+  }
+  
+  
+  /**
+   * Removes a contact from the list of selected contacts for the task. It updates
+   * the internal list and triggers the rendering of the selected contacts to
+   * reflect the change.
+   *
+   * @param {number} i - Index of the contact in the currentUser.contacts array.
+   */
+  function removeSelectedContactsAddTask(i) {
+    let index = selectedContactsAddTask.findIndex(c => c === currentUser.contacts[i]);
+    if (index > -1) {
+      selectedContactsAddTask.splice(index, 1);
+    }
+    renderSelectedContactsAddTask();
   }
   
   /**
- * Removes a selected contact from editing a task.
- * 
- * @param {number} i - The index of the contact.
- */
-  function removeSelectedContactsAddTaskEdit(i) {
-    let contact = currentUser.contacts[i];
-    let index = selectedContactsAddTaskEdit.indexOf(contact)
-    selectedContactsAddTaskEdit.splice(index, 1);
-    renderSelectedContactsAddTaskEdit();
-  }
-  
-  /**
- * Renders selected contacts for adding to edit a task.
- */
-  function renderSelectedContactsAddTaskEdit() {
-    let selectedContactsDiv = document.getElementById('edit_selected_contacts_add_task');
+   * Renders the list of selected contacts for the task in the UI. It generates
+   * HTML content for each selected contact showing their initials with a
+   * background color.
+   */
+  function renderSelectedContactsAddTask() {
+    let selectedContactsDiv = document.getElementById('selected_contacts_add_task');
     selectedContactsDiv.innerHTML = '';
-    for (let i = 0; i < selectedContactsAddTaskEdit.length; i++) {
-      let selectedContact = selectedContactsAddTaskEdit[i];
-      let initials = getInitials(selectedContact.name);
+    selectedContactsAddTask.forEach(contact => {
+      let initials = getInitials(contact.name);
       selectedContactsDiv.innerHTML += /*html*/`
-        <div class="initials_contact_add_task" style="background-color: ${selectedContact.color}"><span>${initials}</span></div>
+        <div class="initials_contact_add_task" style="background-color: ${contact.color}"><span>${initials}</span></div>
       `;
-    }
+    });
   }
   
   /**
- * Shows selected contacts for adding to edit a task.
- */
-  function showSelectedContactsAddTaskEdit() {
-    document.getElementById('edit_selected_contacts_add_task').style = 'display: flex';
+   * Zeigt das Element mit der ID 'selected_contacts_add_task' an.
+   */
+  function showSelectedContactsAddTask() {
+    document.getElementById('selected_contacts_add_task').style = 'display: flex';
   }
   
   /**
- * Hides selected contacts for adding to edit a task.
- */
-  function hideSelectedContactsAddTaskEdit() {
-    document.getElementById('edit_selected_contacts_add_task').style = 'display: none';
+   * Versteckt das Element mit der ID 'selected_contacts_add_task'.
+   */
+  function hideSelectedContactsAddTask() {
+    document.getElementById('selected_contacts_add_task').style = 'display: none';
   }
   
   /**
- * Searches contacts for adding to edit a task.
- */
-  function searchContactsAddTaskEdit() {
-    let searchTerm = document.getElementById('edit_search_bar_contacts_add_task').value;
-    renderContactsAddTaskEdit(searchTerm);
+   * Sucht nach Kontakten basierend auf einem Suchbegriff und rendert die Ergebnisse.
+   * @param {string} searchTerm - Der Suchbegriff für die Kontaktsuche.
+   */
+  function searchContactsAddTask() {
+    let searchTerm = document.getElementById('search_bar_contacts_add_task').value;
+    renderContactsAddTask(searchTerm);
   }
   
   /**
- * Resets the contact selection for adding to edit a task.
- */
-  function resetContactAddTaskEdit() {
+   * Setzt das Formular für die Auswahl von Kontakten zurück.
+   */
+  function resetContactAddTask() {
     let contacts = document.querySelectorAll('.contact_add_task');
     contacts.forEach(contact => {
         contact.style.backgroundColor = 'unset';
         contact.style.color = 'unset';
-        selectedContactsAddTaskEdit = [];
+        selectedContactsAddTask = [];
         let checkbox = contact.querySelector('.checkbox_contact_add_task');
         if (checkbox) {
             checkbox.checked = false;
         }
     });
-    closeContactListAddTaskEdit();
+    closeContactListAddTask();
   }
 
+
+
+
+
+
+
+  
   /**
  * Redirects to the add task page if the screen width is less than or equal to 900 pixels.
  */
