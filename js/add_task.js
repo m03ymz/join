@@ -51,50 +51,62 @@ function renderSubtasks() {
   subtaskContainer.innerHTML = '';
   for (let i = 0; i < subtaskValues.length; i++) {
     let subtask = subtaskValues[i].subtask;
-    subtaskContainer.innerHTML +=  /*html*/`
-      <div class="container_hover_subtasks_icons show_on_hover">
-        <div class="hover_li">
-          <li class="input_value_style" contenteditable="true" id="subtaskContent-${i}">${subtask}</li>
-          <div class="container_subtasks_hover_icons"> 
-            <img class="container_subtasks_icons_edit" src="assets/img/edit_icon.svg" onclick="editListItem(${i})">
-            <img class="container_subtasks_icons_delete" src="assets/img/delete.svg" onclick="deleteListItem(this)">
-            <img src="assets/img/accept_subtask.svg" onclick="updateListItem('${i}')">
-          </div>
+    subtaskContainer.innerHTML += /*html*/`
+      <div class="container_hover_subtasks_icons">
+          <li class="input_value_style hover_li" contenteditable="false" id="subtaskContent-${i}">${subtask}
+            <div class="container_subtasks_hover_icons"> 
+              <img class="container_subtasks_icons_edit" src="assets/img/edit_icon.svg" onclick="editListItem(${i})">
+              <img src="assets/img/accept_subtask.svg" style="display:none; margin-right: 8px;"  onclick="updateListItem('${i}')" class="container_subtasks_icons_accept">
+              <img class="hide_icon" id="smallLineSubtask" src="assets/img/small_line_subtask.svg" alt="" style="display: block;">
+              <img class="container_subtasks_icons_delete" src="assets/img/delete.svg" onclick="deleteListItem(this)">
+            </div>
+        </li>
+        <div>
+<!-- important div dont delete! * Placeholder between Edit Content -->
         </div>
       </div>`;
   }
 }
 
-let selectionCategory;
-
-function returnSelectedCategory(x){
-  selectionCategory = document.getElementById(x).innerHTML;
-  document.getElementById('category_task').innerHTML = selectionCategory;
-}
-
 
 function editListItem(index) {
-  console.log("editListItem aufgerufen mit Index:", index); // Zum Debuggen hinzufügen
-  var editableElement = document.getElementById(`subtaskContent-${index}`);
+  let editableElement = document.getElementById(`subtaskContent-${index}`);
+  let editIcon = document.querySelector(`.container_subtasks_icons_edit[onclick="editListItem(${index})"]`);
+  let acceptIcon = document.querySelector(`.container_subtasks_icons_accept[onclick="updateListItem('${index}')"]`);
+
   if (editableElement) {
+    editableElement.setAttribute('contenteditable', 'true');
     editableElement.focus();
-    // Weitere Aktionen...
+    if (editIcon) {
+      editIcon.style.display = 'none';
+    }
+    if (acceptIcon) {
+      acceptIcon.style.display = 'block';
+    }
   } else {
-    console.log("Kein Element gefunden für Index:", index); // Fehlermeldung, falls kein Element gefunden wurde
   }
 }
 
+function updateListItem(index) {
+  let subtaskContentElement = document.getElementById(`subtaskContent-${index}`);
+  let subtaskContent = subtaskContentElement.innerText;
+  subtaskContentElement.setAttribute('contenteditable', 'false');
 
+  let editIcon = document.querySelector(`.container_subtasks_icons_edit[onclick="editListItem(${index})"]`);
+  let acceptIcon = document.querySelector(`.container_subtasks_icons_accept[onclick="updateListItem('${index}')"]`);
+  if (editIcon) {
+    editIcon.style.display = 'block';
+  }
+  if (acceptIcon) {
+    acceptIcon.style.display = 'none';
+  }
+}
 
-/**
- * Resets the value of the subtask input field and restores the visibility of task-related buttons.
- * This function is typically called when a user decides to cancel the addition of a new subtask.
- */
 function cancelSubtask() {
   let subtaskInput = document.getElementById('subtaskInput');
   
   subtaskInput.value = '';
-  toggleSubtaskButtons(); // Restores button visibility after clearing the input
+  toggleSubtaskButtons(); // Stellt die Sichtbarkeit der Buttons nach dem Löschen wieder her
 }
 
 
@@ -146,14 +158,6 @@ function deleteListItem(element, id) {
   subtaskValues = subtaskValues.filter(subtask => subtask.id !== id);
   // Rendere die Subtasks neu, um die Liste zu aktualisieren
   renderSubtasks();
-}
-
-
-/**
- * Placeholder function for editing a list item. Needs to be implemented.
- */
-function editListItem() {
-  // Implementation needed
 }
 
 
@@ -220,14 +224,14 @@ function renderContactsAddTask(searchTerm) {
     let initials = getInitials(contact.name);
 
     if (contact.name.toLowerCase().startsWith(searchTerm.toLowerCase())) {
-      let html = generateContactsAddTaskHtml(i, contact, initials);
+      let isSelected = selectedContactsAddTask.includes(contact);
       if (contact.me) {
-        contactAreaForMe.innerHTML += html;
+        contactAreaForMe.innerHTML += generateContactsAddTaskHtml(i, contact, initials, isSelected);
       } else {
-        contactAreaForAll.innerHTML += html;
+        contactAreaForAll.innerHTML += generateContactsAddTaskHtml(i, contact, initials, isSelected);
       }
-    }
     checkSelectedContactsAddTask(i);
+    }
   }
 }
 
@@ -242,16 +246,16 @@ function renderContactsAddTask(searchTerm) {
  * @param {string} initials - The initials of the contact's name.
  * @returns {string} The HTML string representing the contact item.
  */
-function generateContactsAddTaskHtml(i, contact, initials) {
+function generateContactsAddTaskHtml(i, contact, initials, isSelected) {
+  let checkboxStyle = isSelected ? 'background-color: #2a3647; color: white;' : '';
+  let checkboxChecked = isSelected ? 'checked' : '';
   return /*html*/`
     <div class="contact_add_task" id="contact_add_task${i}" onclick="selectContactAddTask(${i})">
-      <div class="left_contact_add_task">
-        <div class="initials_contact_add_task" style="background-color: ${contact.color}">
-          <span>${initials}</span>
+        <div class="left_contact_add_task">
+            <div class="initials_contact_add_task" style="background-color: ${contact.color}"><span>${initials}</span></div>
+            <span>${contact.name}</span>
         </div>
-        <span>${contact.name}</span>
-      </div>
-      <input class="checkbox_contact_add_task" type="checkbox" id="checkbox_contact_add_task${i}" onchange="selectContactAddTask(${i})">
+        <input class="checkbox_contact_add_task" type="checkbox" id="checkbox_contact_add_task${i}" onchange="selectContactAddTask(${i})" style="${checkboxStyle}" ${checkboxChecked}>
     </div>
   `;
 }
@@ -463,15 +467,37 @@ async function submitFormAddTask() {
  * If the element is visible, it hides the element by setting its display property to 'none' and resets the arrow image
  * to its original orientation, indicating the list is collapsed.
  */
-function toggleSubtask() {
+function toggleSubtask(event) {
+  event.stopPropagation(); // Verhindert das Auslösen des Event-Bubblings
   let element = document.getElementById('categorySubtasks');
-  let image = document.querySelector('.arrowImage'); // Access the image by its class
+  let image = document.querySelector('.arrowImage');
 
   if (element.style.display === 'none' || element.style.display === '') {
     element.style.display = 'block';
     image.style.transform = 'rotate(180deg)';
   } else {
     element.style.display = 'none';
-    image.style.transform = ''; // Reset the transformation
+    image.style.transform = '';
   }
 }
+
+function returnSelectedCategory(categoryName) {
+  // Setzen des gewählten Kategorienamens
+  document.getElementById('category_task').textContent = categoryName;
+
+  // Ausblenden des Kategorienbereichs
+  let element = document.getElementById('categorySubtasks');
+  element.style.display = 'none';
+
+  // Rücksetzen der ArrowImage-Transformation
+  let image = document.querySelector('.arrowImage');
+  image.style.transform = '';
+}
+
+let selectionCategory;
+
+function returnSelectedCategory(x){
+  selectionCategory = document.getElementById(x).innerHTML;
+  document.getElementById('category_task').innerHTML = selectionCategory;
+}  
+  
