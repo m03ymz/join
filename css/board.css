@@ -1,5 +1,4 @@
 .content_board {
-    /* border: 2px dashed red; */
     margin-left: 240px;
     margin-top: 83px;
     padding-left: 64px;
@@ -7,10 +6,8 @@
 }
 
 .inner_top_board {
-    /* border: 2px dashed green; */
     box-sizing: border-box;
     display: flex;
-    /* width: 1056px; */
     justify-content: space-between;
     align-items: center; 
     padding-top: 79.5px;
@@ -74,7 +71,7 @@
     border: 1px solid #2A3647;
     background: #2A3647;
     cursor: pointer;
-    transition: background-color 100ms ease-in-out; /* Dauer des Übergangs und Timing-Funktion für den normalen Zustand */
+    transition: background-color 100ms ease-in-out; 
 }
 
 .button_board span {
@@ -95,12 +92,12 @@
 .button_board:hover {
     background-color: #29abe2;
     border: none;
-    transition: background-color 100ms ease-in-out; /* Dauer des Übergangs und Timing-Funktion für den Hover-Zustand */
+    transition: background-color 100ms ease-in-out; 
 }
 
 .image-container {
     position: relative;
-    width: fit-content; /* oder die gewünschte Breite */
+    width: fit-content; 
 }
 
 .bottom-image, .top-image {
@@ -111,29 +108,13 @@
 }
 
 .top-image {
-    opacity: 0; /* Macht das obere Bild anfangs unsichtbar */
-    transition: opacity 0.3s ease; /* Fügt eine Transition hinzu für einen sanften Übergang */
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
 }
 
 .image-container:hover .top-image {
-    opacity: 1; /* Macht das obere Bild sichtbar, wenn über das Container div gehovert wird */
+    opacity: 1; 
 }
-
-/* .top_bar_board {
-    box-sizing: border-box;
-    display: flex;
-    width: 1054px;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 26px;
-    color: var(--menu-color, #42526E);
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
-    width: 100%; 
-    justify-content: center;
-} */
 
 .bar_board1 {
     display: flex;
@@ -200,7 +181,6 @@
 }
 
 .distrubution_board {
-    /* border: 2px dashed violet; */
     display: flex;
     align-items: flex-start;
     gap: 26px;
@@ -212,7 +192,6 @@
 }
 
 .column_board {
-    /* border: 2px dashed turquoise; */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -224,8 +203,7 @@
 
 .card_board2 {
     display: flex;
-    min-width: 210px;
-    /* height: 230px;  */
+    max-width: 210px;
     min-height: 100px;
     padding: 16px;
     flex-direction: column;
@@ -253,7 +231,6 @@
     cursor: pointer;
     border: 1px dashed #A8A8A8;
     box-shadow: 0px 0px 4px 0px #00000029;
-    /* background-color: #E7E7E7; */
     background: linear-gradient(0deg, #E7E7E7, #E7E7E7);
 }
 
@@ -577,6 +554,21 @@
     background-image: url(../assets/img/blue_plus_board.svg);
 }
 
+/* .task_alert_board {
+    width: 300px;
+    height: 70px;
+    background-color: rgb(42,54,71);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+} */
+
 .inner_card_board2 {
     display: flex;
     flex-direction: column;
@@ -605,24 +597,30 @@
 .task_card_top_board img {
     height: 32px;
     width: 32px;
+    transition: box-shadow 0.3s ease;
+    display: none;
+}
+
+.task_card_top_board img:hover {
+    /* filter: brightness(90%); */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Edit Form CSS Start */
 
 .edit_container_boxes_addtask {
-display: flex;
-justify-content: space-evenly;
-width: 100%;
-flex-wrap: wrap;
-
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: wrap;
 }
 
 .container_boxes_addtask_form{
     display: flex;
     justify-content: space-evenly;
     width: 100%;
-   
 }
+
 .fullbox_edit_form{
     width: 401px;
     background-color: white;
@@ -637,15 +635,15 @@ flex-wrap: wrap;
     z-index: 3;
     animation: slideToLeft 150ms forwards;
     overflow: scroll;
-  
-   
 }
+
 .edit_task_button{
     background: #2A3647;
     border-radius: 8px;
     color: white;
     padding: 16px;
 }
+
 .bottom_container_edit_task{
     display: flex;
     justify-content: space-between;
@@ -658,7 +656,6 @@ flex-wrap: wrap;
 /* Stil für die Scrollbar */
 .fullbox_edit_form::-webkit-scrollbar {
     width: 8px; /* Macht die Scrollbar dünner */
-
 }
 
 .fullbox_edit_form::-webkit-scrollbar-track {
@@ -676,21 +673,6 @@ flex-wrap: wrap;
 }
 
 /* Edit Form CSS END */
-
-/* .task_alert_board {
-    width: 300px;
-    height: 70px;
-    background-color: rgb(42,54,71);
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    border-radius: 20px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 20px;
-} */
 
 @media(max-width: 1320px) {
     .distrubution_board {
@@ -735,26 +717,12 @@ flex-wrap: wrap;
     .empty_card_board {
         width: 100%;
     }
-    /* .top_bar_board {
-        justify-content: flex-start;
+    .task_card_top_board img {
+        display: unset;
     }
-    .bar_board1 {
-        width: 95%;
-    } */
 }
 
 @media (max-width: 1120px) {
-    /* .addtask_button_board{
-        display: none;
-    } */
-    /* .task_container_board{
-        flex-direction: column-reverse;            
-    } */
-    /* .input_container_board {
-        top: 240px;
-        width: 50%;
-        margin-right: 50%;
-    }  */
     .input_container_board {
         position: absolute;
         top: 250px;
