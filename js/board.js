@@ -1,7 +1,7 @@
 async function initBoard() {
     await init();
     // delete currentUser.taskId;
-    // currentUser.tasks.splice(0, 1);
+    // currentUser.tasks.splice(-2);
     // await saveUsers();
     renderTask();
     renderContactsAddTask('');
@@ -268,7 +268,7 @@ async function createTaskArray(targetColumnId) {
     let title = document.getElementById('title');
     let description = document.getElementById('description');
     let date = document.getElementById('date');
-    let category = document.getElementById('category_task');
+    // let category = document.getElementById('category_task');
     taskIdCounter = currentUser.taskId;
     if (taskIdCounter == undefined) {
         taskIdCounter = 0;
@@ -278,7 +278,7 @@ async function createTaskArray(targetColumnId) {
     taskIdCounter++;
     currentUser.taskId = taskIdCounter;
     clearInputFields([title, description, date]);
-    category.selectedIndex = 0;
+    // category.selectedIndex = 0;
     await saveUsers();
 }
 
