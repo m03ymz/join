@@ -162,14 +162,6 @@ function deleteListItem(element, id) {
 }
 
 
-/**
- * Placeholder function for editing a list item. Needs to be implemented.
- */
-function editListItem() {
-  // Implementation needed
-}
-
-
 let selectedPriority;
 
 /**
