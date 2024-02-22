@@ -625,10 +625,6 @@ textarea:hover, select:hover {
         background-color: white;
       }
       
-      [contenteditable="true"]:hover {
-        /* Deaktiviert den Hover-Effekt für editierbare Elemente */
-    }
-
     .accept_edited_subtask {
        margin-right: 8px !important
     }
