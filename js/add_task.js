@@ -397,20 +397,32 @@ function renderSelectedContactsAddTask() {
   });
 }
 
-
+/**
+ * Zeigt das Element mit der ID 'selected_contacts_add_task' an.
+ */
 function showSelectedContactsAddTask() {
   document.getElementById('selected_contacts_add_task').style = 'display: flex';
 }
 
+/**
+ * Versteckt das Element mit der ID 'selected_contacts_add_task'.
+ */
 function hideSelectedContactsAddTask() {
   document.getElementById('selected_contacts_add_task').style = 'display: none';
 }
 
+/**
+ * Sucht nach Kontakten basierend auf einem Suchbegriff und rendert die Ergebnisse.
+ * @param {string} searchTerm - Der Suchbegriff für die Kontaktsuche.
+ */
 function searchContactsAddTask() {
   let searchTerm = document.getElementById('search_bar_contacts_add_task').value;
   renderContactsAddTask(searchTerm);
 }
 
+/**
+ * Setzt das Formular für die Auswahl von Kontakten zurück.
+ */
 function resetContactAddTask() {
   let contacts = document.querySelectorAll('.contact_add_task');
   contacts.forEach(contact => {
