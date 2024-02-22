@@ -1,9 +1,14 @@
+/**
+ * Initializes the sign-up module by loading users.
+ */
 async function initSignUp() {
   await loadUsers();
-  console.log(users); 
 }
 
 
+/**
+ * Checks the input data during sign-up process and performs appropriate actions.
+ */
 function checkDataSignUp() {
     document.getElementById('sign_up_button_center_sign_up').disabled = true;
     let email = document.getElementById('email_sign_up').value.toLowerCase();
@@ -24,6 +29,9 @@ function checkDataSignUp() {
 }
 
 
+/**
+ * Adds a new user during sign-up process and redirects to the log-in page.
+ */
 async function addUserSignUp() {
     let name = document.getElementById('name_sign_up').value;
     let email = document.getElementById('email_sign_up').value.toLowerCase();
@@ -39,12 +47,18 @@ async function addUserSignUp() {
 }
 
 
+/**
+ * Resets the email feedback UI elements for sign-up.
+ */
 function resetEmailUserFeedbackSignUp() {
   document.getElementById('email_sign_up').style = 'border: 1px solid #D1D1D1';
   document.getElementById('email_feedback_input_center_sign_up').style = 'display: none';
 }
 
 
+/**
+ * Resets the password feedback UI elements for sign-up.
+ */
 function resetPasswordUserFeedbackSignUp() {
   document.getElementById('password_sign_up').style = 'border: 1px solid #D1D1D1';
   document.getElementById('confirm_password_sign_up').style = 'border: 1px solid #D1D1D1';

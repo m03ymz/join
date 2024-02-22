@@ -1,3 +1,6 @@
+/**
+ * Initializes the summary module by calling necessary functions asynchronously.
+ */
 async function initSummary() {
     await init();
     renderNameSummary();
@@ -6,30 +9,52 @@ async function initSummary() {
 }
 
 
+/**
+ * Renders the name of the current user on the summary page.
+ */
 function renderNameSummary() {
     let name = document.getElementById('name_summary');
     name.innerHTML = currentUser.name;
 }
 
 
+/**
+ * Changes the icon image source on mouseover.
+ * 
+ * @param {string} id - The ID of the icon element.
+ */
 function changeIconOnMouseOverSummary(id) {
     let icon = document.getElementById(id);
     icon.src = `./assets/img/hover_${id}.svg`;
 }
 
 
+/**
+ * Changes the icon image source on mouseout.
+ * 
+ * @param {string} id - The ID of the icon element.
+ */
 function changeIconOnMouseOutSummary(id) {
     let icon = document.getElementById(id);
     icon.src = `./assets/img/${id}.svg`;
 }
 
 
+/**
+ * Changes the color of the text element.
+ * 
+ * @param {string} id - The ID of the text element.
+ * @param {string} color - The color to set.
+ */
 function changeTextSummary(id, color) {
     let text = document.getElementById(id);
     text.style = `color: ${color}`;
 }
 
 
+/**
+ * Sets a greeting message based on the time of the day.
+ */
 function setGreetSummary() {
     let hour = new Date().getHours();
     let greeting;
@@ -48,6 +73,9 @@ function setGreetSummary() {
 }
 
 
+/**
+ * Renders various task information on the summary page.
+ */
 function renderAllTaskInfosSummary() {
     let tasksToDo = currentUser.tasks.filter(task => task.column == 'column_board');
     let tasksInProgress = currentUser.tasks.filter(task => task.column == 'column_board2');
@@ -65,6 +93,11 @@ function renderAllTaskInfosSummary() {
 }
 
 
+/**
+ * Calculates the earliest urgent task date from the given list of urgent tasks.
+ * 
+ * @param {Object[]} urgentTasks - An array of urgent task objects.
+ */
 function calcEarliestUrgentTaskDate(urgentTasks) {
     let earliestUrgentDate = null;
     let urgentTasksWithDate = urgentTasks.filter(task => task.date.trim() !== ""); 
@@ -80,6 +113,11 @@ function calcEarliestUrgentTaskDate(urgentTasks) {
 }
 
 
+/**
+ * Formats a date object to a human-readable string.
+ * 
+ * @param {Date} date - The date object to format.
+ */
 function formatDate(date) {
     let options = { month: 'long', day: 'numeric', year: 'numeric' };
     return date.toLocaleDateString('en-US', options);

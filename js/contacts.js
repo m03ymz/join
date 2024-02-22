@@ -1,6 +1,12 @@
+/**
+ * Array to store contact initials.
+ */
 let contactInitials = [];
 
 
+/**
+ * Initializes the contacts by calling necessary functions.
+ */
 async function initContacts() {
     await init();
     extractContactsInitials();
@@ -8,6 +14,9 @@ async function initContacts() {
 }
 
 
+/**
+ * Opens the contact form by displaying it on the page.
+ */
 function openContactFormContacts() {
     resetContactFormContacts();
     document.getElementById('bg_contact_form').style = 'display: unset';
@@ -15,6 +24,9 @@ function openContactFormContacts() {
 }
 
 
+/**
+ * Closes the contact form and resets input fields.
+ */
 function closeContactFormContacts() {
     document.getElementById('bg_contact_form').style = 'display: none';
     document.getElementById('contact_form').style = 'display: none';
@@ -24,6 +36,9 @@ function closeContactFormContacts() {
 }
 
 
+/**
+ * Adds a new contact to the current user's contacts list.
+ */
 async function addNewContactContacts() {
     let name = document.getElementById('name_contact_form').value;
     let email = document.getElementById('email_contact_form').value;
@@ -39,6 +54,9 @@ async function addNewContactContacts() {
 }
 
 
+/**
+ * Renders the contacts list on the page.
+ */
 function renderContactsContacts() {
     let contactList = document.getElementById('contact_list_contacts');
     let meAsContact = document.getElementById('me_as_contact');
@@ -59,6 +77,9 @@ function renderContactsContacts() {
 }
 
 
+/**
+ * Extracts initials from contact names to use for grouping contacts.
+ */
 function extractContactsInitials() {
     for (let i = 0; i < currentUser.contacts.length; i++) {
         let initial = currentUser.contacts[i].name.charAt(0).toUpperCase();
@@ -70,6 +91,11 @@ function extractContactsInitials() {
 }
 
 
+/**
+ * Opens contact details for a specific contact.
+ * 
+ * @param {number} j - The index of the contact in the contacts list.
+ */
 function openContactDetailsContacts(j) {
     let contact = currentUser.contacts[j];
     let initials = getInitials(contact.name);
@@ -82,6 +108,9 @@ function openContactDetailsContacts(j) {
 }
 
 
+/**
+ * Removes highlighting from all contacts.
+ */
 function removeHighlightContactContacts() {
     let allContacts = document.querySelectorAll('.contact_contacts');
     allContacts.forEach(element => {
@@ -93,6 +122,11 @@ function removeHighlightContactContacts() {
 }
 
 
+/**
+ * Adds highlighting to a specific contact.
+ * 
+ * @param {number} j - The index of the contact in the contacts list.
+ */
 function addHighlightContactContacts(j) {
     let contact = document.getElementById(`contact_contacts${j}`);
     contact.classList.add('highlighted_contact_contacts');
@@ -100,6 +134,11 @@ function addHighlightContactContacts(j) {
 }
 
 
+/**
+ * Toggles highlighting for a specific contact.
+ * 
+ * @param {number} j - The index of the contact in the contacts list.
+ */
 function toggleHighlightContactContacts(j) {
     let contact = document.getElementById(`contact_contacts${j}`);
     if (contact.classList.contains('highlighted_contact_contacts')) {
@@ -113,6 +152,11 @@ function toggleHighlightContactContacts(j) {
 }
 
 
+/**
+ * Renders detailed information for a specific contact.
+ * 
+ * @param {number} j - The index of the contact in the contacts list.
+ */
 function renderContactDetailsContacts(j) {
     let contact = currentUser.contacts[j];
     let initials = getInitials(contact.name);
@@ -120,6 +164,11 @@ function renderContactDetailsContacts(j) {
 }
 
 
+/**
+ * Opens the contact form to edit a specific contact.
+ * 
+ * @param {number} j - The index of the contact in the contacts list.
+ */
 function editContactContacts(j) {
     let contact = currentUser.contacts[j];
     let initials = getInitials(contact.name);
@@ -134,6 +183,9 @@ function editContactContacts(j) {
 }
 
 
+/**
+ * Resets the contact form to its default state.
+ */
 function resetContactFormContacts() {
     document.getElementById('title_left_contact_form').innerHTML = 'Add contact';
     document.getElementById('subheading_contact_form').style = 'display: unset';
@@ -150,6 +202,11 @@ function resetContactFormContacts() {
 }
 
 
+/**
+ * Deletes a contact from the contacts list.
+ * 
+ * @param {number} j - The index of the contact in the contacts list.
+ */
 async function deleteContactContacts(j) {
     currentUser.contacts.splice(j, 1);
     await saveUsers();
@@ -160,6 +217,11 @@ async function deleteContactContacts(j) {
 }
 
 
+/**
+ * Replaces the details of a contact with new values.
+ * 
+ * @param {number} j - The index of the contact in the contacts list.
+ */
 async function replaceContactsContacts(j) {
     let contact = currentUser.contacts[j];
     let name = document.getElementById('name_contact_form').value;
@@ -177,6 +239,9 @@ async function replaceContactsContacts(j) {
 }
 
 
+/**
+ * Shows contact details on smaller screens.
+ */
 function showContactDetailsContacts() {
     if (window.innerWidth <= 720) {
     document.getElementById('left_contacts').style = 'display: none';
@@ -185,12 +250,18 @@ function showContactDetailsContacts() {
 }
 
 
+/**
+ * Shows the contacts list on smaller screens.
+ */
 function showLeftContacts() {
     document.getElementById('left_contacts').style = 'display: unset';
     document.getElementById('right_contacts').style = 'display: none';
 }
 
 
+/**
+ * Shows contact details options on smaller screens.
+ */
 function showContactDetailsOptionsContacts() {
     if (window.innerWidth <= 720) {
     document.getElementById('mobile_options_contact_contacts').style = 'display: flex';
@@ -198,6 +269,9 @@ function showContactDetailsOptionsContacts() {
 }
 
 
+/**
+ * Hides contact details options on smaller screens.
+ */
 function hideContactDetailsOptionsContacts() {
     if (window.innerWidth <= 720) {
         document.getElementById('mobile_options_contact_contacts').style = 'display: none';

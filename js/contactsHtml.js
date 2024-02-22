@@ -1,3 +1,8 @@
+/**
+ * Generates HTML for displaying initials with a parting line.
+ * 
+ * @param {string} initial - The initial character to display.
+ */
 function generateInitialsHtml(initial) {
     return /*html*/`
         <div>
@@ -8,6 +13,13 @@ function generateInitialsHtml(initial) {
 }
 
 
+/**
+ * Generates HTML for displaying a contact list item.
+ * 
+ * @param {number} j - The index of the contact in the contacts list.
+ * @param {Object} contact - The contact object containing name, email, and other details.
+ * @param {string} initials - The initials of the contact's name.
+ */
 function generateContactListHtml(j, contact, initials) {
     return /*html*/`
         <div class="contact_contacts hover_contact_contacts" id="contact_contacts${j}" onclick="renderContactDetailsContacts(${j}), toggleHighlightContactContacts(${j}), showContactDetailsContacts()">
@@ -21,6 +33,13 @@ function generateContactListHtml(j, contact, initials) {
 }
 
 
+/**
+ * Generates HTML for displaying detailed contact information.
+ * 
+ * @param {number} j - The index of the contact in the contacts list.
+ * @param {Object} contact - The contact object containing name, email, and other details.
+ * @param {string} initials - The initials of the contact's name.
+ */
 function generateContactDetailsHtml(j, contact, initials) {
     return /*html*/`
         <div class="blue_arrow_left_mobile_right_contacts" onclick="showLeftContacts(), toggleHighlightContactContacts(${j})"><img src="./assets/img/blue_arrow_left.svg" alt="blue arrow left icon"></div>
@@ -59,6 +78,11 @@ function generateContactDetailsHtml(j, contact, initials) {
 }
 
 
+/**
+ * Generates HTML for editing a contact.
+ * 
+ * @param {number} j - The index of the contact in the contacts list.
+ */
 function generateEditContactHtml(j) {
     return /*html*/`
         <div class="edit_buttons_contact_form">
