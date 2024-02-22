@@ -7,6 +7,7 @@ async function initBoard() {
     renderContactsAddTask('');
 }
 
+
 let targetColumnId;
 let taskIdCounter;
 let currentDraggedElement;
@@ -964,6 +965,36 @@ function moveTaskUp(taskId) {
   
 
   
+
+
+/** AB HIER NEUER JAVASCRIPT CODE FÜR DIE TASK UND EDIT FORM */
+
+function toggleSubtaskForm(event) {
+    event.stopPropagation(); // Verhindert das Auslösen des Event-Bubblings
+    let element = document.getElementById('categorySubtasksForm');
+    let image = document.querySelector('.arrowImage');
+  
+    if (element.style.display === 'none' || element.style.display === '') {
+      element.style.display = 'block';
+      image.style.transform = 'rotate(180deg)';
+    } else {
+      element.style.display = 'none';
+      image.style.transform = '';
+    }
+  }
+  
+
+  function returnSelectedCategoryForm(i){
+    selectionCategory = i;
+    document.getElementById('category_taskForm').innerHTML = i;
+    let element = document.getElementById('categorySubtasksForm');
+    element.style.display = 'none';
+    let image = document.querySelector('.arrowImage');
+    image.style.transform = '';
+  }
+  
+
+/** Ab hier Subtask in der Task Form */
 
 
 
