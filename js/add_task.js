@@ -161,7 +161,6 @@ function deleteListItem(element, id) {
   renderSubtasks();
 }
 
-
 let selectedPriority;
 
 /**
@@ -496,7 +495,7 @@ function toggleSubtask(event) {
   }
 }
 
-let selectionCategory;
+var selectionCategory;
 
 function returnSelectedCategory(i){
   selectionCategory = i;
