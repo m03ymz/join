@@ -9,7 +9,8 @@ async function initBoard() {
     document.getElementById('acceptTaskForm').addEventListener('click', acceptTaskForm);
     document.getElementById('cancelSubtaskForm').addEventListener('click', cancelSubtaskForm);
     document.getElementById('edit_acceptTask').addEventListener('click', acceptTaskEdit);
-    document.getElementById('edit_cancelSubtask').addEventListener('click', cancelSubtaskEdit);
+    document.getElementById('edit_cancelSubtask').addEventListener('click', cancelSubtaskEdit); 
+   
 }
 
 let targetColumnId;
