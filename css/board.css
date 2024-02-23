@@ -381,7 +381,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
     /* right: -700px; */
-    max-height: 560px;
+    max-height: 640px;
     /* transition: right 0.2s ease-in-out; */
     z-index: 3;
     animation: slideToLeft 150ms forwards;
@@ -604,6 +604,12 @@
 .task_card_top_board img:hover {
     /* filter: brightness(90%); */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.subtask_box_taskoverlay {
+    overflow-y: auto;
+    max-height: 64px;
+    width: 100%;
 }
 
 /* Edit Form CSS Start */
