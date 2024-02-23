@@ -640,7 +640,7 @@
     max-height: 560px;
     z-index: 3;
     animation: slideToLeft 150ms forwards;
-    overflow: scroll;
+    overflow-y: auto;
 }
 
 .edit_task_button{
