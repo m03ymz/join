@@ -107,53 +107,17 @@ function editTask(taskId) {
         document.getElementById('edit_title').value = task.title;
         document.getElementById('edit_description').value = task.description;
         document.getElementById('edit_date').value = task.date;
-        let subtaskContainer = document.getElementById('edit_subtaskContainer');
-        subtaskContainer.innerHTML = '';
-        if (task.subtask.length > 0) {
-            let subtaskValues = [];
-        for (let i = 0; i < currentUser.tasks[taskId].subtask.length; i++) {
-            subtaskValues.push(currentUser.tasks[taskId].subtask[i].subtask);
-}
-        renderSubtaskContainer(subtaskValues, subtaskContainer);
-        }
         toggleButtonEdit(task.prio);
         selectedContactsAddTask = [];
         selectedContactsAddTask.push(...task.contacts);
         renderContactsAddTaskEdit('');
         renderSelectedContactsAddTaskEdit();
+        subtaskValues = [];
+        subtaskValues.push(...task.subtask);
+        renderSubtasksEdit();
         document.getElementById('editTaskSubmit').dataset.taskId = taskId;
         document.getElementById(`task-overlay`).style.display = "none";
         document.getElementById(`edit-form`).style.display = "unset";
-    }
-}
-
-/**
- * Renders the subtask container for a task.
- * 
- * @param {object} task - The task object containing subtasks.
- * @param {HTMLElement} subtaskContainer - The container element for subtasks.
- */
-function renderSubtaskContainer(subtaskValues, subtaskContainer) {
-    subtaskContainer.innerHTML = '';
-
-    if (subtaskValues && subtaskValues.length > 0) {
-        for (let i = 0; i < subtaskValues.length; i++) {
-            const subtaskContent = subtaskValues[i]; 
-            subtaskContainer.innerHTML += /*html*/`
-                <div class="container_hover_subtasks_icons">
-                    <li class="input_value_style hover_li" contenteditable="false" id="edit_subtaskContent-${i}">${subtaskContent}
-                        <div class="container_subtasks_hover_icons"> 
-                            <img class="container_subtasks_icons_edit" src="assets/img/edit_icon.svg" onclick="editListItemEdit(${i})">
-                            <img src="assets/img/accept_subtask.svg" style="display:none; margin-right: 8px;"  onclick="updateListItemEdit('${i}')" class="container_subtasks_icons_accept">
-                            <img class="hide_icon" id="edit_smallLineSubtask" src="assets/img/small_line_subtask.svg" alt="" style="display: block;">
-                            <img class="container_subtasks_icons_delete" src="assets/img/delete.svg" onclick="deleteListItemEdit(${i})">
-                        </div>
-                    </li>
-                    <div>
-                        <!-- important div dont delete! * Placeholder between Edit Content -->
-                    </div>
-                </div>`;
-        }
     }
 }
 

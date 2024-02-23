@@ -4,9 +4,6 @@
  */
 async function initBoard() {
     await init();
-    // delete currentUser.taskId;
-    // currentUser.tasks = [];
-    // await saveUsers();
     renderTask();
     renderContactsAddTask('');
     renderContactsAddTaskEdit('');
@@ -14,7 +11,6 @@ async function initBoard() {
     document.getElementById('cancelSubtaskForm').addEventListener('click', cancelSubtaskForm);
     document.getElementById('edit_acceptTask').addEventListener('click', acceptTaskEdit);
     document.getElementById('edit_cancelSubtask').addEventListener('click', cancelSubtaskEdit); 
-   
 }
 
 let targetColumnId;
