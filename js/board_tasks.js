@@ -409,7 +409,7 @@ function deleteListItemEdit(i) {
     // Entferne das Element aus dem subtaskValues Array basierend auf der ID
     subtaskValues.splice(i, 1);
     // Rendere die Subtasks neu, um die Liste zu aktualisieren
-    renderSubtasks();
+    renderSubtasksEdit();
   }
 
 /**

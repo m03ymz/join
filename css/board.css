@@ -647,6 +647,7 @@
     width: 100%;
     overflow-y: auto;
     max-height: 600px;
+    overflow-x: hidden;
 }
 
 .edit_task_button{
@@ -816,6 +817,8 @@
         left: -4px;
     }
 }
+
+
 
 
 
