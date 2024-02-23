@@ -6,8 +6,10 @@ async function initBoard() {
     renderTask();
     renderContactsAddTask('');
     renderContactsAddTaskEdit('');
-    document.getElementById('acceptTask').addEventListener('click', acceptTask);
-    document.getElementById('cancelSubtask').addEventListener('click', cancelSubtask);
+    document.getElementById('acceptTaskForm').addEventListener('click', acceptTaskForm);
+    document.getElementById('cancelSubtaskForm').addEventListener('click', cancelSubtaskForm);
+    document.getElementById('edit_acceptTask').addEventListener('click', acceptTaskEdit);
+    document.getElementById('edit_cancelSubtask').addEventListener('click', cancelSubtaskEdit);
 }
 
 let targetColumnId;
@@ -525,7 +527,7 @@ function renderSubtaskContainer(subtaskValues, subtaskContainer) {
                             <img class="container_subtasks_icons_edit" src="assets/img/edit_icon.svg" onclick="editListItemEdit(${i})">
                             <img src="assets/img/accept_subtask.svg" style="display:none; margin-right: 8px;"  onclick="updateListItemEdit('${i}')" class="container_subtasks_icons_accept">
                             <img class="hide_icon" id="edit_smallLineSubtask" src="assets/img/small_line_subtask.svg" alt="" style="display: block;">
-                            <img class="container_subtasks_icons_delete" src="assets/img/delete.svg" onclick="deleteListItemEdit(this)">
+                            <img class="container_subtasks_icons_delete" src="assets/img/delete.svg" onclick="deleteListItemEdit(${i})">
                         </div>
                     </li>
                     <div>

@@ -1,6 +1,6 @@
 <div class="fullbox_edit_form" id="edit-form" style="display: none;">
     <div class="headline_task_form">
-        <img class="x_button_board" onclick="closeTaskEditOnBoard()" src="./assets/img/close.svg" alt="">
+        <img class="x_button_board" onclick="closeTaskEditOnBoard(), clearSubtaskValues(), resetContactAddTask()" src="./assets/img/close.svg" alt="">
 
     </div>
     <form onsubmit="createTaskArray(targetColumnId), resetContactAddTask(), renderTask(); return false;">
@@ -78,7 +78,7 @@
                                 <div class="input_wrapper">
                                     <input placeholder="Add new Subtask" class="input_field_subtasks" type="text" id="edit_subtaskInput">
                                     <div class="icon-container">
-                                        <img class="hide_icon" onclick="cancelSubtaskEdit()" id="edit_cancelSubtask" src="assets/img/Cancel_subtask.svg" alt="">
+                                        <img class="hide_icon" id="edit_cancelSubtask" src="assets/img/Cancel_subtask.svg" alt="">
                                         <img class="hide_icon" id="edit_smallLineSubtask" src="assets/img/small_line_subtask.svg" alt="">
                                         <img id="edit_addingSubtask" class="input_field_icon  hide_icon" onclick="addSubtaskEdit()" src="assets/img/accept_subtask.svg" alt="">
                                         <img id="edit_acceptTask" src="assets/img/Subtasks plus.svg">
@@ -104,7 +104,7 @@
             
                 <div class="container_clear_and_create_task">
               
-                    <button id="editTaskSubmit" onclick="saveEditedTask('taskId')" class="edit_task_button" type="button">Ok</button>
+                    <button id="editTaskSubmit" onclick="saveEditedTask('taskId'), clearSubtaskValues(), resetContactAddTask()" class="edit_task_button" type="button">Ok</button>
                 </div>
             </div>
         </form>

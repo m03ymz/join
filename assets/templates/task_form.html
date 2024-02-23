@@ -4,7 +4,7 @@
         <img class="x_button_board" onclick="closeTaskFormOnBoard()" src="./assets/img/close.svg" alt="">
 
     </div>
-    <form onsubmit="createTaskArray(targetColumnId), resetContactAddTask(), renderTask(); return false;">
+    <form onsubmit="createTaskArray(targetColumnId), clearSubtaskValues(), resetContactAddTask(), renderTask(); return false;">
 
             <div class="container_boxes_addtask_form">
 
@@ -85,7 +85,7 @@
                                 <div class="input_wrapper">
                                     <input placeholder="Add new Subtask" class="input_field_subtasks" type="text" id="subtaskInputForm">
                                     <div class="icon-container">
-                                        <img class="hide_icon" onclick="cancelSubtaskForm()" id="cancelSubtask" src="assets/img/Cancel_subtask.svg" alt="">
+                                        <img class="hide_icon" id="cancelSubtaskForm" src="assets/img/Cancel_subtask.svg" alt="">
                                         <img class="hide_icon" id="smallLineSubtaskForm" src="assets/img/small_line_subtask.svg" alt="">
                                         <img id="addingSubtaskForm" class="input_field_icon  hide_icon" onclick="addSubtaskForm()" src="assets/img/accept_subtask.svg" alt="">
                                         <img id="acceptTaskForm" src="assets/img/Subtasks plus.svg">
@@ -94,7 +94,7 @@
                             </div>
                         </div>
 
-                        <div id="subtaskContainer"></div> 
+                        <div id="subtaskContainerForm"></div> 
                     </div>
 
                 </div>
@@ -108,7 +108,7 @@
                 </div>
             
                 <div class="container_clear_and_create_task">
-                    <button class="clear_task_button" onclick="clearAllInputs()">Clear</button>
+                    <button class="clear_task_button" onclick="clearAllInputs(), clearSubtaskValues(), resetContactAddTask()">Clear</button>
                     <button class="create_task_button" type="submit">Create Task</button>
                 </div>
             </div>
