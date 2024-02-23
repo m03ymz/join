@@ -19,8 +19,8 @@ function generateTaskOverlayHTML(task, backgroundColor, formattedDate, priorityT
                 <div class="card_title_board" style="background: ${backgroundColor};">${task.category}</div>
                 <img class="x_button_board" onclick="closeOverlay()" src="./assets/img/close.svg" alt="">
             </div>
-            <h2>${task.title}</h2>
             <div class="task_overlay_box_content_board">
+            <h2>${task.title}</h2>
                 <div class="task_overlay_text">
                     <span>${task.description}</span>
                     <div class="date_taskoverlay">

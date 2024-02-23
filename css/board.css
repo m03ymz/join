@@ -835,6 +835,27 @@
         width: 240px;
         padding: 40px 24px 40px 24px;
     }
+
+    .task_overlay_box_board h2{
+        font-size: 26px;
+    }
+
+    .task_overlay_text {
+        font-size: 18px;
+    }
+
+    .textcolor_taskoverlay {
+        font-size: 18px;
+    }
+
+    .subtask_span_taskoverlay {
+        font-size: 18px;
+    }
+
+    .fullbox_edit_form{
+        width: 88vw;
+    }
+
 }
 
 @media (max-width: 350px){

@@ -626,9 +626,15 @@ textarea:hover, select:hover {
   }
   .left_box_addtask{
     width: 95%;
+    padding: 0px;
   }
   .right_box_addtask{
     width: 95%;
+    padding: 0px;
+  }
+
+  #edit_selected_contacts_add_task {
+    width: unset;
   }
     }
 @media (max-width: 350px){
@@ -638,9 +644,9 @@ textarea:hover, select:hover {
 }
 @media (max-width: 321px) {
     .right_box_addtask {
-        width: 100%;
-        margin-left: 25px;
-        margin-right: 25px;
+        width: 90%;
+        /* margin-left: 25px;
+        margin-right: 25px; */
     }
     #lowbuttonwhite, #urgentbuttonwhite, #mediumbuttonwhite, #mediumbuttonorange, #lowbuttongreen, #urgentbuttonred {
         width: 80px;
