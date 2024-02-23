@@ -30,12 +30,20 @@ async function initAddTask() {
  * - Renders the updated list of subtasks.
  */
 function addSubtask() {
+  let cancelIcon = document.getElementById('cancelSubtask');
+  let partingline = document.getElementById('smallLineSubtask');  
+  let acceptTask = document.getElementById('acceptTask');
+  let inputFieldIcon = document.getElementById('addingSubtask');
   let subtaskInput = document.getElementById('subtaskInput');
   let inputValue = subtaskInput.value;
   if (inputValue) {
     subtaskValues.push({ subtask: inputValue, checked: false });
+    renderSubtasks();
+    inputFieldIcon.style.display = 'none';
+    cancelIcon.style.display = 'none';
+    partingline.style.display ='none';
+    acceptTask.style.display = 'block'; 
     subtaskInput.value = '';
-    renderSubtasks(); 
   }
 }
 
@@ -58,7 +66,7 @@ function renderSubtasks() {
               <img class="container_subtasks_icons_edit" src="assets/img/edit_icon.svg" onclick="editListItem(${i})">
               <img src="assets/img/accept_subtask.svg" style="display:none; margin-right: 8px;"  onclick="updateListItem('${i}')" class="container_subtasks_icons_accept">
               <img class="hide_icon" id="smallLineSubtask" src="assets/img/small_line_subtask.svg" alt="" style="display: block;">
-              <img class="container_subtasks_icons_delete" src="assets/img/delete.svg" onclick="deleteListItem(this)">
+              <img class="container_subtasks_icons_delete" src="assets/img/delete.svg" onclick="deleteListItem(${i})">
             </div>
         </li>
         <div>
@@ -69,7 +77,10 @@ function renderSubtasks() {
 }
 
 
-
+/**
+ * Makes a list item editable for editing.
+ * @param {number} index - The index of the list item to edit.
+ */
 function editListItem(index) {
   let editableElement = document.getElementById(`subtaskContent-${index}`);
   let editIcon = document.querySelector(`.container_subtasks_icons_edit[onclick="editListItem(${index})"]`);
@@ -88,6 +99,11 @@ function editListItem(index) {
   }
 }
 
+
+/**
+ * Updates the content of a list item and makes it non-editable.
+ * @param {number} index - The index of the list item to update.
+ */
 function updateListItem(index) {
   let subtaskContentElement = document.getElementById(`subtaskContent-${index}`);
   let subtaskContent = subtaskContentElement.innerText;
@@ -103,11 +119,21 @@ function updateListItem(index) {
   }
 }
 
+
+/**
+ * Hides the subtask input field and related elements.
+ */
 function cancelSubtask() {
+  let cancelIcon = document.getElementById('cancelSubtask');
+  let partingline = document.getElementById('smallLineSubtask');  
+  let acceptTask = document.getElementById('acceptTask');
+  let inputFieldIcon = document.getElementById('addingSubtask');
   let subtaskInput = document.getElementById('subtaskInput');
-  
+  inputFieldIcon.style.display = 'none';
+  cancelIcon.style.display = 'none';
+  partingline.style.display ='none';
+  acceptTask.style.display = 'block'; 
   subtaskInput.value = '';
-  toggleSubtaskButtons(); // Stellt die Sichtbarkeit der Buttons nach dem Löschen wieder her
 }
 
 
@@ -154,9 +180,9 @@ function acceptTask() {
  * Removes the closest subtask container to the element that triggered the delete action.
  * @param {HTMLElement} element The element that triggered the delete action.
  */
-function deleteListItem(element, id) {
+function deleteListItem(i) {
   // Entferne das Element aus dem subtaskValues Array basierend auf der ID
-  subtaskValues = subtaskValues.filter(subtask => subtask.id !== id);
+  subtaskValues.splice(i, 1);
   // Rendere die Subtasks neu, um die Liste zu aktualisieren
   renderSubtasks();
 }
