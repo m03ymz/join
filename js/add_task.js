@@ -4,7 +4,6 @@
  */
 let subtaskValues = [];
 
-
 /**
  * Initializes the task addition process by setting up necessary components
  * and event listeners.
@@ -21,7 +20,6 @@ async function initAddTask() {
   document.getElementById('acceptTask').addEventListener('click', acceptTask);
   document.getElementById('cancelSubtask').addEventListener('click', cancelSubtask);
 }
-
 
 /**
  * Adds a subtask to the list of subtasks based on the user's input.
@@ -46,7 +44,6 @@ function addSubtask() {
     subtaskInput.value = '';
   }
 }
-
 
 /**
  * Renders the list of subtasks in the specified container.
@@ -76,7 +73,6 @@ function renderSubtasks() {
   }
 }
 
-
 /**
  * Makes a list item editable for editing.
  * @param {number} index - The index of the list item to edit.
@@ -99,7 +95,6 @@ function editListItem(index) {
   }
 }
 
-
 /**
  * Updates the content of a list item and makes it non-editable.
  * @param {number} index - The index of the list item to update.
@@ -119,7 +114,6 @@ function updateListItem(index) {
   }
 }
 
-
 /**
  * Hides the subtask input field and related elements.
  */
@@ -136,7 +130,6 @@ function cancelSubtask() {
   subtaskInput.value = '';
 }
 
-
 /**
  * Sets up an event listener on the subtask input field to add a subtask when the Enter key is pressed.
  * This enhances user experience by allowing quick addition of subtasks.
@@ -148,7 +141,6 @@ function keyPressEnter() {
     }
   });
 }
-
 
 /**
  * Validates the subtask input's length and toggles the visibility of various task-related icons.
@@ -174,7 +166,6 @@ function acceptTask() {
     acceptTask.style.display = 'none';
   }
 }
-
 
 /**
  * Removes the closest subtask container to the element that triggered the delete action.
@@ -231,8 +222,6 @@ function toggleButton(priority) {
   }
 }
 
-
-
 /**
  * Renders contacts for adding tasks, filtered by a search term. It updates two areas:
  * one for "Me" contacts and another for all other contacts. Contacts are filtered
@@ -263,7 +252,6 @@ function renderContactsAddTask(searchTerm) {
   }
 }
 
-
 /**
  * Generates HTML content for a contact item, including a div with their initials,
  * name, and a checkbox for selection. This HTML content is used in the task addition
@@ -288,7 +276,6 @@ function generateContactsAddTaskHtml(i, contact, initials, isSelected) {
   `;
 }
 
-
 /**
  * Opens the contact list for adding tasks. This function modifies the HTML content of
  * the contact bar to include a search bar and sets the contact list display style to flex,
@@ -308,7 +295,6 @@ function openContactListAddTask() {
   hideSelectedContactsAddTask();
   renderSelectedContactsAddTask();
 }
-
 
 /**
  * Closes the contact list used for adding tasks. It resets the HTML content of the contact
@@ -331,9 +317,7 @@ function closeContactListAddTask() {
   showSelectedContactsAddTask();
 }
 
-
 let selectedContactsAddTask = [];
-
 
 /**
  * Toggles the selection status of a specific contact for task assignment.
@@ -359,7 +343,6 @@ function selectContactAddTask(i) {
   }
 }
 
-
 /**
  * Checks if a contact is already selected for the task. If so, it updates the UI
  * to reflect the selection status by changing the background color and checking
@@ -378,7 +361,6 @@ function checkSelectedContactsAddTask(i) {
   }
 }
 
-
 /**
  * Adds a contact to the list of selected contacts for the task. It also
  * triggers the rendering of the selected contacts to reflect the change.
@@ -390,7 +372,6 @@ function addSelectedContactsAddTask(i) {
   selectedContactsAddTask.push(contact);
   renderSelectedContactsAddTask();
 }
-
 
 /**
  * Removes a contact from the list of selected contacts for the task. It updates
@@ -423,7 +404,6 @@ function renderSelectedContactsAddTask() {
   });
 }
 
-
 function showSelectedContactsAddTask() {
   document.getElementById('selected_contacts_add_task').style = 'display: flex';
 }
@@ -451,7 +431,6 @@ function resetContactAddTask() {
   closeContactListAddTask();
 }
 
-
 /**
  * Clears all input and textarea fields within the document. This function
  * iterates over all input and textarea elements, setting their value to an
@@ -466,14 +445,12 @@ function clearAllInputs() {
   }
 }
 
-
 // Initialize the deactivation of past days for date inputs.
 (function deactivatePastDays() {
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().split('T')[0];
   document.getElementById('date').min = formattedDate;
 })();
-
 
 /**
  * Submits the form for adding a task. It awaits the creation of a task array
@@ -484,7 +461,6 @@ async function submitFormAddTask() {
   await createTaskArray(targetColumnId);
   redirect('board');
 }
-
 
 /**
  * Toggles the visibility of the subtask list and rotates an arrow image to indicate the current state.
@@ -509,7 +485,7 @@ function toggleCategory(event) {
   }
 }
 
-var selectionCategory;
+var selectionCategory; /* We use Var only for this function because of a reference Error and TDZ (temporal dead Zone)*/
 
 function returnSelectedCategory(i){
   selectionCategory = i;

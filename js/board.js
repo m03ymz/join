@@ -5,7 +5,7 @@
 async function initBoard() {
     await init();
     // delete currentUser.taskId;
-    // currentUser.tasks.splice(-2);
+    // currentUser.tasks = [];
     // await saveUsers();
     renderTask();
     renderContactsAddTask('');
@@ -13,7 +13,8 @@ async function initBoard() {
     document.getElementById('acceptTaskForm').addEventListener('click', acceptTaskForm);
     document.getElementById('cancelSubtaskForm').addEventListener('click', cancelSubtaskForm);
     document.getElementById('edit_acceptTask').addEventListener('click', acceptTaskEdit);
-    document.getElementById('edit_cancelSubtask').addEventListener('click', cancelSubtaskEdit);
+    document.getElementById('edit_cancelSubtask').addEventListener('click', cancelSubtaskEdit); 
+   
 }
 
 let targetColumnId;
@@ -375,25 +376,7 @@ function searchTask(searchInput) {
             let backgroundColor = (taskNumber.category === 'Technical Task') ? '#1FD7C1' : '#0038FF';
             let cardImgBoxId = `card_img_box_${columnId}${i}`; 
 
-            document.getElementById(columnId).innerHTML += `
-                <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
-                    <div onclick="openOverlay(${taskId})" class="inner_card_board2">
-                        <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
-                        <div class="card_text_board"><b>${taskNumber.title}</b></div>
-                        <div class="card_text2_board">${taskNumber.description}</div>
-                        <div class="progressbar_box_board">
-                            <div class="progressbar_board">
-                                <div class="progressbar_filter_board"></div>
-                            </div>
-                            <div class="progressbar_text_board">1/2 Subtasks</div>
-                        </div>
-                        <div class="card_img_main_board">
-                            <div class="card_img_box_board" id="${cardImgBoxId}"></div>
-                            <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
-                        </div>
-                    </div>
-                </div>
-            `;
+            document.getElementById(columnId).innerHTML += generateSearchTaskHtml(taskId, backgroundColor, taskNumber, cardImgBoxId);
 
             for (let j = 0; j < taskNumber.contacts.length; j++) {
                 let contact = taskNumber.contacts[j];

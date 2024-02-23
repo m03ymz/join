@@ -620,7 +620,22 @@ textarea:hover, select:hover {
         margin-left: 16px;
     }
 }
-
+@media (max-width: 381px){
+  .container_prio_buttons_addtask > img{
+        width: 100px;
+  }
+  .left_box_addtask{
+    width: 95%;
+  }
+  .right_box_addtask{
+    width: 95%;
+  }
+    }
+@media (max-width: 350px){
+    .container_prio_buttons_addtask > img{
+        width: 90px;
+}
+}
 @media (max-width: 321px) {
     .right_box_addtask {
         width: 100%;
