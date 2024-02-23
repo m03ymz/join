@@ -628,26 +628,19 @@
 }
 
 .fullbox_edit_form{
-    width: 420px;
+    width: 401px;
     background-color: white;
-    padding: 32px 16px 32px 16px;
+    padding: 34px 40px 34px 40px;
     gap: 24px;
     border-radius: 30px;
     position: fixed;
     left: 100%;
     top: 50%;
     transform: translate(-50%, -50%);
-    height: 640px;
+    max-height: 560px;
     z-index: 3;
     animation: slideToLeft 150ms forwards;
-}
-
-.fullbox_edit_form form {
-    box-sizing: border-box;
-    width: 100%;
     overflow-y: auto;
-    max-height: 600px;
-    overflow-x: hidden;
 }
 
 .edit_task_button{
@@ -667,21 +660,21 @@
 }
 
 /* Stil für die Scrollbar */
-.fullbox_edit_form form::-webkit-scrollbar {
+.fullbox_edit_form::-webkit-scrollbar {
     width: 8px; /* Macht die Scrollbar dünner */
 }
 
-.fullbox_edit_form form::-webkit-scrollbar-track {
+.fullbox_edit_form::-webkit-scrollbar-track {
     background-color: transparent; /* Optional: Track-Hintergrundfarbe */
     border-radius: 10px; /* Rundet die Ecken des Tracks ab */
 }
 
-.fullbox_edit_form form::-webkit-scrollbar-thumb {
+.fullbox_edit_form::-webkit-scrollbar-thumb {
     background-color: #888; /* Farbe des Scrollbar-Thumbs */
     border-radius: 10px; /* Rundet die Ecken des Thumbs ab */
 }
 
-.fullbox_edit_form form::-webkit-scrollbar-thumb:hover {
+.fullbox_edit_form::-webkit-scrollbar-thumb:hover {
     background-color: #555; /* Dunklere Farbe beim Hover */
 }
 
@@ -806,6 +799,12 @@
     }
 }
 
+@media (max-width: 500px){
+    .task_overlay_box_board {
+        width: 220px;
+    }
+}
+
 @media (max-width: 350px){
     .input_container_board {
         gap: 0;
@@ -817,6 +816,7 @@
         left: -4px;
     }
 }
+
 
 
 
