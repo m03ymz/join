@@ -21,6 +21,7 @@ let targetColumnId;
 let taskIdCounter;
 let currentDraggedElement;
 
+
 /**
  * Creates a task array based on the provided parameters and adds it to the currentUser tasks.
  * 
@@ -45,6 +46,7 @@ async function createTaskArray(targetColumnId) {
     await saveUsers();
 }
 
+
 /**
  * Clears the input fields by setting their values to an empty string.
  * 
@@ -55,6 +57,7 @@ function clearInputFields(inputs) {
         input.value = '';
     });
 }
+
 
 /**
  * Creates a task object with the provided properties.
@@ -84,6 +87,7 @@ function createTaskObject(title, description, date, category, subtasks, column, 
     };
 }
 
+
 /**
  * Renders all tasks on the board.
  */
@@ -99,6 +103,7 @@ function renderTask() {
     clearEmptyAlert();
     closeTaskFormOnBoard();
 }
+
 
 /**
  * Renders tasks in the specified column.
@@ -129,6 +134,7 @@ function renderTasks(columnTasks, columnId) {
     }
 }
 
+
 /**
  * Retrieves the image URL based on the task priority.
  * 
@@ -146,6 +152,7 @@ function getPriorityImg(priority) {
     }
 }
 
+
 /**
  * Renders contact images for a task.
  * 
@@ -160,6 +167,7 @@ function renderContactImages(containerId, contacts) {
         `;
     }
 }
+
 
 /**
  * Renders a progress bar for a task.
@@ -183,6 +191,7 @@ function renderProgressBar(taskId, totalSubtasks, checkedSubtasks) {
     }
 }
 
+
 /**
  * Updates the progress of a subtask for the specified task.
  * 
@@ -198,6 +207,7 @@ async function updateProgress(taskId, subtaskIndex) {
         await saveUsers();
     }
 }
+
 
 /**
  * Updates the progress bar and progress text for the specified task.
@@ -216,6 +226,7 @@ function updateProgressBar(task) {
     }
 }
 
+
 /**
  * Calculates the progress percentage based on the number of checked subtasks and the total number of subtasks.
  * 
@@ -226,6 +237,7 @@ function updateProgressBar(task) {
 function calculateProgress(totalSubtasks, checkedSubtasks) {
     return totalSubtasks > 0 ? (checkedSubtasks / totalSubtasks) * 100 : 0;
 }
+
 
 /**
  * Opens the task form on the specified board column by displaying the task form and overlay elements, and preventing pointer events and overflow on the content board and body.
@@ -241,6 +253,7 @@ function openTaskFormOnBoard(columnId){
     document.getElementById(`body`).classList.add('overflow_hidden');
 }
 
+
 /**
  * Closes the task form on the board by hiding the task form and overlay elements, and restoring pointer events and overflow on the content board and body.
  * 
@@ -252,7 +265,6 @@ function closeTaskFormOnBoard(){
     document.getElementById(`content-board`).classList.remove('pointer_events-none');
     document.getElementById(`body`).classList.remove('overflow_hidden');
 }
-
 
 
 /**
@@ -273,6 +285,7 @@ function clearEmptyAlert() {
     });
 }
 
+
 /**
  * Clears the input fields for task title, description, and date.
  */
@@ -281,6 +294,7 @@ function clearTask() {
     description.value = '';
     date.value = '';
 }
+
 
 /**
  * Sets the currentDraggedElement variable to the provided ID.
@@ -291,6 +305,7 @@ function startDragging(id) {
     currentDraggedElement = id;
 }
 
+
 /**
  * Prevents the default action from occurring when an element is being dragged over it.
  * 
@@ -299,6 +314,7 @@ function startDragging(id) {
 function allowDrop(ev) {
     ev.preventDefault();
 }
+
 
 /**
  * Moves a task to the specified category column.
@@ -315,6 +331,7 @@ async function moveTo(category) {
     removeHighlight(category);
 }
 
+
 /**
  * Highlights a draggable area when an element is dragged over it.
  * 
@@ -324,6 +341,7 @@ function highlight(id) {
     document.getElementById(id).classList.add('drag-area-highlight');
 }
 
+
 /**
  * Removes the highlight from a draggable area.
  * 
@@ -332,6 +350,7 @@ function highlight(id) {
 function removeHighlight(id) {
     document.getElementById(id).classList.remove('drag-area-highlight');
 }
+
 
 /**
  * Removes the highlight from a draggable area when an element is dropped onto it.
@@ -344,6 +363,7 @@ function drop(ev) {
     // Weitere Aktionen nach dem Ablegen des Elements...
 }
 
+
 /**
  * Adds an event listener to the search input for tasks and triggers the search function.
  */
@@ -352,6 +372,7 @@ document.addEventListener('DOMContentLoaded', function() {
         searchTask(this.value.trim().toLowerCase());
     });
 });
+
 
 /**
  * Searches for tasks based on the input search string.
@@ -390,7 +411,6 @@ function searchTask(searchInput) {
 }
 
 
-
 /**
  * Redirects to the add task page if the screen width is less than or equal to 900 pixels.
  */
@@ -400,7 +420,8 @@ function searchTask(searchInput) {
     }
   }
 
-/**
+
+  /**
  * Moves a task down to the next column.
  * 
  * @param {number} taskId - The ID of the task to move.
@@ -416,6 +437,7 @@ function searchTask(searchInput) {
     }
     renderTask();
 }
+
 
 /**
  * Moves a task up to the previous column.
@@ -433,14 +455,3 @@ function moveTaskUp(taskId) {
     }
     renderTask();
 }
-
-
-  
-  
-
-  
-
-
-
-
-

@@ -411,4 +411,3 @@ function deleteListItemEdit(i) {
     // Rendere die Subtasks neu, um die Liste zu aktualisieren
     renderSubtasksEdit();
   }
-
