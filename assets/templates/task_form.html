@@ -64,34 +64,38 @@
 
                     <div>
                         <p class="required_red_star">Category</p>
-                        <select id="category_task" class="input_assigned_to" required >
-                            <option value="" disabled selected hidden>Select task category</option>
-                            <option value="Technical Task">Technical Task</option>
-                            <option value="User Story">User Story</option>
-                          
-                        </select>
+                        <div>
+                            <div class="placeholder_select_contacts_add_task" onclick="toggleCategoryForm(event)" tabindex="0">
+                              <span id="category_taskForm">Select Subtask Category</span>
+                              <img class="arrowImage" src="./assets/img/arrow_down_add_task.svg">
+                            </div>
+                          </div>
+                          <div style="display: block">
+                            <div id="categorySubtasksForm" style="display: none; background-color: white; border: 1px solid lightgray;">
+                              <ul id="technicalTaskAddtask" onclick="returnSelectedCategoryForm('Technical Task')" class="subtask_category_addtask">Technical Task</ul>
+                              <ul id="userStoryAddtask" onclick="returnSelectedCategoryForm('User Story')" class="subtask_category_addtask">User Story</ul>
+                            </div>
+                    </div>
                     </div>
 
-                    <div>
+                    <!-- <div>
                         <div class="input_container">
                             <p>Subtasks</p>
                             <div class="input_field_container">
                                 <div class="input_wrapper">
-                                    <input placeholder="Add new Subtask" class="input_field_subtasks" type="text" id="subtaskInput">
+                                    <input placeholder="Add new Subtask" class="input_field_subtasks" type="text" id="subtaskInputForm">
                                     <div class="icon-container">
-                                        <img class="hide_icon" onclick="cancelSubtask()" id="cancelSubtask" src="assets/img/Cancel_subtask.svg" alt="">
-                                        <img class="hide_icon" id="smallLineSubtask" src="assets/img/small_line_subtask.svg" alt="">
-                                        <img id="addingSubtask" class="input_field_icon  hide_icon" onclick="addSubtask()" src="assets/img/accept_subtask.svg" alt="">
-                                        <img id="acceptTask" src="assets/img/Subtasks plus.svg">
+                                        <img class="hide_icon" onclick="cancelSubtaskForm()" id="cancelSubtask" src="assets/img/Cancel_subtask.svg" alt="">
+                                        <img class="hide_icon" id="smallLineSubtaskForm" src="assets/img/small_line_subtask.svg" alt="">
+                                        <img id="addingSubtaskForm" class="input_field_icon  hide_icon" onclick="addSubtaskForm()" src="assets/img/accept_subtask.svg" alt="">
+                                        <img id="acceptTaskForm" src="assets/img/Subtasks plus.svg">
                                     </div>
                                 </div>                        
-        
-        
                             </div>
                         </div>
-        
-                        <div id="subtaskContainer"></div>  
-                    </div>
+
+                        <div id="subtaskContainer"></div> 
+                    </div> -->
 
                 </div>
             </div>

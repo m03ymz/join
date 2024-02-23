@@ -161,23 +161,6 @@ function deleteListItem(element, id) {
   renderSubtasks();
 }
 
-
-/**
- * Placeholder function for editing a list item. Needs to be implemented.
- */
-function editListItem() {
-  // Implementation needed
-}
-
-
-/**
- * Placeholder function for editing a list item. Needs to be implemented.
- */
-function editListItem() {
-  // Implementation needed
-}
-
-
 let selectedPriority;
 
 /**
@@ -486,7 +469,7 @@ async function submitFormAddTask() {
  * If the element is visible, it hides the element by setting its display property to 'none' and resets the arrow image
  * to its original orientation, indicating the list is collapsed.
  */
-function toggleSubtask(event) {
+function toggleCategory(event) {
   event.stopPropagation(); // Verhindert das Auslösen des Event-Bubblings
   let element = document.getElementById('categorySubtasks');
   let image = document.querySelector('.arrowImage');
@@ -500,7 +483,7 @@ function toggleSubtask(event) {
   }
 }
 
-let selectionCategory;
+var selectionCategory;
 
 function returnSelectedCategory(i){
   selectionCategory = i;
