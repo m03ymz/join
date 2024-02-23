@@ -9,7 +9,8 @@ async function initBoard() {
     document.getElementById('acceptTaskForm').addEventListener('click', acceptTaskForm);
     document.getElementById('cancelSubtaskForm').addEventListener('click', cancelSubtaskForm);
     document.getElementById('edit_acceptTask').addEventListener('click', acceptTaskEdit);
-    document.getElementById('edit_cancelSubtask').addEventListener('click', cancelSubtaskEdit);
+    document.getElementById('edit_cancelSubtask').addEventListener('click', cancelSubtaskEdit); 
+   
 }
 
 let targetColumnId;
@@ -474,7 +475,6 @@ function editTask(taskId) {
         let subtaskContainer = document.getElementById('edit_subtaskContainer');
         subtaskContainer.innerHTML = '';
         if (task.subtask.length > 0) {
-            // Extrahiere Unteraufgaben aus currentUser.tasks[taskId].subtask und erstelle subtaskValues
             let subtaskValues = [];
         for (let i = 0; i < currentUser.tasks[taskId].subtask.length; i++) {
             subtaskValues.push(currentUser.tasks[taskId].subtask[i].subtask);
@@ -503,7 +503,7 @@ function renderSubtaskContainer(subtaskValues, subtaskContainer) {
 
     if (subtaskValues && subtaskValues.length > 0) {
         for (let i = 0; i < subtaskValues.length; i++) {
-            const subtaskContent = subtaskValues[i]; // Wert des subtask-Attributs des Objekts
+            const subtaskContent = subtaskValues[i]; 
             subtaskContainer.innerHTML += /*html*/`
                 <div class="container_hover_subtasks_icons">
                     <li class="input_value_style hover_li" contenteditable="false" id="edit_subtaskContent-${i}">${subtaskContent}
@@ -542,8 +542,6 @@ async function saveEditedTask() {
         currentUser.tasks[taskIndex].date = document.getElementById('edit_date').value;
         currentUser.tasks[taskIndex].prio = selectedPriority;
         currentUser.tasks[taskIndex].contacts = selectedContactsAddTask;
-
-        // Erfassen Sie die geänderten Subtasks
         let subtaskContainer = document.getElementById('edit_subtaskContainer');
         let subtaskElements = subtaskContainer.querySelectorAll('.input_value_style');
         let updatedSubtasks = Array.from(subtaskElements).map(element => ({
