@@ -87,7 +87,7 @@ function generateEditContactHtml(j) {
     return /*html*/`
         <div class="edit_buttons_contact_form">
             <button type="button" class="delete_button_contact_form" onclick="deleteContactContacts(${j})">Delete</button>
-            <button type="button" class="save_button_contact_form" onclick="replaceContactsContacts(${j})">Save<img src="./assets/img/check_icon_contact_form.svg" alt="check icon"></button>
+            <button class="save_button_contact_form">Save<img src="./assets/img/check_icon_contact_form.svg" alt="check icon"></button>
         </div>
     `;
 }

@@ -125,3 +125,33 @@ function generateRenderTaskHtml(taskId, taskNumber, backgroundColor, containerId
     </div>
 `;
 }
+
+
+/**
+ * Generiert HTML für eine Suchaufgabe.
+ * @param {number} taskId - Die ID der Aufgabe.
+ * @param {string} backgroundColor - Die Hintergrundfarbe des Kartenfelds.
+ * @param {object} taskNumber - Informationen zur Aufgabe (z.B. Kategorie, Titel, Beschreibung).
+ * @param {string} cardImgBoxId - Die ID des Bildfelds der Karte.
+ */
+function generateSearchTaskHtml(taskId, backgroundColor, taskNumber, cardImgBoxId) {
+    return `
+        <div draggable="true" ondragstart="startDragging(${taskId})" class="card_board2">
+            <div onclick="openOverlay(${taskId})" class="inner_card_board2">
+                <div class="card_title_board" style="background: ${backgroundColor};">${taskNumber.category}</div>
+                <div class="card_text_board"><b>${taskNumber.title}</b></div>
+                <div class="card_text2_board">${taskNumber.description}</div>
+                <div class="progressbar_box_board">
+                    <div class="progressbar_board">
+                        <div class="progressbar_filter_board"></div>
+                    </div>
+                    <div class="progressbar_text_board">1/2 Subtasks</div>
+                </div>
+                <div class="card_img_main_board">
+                    <div class="card_img_box_board" id="${cardImgBoxId}"></div>
+                    <img class="pro_media_board" src="./assets/img/prio_media.svg" alt="">
+                </div>
+            </div>
+        </div>
+    `;
+}

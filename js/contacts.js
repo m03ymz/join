@@ -180,6 +180,10 @@ function editContactContacts(j) {
     document.getElementById('email_contact_form').value = contact.email;
     document.getElementById('phone_contact_form').value = contact.phone;
     document.getElementById('buttons_contact_form').innerHTML = generateEditContactHtml(j);
+    document.getElementById('contactFormSubmitContacts').onsubmit = function(event) {
+        event.preventDefault(); 
+        replaceContactsContacts(j);
+    };
 }
 
 
@@ -199,6 +203,10 @@ function resetContactFormContacts() {
             <button class="create_button_contact_form">Create contact<img src="./assets/img/check_icon_contact_form.svg" alt="check icon"></button>
         </div>
     `;
+    document.getElementById('contactFormSubmitContacts').onsubmit = function(event) {
+        event.preventDefault(); 
+        addNewContactContacts();
+    };
 }
 
 
