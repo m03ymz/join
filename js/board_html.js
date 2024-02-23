@@ -20,32 +20,34 @@ function generateTaskOverlayHTML(task, backgroundColor, formattedDate, priorityT
                 <img class="x_button_board" onclick="closeOverlay()" src="./assets/img/close.svg" alt="">
             </div>
             <h2>${task.title}</h2>
-            <div class="task_overlay_text">
-                <span>${task.description}</span>
-                <div class="date_taskoverlay">
-                    <span class="textcolor_taskoverlay">Due date:</span>
-                    <span>${formattedDate}</span>
-                </div>
-                <div class="priority_taskoverlay">
-                    <span class="textcolor_taskoverlay">Priority:</span>
-                    <div class="priority_taskoverlay2">
-                        <span>${priorityText}</span>
-                        <img src="${priorityImage}" alt="">
+            <div class="task_overlay_box_content_board">
+                <div class="task_overlay_text">
+                    <span>${task.description}</span>
+                    <div class="date_taskoverlay">
+                        <span class="textcolor_taskoverlay">Due date:</span>
+                        <span>${formattedDate}</span>
                     </div>
+                    <div class="priority_taskoverlay">
+                        <span class="textcolor_taskoverlay">Priority:</span>
+                        <div class="priority_taskoverlay2">
+                            <span>${priorityText}</span>
+                            <img src="${priorityImage}" alt="">
+                        </div>
+                    </div>
+                    <span class="textcolor_taskoverlay">Assigned To:</span>
                 </div>
-                <span class="textcolor_taskoverlay">Assigned To:</span>
+                <div>
+                    <div class="task_overlay_assigned" id="task_overlay_assigned${taskId}">
+                        ${assignedProfilesHTML} 
+                    </div>
+                    <div class="subtasks_taskoverlay">
+                        ${subtasksSpan}
+                        <div class="subtask_box_taskoverlay">
+                        ${subtasksHTML}
+                        </div> 
+                    </div>
+                </div> 
             </div>
-            <div>
-                <div class="task_overlay_assigned" id="task_overlay_assigned${taskId}">
-                    ${assignedProfilesHTML} 
-                </div>
-                <div class="subtasks_taskoverlay">
-                    ${subtasksSpan}
-                    <div class="subtask_box_taskoverlay">
-                    ${subtasksHTML}
-                    </div> 
-                </div>
-            </div> 
             <div class="delete_edit_taskoverlay">
                 <div onclick="deleteTask('${taskId}')" class="delete_box">
                     <img src="./assets/img/delete.svg" alt="">

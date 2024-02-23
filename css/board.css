@@ -394,6 +394,30 @@
     }
 }
 
+.task_overlay_box_content_board {
+
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+.task_overlay_box_content_board::-webkit-scrollbar {
+    width: 8px; /* Macht die Scrollbar dünner */
+}
+
+.task_overlay_box_content_board::-webkit-scrollbar-track {
+    background-color: transparent; /* Optional: Track-Hintergrundfarbe */
+    border-radius: 10px; /* Rundet die Ecken des Tracks ab */
+}
+
+.task_overlay_box_content_board::-webkit-scrollbar-thumb {
+    background-color: #888; /* Farbe des Scrollbar-Thumbs */
+    border-radius: 10px; /* Rundet die Ecken des Thumbs ab */
+}
+
+.task_overlay_box_content_board::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Dunklere Farbe beim Hover */
+}
+
 .task_overlay_top_board {
     display: flex;
     justify-content: space-between;
@@ -609,8 +633,6 @@
 }
 
 .subtask_box_taskoverlay {
-    overflow-y: auto;
-    max-height: 64px;
     width: 100%;
 }
 
