@@ -395,8 +395,7 @@
 }
 
 .task_overlay_box_content_board {
-
-    max-height: 450px;
+    max-height: 432px;
     overflow-y: auto;
 }
 
@@ -833,7 +832,8 @@
 
 @media (max-width: 500px){
     .task_overlay_box_board {
-        width: 220px;
+        width: 240px;
+        padding: 40px 24px 40px 24px;
     }
 }
 
