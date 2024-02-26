@@ -468,11 +468,11 @@ function clearAllInputs() {
 
 
 // Initialize the deactivation of past days for date inputs.
-(function deactivatePastDays() {
+function deactivatePastDays() {
   const currentDate = new Date();
   const formattedDate = currentDate.toISOString().split('T')[0];
   document.getElementById('date').min = formattedDate;
-})();
+}
 
 
 /**

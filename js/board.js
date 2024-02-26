@@ -361,16 +361,6 @@ function drop(ev) {
 
 
 /**
- * Adds an event listener to the search input for tasks and triggers the search function.
- */
-document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('search_input_task').addEventListener('keyup', function() {
-        searchTask(this.value.trim().toLowerCase());
-    });
-});
-
-
-/**
  * Searches for tasks based on the input search string.
  * 
  * @param {string} searchInput - The search string entered by the user.
