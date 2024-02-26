@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: contacts_html.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,110 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: contacts_html.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Generates HTML for displaying initials with a parting line.
+ * 
+ * @param {string} initial - The initial character to display.
+ */
+function generateInitialsHtml(initial) {
+    return /*html*/`
+        &lt;div>
+            &lt;div class="alphabet_contacts">&lt;span>${initial}&lt;/span>&lt;/div>
+            &lt;div class="parting_line_contacts">&lt;/div>
+        &lt;/div>
+    `;
+}
 
 
-    <h3> </h3>
+/**
+ * Generates HTML for displaying a contact list item.
+ * 
+ * @param {number} j - The index of the contact in the contacts list.
+ * @param {Object} contact - The contact object containing name, email, and other details.
+ * @param {string} initials - The initials of the contact's name.
+ */
+function generateContactListHtml(j, contact, initials) {
+    return /*html*/`
+        &lt;div class="contact_contacts hover_contact_contacts" id="contact_contacts${j}" onclick="renderContactDetailsContacts(${j}), toggleHighlightContactContacts(${j}), showContactDetailsContacts()">
+            &lt;div>&lt;span class="contact_initials_contacts" style="background-color: ${contact.color}">${initials}&lt;/span>&lt;/div>
+            &lt;div>
+                &lt;span id="contact_name_contacts">${contact.name}&lt;/span>
+                &lt;span id="contact_email_contacts">${contact.email}&lt;/span>
+            &lt;/div>
+        &lt;/div>
+    `;
+}
 
 
+/**
+ * Generates HTML for displaying detailed contact information.
+ * 
+ * @param {number} j - The index of the contact in the contacts list.
+ * @param {Object} contact - The contact object containing name, email, and other details.
+ * @param {string} initials - The initials of the contact's name.
+ */
+function generateContactDetailsHtml(j, contact, initials) {
+    return /*html*/`
+        &lt;div class="blue_arrow_left_mobile_right_contacts" onclick="showLeftContacts(), toggleHighlightContactContacts(${j})">&lt;img src="./assets/img/blue_arrow_left.svg" alt="blue arrow left icon">&lt;/div>
+        &lt;div class="top_contact_details_contacts">
+            &lt;div>
+                &lt;span id="initials_contact_details_contacts" style = "background-color: ${contact.color}">${initials}&lt;/span>
+            &lt;/div>
+            &lt;div class="name_and_options_contact_details_contacts">
+                &lt;span id="name_contact_details_contacts">${contact.name}&lt;/span>
+                &lt;div class="options_contact_details_contacts">
+                    &lt;div>
+                        &lt;span class="edit_contact_details_contacts" onclick="editContactContacts(${j})">Edit&lt;/span>
+                    &lt;/div>
+                    &lt;div>
+                        &lt;span class="delete_contact_details_contacts" onclick="deleteContactContacts(${j})">Delete&lt;/span>
+                    &lt;/div>
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+        &lt;span class="contact_information_title_contact_details_contacts">Contact Information&lt;/span>
+        &lt;div class="contact_information_contact_details_contacts">
+            &lt;div>
+                &lt;span>Email&lt;/span>
+                &lt;a id="email_contact_information_contact_details_contacts" href="mailto:${contact.email}">${contact.email}&lt;/a>
+            &lt;/div>
+            &lt;div>
+                &lt;span>Phone&lt;/span>
+                &lt;a id="phone_contact_information_contact_details_contacts" href="tel:${contact.phone}">${contact.phone}&lt;/a>
+            &lt;/div>
+        &lt;/div>
+        &lt;div id="mobile_options_contact_contacts" style = "display: none">
+            &lt;div>&lt;span class="edit_mobile_options_contact_contacts" onclick="editContactContacts(${j}), hideContactDetailsOptionsContacts()">Edit&lt;/span>&lt;/div>
+            &lt;div>&lt;span class="delete_mobile_options_contact_contacts" onclick="deleteContactContacts(${j}), hideContactDetailsOptionsContacts()">Delete&lt;/span>&lt;/div>
+        &lt;/div>
+    `;
+}
 
 
-
-
-
-
-
-
-    
-
-
-
-
-
+/**
+ * Generates HTML for editing a contact.
+ * 
+ * @param {number} j - The index of the contact in the contacts list.
+ */
+function generateEditContactHtml(j) {
+    return /*html*/`
+        &lt;div class="edit_buttons_contact_form">
+            &lt;button type="button" class="delete_button_contact_form" onclick="deleteContactContacts(${j})">Delete&lt;/button>
+            &lt;button class="save_button_contact_form">Save&lt;img src="./assets/img/check_icon_contact_form.svg" alt="check icon">&lt;/button>
+        &lt;/div>
+    `;
+}</code></pre>
+        </article>
+    </section>
 
 
 
